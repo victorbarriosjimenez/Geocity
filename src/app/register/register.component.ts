@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsService } from '../forms.service';
+import { FormsService } from '../shared/forms.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +7,8 @@ import { FormsService } from '../forms.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  paises:any;
+  public paises: any;
   constructor(private _formsService: FormsService) { }
-
   ngOnInit() {
     this.getCountries();
   } 
@@ -17,5 +16,4 @@ export class RegisterComponent implements OnInit {
     this._formsService.getCountries()
         .subscribe(paises => this.paises = paises);
   } 
-
 }
