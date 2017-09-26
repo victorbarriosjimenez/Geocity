@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -13,6 +16,7 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './notfound.component';
 
 import { RoutesModule } from './routes';
+
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { environment } from '../environments/environment';
@@ -30,7 +34,9 @@ import { environment } from '../environments/environment';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     HttpModule,
-    RoutesModule
+    RoutesModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [FormsService,AuthenticationService],
   bootstrap: [AppComponent]
