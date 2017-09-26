@@ -6,6 +6,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { FormsService } from './shared/forms.service';
+import { AuthenticationService } from './shared/authentication.service';
+
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './notfound.component';
@@ -30,7 +32,7 @@ import { environment } from '../environments/environment';
     HttpModule,
     RoutesModule
   ],
-  providers: [FormsService],
+  providers: [FormsService,AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
