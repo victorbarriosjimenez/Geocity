@@ -7,3 +7,7 @@ h1 {
     height: 125px;
     margin-right: -25px;
 }
+.register-invitation {
+    color: darkgrey;
+    font-size: 1em;
+}
