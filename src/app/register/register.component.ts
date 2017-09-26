@@ -21,7 +21,8 @@ export class RegisterComponent implements OnInit {
             email:['',Validators.required],
             country:['', Validators.required],
             confirmEmail:['', Validators.required],
-            password: ['', Validators.required]
+            password: ['', Validators.required],
+            confirmPassword: ['', Validators.required]
     });
   }
   private getCountries(){ 
