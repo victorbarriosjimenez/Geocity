@@ -5,12 +5,16 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './notfound.component';
 
 import  { RoutesModule } from './routes';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
-  ],
+    NotFoundComponent,
+    LoginComponent,
+    RegisterComponent
+],
   imports: [
     BrowserModule, 
     RoutesModule
