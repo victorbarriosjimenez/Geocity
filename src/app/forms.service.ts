@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class FormsService {
-    private countries_api: string = "https://restcountries.eu/rest/v2/all";
+    private countries_api: string = "https://geocity-app.firebaseio.com/countries.json";
     constructor(private _http: Http) { }
     public getCountries( ){ 
         return this._http.get(this.countries_api)
