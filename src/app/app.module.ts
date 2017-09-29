@@ -20,13 +20,19 @@ import { RoutesModule } from './routes';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { environment } from '../environments/environment';
+import { ListUserComponent } from './list-user/list-user.component';
+import { WorldRankingComponent } from './world-ranking/world-ranking.component';
+import { ForumComponent } from './forum/forum.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ListUserComponent,
+    WorldRankingComponent,
+    ForumComponent
 ],
   imports: [
     BrowserModule,
