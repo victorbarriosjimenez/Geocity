@@ -3,6 +3,7 @@ export class User { 
     public email: string;
     public country: string;
     public record: number;
+    public partidas: Partida[];
 }
 export class Partida { 
     public continente:  string;
