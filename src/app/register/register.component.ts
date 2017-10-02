@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { FormsService } from '../shared/forms.service';
-import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx'; 
-import { AngularFireAuth , FirebaseAuthStateObservable } from 'angularfire2/auth';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,7 +11,7 @@ import { AngularFireAuth , FirebaseAuthStateObservable } from 'angularfire2/auth
 export class RegisterComponent implements OnInit {
   public paises: any;
   public registrationForm: FormGroup;
-  constructor(private _formsService: FormsService, private _fb: FormBuilder,private afAuth: AngularFireAuth,private _router: Router) { }
+  constructor(private _formsService: FormsService, private _fb: FormBuilder,private _router: Router) { }
   ngOnInit() {
     this.createForm();
     this.getCountries();
