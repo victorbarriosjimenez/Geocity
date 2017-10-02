@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
     this.createForm();
     this.getCountries();
   } 
-  public createForm( ){
+  public createForm( ): void {
    this.registrationForm =  this._fb.group({
             username: ['',Validators.required],
             email:['',Validators.required],
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
             confirmPassword: ['', Validators.required]
     });
   }
-  private getCountries(){ 
+  private getCountries() { 
     this._formsService.getCountries()
         .subscribe(paises => this.paises = paises);
   } 
