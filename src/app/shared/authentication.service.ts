@@ -5,7 +5,11 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class AuthenticationService {
 constructor(private _af: AngularFireAuth) { }
-public loginUser( email: string, password: string): Observable<any> { 
-    return 
+    public loginUser( email: string, password: string): any { 
+        this._af.auth.signInWithEmailAndPassword(email,password)
+            .then(response => console.log(response));
+    }
+    public logoutUser():any { 
+        
     }
 }
