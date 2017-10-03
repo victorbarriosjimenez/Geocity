@@ -9,7 +9,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "serve": "./node_modules/.bin/ts-node ./mean/server/server.ts"
   },
   "private": true,
   "dependencies": {
@@ -27,11 +26,7 @@
     "core-js": "^2.4.1",
     "express": "^4.16.1",
     "firebase": "^4.4.0",
-    "http": "0.0.0",
-    "mongodb": "^2.2.31",
-    "path": "^0.12.7",
     "rxjs": "^5.4.2",
-    "ts-node": "^3.2.2",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
