@@ -1,4 +1,5 @@
 export class User { 
+    protected _id: string;
     public username: string;
     public email: string;
     public country: string;

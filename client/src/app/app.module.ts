@@ -1,19 +1,24 @@
+/* Modules */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
+/* Services */
 import { FormsService } from './shared/forms.service';
 import { AuthenticationService } from './shared/authentication.service';
+import { AuthGuardService }  from './shared/authguard.service';
+import { UserService } from './shared/user.service';
+import { AlertService } from './shared/alert.service';
+import { CustomHttp } from './shared/custom-http.service';
 
-
-import { AppComponent } from './app.component';
-import { NotFoundComponent } from './notfound.component';
-
+/* Routes configuration */
 import { RoutesModule } from './routes';
 
+/* Components */ 
+import { AppComponent } from './app.component';
+import { NotFoundComponent } from './notfound.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { environment } from '../environments/environment';
@@ -40,7 +45,10 @@ import { AlertComponent } from './alert/alert.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [FormsService,AuthenticationService],
+  providers: [
+    FormsService,
+    AuthenticationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
