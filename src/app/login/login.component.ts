@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AlertService } from '../shared/alert.service';
 import { AuthenticationService } from '../shared/authentication.service';
-
 import { Observable } from 'rxjs/Rx'; 
 @Component({
   selector: 'app-login',
@@ -12,7 +10,7 @@ import { Observable } from 'rxjs/Rx';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
-  constructor(private _fb: FormBuilder) { }
+  constructor(private _fb: FormBuilder, private _authService: AuthenticationService) { }
   public createForm( ){
     this.loginForm =  this._fb.group({
              email:['',Validators.required],
@@ -23,6 +21,9 @@ export class LoginComponent implements OnInit {
     this.createForm();
   }
   public login() {  
-    
+    this._authService.emailLogin(
+        this.loginForm.value['email'],
+        this.loginForm.value['password']
+    );
   } 
 }

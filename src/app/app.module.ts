@@ -4,16 +4,15 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 /* Services */
 import { FormsService } from './shared/forms.service';
 import { AuthenticationService } from './shared/authentication.service';
 import { UserService } from './shared/user.service';
-import { CustomHttp } from './shared/custom-http.service';
-
 /* Routes configuration */
 import { RoutesModule } from './routes';
-
 /* Components */ 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './notfound.component';
@@ -23,7 +22,6 @@ import { environment } from '../environments/environment';
 import { ListUserComponent } from './list-user/list-user.component';
 import { WorldRankingComponent } from './world-ranking/world-ranking.component';
 import { ForumComponent } from './forum/forum.component';
-import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -33,10 +31,12 @@ import { AlertComponent } from './alert/alert.component';
     RegisterComponent,
     ListUserComponent,
     WorldRankingComponent,
-    ForumComponent,
-    AlertComponent
+    ForumComponent
 ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase, 'my-app'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     BrowserModule,
     HttpModule,
     RoutesModule,
@@ -45,7 +45,8 @@ import { AlertComponent } from './alert/alert.component';
   ],
   providers: [
     FormsService,
-    AuthenticationService
+    AuthenticationService, 
+    UserService
   ],
   bootstrap: [AppComponent]
 })
