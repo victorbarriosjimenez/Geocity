@@ -2,7 +2,7 @@ var config = require('config.json');
 var express = require('express');
 var router = express.Router();
 var userService = require('services/user.service');
-
+ 
 // routes
 router.post('/authenticate', authenticate);
 router.post('/register', register);
@@ -10,9 +10,9 @@ router.get('/', getAll);
 router.get('/current', getCurrent);
 router.put('/:_id', update);
 router.delete('/:_id', _delete);
-
+ 
 module.exports = router;
-
+ 
 function authenticate(req, res) {
     userService.authenticate(req.body.username, req.body.password)
         .then(function (user) {
@@ -28,7 +28,7 @@ function authenticate(req, res) {
             res.status(400).send(err);
         });
 }
-
+ 
 function register(req, res) {
     userService.create(req.body)
         .then(function () {
@@ -38,7 +38,7 @@ function register(req, res) {
             res.status(400).send(err);
         });
 }
-
+ 
 function getAll(req, res) {
     userService.getAll()
         .then(function (users) {
@@ -48,7 +48,7 @@ function getAll(req, res) {
             res.status(400).send(err);
         });
 }
-
+ 
 function getCurrent(req, res) {
     userService.getById(req.user.sub)
         .then(function (user) {
@@ -62,6 +62,7 @@ function getCurrent(req, res) {
             res.status(400).send(err);
         });
 }
+ 
 function update(req, res) {
     userService.update(req.params._id, req.body)
         .then(function () {
@@ -71,6 +72,7 @@ function update(req, res) {
             res.status(400).send(err);
         });
 }
+ 
 function _delete(req, res) {
     userService.delete(req.params._id)
         .then(function () {
