@@ -8,9 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 /* Services */
 import { FormsService } from './shared/forms.service';
 import { AuthenticationService } from './shared/authentication.service';
-import { AuthGuardService }  from './shared/authguard.service';
 import { UserService } from './shared/user.service';
-import { AlertService } from './shared/alert.service';
 import { CustomHttp } from './shared/custom-http.service';
 
 /* Routes configuration */
