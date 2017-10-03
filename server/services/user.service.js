@@ -6,9 +6,7 @@ var Q = require('q');
 var mongo = require('mongoskin');
 var db = mongo.db(config.connectionString, { native_parser: true });
 db.bind('users');
- 
 var service = {};
- 
 service.authenticate = authenticate;
 service.getAll = getAll;
 service.getById = getById;
@@ -146,7 +144,6 @@ function update(_id, userParam) {
             lastName: userParam.lastName,
             username: userParam.username,
         };
- 
         // update password if it was entered
         if (userParam.password) {
             set.hash = bcrypt.hashSync(userParam.password, 10);
@@ -172,7 +169,6 @@ function _delete(_id) {
         { _id: mongo.helper.toObjectID(_id) },
         function (err) {
             if (err) deferred.reject(err.name + ': ' + err.message);
- 
             deferred.resolve();
         });
  

@@ -4,9 +4,10 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './notfound.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthGuardService } from './shared/authguard.service';
 
  const appRoutes: Routes = [
-  { path: '',  component:  AppComponent },
+  { path: '',  component:  AppComponent, canActivate:[AuthGuardService] },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'about', component: RegisterComponent },  
