@@ -4,9 +4,6 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { FormsService } from './shared/forms.service';
 import { AuthenticationService } from './shared/authentication.service';
@@ -36,9 +33,6 @@ import { ForumComponent } from './forum/forum.component';
 ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase), 
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
     HttpModule,
     RoutesModule,
     FormsModule,
