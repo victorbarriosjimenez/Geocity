@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
 import { ListUserComponent } from './list-user/list-user.component';
 import { WorldRankingComponent } from './world-ranking/world-ranking.component';
 import { ForumComponent } from './forum/forum.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ForumComponent } from './forum/forum.component';
     RegisterComponent,
     ListUserComponent,
     WorldRankingComponent,
-    ForumComponent
+    ForumComponent,
+    AlertComponent
 ],
   imports: [
     BrowserModule,

@@ -10,11 +10,9 @@ export class CustomHttp extends Http {
     constructor(backend: ConnectionBackend, defaultOptions: RequestOptions) {
         super(backend, defaultOptions);
     }
- 
     get(url: string, options?: RequestOptionsArgs): Observable<Response> {
         return super.get(appConfig.apiUrl + url, this.addJwt(options)).catch(this.handleError);
     }
- 
     post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
         return super.post(appConfig.apiUrl + url, body, this.addJwt(options)).catch(this.handleError);
     }
@@ -51,7 +49,6 @@ export class CustomHttp extends Http {
 export function customHttpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions): Http {
     return new CustomHttp(xhrBackend, requestOptions);
 }
- 
 export let customHttpProvider = {
     provide: Http,
     useFactory: customHttpFactory,
