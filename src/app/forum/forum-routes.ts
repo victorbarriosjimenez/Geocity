@@ -13,4 +13,4 @@ const forumRoutes: Routes = [
     RouterModule
   ]
 })
-export class RoutesModule { }
+export class ForumRoutesModule { }

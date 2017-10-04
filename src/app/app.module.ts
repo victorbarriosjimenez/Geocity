@@ -9,13 +9,16 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialElementsModule  } from './material-elements.module' 
+import { ForumModule } from './forum/forum.module';
 
 /* Services */
 import { FormsService } from './shared/forms.service';
 import { AuthenticationService } from './shared/authentication.service';
 import { UserService } from './shared/user.service';
+
 /* Routes configuration */
 import { RoutesModule } from './routes';
+
 /* Components */ 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './notfound.component';
@@ -24,7 +27,6 @@ import { RegisterComponent } from './register/register.component';
 import { environment } from '../environments/environment';
 import { ListUserComponent } from './list-user/list-user.component';
 import { WorldRankingComponent } from './world-ranking/world-ranking.component';
-import { ForumComponent } from './forum/forum.component';
 import { HomeComponent } from './home/home.component';
 import { UserSearchComponent } from './user-search/user-search.component';
 
@@ -36,7 +38,6 @@ import { UserSearchComponent } from './user-search/user-search.component';
     RegisterComponent,
     ListUserComponent,
     WorldRankingComponent,
-    ForumComponent,
     HomeComponent,
     UserSearchComponent
 ],
@@ -50,7 +51,8 @@ import { UserSearchComponent } from './user-search/user-search.component';
     BrowserAnimationsModule,
     FormsModule,
     MaterialElementsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ForumModule
   ],
   providers: [
     FormsService,
