@@ -6,6 +6,8 @@ import { UserProfileComponent } from './user-profile.component';
   imports: [
     CommonModule
   ],
-  declarations: [UserProfileComponent]
+  declarations: [
+    UserProfileComponent
+  ]
 })
 export class UserProfileModule { }
