@@ -10,6 +10,10 @@ import { CommonModule } from '@angular/common';
     MdButtonModule,
     MdCheckboxModule
   ],
+  exports: [
+    MdButtonModule,
+    MdCheckboxModule
+  ], 
   declarations: [ ]
 })
 export class MaterialElementsModule { }
