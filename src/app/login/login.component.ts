@@ -10,7 +10,9 @@ import { Observable } from 'rxjs/Rx';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
-  constructor(private _fb: FormBuilder, private _authService: AuthenticationService) { }
+  constructor(private _fb: FormBuilder, 
+              private _authService: AuthenticationService,
+              private _router: Router) { }
   public createForm( ){
     this.loginForm =  this._fb.group({
              email:['',Validators.required],
@@ -24,6 +26,8 @@ export class LoginComponent implements OnInit {
     this._authService.emailLogin(
         this.loginForm.value['email'],
         this.loginForm.value['password']
-    );
+    ).then(
+      () => this._router.navigate(['/'])
+    )
   } 
 }

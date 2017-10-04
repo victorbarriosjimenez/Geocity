@@ -22,6 +22,7 @@ import { environment } from '../environments/environment';
 import { ListUserComponent } from './list-user/list-user.component';
 import { WorldRankingComponent } from './world-ranking/world-ranking.component';
 import { ForumComponent } from './forum/forum.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ForumComponent } from './forum/forum.component';
     RegisterComponent,
     ListUserComponent,
     WorldRankingComponent,
-    ForumComponent
+    ForumComponent,
+    HomeComponent
 ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase, 'my-app'),
