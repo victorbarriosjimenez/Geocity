@@ -25,10 +25,9 @@ import { NotFoundComponent } from './notfound.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { environment } from '../environments/environment';
-import { ListUserComponent } from './list-user/list-user.component';
-import { WorldRankingComponent } from './world-ranking/world-ranking.component';
-import { HomeComponent } from './home/home.component';
-import { UserSearchComponent } from './user-search/user-search.component';
+import { ListUserComponent } from './user-profile/list-user/list-user.component';
+import { HomeComponent } from './user-profile/home/home.component';
+import { UserSearchComponent } from './user-profile/user-search/user-search.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,6 @@ import { UserSearchComponent } from './user-search/user-search.component';
     LoginComponent,
     RegisterComponent,
     ListUserComponent,
-    WorldRankingComponent,
     HomeComponent,
     UserSearchComponent
 ],
