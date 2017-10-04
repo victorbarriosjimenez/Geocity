@@ -38,5 +38,6 @@ export class RegisterComponent implements OnInit {
         .subscribe(paises => this.paises = paises);
   } 
   register() {
-    }
+      
+  }
 }

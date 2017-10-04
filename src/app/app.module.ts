@@ -26,6 +26,7 @@ import { ListUserComponent } from './list-user/list-user.component';
 import { WorldRankingComponent } from './world-ranking/world-ranking.component';
 import { ForumComponent } from './forum/forum.component';
 import { HomeComponent } from './home/home.component';
+import { UserSearchComponent } from './user-search/user-search.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HomeComponent } from './home/home.component';
     ListUserComponent,
     WorldRankingComponent,
     ForumComponent,
-    HomeComponent
+    HomeComponent,
+    UserSearchComponent
 ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase, 'my-app'),
