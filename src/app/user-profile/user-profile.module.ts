@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RankingComponent } from './ranking.component';
+import { UserProfileComponent } from './user-profile.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [RankingComponent]
+  declarations: [UserProfileComponent]
 })
-export class RankingModule { }
+export class UserProfileModule { }
