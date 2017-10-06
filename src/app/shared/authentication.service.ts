@@ -17,7 +17,7 @@ export class AuthenticationService {
         this.afAuth.authState.subscribe((auth) => {
                     this.authState = auth
         }); 
-    }
+    }  
     emailSignUp(email: string, password: string) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
           .then((user)=> 
@@ -25,9 +25,11 @@ export class AuthenticationService {
           ).catch(error => console.log(error));
     }
     emailLogin(email: string, password: string) {
-        return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+        return  this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    
         .then((user) => {
           this.authState = user
         }).catch(error => console.log(error));
      }
+     
 }

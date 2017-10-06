@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
         this.loginForm.value['password']
     ).then(
       () => this._router.navigate(['/'])
-    )
+    ).catch(
+      (err) => console.log(err)
+    );
   } 
 }

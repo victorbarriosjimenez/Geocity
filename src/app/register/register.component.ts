@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { UserService } from '../shared/user.service';
 import { FormsService } from '../shared/forms.service';
-
+import { AuthenticationService } from '../shared/authentication.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx'; 
 @Component({
@@ -18,26 +18,34 @@ export class RegisterComponent implements OnInit {
   constructor(private _formsService: FormsService, 
               private _fb: FormBuilder,
               private _router: Router,
-              private userService: UserService) { }
+              private _authService: AuthenticationService
+            ) { }
   ngOnInit() {
     this.createForm();
     this.getCountries();
   } 
   public createForm( ): void {
    this.registrationForm =  this._fb.group({
-            username: ['',Validators.required],
+      //      username: ['',Validators.required],
             email:['',Validators.required],
-            country:['', Validators.required],
-            confirmEmail:['', Validators.required],
+      //      country:['', Validators.required],
+      //      confirmEmail:['', Validators.required],
             password: ['', Validators.required],
-            confirmPassword: ['', Validators.required]
+      //      confirmPassword: ['', Validators.required]
     });
   }
   private getCountries() { 
     this._formsService.getCountries()
         .subscribe(paises => this.paises = paises);
   } 
-  register() {
-      
+  public register() {
+    this._authService.emailSignUp(
+      this.registrationForm.value['email'],
+      this.registrationForm.value['password'],
+    ).then(
+      () => this._router.navigate(['/about'])
+    ).catch(
+      (err) => console.log(err)
+    );
   }
 }
