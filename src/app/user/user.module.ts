@@ -10,4 +10,4 @@ import { UserProfileComponent } from './user-profile.component';
     UserProfileComponent
   ]
 })
-export class UserProfileModule { }
+export class UserModule { }
