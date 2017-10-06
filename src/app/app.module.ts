@@ -8,7 +8,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialElementsModule  } from './shared/material-elements.module' 
+import { MaterialElementsModule  } from './shared/material-elements.module';
+import { UserModule } from './user/user.module';
 import { ForumModule } from './forum/forum.module';
 
 /* Services */
@@ -25,9 +26,8 @@ import { NotFoundComponent } from './notfound.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { environment } from '../environments/environment';
-import { ListUserComponent } from './user-profile/list-user/list-user.component';
-import { HomeComponent } from './user-profile/home/home.component';
-import { UserSearchComponent } from './user-profile/user-search/user-search.component';
+import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -35,9 +35,7 @@ import { UserSearchComponent } from './user-profile/user-search/user-search.comp
     NotFoundComponent,
     LoginComponent,
     RegisterComponent,
-    ListUserComponent,
     HomeComponent,
-    UserSearchComponent
 ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase, 'my-app'),
@@ -50,6 +48,7 @@ import { UserSearchComponent } from './user-profile/user-search/user-search.comp
     FormsModule,
     MaterialElementsModule,
     ReactiveFormsModule,
+    UserModule,
     ForumModule
   ],
   providers: [

@@ -1,0 +1,13 @@
+h1 {
+    font-family: 'jaapokkiregularregular';
+    font-size: 4em;
+}
+.logo-main {
+   width: 125px;
+   height: 125px;
+   margin-right: -25px;
+}
+.register-invitation {
+   color: darkgrey;
+   font-size: 1em;
+}
