@@ -35,7 +35,7 @@ import { HomeComponent } from './home/home.component';
     NotFoundComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
+    HomeComponent
 ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase, 'my-app'),
@@ -43,13 +43,14 @@ import { HomeComponent } from './home/home.component';
     AngularFireAuthModule,
     BrowserModule,
     HttpModule,
-    RoutesModule,
     BrowserAnimationsModule,
     FormsModule,
     MaterialElementsModule,
     ReactiveFormsModule,
     UserModule,
-    ForumModule
+    ForumModule,
+    RoutesModule
+  
   ],
   providers: [
     FormsService,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsService } from '../../shared/forms.service';
+import { FormsService } from './../shared/forms.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

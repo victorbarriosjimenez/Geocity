@@ -1,6 +1,9 @@
 h1 {
     font-family: 'jaapokkiregularregular';
-    font-size: 4em;
+    bottom: 50vh;
+    left: 30vw;
+    position: absolute;;
+    font-size: 5em;
 }
 .logo-main {
    width: 125px;
