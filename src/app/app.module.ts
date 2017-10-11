@@ -50,7 +50,6 @@ import { HomeComponent } from './home/home.component';
     UserModule,
     ForumModule,
     RoutesModule
-  
   ],
   providers: [
     FormsService,

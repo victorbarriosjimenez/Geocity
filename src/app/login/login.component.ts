@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
         this.loginForm.value['email'],
         this.loginForm.value['password']
     ).then(
-      () => this._router.navigate(['/'])
+      () => this._router.navigate(['/profile'])
     ).catch(
       (err) => console.log(err)
     );
