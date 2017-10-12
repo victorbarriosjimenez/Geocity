@@ -5,7 +5,7 @@ import { ListUserComponent } from  './list-user/list-user.component';
 import { UserSearchComponent } from  './user-search/user-search.component'; 
 import  { UserRoutesModule } from './user.routes'
 import { MaterialElementsModule  } from '../shared/material-elements.module';
-
+import { AuthenticationService } from '../shared/authentication.service';
 
 @NgModule({
   imports: [
@@ -17,6 +17,10 @@ import { MaterialElementsModule  } from '../shared/material-elements.module';
     UserProfileComponent,
     ListUserComponent,
     UserSearchComponent
+  ],
+  providers: [
+    AuthenticationService,  
   ]
 })
+
 export class UserModule { }

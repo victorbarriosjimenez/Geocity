@@ -4,14 +4,15 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database'; 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { emailAndPasswordCredentials } from '../../models';
-
 import { Router } from '@angular/router'; 
+
 import * as firebase from 'firebase/app';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
+
 @Injectable()
 export class AuthenticationService {
     public authState: any = null;
-    constructor(private afAuth: AngularFireAuth,
+    constructor(private  afAuth: AngularFireAuth,
               private db: AngularFireDatabase,
               private router:Router) {
         this.afAuth.authState.subscribe((auth) => {

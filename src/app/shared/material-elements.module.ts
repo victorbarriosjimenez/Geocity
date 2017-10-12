@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import {  
-          MdButtonModule, 
-          MdCheckboxModule,
-          MdInputModule,
-          MdCardModule,
+          MatButtonModule,
           MatFormFieldModule,
           MatCardModule,      
         } from '@angular/material';
@@ -13,20 +10,14 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   imports: [
     CommonModule,
-    MdButtonModule,
-    MdCheckboxModule,
-    MdCardModule,
-    MdInputModule,
+    MatButtonModule,
     MatFormFieldModule,
     MatCardModule
   ],
   exports: [
-    MdButtonModule,
-    MdCheckboxModule,
-    MdCardModule,
-    MdInputModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ], 
   declarations: [ ]
 })
