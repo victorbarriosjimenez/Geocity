@@ -21,18 +21,23 @@ export class AuthenticationService {
     logoutfromGeocity(){ 
         return this.afAuth.auth.signOut();
     } 
-    emailSignUp(email: string, password: string) {
+    public emailSignUp(email: string, password: string) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
           .then((user)=> 
                 this.authState = user
           ).catch(error => console.log(error));
     }
-    emailLogin(email: string, password: string) {
+    public emailLogin(email: string, password: string) {
         return  this.afAuth.auth.signInWithEmailAndPassword(email, password)
     
         .then((user) => {
           this.authState = user
         }).catch(error => console.log(error));
-     }
-     
+    }
+    public googleAccountLogin( ){
+    //    this.afAuth.auth.signInWithPopup 
+    }  
+    public facebookAccountLogin(){
+        
+    }
 }

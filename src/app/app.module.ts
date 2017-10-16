@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialElementsModule  } from './shared/material-elements.module';
@@ -39,6 +40,7 @@ import { HomeComponent } from './home/home.component';
 ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase, 'my-app'),
+    AngularFirestoreModule,    
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserModule,
