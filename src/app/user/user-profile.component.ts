@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import  { AuthenticationService } from '../shared/authentication.service';
+import { Router }  from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  constructor() { }
-  ngOnInit() {
+  constructor(private authService: AuthenticationService,
+              private _router: Router) { }
+  ngOnInit() {  }
+  logout( ){
+    console.log('logout');
+    this.authService.logoutfromGeocity();
+    this._router.navigate(['/']);
   }
-  
 }

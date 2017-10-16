@@ -13,14 +13,12 @@ import 'rxjs/add/operator/map';
 export class AuthenticationService {
     public authState: any = null;
     constructor(private  afAuth: AngularFireAuth,
-              private db: AngularFireDatabase,
-              private router:Router) {
+              private db: AngularFireDatabase,) {
         this.afAuth.authState.subscribe((auth) => {
                     this.authState = auth
         }); 
     }  
     logoutfromGeocity(){ 
-
         return this.afAuth.auth.signOut();
     } 
     emailSignUp(email: string, password: string) {
