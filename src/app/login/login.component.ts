@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.createForm();
   }
-  public login() {  
+  public loginWithEmailAndPassword() {  
     this._authService.emailLogin(
         this.loginForm.value['email'],
         this.loginForm.value['password']
