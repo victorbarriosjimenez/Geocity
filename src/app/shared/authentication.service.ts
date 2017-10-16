@@ -19,6 +19,10 @@ export class AuthenticationService {
                     this.authState = auth
         }); 
     }  
+    logoutfromGeocity(){ 
+
+        return this.afAuth.auth.signOut();
+    } 
     emailSignUp(email: string, password: string) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
           .then((user)=> 
