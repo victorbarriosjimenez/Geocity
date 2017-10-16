@@ -1,0 +1,24 @@
+[debug] [2017-10-16T22:17:18.500Z] ----------------------------------------------------------------------
+[debug] [2017-10-16T22:17:18.504Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2017-10-16T22:17:18.505Z] CLI Version:   3.9.2
+[debug] [2017-10-16T22:17:18.505Z] Platform:      darwin
+[debug] [2017-10-16T22:17:18.505Z] Node Version:  v7.1.0
+[debug] [2017-10-16T22:17:18.587Z] Time:          Tue Oct 17 2017 00:17:18 GMT+0200 (CEST)
+[debug] [2017-10-16T22:17:18.587Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-10-16T22:17:19.111Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-10-16T22:17:19.111Z] > authorizing via signed-in user
+[debug] [2017-10-16T22:17:19.114Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-10-16T22:17:19.115Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/AijP-flLTHxLvmjfgD7wn-kzlxOrAyBjm2SukBqFw9s',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Oct 17 2017 00:17:19 GMT+0200 (CEST)
+[debug] [2017-10-16T22:17:19.517Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-16T22:17:19.786Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/geocity-app  
+ Tue Oct 17 2017 00:17:19 GMT+0200 (CEST)
+[debug] [2017-10-16T22:17:20.584Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-16T22:17:20.586Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/geocity-app/tokens  
+ Tue Oct 17 2017 00:17:20 GMT+0200 (CEST)
+[debug] [2017-10-16T22:17:21.403Z] <<< HTTP RESPONSE 200
