@@ -26,10 +26,11 @@ h2 {
     overflow: hidden;
 }
 .main-wrapper{
-    background: rgba(0, 0,0, .5);
+    background: white;
     display: flex;
     position: absolute;
     bottom: 60vh;
+    color: black;
     left: 35vw;
 }
 @media only screen 
