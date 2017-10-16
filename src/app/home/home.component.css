@@ -1,16 +1,39 @@
 h1 {
     font-family: 'jaapokkiregularregular';
-    bottom: 50vh;
-    left: 30vw;
-    position: absolute;;
+    bottom: 60vh;
+    left: 35vw;
+    position: absolute;
     font-size: 5em;
+    color: white;
 }
 .logo-main {
    width: 125px;
    height: 125px;
    margin-right: -25px;
 }
+h2 {
+    color: white;
+    padding:15px;
+}
 .register-invitation {
+
    color: darkgrey;
    font-size: 1em;
+}
+.video-responsive {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+.main-wrapper{
+    background: rgba(0, 0,0, .5);
+    display: flex;
+    position: absolute;
+    bottom: 60vh;
+    left: 35vw;
+}
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+
 }
