@@ -3,6 +3,7 @@ import {
           MatButtonModule,
           MatFormFieldModule,
           MatCardModule,      
+          MatIconModule
         } from '@angular/material';
 
 import { CommonModule } from '@angular/common';
