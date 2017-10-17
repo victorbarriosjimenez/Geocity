@@ -1,22 +1,32 @@
+h1,h2,h3 {
+    font-family: 'jaapokkiregularregular';
+    color: white;
+    position: absolute;
+}
 h1 {
     font-family: 'jaapokkiregularregular';
-    bottom: 60vh;
+    bottom: 55vh;
     left: 35vw;
-    position: absolute;
-    font-size: 5em;
-    color: white;
+    font-size: 4.5em;
 }
 .logo-main {
    width: 125px;
    height: 125px;
-   margin-right: -25px;
+   margin-right: -20px;
+   margin-bottom: -15px;
 }
 h2 {
-    color: white;
-    padding:15px;
+    bottom: 47.5vh;
+    left: 25vw;
+}
+h3 { 
+    padding: 10px 20px;
+    bottom: 37.5vh;
+    background: aqua; 
+    left: 32.5vw;
+    color: black;
 }
 .register-invitation {
-
    color: darkgrey;
    font-size: 1em;
 }
@@ -25,16 +35,12 @@ h2 {
     height: 100vh;
     overflow: hidden;
 }
-.main-wrapper{
-    background: white;
-    display: flex;
-    position: absolute;
-    bottom: 60vh;
-    color: black;
-    left: 35vw;
-}
+
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) { 
-
+}
+.buttons{
+    margin: 0 auto;
+    padding: 10px 50px 10px 50px;
 }
