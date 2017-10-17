@@ -22,6 +22,6 @@ export class HomeComponent implements OnInit {
     this._router.navigate(['/login']);
   }
   public signUpToGeocityAccount(){
-    
+    this._router.navigate(['/register']);    
   }
 }
