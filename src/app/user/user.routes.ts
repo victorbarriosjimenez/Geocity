@@ -7,7 +7,7 @@ import { AuthGuard } from '../shared/auth.guard'
 
 const userRoutes: Routes = [
     { path: 'profile',  component: UserProfileComponent, canActivate: [AuthGuard] }
- ];
+];
 @NgModule({
   imports: [
     RouterModule.forChild(userRoutes)
