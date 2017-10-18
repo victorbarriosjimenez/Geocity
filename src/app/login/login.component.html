@@ -9,25 +9,23 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12 col-lg-4 col-lg-offset-4 ">
                 <h3 class="text-center">Ingresa a tu cuenta</h3> <br>       
-                <form [formGroup]="loginForm">
-                        <div class="form-group">
-                            <label for="email">Correo electrónico:</label>
-                            <input 
-                                class="form-control" 
-                                type="email" 
-                                placeholder="Ingresa un correo electrónico"
-                                formControlName="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Contraseña:</label>
-                            <input 
-                                class="form-control" 
-                                type="password"
-                                placeholder="Contraseña"
-                                formControlName="password">                            
-                        </div>
-                        <button mat-raised-button color="accent" type="submit" (click)="loginWithEmailAndPassword()">                              
-                            Acceder 
+                <form (ngSubmit)="loginWithEmailAndPassword()" [formGroup]="loginForm">
+                        <mat-form-field class="full-width">
+                                <input 
+                                    matInput
+                                    type="email"
+                                    placeholder="Correo electrónico"
+                                    formControlName="email">
+                        </mat-form-field> 
+                        <mat-form-field class="full-width">
+                                <input 
+                                    matInput
+                                    type="password"
+                                    placeholder="Contraseña"
+                                    formControlName="password">
+                        </mat-form-field>
+                        <button mat-raised-button color="accent" type="submit">                              
+                            Acceder a mi cuenta
                         </button>
                 </form>
                         <hr>
