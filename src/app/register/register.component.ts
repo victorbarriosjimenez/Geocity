@@ -27,7 +27,9 @@ export class RegisterComponent implements OnInit {
   public createForm( ): void {
    this.registrationForm =  this._fb.group({
             email:['',Validators.required],
-            password: ['', Validators.required]
+            confirmEmail: ['',Validators.required],
+            password: ['', Validators.required],
+            confirmPassword: ['', Validators.required]
     });
   }
   private getCountries() { 
@@ -35,7 +37,7 @@ export class RegisterComponent implements OnInit {
         .subscribe(paises => this.paises = paises);
   } 
   public registerAccountWithEmailAndPassword( ): void {
-    this._authService.emailSignUp(
+     this._authService.emailSignUp(
       this.registrationForm.value['email'],
       this.registrationForm.value['password']
     );

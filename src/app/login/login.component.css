@@ -17,3 +17,6 @@ h1 {
     background-size: cover;
     background-image: url(../../assets/images/world-map.png);
 }
+.full-width {
+    width: 100%;
+}

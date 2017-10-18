@@ -3,7 +3,8 @@ import {
           MatButtonModule,
           MatFormFieldModule,
           MatCardModule,      
-          MatIconModule
+          MatIconModule,
+          MatInputModule
         } from '@angular/material';
 
 import { CommonModule } from '@angular/common';
@@ -13,12 +14,14 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule
   ],
   exports: [
     MatFormFieldModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule
   ], 
   declarations: [ ]
 })
