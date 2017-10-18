@@ -26,10 +26,15 @@
                                 placeholder="Contraseña"
                                 formControlName="password">                            
                         </div>
-                        <button mat-raised-button color="accent" type="submit" (click)="loginWithEmailAndPassword()">Acceder con mi correo</button>
+                        <button mat-raised-button color="accent" type="submit" (click)="loginWithEmailAndPassword()">                              
+                            Acceder 
+                        </button>
                         <hr>
                         <p>Accede con tu cuenta de Gmail</p>
-                        <button mat-raised-button color="primary" type="submit" (click)="loginWithGoogleAccount()">Acceder con Google</button>
+                        <button mat-raised-button color="primary" type="submit" (click)="loginWithGoogleAccount()">
+                            <i class="fa fa-google"></i>  
+                            Acceder con Google
+                        </button>
                         <br>
                         <hr>
                         <p class="register-invitation">¿No tienes una cuenta? Da click <a routerLink="/register">aquí</a> y regístrate en Geocity.</p>
