@@ -23,15 +23,15 @@ export class AuthenticationService {
         this._router.navigate(['/']);
     } 
     public emailSignUp(email: string, password: string) {
-        return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+        return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
           .then((user)=> 
                 { 
                     this.authState = user,
-                    this._router.navigate(['/profile']) 
+                    this._router.navigate(['/profile'])  
                 }).catch(error => console.log(error));
     }
     public emailLogin(email: string, password: string) {
-        return  this.afAuth.auth.signInWithEmailAndPassword(email, password)
+        return this.afAuth.auth.signInWithEmailAndPassword(email, password)
     
         .then((user) => {
           this.authState = user
