@@ -26,26 +26,19 @@ export class RegisterComponent implements OnInit {
   } 
   public createForm( ): void {
    this.registrationForm =  this._fb.group({
-      //      username: ['',Validators.required],
             email:['',Validators.required],
-      //      country:['', Validators.required],
-      //      confirmEmail:['', Validators.required],
-            password: ['', Validators.required],
-      //      confirmPassword: ['', Validators.required]
+            password: ['', Validators.required]
     });
   }
   private getCountries() { 
     this._formsService.getCountries()
         .subscribe(paises => this.paises = paises);
   } 
-  public register() {
+  public registerAccountWithEmailAndPassword( ): void {
+    console.log("Email");
     this._authService.emailSignUp(
       this.registrationForm.value['email'],
-      this.registrationForm.value['password'],
-    ).then(
-      () => this._router.navigate(['/about'])
-    ).catch(
-      (err) => console.log(err)
+      this.registrationForm.value['password']
     );
   }
 }
