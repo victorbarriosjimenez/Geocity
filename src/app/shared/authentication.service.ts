@@ -37,11 +37,15 @@ export class AuthenticationService {
     }
     public googleAccountLogin( ){
     //    this.afAuth.auth.signInWithPopup 
-        const provider = new firebase.auth.GoogleAuthProvider()
+        const provider = new firebase.auth.GoogleAuthProvider();
          return this.otherApplicationsLogin(provider);
     }  
-    public facebookAccountLogin(){
-        // this.afAuth.signinWithPopup
+    public facebookAccountLogin(){ 
+
+    }
+    public TwitterAccountLogin( ): void { 
+        const twitterProvider = new firebase.auth.TwitterAuthProvider();
+        return this.otherApplicationsLogin(twitterProvider);
     }
     public otherApplicationsLogin(provider : any){
             this.afAuth.auth.signInWithPopup(provider)
