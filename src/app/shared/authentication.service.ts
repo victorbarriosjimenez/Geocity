@@ -40,9 +40,7 @@ export class AuthenticationService {
         const provider = new firebase.auth.GoogleAuthProvider();
          return this.otherApplicationsLogin(provider);
     }  
-    public facebookAccountLogin(){ 
-
-    }
+    public facebookAccountLogin( ) { }
     public TwitterAccountLogin( ): void { 
         const twitterProvider = new firebase.auth.TwitterAuthProvider();
         return this.otherApplicationsLogin(twitterProvider);
