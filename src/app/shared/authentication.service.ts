@@ -47,6 +47,7 @@ export class AuthenticationService {
             this.afAuth.auth.signInWithPopup(provider)
              .then((credential) => {
                           this.authState = credential.user
+                          this._router.navigate(['/profile']);
                  })
             .catch(error => console.log(error));
     }

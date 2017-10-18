@@ -33,6 +33,6 @@ export class LoginComponent implements OnInit {
     );
   }
   public loginWithGoogleAccount(): void {
-    
+    this._authService.googleAccountLogin();
   } 
 }
