@@ -36,7 +36,6 @@ export class AuthenticationService {
         }).catch(error => console.log(error));
     }
     public googleAccountLogin( ){
-    //    this.afAuth.auth.signInWithPopup 
         const provider = new firebase.auth.GoogleAuthProvider();
          return this.otherApplicationsLogin(provider);
     }  
