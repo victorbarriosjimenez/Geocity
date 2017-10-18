@@ -5,7 +5,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { emailAndPasswordCredentials } from '../../models';
 import { Router } from '@angular/router'; 
-
 import * as firebase from 'firebase/app';
 import 'rxjs/add/operator/map';
 
@@ -13,13 +12,15 @@ import 'rxjs/add/operator/map';
 export class AuthenticationService {
     public authState: any = null;
     constructor(private  afAuth: AngularFireAuth,
-              private db: AngularFireDatabase,) {
+              private db: AngularFireDatabase,
+            private _router: Router) {
         this.afAuth.authState.subscribe((auth) => {
                     this.authState = auth
         }); 
     }  
-    logoutfromGeocity(){ 
-        return this.afAuth.auth.signOut();
+    public logoutfromGeocity(){ 
+        this.afAuth.auth.signOut();
+        this._router.navigate(['/']);
     } 
     public emailSignUp(email: string, password: string) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
@@ -38,6 +39,21 @@ export class AuthenticationService {
     //    this.afAuth.auth.signInWithPopup 
     }  
     public facebookAccountLogin(){
-        
+        // this.afAuth.signinWithPopup
+        const provider = new firebase.auth.GoogleAuthProvider()
+        return this.otherApplicationsLogin(provider);
+    }
+    public otherApplicationsLogin(provider : any){
+            this.afAuth.auth.signInWithPopup(provider)
+             .then((credential) => {
+                          this.authState = credential.user
+                 })
+            .catch(error => console.log(error));
+    }
+    get authenticated(): boolean {
+        return this.authState !== null;
+    }
+    get currentUserObservable(): any {
+        return this.afAuth.authState;
     }
 }
