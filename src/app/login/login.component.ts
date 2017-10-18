@@ -35,7 +35,4 @@ export class LoginComponent implements OnInit {
   public loginWithGoogleAccount(): void {
     this._authService.googleAccountLogin();
   } 
-  public loginWithTwitterAccount( ): void { 
-      this._authService.TwitterAccountLogin();
-  }
 }
