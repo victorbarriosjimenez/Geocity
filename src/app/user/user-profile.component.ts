@@ -11,9 +11,12 @@ export class UserProfileComponent implements OnInit {
   constructor(private authService: AuthenticationService,
               private _router: Router) { }
   ngOnInit() {  }
-  logout( ){
+  public logout( ){
     console.log('logout');
     this.authService.logoutfromGeocity();
     this._router.navigate(['/']);
+  }
+  public updateProfile(){
+    
   }
 }

@@ -29,6 +29,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
+import { UpdateComponent } from './user/update/update.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { HomeComponent } from './home/home.component';
     NotFoundComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    UpdateComponent
 ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase, 'my-app'),

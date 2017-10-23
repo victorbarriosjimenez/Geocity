@@ -5,7 +5,5 @@ import { User } from '../../models/user';
  
 @Injectable()
 export class UserService {
-    constructor(private http: Http) { 
-        
-    }
+    constructor(private http: Http) { }
 }
