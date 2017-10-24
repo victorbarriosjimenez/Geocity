@@ -10,13 +10,15 @@ import { Router }  from '@angular/router';
 export class UserProfileComponent implements OnInit {
   constructor(private authService: AuthenticationService,
               private _router: Router) { }
-  ngOnInit() {  }
+  ngOnInit() { 
+    console.log(this.authService.currentUserObservable());
+   }
   public logout( ){
     console.log('logout');
     this.authService.logoutfromGeocity();
     this._router.navigate(['/']);
   }
   public updateProfile(){
-    
+
   }
 }

@@ -4,7 +4,8 @@ import {
           MatFormFieldModule,
           MatCardModule,      
           MatIconModule,
-          MatInputModule
+          MatInputModule,
+          MatSpinner
         } from '@angular/material';
 
 import { CommonModule } from '@angular/common';

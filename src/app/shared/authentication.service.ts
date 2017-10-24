@@ -55,4 +55,7 @@ export class AuthenticationService {
     get currentUserObservable(): any {
         return this.afAuth.authState;
     }
+    getUserData(): any {
+       return this.afAuth.authState;
+    }
 }
