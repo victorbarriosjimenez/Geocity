@@ -14,9 +14,6 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() { 
   
    }
-  public logout( ){
-    this.auth.logoutfromGeocity();
-  }
   public updateProfile(){
 
   }

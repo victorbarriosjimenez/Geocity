@@ -6,9 +6,6 @@ import { UserSearchComponent } from  './user-search/user-search.component';
 import  { UserRoutesModule } from './user.routes'
 import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { AuthenticationService } from '../shared/authentication.service';
-import { NavigationComponent } from './navigation/navigation.component';
-import { ButtonUpperComponent } from '../shared/button-upper/button-upper.component';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -17,10 +14,8 @@ import { ButtonUpperComponent } from '../shared/button-upper/button-upper.compo
   ],
   declarations: [
     UserProfileComponent,
-    NavigationComponent,
     ListUserComponent,
     UserSearchComponent,
-    ButtonUpperComponent
   ],
   providers: [
     AuthenticationService,  
