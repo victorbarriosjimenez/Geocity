@@ -14,9 +14,7 @@ export class UserProfileComponent implements OnInit {
     console.log(this.authService.currentUserObservable);
    }
   public logout( ){
-    console.log('logout');
     this.authService.logoutfromGeocity();
-    this._router.navigate(['/']);
   }
   public updateProfile(){
 
