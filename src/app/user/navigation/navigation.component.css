@@ -20,46 +20,40 @@ nav{
 .navbar.transparent .navbar-nav > li > a {
     color:white;
     font-size: 1.25em;
-    margin-top: 30px; 
-    margin-bottom: -20px;
+    margin-top: 30px;
+    margin-right: -2px; 
+    padding-right: 10px;
     font-family: 'Ubuntu', sans-serif;
+    border-bottom: 1.5px solid white;
 }
-.navbar.transparent .navbar-nav .navbar-right > li > a:hover,
+.navbar.transparent .nav.navbar-nav.navbar-right > li > a:hover,
 .navbar-nav > li > a:focus {
-    padding-top: 50px;
-    color: red;
-    background: blue;
+    background-color: rgba(0,0,0, 0.25); 
 }
-.navbar-nav > .active > a,
-.navbar-nav > .active > a:hover,
-.navbar-nav > .active > a:focus {
+.navbar.transparent > .active > a,
+.navbar.transparent > .active > a:hover,
+.navbar.transparent > .active > a:focus {
     color: green;
-   background: blue;
 }
 .navbar.transparent .navbar-nav > .open > a,
 .navbar.transparent .navbar-nav > .open > a:hover,
 .navbar.transparent .navbar-nav > .open > a:focus {
     color: green;
-    background: blue;
+
 }
 /* Caret */
 .navbar.transparent .navbar-nav {
     margin-bottom: 0px;
-    background: blue
 }
-.navbar.transparent .navbar-nav > .dropdown > a .caret {
-    background: blue
-}
+
 .navbar.transparent .navbar-nav > .dropdown > a:hover .caret,
 .navbar.transparent .navbar-nav > .dropdown > a:focus .caret {
     color: green;
-    background: blue;
 }
 .navbar.transparent .navbar-nav > .open > a .caret,
 .navbar.transparent .navbar-nav > .open > a:hover .caret,
 .navbar.transparent .navbar-nav > .open > a:focus .caret {
     color: green;
-    background: blue;
 }
 /* Mobile version */
 .navbar.transparent .navbar-toggle {
@@ -81,7 +75,6 @@ nav{
 .navbar-nav > li > a, .navbar-brand {
     padding-top:4px !important; 
     padding-bottom:10px !important;
-    height: 75px;
+    height: 40px;
 }
 .navbar {min-height:28px !important;}
-
