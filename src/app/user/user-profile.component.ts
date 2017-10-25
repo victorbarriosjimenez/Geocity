@@ -9,13 +9,13 @@ import  { User } from '../../models'
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  constructor(private authService: AuthenticationService,
+  constructor(private auth: AuthenticationService,
               private _router: Router) { }
   ngOnInit() { 
-    console.log(this.authService.currentUser.email);
+  
    }
   public logout( ){
-    this.authService.logoutfromGeocity();
+    this.auth.logoutfromGeocity();
   }
   public updateProfile(){
 

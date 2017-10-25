@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth, } from 'angularfire2/auth';
 import { User } from '../../models';
 import { Router } from '@angular/router'; 
@@ -11,26 +11,45 @@ import 'rxjs/add/operator/switchMap'
 
 @Injectable()
 export class AuthenticationService {
-    public user: Observable<User>;
     public authState: any = null;
     constructor(private  afAuth: AngularFireAuth,
-                private  _afStore, 
+                private  _afDatabase: AngularFireDatabase, 
                 private _router: Router,
-                private _userService:  UserService 
-            ) {
-            this.user = this.afAuth.authState
-                    .switchMap(user => {
-                      if (user) {
-                        return this._afStore.doc(`users/${user.uid}`).valueChanges()
-                      } else {
-                        return Observable.of(null)
-                      }
-                    });
+                private _userService:  UserService) 
+                {          
+                    this.afAuth.authState.subscribe((auth) => {
+                        this.authState = auth
+                    });                
     }  
-    public logoutfromGeocity(){ 
+    /* -------------------------------- Email Authentication Functions -------------------------------------- */ 
+    public emailSignUp(email: string, password: string) {
+        return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+          .then((user)=> 
+                { 
+                    this.authState = user,
+                    this._userService.updateUserData(user),
+                    this._router.navigate(['/profile'])  
+                }).catch(error => console.log(error));
+    }
+    public emailLogin(email: string, password: string) {
+        return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+        .then((user) => {
+          this.authState = user,
+          this._userService.updateUserData(user),
+          this._router.navigate(['/profile'])
+        }).catch(error => console.log(error));
+    }
+    public resetPasswordFromEmail(email: string) {
+        const fbAuth = firebase.auth();
+        return fbAuth.sendPasswordResetEmail(email)
+          .then(() => console.log('email sent'))
+          .catch((error) => console.log(error))
+        } 
+    public logoutfromGeocity(): void { 
         this.afAuth.auth.signOut();
         this._router.navigate(['/']);
     } 
+    /* -------------------------------- OAuth Authentication Methods -------------------------------------- */ 
     public googleAccountLogin( ){
         const provider = new firebase.auth.GoogleAuthProvider();
          return this.otherApplicationsLogin(provider);
@@ -44,32 +63,8 @@ export class AuthenticationService {
                  })
             .catch(error => console.log(error));
     }
-
-    /* Email Authentication Functions */ 
-    public resetPasswordFromEmail(email: string) {
-    const fbAuth = firebase.auth();
-    return fbAuth.sendPasswordResetEmail(email)
-      .then(() => console.log('email sent'))
-      .catch((error) => console.log(error))
-    } 
-    public emailSignUp(email: string, password: string) {
-        return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-          .then((user)=> 
-                { 
-                    this.authState = user,
-                    this.updateUserData(user),
-                    this._router.navigate(['/profile'])  
-                }).catch(error => console.log(error));
-    }
-    public emailLogin(email: string, password: string) {
-        return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-        .then((user) => {
-          this.authState = user,
-          this.updateUserData(user),
-          this._router.navigate(['/profile'])
-        }).catch(error => console.log(error));
-    }
-    /* Getters for user authentication and showing credentials information */
+    /*  -------------------------------- Getters for user authentication --------------------------------    */
+    
     get authenticated(): boolean {
         return this.authState !== null;
     }
@@ -78,5 +73,11 @@ export class AuthenticationService {
     }
     get currentUserId(): string {
         return this.authenticated ? this.authState.uid : '';
+    }
+    get currentUserEmail(): string {
+        return this.authState.email;
+    }
+    get currentUserObservable(): any {
+        return this.afAuth.auth;
     }
 }

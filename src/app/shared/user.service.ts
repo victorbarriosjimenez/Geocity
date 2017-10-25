@@ -13,7 +13,7 @@ export class UserService {
     constructor(private http: Http,
                 private _afStore: AngularFirestore) { 
     }
-    public  updateUserData(user: User) {
+    public  updateUserData(user) {
         const userRef: AngularFirestoreDocument<any> = this._afStore.doc(`users/${user.uid}`);
         const data = {
              uid: user.uid,

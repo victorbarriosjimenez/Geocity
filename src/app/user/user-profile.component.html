@@ -1,8 +1,8 @@
 <button mat-raised-button color="primary" (click)="logout()">
     Salir de mi perfil
 </button>
-<div *ngIf="" class="container">
-    <h1>Bienvenido a tu cuenta </h1>
+<div class="container">
+    <h1>Bienvenido a tu cuenta {{ auth.currentUserEmail }}</h1>
     <button mat-raised-button color="primary" (click)="newGeocityMatch()">
         Nueva Partida 
     </button>
