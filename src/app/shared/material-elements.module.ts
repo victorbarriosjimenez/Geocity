@@ -16,12 +16,14 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatFormFieldModule,
     MatCardModule,
+    MatIconModule,
     MatInputModule,
     MatProgressSpinnerModule
   ],
   exports: [
     MatFormFieldModule,
     MatCardModule,
+    MatIconModule,
     MatButtonModule,
     MatInputModule,
     MatProgressSpinnerModule

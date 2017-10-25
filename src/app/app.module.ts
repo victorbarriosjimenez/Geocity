@@ -30,7 +30,6 @@ import { RegisterComponent } from './register/register.component';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
 import { UpdateComponent } from './user/update/update.component';
-import { ButtonUpperComponent } from './shared/button-upper/button-upper.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,8 +37,7 @@ import { ButtonUpperComponent } from './shared/button-upper/button-upper.compon
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    UpdateComponent,
-    ButtonUpperComponent
+    UpdateComponent
 ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase, 'my-app'),

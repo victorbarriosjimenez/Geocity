@@ -7,6 +7,7 @@ import  { UserRoutesModule } from './user.routes'
 import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { AuthenticationService } from '../shared/authentication.service';
 import { NavigationComponent } from './navigation/navigation.component';
+import { ButtonUpperComponent } from '../shared/button-upper/button-upper.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     UserProfileComponent,
     NavigationComponent,
     ListUserComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    ButtonUpperComponent
   ],
   providers: [
     AuthenticationService,  
