@@ -78,6 +78,6 @@ export class AuthenticationService {
         return this.authState.email;
     }
     get currentUserObservable(): any {
-        return this.afAuth.auth;
+        return this.afAuth.auth
     }
 }
