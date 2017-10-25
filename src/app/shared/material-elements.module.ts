@@ -5,11 +5,10 @@ import {
           MatCardModule,      
           MatIconModule,
           MatInputModule,
-          MatSpinner
+          MatProgressSpinnerModule
         } from '@angular/material';
 
 import { CommonModule } from '@angular/common';
-import { ButtonUpperComponent } from './button-upper/button-upper.component';
 
 @NgModule({
   imports: [
@@ -17,16 +16,17 @@ import { ButtonUpperComponent } from './button-upper/button-upper.component';
     MatButtonModule,
     MatFormFieldModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatFormFieldModule,
     MatCardModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule
   ], 
-  declarations: [,
-    ButtonUpperComponent
+  declarations: [
 ]
 })
 export class MaterialElementsModule { }
