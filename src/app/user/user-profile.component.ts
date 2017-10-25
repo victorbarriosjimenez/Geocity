@@ -11,7 +11,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private authService: AuthenticationService,
               private _router: Router) { }
   ngOnInit() { 
-    console.log(this.authService.currentUserObservable());
+    console.log(this.authService.currentUserObservable);
    }
   public logout( ){
     console.log('logout');

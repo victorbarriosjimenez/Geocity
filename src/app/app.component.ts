@@ -18,7 +18,7 @@ import {
           style({
             position: 'fixed',
             width:'100%',
-            transform: 'translateX(-100%)'
+            transform: 'translateY(-100%)'
           }),
           {optional:true}),
         query(':leave',
@@ -26,7 +26,7 @@ import {
             style({
               position: 'fixed',
               width:'100%',
-              transform: 'translateX(100%)'
+              transform: 'translateY(100%)'
             })
           ),
         {optional:true}),
@@ -43,5 +43,7 @@ import {
   ]
 })
 export class AppComponent {
-
+  getRouteAnimation(outlet) {
+    return outlet.activatedRouteData.animation
+  }
 }
