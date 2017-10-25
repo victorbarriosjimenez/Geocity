@@ -11,7 +11,7 @@ nav{
     border-radius: 0px;
 }
 .navbar .navbar-brand img {
-    width: 200px;
+    width: 250px;
     height: auto;
     margin-left: 50px;
     padding-top: 20px;
@@ -22,6 +22,7 @@ nav{
     font-size: 1.25em;
     margin-top: 30px; 
     margin-bottom: -20px;
+    font-family: 'Ubuntu', sans-serif;
 }
 .navbar.transparent .navbar-nav .navbar-right > li > a:hover,
 .navbar-nav > li > a:focus {
@@ -83,3 +84,4 @@ nav{
     height: 75px;
 }
 .navbar {min-height:28px !important;}
+
