@@ -9,7 +9,7 @@ export class NavigationComponent implements OnInit {
 
   constructor(private auth: AuthenticationService) { }
   ngOnInit() { }
-  private logoutFromGeocity(): void {
+  public logoutFromGeocity(): void {
     this.auth.logoutfromGeocity();
   } 
 }
