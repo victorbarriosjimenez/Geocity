@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthenticationService } from './../../shared/authentication.service';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  constructor(private auth: AuthenticationService) { }
+  ngOnInit() { }
+  private logoutFromGeocity(): void {
+    this.auth.logoutfromGeocity();
+  } 
 }
