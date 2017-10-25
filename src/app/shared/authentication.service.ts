@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { AngularFireDatabase } from 'angularfire2/database'; 
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database'; 
+import { AngularFireAuth, } from 'angularfire2/auth';
 import { emailAndPasswordCredentials } from '../../models';
 import { Router } from '@angular/router'; 
 import * as firebase from 'firebase/app';
@@ -27,14 +27,16 @@ export class AuthenticationService {
           .then((user)=> 
                 { 
                     this.authState = user,
+                    this.updateUserData(),
                     this._router.navigate(['/profile'])  
                 }).catch(error => console.log(error));
     }
     public emailLogin(email: string, password: string) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-    
         .then((user) => {
-          this.authState = user
+          this.authState = user,
+          this.updateUserData(),
+          this._router.navigate(['/profile'])
         }).catch(error => console.log(error));
     }
     public googleAccountLogin( ){
@@ -49,16 +51,34 @@ export class AuthenticationService {
                  })
             .catch(error => console.log(error));
     }
-    resetPassword(email: string) {
+    private resetPassword(email: string) {
     const fbAuth = firebase.auth();
     return fbAuth.sendPasswordResetEmail(email)
       .then(() => console.log('email sent'))
       .catch((error) => console.log(error))
     }
+    private updateUserData(): void {
+        // Writes user name and email to realtime db
+        // useful if your app displays information about users or for admin features
+        const path = `users/${this.currentUserId}`; // Endpoint on firebase
+        const userRef: AngularFireObject<any> = this.db.object(path);
+    
+        const data = {
+          email: this.authState.email,
+          name: this.authState.displayName
+        }
+    
+        userRef.update(data)
+          .catch(error => console.log(error));
+    
+    }
     get authenticated(): boolean {
         return this.authState !== null;
     }
-     get currentUser(): any {
+    get currentUser(): any {
         return this.authenticated ? this.authState : null;
-     }
+    }
+    get currentUserId(): string {
+        return this.authenticated ? this.authState.uid : '';
+    }
 }

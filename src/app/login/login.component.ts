@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
              email:['',Validators.required],
              password: ['', Validators.required],
      });
-   }
+  }
   ngOnInit() {
     this.createForm();
   }
@@ -26,11 +26,7 @@ export class LoginComponent implements OnInit {
     this._authService.emailLogin(
         this.loginForm.value['email'],
         this.loginForm.value['password']
-    ).then(
-      () => this._router.navigate(['/profile'])
-    ).catch(
-      (err) => console.log(err)
-    );
+    ).then().catch((err) => console.log(err));
   }
   public loginWithGoogleAccount(): void {
     this._authService.googleAccountLogin();
