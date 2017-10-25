@@ -11,10 +11,6 @@ import  { User } from '../../models'
 export class UserProfileComponent implements OnInit {
   constructor(private auth: AuthenticationService,
               private _router: Router) { }
-  ngOnInit() { 
-  
-   }
-  public updateProfile(){
+  ngOnInit() { }
 
-  }
 }

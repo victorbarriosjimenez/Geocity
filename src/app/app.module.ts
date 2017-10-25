@@ -30,8 +30,6 @@ import { RegisterComponent } from './register/register.component';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
 import { UpdateComponent } from './user/update/update.component';
-import { NavigationComponent } from './shared/navigation/navigation.component';
-import { ButtonUpperComponent } from './shared/button-upper/button-upper.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +53,7 @@ import { ButtonUpperComponent } from './shared/button-upper/button-upper.compon
     ReactiveFormsModule,
     UserModule,
     ForumModule,
-    RoutesModule
+    RoutesModule,
   ],
   providers: [
     FormsService,

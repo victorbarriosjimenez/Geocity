@@ -6,19 +6,27 @@ import { UserSearchComponent } from  './user-search/user-search.component';
 import  { UserRoutesModule } from './user.routes'
 import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { AuthenticationService } from '../shared/authentication.service';
+import { NavigationComponent } from './navigation/navigation.component';
+import { ButtonUpperComponent } from './button-upper/button-upper.component';
 @NgModule({
   imports: [
     CommonModule,
     MaterialElementsModule,
-    UserRoutesModule
+    UserRoutesModule,
   ],
   declarations: [
     UserProfileComponent,
     ListUserComponent,
     UserSearchComponent,
+    NavigationComponent,
+    ButtonUpperComponent
+  ],
+  exports: [
+    NavigationComponent,
+    ButtonUpperComponent
   ],
   providers: [
-    AuthenticationService,  
+    AuthenticationService  
   ]
 })
 
