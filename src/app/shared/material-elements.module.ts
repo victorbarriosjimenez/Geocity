@@ -9,6 +9,7 @@ import {
         } from '@angular/material';
 
 import { CommonModule } from '@angular/common';
+import { ButtonUpperComponent } from './button-upper/button-upper.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,8 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatInputModule
   ], 
-  declarations: [ ]
+  declarations: [,
+    ButtonUpperComponent
+]
 })
 export class MaterialElementsModule { }

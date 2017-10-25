@@ -30,8 +30,6 @@ import { RegisterComponent } from './register/register.component';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
 import { UpdateComponent } from './user/update/update.component';
-
-
 @NgModule({
   declarations: [
     AppComponent,
