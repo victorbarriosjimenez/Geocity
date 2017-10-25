@@ -22,7 +22,7 @@ import {
           }),
           {optional:true}),
         query(':leave',
-          animate('500ms ease',
+          animate('100ms ease',
             style({
               position: 'fixed',
               width:'100%',
@@ -31,7 +31,7 @@ import {
           ),
         {optional:true}),
         query(':enter',
-          animate('500ms ease',
+          animate('100ms ease',
             style({
               opacity: 1,
               transform: 'translateX(0%)'

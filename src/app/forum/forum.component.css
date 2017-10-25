@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'jaapokkiregularregular';
+    src: url('../../assets/fonts/jaapokki-regular-webfont.woff2') format('woff2'),
+         url('../../assets/fonts/jaapokki-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+header {
+    padding: 50px 40px;
+    color: white; 
+    width: 100vw;
+    height: 50vh;
+    background-size: cover;
+    background-image: url(../../assets/images/world-ranking.jpg); 
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  h1{
+    margin-left: 50px;
+    font-size: 6em;
+    font-family: 'jaapokkiregularregular';
+  }

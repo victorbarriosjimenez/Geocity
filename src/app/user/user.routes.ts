@@ -8,7 +8,7 @@ import { UpdateComponent } from './update/update.component';
 
 const userRoutes: Routes = [
     { path: 'profile',  component: UserProfileComponent, canActivate: [AuthGuard] },
-    { path: 'profile/update', component: UpdateComponent }
+    { path: 'profile/update', component: UpdateComponent, canActivate: [AuthGuard] }
 ];
 @NgModule({
   imports: [
