@@ -49,13 +49,16 @@ export class AuthenticationService {
                  })
             .catch(error => console.log(error));
     }
+    resetPassword(email: string) {
+    const fbAuth = firebase.auth();
+    return fbAuth.sendPasswordResetEmail(email)
+      .then(() => console.log('email sent'))
+      .catch((error) => console.log(error))
+    }
     get authenticated(): boolean {
         return this.authState !== null;
     }
-    get currentUserObservable(): any {
-        return this.afAuth.authState;
-    }
-    getUserData(): any {
-       return this.afAuth.authState;
-    }
+     get currentUser(): any {
+        return this.authenticated ? this.authState : null;
+     }
 }
