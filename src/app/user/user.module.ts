@@ -8,6 +8,8 @@ import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { AuthenticationService } from '../shared/authentication.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ButtonUpperComponent } from './button-upper/button-upper.component';
+import { FriendsRankingComponent } from './friends-ranking/friends-ranking.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { ButtonUpperComponent } from './button-upper/button-upper.component';
     ListUserComponent,
     UserSearchComponent,
     NavigationComponent,
-    ButtonUpperComponent
+    ButtonUpperComponent,
+    FriendsRankingComponent
   ],
   exports: [
     NavigationComponent,
