@@ -9,6 +9,7 @@ import { AuthenticationService } from '../shared/authentication.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ButtonUpperComponent } from './button-upper/button-upper.component';
 import { FriendsRankingComponent } from './friends-ranking/friends-ranking.component';
+import { WorldwideRankingComponent } from './worldwide-ranking/worldwide-ranking.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,9 @@ import { FriendsRankingComponent } from './friends-ranking/friends-ranking.compo
     UserSearchComponent,
     NavigationComponent,
     ButtonUpperComponent,
-    FriendsRankingComponent
+    FriendsRankingComponent,
+    WorldwideRankingComponent
+  
   ],
   exports: [
     NavigationComponent,
