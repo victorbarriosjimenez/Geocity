@@ -16,7 +16,6 @@ nav{
     margin-left: 50px;
     padding-top: 20px;
 }
-/* Link */
 .navbar.transparent .navbar-nav > li > a {
     color:white;
     font-size: 1.25em;
@@ -57,12 +56,12 @@ nav{
 }
 /* Mobile version */
 .navbar.transparent .navbar-toggle {
-    border-color:  transparent;
+    border-color: transparent;
     width: 50px;
     height: 50px;
     text-align: center;
     margin-top: 15px;
-    margin-right: 30px;
+    margin-right:-30px;
 }
 .navbar.transparent .navbar-toggle:hover,
 .navbar.transparent .navbar-toggle:focus {

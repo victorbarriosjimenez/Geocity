@@ -15,7 +15,7 @@ import { WorldwideRankingComponent } from './worldwide-ranking/worldwide-ranking
   imports: [
     CommonModule,
     MaterialElementsModule,
-    UserRoutesModule,
+    UserRoutesModule
   ],
   declarations: [
     UserProfileComponent,
