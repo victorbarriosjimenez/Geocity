@@ -5,7 +5,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth, } from 'angularfire2/auth';
 import { User } from '../../models';
 import { Router } from '@angular/router'; 
-import { UserService } from './user.service';
 import * as firebase from 'firebase/app';
 import 'rxjs/add/operator/switchMap'
 
@@ -14,8 +13,7 @@ export class AuthenticationService {
     public authState: any = null;
     constructor(private  afAuth: AngularFireAuth,
                 private  _afDatabase: AngularFireDatabase, 
-                private _router: Router,
-                private _userService:  UserService) 
+                private _router: Router) 
                 {          
                     this.afAuth.authState.subscribe((auth) => {
                         this.authState = auth
@@ -27,7 +25,7 @@ export class AuthenticationService {
           .then((user)=> 
                 { 
                     this.authState = user,
-                    this._userService.updateUserData(user),
+                    this.addsToUsersCollection(user),
                     this._router.navigate(['/profile'])  
                 }).catch(error => console.log(error));
     }
@@ -35,7 +33,6 @@ export class AuthenticationService {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
         .then((user) => {
           this.authState = user,
-          this._userService.updateUserData(user),
           this._router.navigate(['/profile'])
         }).catch(error => console.log(error));
     }
@@ -57,14 +54,15 @@ export class AuthenticationService {
     public otherApplicationsLogin(provider : any){
             this.afAuth.auth.signInWithPopup(provider)
              .then((credential) => {
-                          this._userService.updateUserData(credential.user),
                           this.authState = credential.user
                           this._router.navigate(['/profile']);
                  })
             .catch(error => console.log(error));
     }
     /*  -------------------------------- Getters for user authentication --------------------------------    */
-    
+    public addsToUsersCollection(user){ 
+        
+    }
     get authenticated(): boolean {
         return this.authState !== null;
     }

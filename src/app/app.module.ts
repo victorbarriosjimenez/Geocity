@@ -16,7 +16,7 @@ import { ForumModule } from './forum/forum.module';
 /* Services */
 import { FormsService } from './shared/forms.service';
 import { AuthenticationService } from './shared/authentication.service';
-import { UserService } from './shared/user.service';
+
 import { AuthGuard } from './shared/auth.guard';
 
 /* Routes configuration */
@@ -58,7 +58,6 @@ import { UpdateComponent } from './user/update/update.component';
   providers: [
     FormsService,
     AuthenticationService, 
-    UserService,
     AuthGuard
   ],
   bootstrap: [AppComponent]
