@@ -3,17 +3,18 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { UserService } from './user.service';
 import { User } from '../../models';
 import { Router } from '@angular/router'; 
 import * as firebase from 'firebase/app';
 import 'rxjs/add/operator/switchMap'
-
 @Injectable()
 export class AuthenticationService {
     public authState: any = null;
     constructor(private  afAuth: AngularFireAuth,
                 private  _afDatabase: AngularFireDatabase, 
-                private _router: Router) 
+                private _router: Router,
+                private _userService: UserService) 
                 {          
                     this.afAuth.authState.subscribe((auth) => {
                         this.authState = auth
@@ -25,15 +26,15 @@ export class AuthenticationService {
           .then((user)=> 
                 { 
                     this.authState = user,
-                    this.addsToUsersCollection(),
+                    this._userService.createsUserAndInitialData(user),
                     this._router.navigate(['/profile'])  
                 }).catch(error => console.log(error));
     }
     public emailLogin(email: string, password: string) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
         .then((user) => {
-          this.authState = user,
-          this.addsToUsersCollection(),          
+          this.authState = user,       
+          this._userService.createsUserAndInitialData(user),
           this._router.navigate(['/profile'])
         }).catch(error => console.log(error));
     }
@@ -56,6 +57,7 @@ export class AuthenticationService {
             this.afAuth.auth.signInWithPopup(provider)
              .then((credential) => {
                           this.authState = credential.user,
+                          this._userService.createsUserAndInitialData(credential.user),
                           this._router.navigate(['/profile']);
                  })
             .catch(error => console.log(error));

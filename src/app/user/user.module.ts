@@ -10,6 +10,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { ButtonUpperComponent } from './button-upper/button-upper.component';
 import { FriendsRankingComponent } from './friends-ranking/friends-ranking.component';
 import { WorldwideRankingComponent } from './worldwide-ranking/worldwide-ranking.component';
+import { UserService } from '../shared/user.service';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { WorldwideRankingComponent } from './worldwide-ranking/worldwide-ranking
     ButtonUpperComponent
   ],
   providers: [
-    AuthenticationService  
+    AuthenticationService,
+    UserService
   ]
 })
 

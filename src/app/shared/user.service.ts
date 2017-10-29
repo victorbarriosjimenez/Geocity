@@ -5,29 +5,33 @@ import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-
 @Injectable()
 export class UserService {
+    private firebaseUrl: string = 'https://geocity-app.firebaseio.com/';
     public authState: any = null;    
     constructor(private http: Http,
                 private _afDatabase: AngularFireDatabase,
-                private _afAuth: AngularFireAuth
-            ) { 
+                private _afAuth: AngularFireAuth) { 
                 this._afAuth.authState.subscribe((auth) => {
                     this.authState = auth
                 }); 
     }
-    public createsUserAndInitialData(){ 
+    public createsUserAndInitialData(user){ 
         const path = `users/${this.currentUserId}`; 
         const userRef: AngularFireObject<any> = this._afDatabase.object(path);
         const data = {
-          email: this.authState.email,
+          email: user.email,
           name: 'Victor barrios',
           ranking: 0,
           gender: 'male'
         }
         userRef.update(data)
           .catch(error => console.log(error));
+    }
+    public getUserData() { 
+        const userDataPath = `https://geocity-app.firebaseio.com/users/${this.currentUserId}.json`;
+        return this.http.get(userDataPath)
+                  .map(response => response.json());
     }
     get currentUserId(): string {
         return this.authenticated ? this.authState.uid : '';
