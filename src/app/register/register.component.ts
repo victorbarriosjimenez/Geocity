@@ -38,9 +38,6 @@ export class RegisterComponent implements OnInit {
         .subscribe(countries => this.countries = countries);
   } 
   public registerAccountWithEmailAndPassword( ): void {
-     this._authService.emailSignUp(
-      this.registrationForm.value['email'],
-      this.registrationForm.value['password']
-    );
+     this._authService.emailSignUp(this.registrationForm.value);
   }
 }

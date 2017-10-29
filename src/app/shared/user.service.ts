@@ -21,9 +21,9 @@ export class UserService {
         const userRef: AngularFireObject<any> = this._afDatabase.object(path);
         const data = {
           email: user.email,
-          name: 'Victor barrios',
+          username: user.username,
           ranking: 0,
-          gender: 'male'
+          country: user.country
         }
         userRef.update(data)
           .catch(error => console.log(error));
