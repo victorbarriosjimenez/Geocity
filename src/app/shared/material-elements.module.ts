@@ -5,7 +5,8 @@ import {
           MatCardModule,      
           MatIconModule,
           MatInputModule,
-          MatProgressSpinnerModule
+          MatProgressSpinnerModule,
+          MatSelectModule
         } from '@angular/material';
 
 import { CommonModule } from '@angular/common';
@@ -18,7 +19,8 @@ import { CommonModule } from '@angular/common';
     MatCardModule,
     MatIconModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSelectModule
   ],
   exports: [
     MatFormFieldModule,
@@ -26,7 +28,8 @@ import { CommonModule } from '@angular/common';
     MatIconModule,
     MatButtonModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSelectModule
   ], 
   declarations: [
 ]

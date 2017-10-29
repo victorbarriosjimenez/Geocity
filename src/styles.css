@@ -6,3 +6,6 @@
     font-style: normal;
 }
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.full-width {
+    width: 100%;
+}
