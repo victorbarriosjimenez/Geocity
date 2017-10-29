@@ -16,7 +16,6 @@ export class UserProfileComponent implements OnInit {
               private _router: Router) { }
   ngOnInit() { 
     this.getProfileBioData();
-    console.log(this.user)
   }
   getProfileBioData( ):  void {
     this._userService.getUserData()
@@ -24,5 +23,5 @@ export class UserProfileComponent implements OnInit {
                   (err) => console.log(err),
                   () => console.log('Success!')
       );
-   }
+  }
 }

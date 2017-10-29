@@ -21,12 +21,13 @@ export class AuthenticationService {
                     });                
     }  
     /* -------------------------------- Email Authentication Functions -------------------------------------- */ 
-    public emailSignUp(email: string ,password: string) {
-        return this.afAuth.auth.createUserWithEmailAndPassword(email,password)
+    public emailSignUp(userForm) {
+        return this.afAuth.auth.createUserWithEmailAndPassword(userForm.email,userForm.password)
           .then((user)=> 
                 { 
                     this.authState = user,
                     this._userService.createsUserAndInitialData(),
+                    this._userService.setUpInitialUserData(userForm),
                     this._router.navigate(['/profile'])  
                 }).catch(error => console.log(error));
     }

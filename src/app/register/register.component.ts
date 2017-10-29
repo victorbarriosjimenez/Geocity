@@ -38,18 +38,19 @@ export class RegisterComponent implements OnInit {
     this._formsService.getCountries()
         .subscribe(countries => this.countries = countries);
   } 
-  public registerAccountWithEmailAndPassword( ): void {
+  public prepareUserForRegistration( ): User {
     const formModel = this.registrationForm.value;
     const userModel: User = {
+        uid: null,
         email: formModel.email as string,
         username:  formModel.username as string,
         country: formModel.country as string,
-        password: formModel.country as string, 
+        password: formModel.password as string, 
     };
-    console.log(userModel);
-   //  this._authService.emailSignUp(
-   //    this.registrationForm.value['email'],
-   //    this.registrationForm.value['password']
-   //  )
+      return userModel
+  }
+  public registerAccountWithEmailAndPassword(){
+    let user = this.prepareUserForRegistration();
+    this._authService.emailSignUp(user);
   }
 }
