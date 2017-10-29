@@ -33,8 +33,7 @@ export class AuthenticationService {
     public emailLogin(email: string, password: string) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
         .then((user) => {
-          this.authState = user,       
-          this._userService.createsUserAndInitialData(user),
+          this.authState = user,      
           this._router.navigate(['/profile'])
         }).catch(error => console.log(error));
     }
@@ -57,13 +56,11 @@ export class AuthenticationService {
             this.afAuth.auth.signInWithPopup(provider)
              .then((credential) => {
                           this.authState = credential.user,
-                          this._userService.createsUserAndInitialData(credential.user),
                           this._router.navigate(['/profile']);
                  })
             .catch(error => console.log(error));
     }
     /*  -------------------------------- Getters for user authentication --------------------------------    */
-    
     get authenticated(): boolean {
         return this.authState !== null;
     }
