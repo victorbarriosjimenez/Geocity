@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { AngularFireAuth, } from 'angularfire2/auth';
 import { User } from '../../models';
 import { Router } from '@angular/router'; 
@@ -25,7 +25,7 @@ export class AuthenticationService {
           .then((user)=> 
                 { 
                     this.authState = user,
-                    this.addsToUsersCollection(user),
+                    this.addsToUsersCollection(),
                     this._router.navigate(['/profile'])  
                 }).catch(error => console.log(error));
     }
@@ -33,6 +33,7 @@ export class AuthenticationService {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
         .then((user) => {
           this.authState = user,
+          this.addsToUsersCollection(),          
           this._router.navigate(['/profile'])
         }).catch(error => console.log(error));
     }
@@ -54,15 +55,25 @@ export class AuthenticationService {
     public otherApplicationsLogin(provider : any){
             this.afAuth.auth.signInWithPopup(provider)
              .then((credential) => {
-                          this.authState = credential.user
+                          this.authState = credential.user,
+                          this.addsToUsersCollection(),
                           this._router.navigate(['/profile']);
                  })
             .catch(error => console.log(error));
     }
     /*  -------------------------------- Getters for user authentication --------------------------------    */
-    public addsToUsersCollection(user){ 
-        
-    }
+    public addsToUsersCollection(){ 
+        const path = `users/${this.currentUserId}`; // Endpoint on firebase
+        const userRef: AngularFireObject<any> = this._afDatabase.object(path);
+        const data = {
+          email: this.authState.email,
+          name: 'Victor barrios',
+          ranking: 0,
+          gender: 'male'
+        }
+        userRef.update(data)
+          .catch(error => console.log(error));
+      }
     get authenticated(): boolean {
         return this.authState !== null;
     }

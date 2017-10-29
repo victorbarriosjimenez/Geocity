@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { ForumComponent } from './forum.component';
 import { ForumRoutesModule } from './forum-routes';
 import { UserModule } from '../user/user.module';
+import { MaterialElementsModule  } from '../shared/material-elements.module';
+
 @NgModule({
   imports: [
     CommonModule,
     ForumRoutesModule,
-    UserModule
+    UserModule,
+    MaterialElementsModule
   ],
   declarations: [
     ForumComponent

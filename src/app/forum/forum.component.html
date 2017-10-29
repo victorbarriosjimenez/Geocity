@@ -2,3 +2,17 @@
 <header>
     <h1>Comunidad</h1>
 </header>
+<div class="container">
+    <h2>Añade un nuevo post</h2>
+    <form (ngSubmit)="registerAccountWithEmailAndPassword()">    
+        <mat-form-field class="full-width">
+                <textarea 
+                    matInput
+                    type="text"
+                    placeholder="Escribe algo que te guste">
+                </textarea>
+        </mat-form-field> 
+        <br>
+        <button mat-raised-button type="submit" color="accent">Acceder</button>
+    </form>
+</div>
