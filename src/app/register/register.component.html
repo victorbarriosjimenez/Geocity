@@ -17,6 +17,13 @@
                             placeholder="Correo electrónico"
                             formControlName="email">
                 </mat-form-field> 
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Pais de Origen" formControlName="country">
+                      <mat-option *ngFor="let country of countries" [value]="country.name">
+                          {{ country.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                <!--  
                 <mat-error>
                          Por favor! Ingresa un email válido

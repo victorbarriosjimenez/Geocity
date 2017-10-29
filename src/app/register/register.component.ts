@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Rx';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  public paises: any;
+  public countries: any;
   public loading: boolean;
   public model: any = { };
   public registrationForm: FormGroup;
@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
    this.registrationForm =  this._fb.group({
             email:['',Validators.required],
             username:['',Validators.required],
+            country:['', Validators.required],
             confirmEmail: ['',Validators.required],
             password: ['', Validators.required],
             confirmPassword: ['', Validators.required]
@@ -34,7 +35,7 @@ export class RegisterComponent implements OnInit {
   }
   private getCountries() { 
     this._formsService.getCountries()
-        .subscribe(paises => this.paises = paises);
+        .subscribe(countries => this.countries = countries);
   } 
   public registerAccountWithEmailAndPassword( ): void {
      this._authService.emailSignUp(
