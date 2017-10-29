@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
-import { AngularFireAuth, } from 'angularfire2/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../../models';
 import { Router } from '@angular/router'; 
 import * as firebase from 'firebase/app';
@@ -56,24 +56,12 @@ export class AuthenticationService {
             this.afAuth.auth.signInWithPopup(provider)
              .then((credential) => {
                           this.authState = credential.user,
-                          this.addsToUsersCollection(),
                           this._router.navigate(['/profile']);
                  })
             .catch(error => console.log(error));
     }
     /*  -------------------------------- Getters for user authentication --------------------------------    */
-    public addsToUsersCollection(){ 
-        const path = `users/${this.currentUserId}`; // Endpoint on firebase
-        const userRef: AngularFireObject<any> = this._afDatabase.object(path);
-        const data = {
-          email: this.authState.email,
-          name: 'Victor barrios',
-          ranking: 0,
-          gender: 'male'
-        }
-        userRef.update(data)
-          .catch(error => console.log(error));
-      }
+    
     get authenticated(): boolean {
         return this.authState !== null;
     }
