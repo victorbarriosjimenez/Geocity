@@ -4,6 +4,7 @@ import { FormsService } from '../shared/forms.service';
 import { AuthenticationService } from '../shared/authentication.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx'; 
+import { User } from '../../models';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -28,9 +29,9 @@ export class RegisterComponent implements OnInit {
             email:['',Validators.required],
             username:['',Validators.required],
             country:['', Validators.required],
-            confirmEmail: ['',Validators.required],
+          //  confirmEmail: ['',Validators.required],
             password: ['', Validators.required],
-            confirmPassword: ['', Validators.required]
+          //  confirmPassword: ['', Validators.required]
     });
   }
   private getCountries() { 
@@ -38,6 +39,17 @@ export class RegisterComponent implements OnInit {
         .subscribe(countries => this.countries = countries);
   } 
   public registerAccountWithEmailAndPassword( ): void {
-     this._authService.emailSignUp(this.registrationForm.value);
+    const formModel = this.registrationForm.value;
+    const userModel: User = {
+        email: formModel.email as string,
+        username:  formModel.username as string,
+        country: formModel.country as string,
+        password: formModel.country as string, 
+    };
+    console.log(userModel);
+   //  this._authService.emailSignUp(
+   //    this.registrationForm.value['email'],
+   //    this.registrationForm.value['password']
+   //  )
   }
 }
