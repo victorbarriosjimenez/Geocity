@@ -28,11 +28,6 @@ export class UserService {
         }
         userRef.update(data)
           .catch(error => console.log(error));
-        const data2 = {
-            email: this.authState.email,
-            ranking: 14,
-            country: 'Malvinas'
-        }
     }
     public getUserData() { 
         const userDataPath = `https://geocity-app.firebaseio.com/users/${this.currentUserId}.json`;
