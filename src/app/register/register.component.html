@@ -8,7 +8,7 @@
     </h1>
     <div class="row">
             <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12 col-lg-4 col-lg-offset-4 ">
-            <h3 class="text-center">Crea una cuenta</h3> <br>       
+            <h3 class="text-center">¡Crea una cuenta y comienza!</h3> <br>       
             <form (ngSubmit)="registerAccountWithEmailAndPassword()" [formGroup]="registrationForm">    
                 <mat-form-field class="full-width">
                         <input 
@@ -40,6 +40,8 @@
                 </mat-form-field>  
                 <button mat-raised-button type="submit" color="primary">Crear mi cuenta</button>
             </form>
+            <hr>
+            <p class="register-invitation">¿Ya tienes una cuenta? Da click <a routerLink="/login">aquí</a> y entra a tu cuenta de Geocity.</p>
         </div>
      </div>
  </div> 
