@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
         this.loginForm.value['password']
     ).then().catch((err) => console.log(err));
   }
-  
   public loginWithGoogleAccount(): void {
     this._authService.googleAccountLogin();
   } 
