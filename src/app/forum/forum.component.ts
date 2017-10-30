@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from './../shared/user.service';
 
 @Component({
   selector: 'app-forum',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent implements OnInit {
-  constructor() { }
+  constructor(private _userService: UserService) { }
   ngOnInit() {
     
   }
