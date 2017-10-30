@@ -2,7 +2,7 @@ header {
     padding: 20px 40px;
     color: white; 
     width: 100vw;
-    height: 80vh;
+    height: 80vh; 
     background-size: cover;
     background-image: url(../../assets/images/user-profile-header.jpg); 
     margin-top: -20px;
@@ -13,7 +13,9 @@ header {
     background-attachment: fixed;
 }
 img {
-    width: 150px;
+    width: 250px;
     height: auto;
+    margin-top: 4em;
+    margin-left: 5em;
     border-radius: 50%;
 }

@@ -18,7 +18,7 @@ import {
           style({
             position: 'fixed',
             width:'100%',
-            transform: 'translateY(-100%)'
+            transform: 'translateX(-100%)'
           }),
           {optional:true}),
         query(':leave',
@@ -26,7 +26,7 @@ import {
             style({
               position: 'fixed',
               width:'100%',
-              transform: 'translateY(100%)'
+              transform: 'translateX(100%)'
             })
           ),
         {optional:true}),
