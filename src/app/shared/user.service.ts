@@ -26,7 +26,8 @@ export class UserService {
             email: userstate.email,
             username: username,
             country: country,
-            ranking: 0
+            ranking: 0,
+            profilePhotoUrl: 'http://voice4thought.org/wp-content/uploads/2016/08/default2-1.jpg'
         }
         userRef.update(data)
           .catch(error => console.log(error));
