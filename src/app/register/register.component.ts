@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   public createForm( ): void {
    this.registrationForm =  this._fb.group({
             email:['',Validators.required],
-        //  username:['',Validators.required],
+            username:['',Validators.required],
             country:['', Validators.required],
           //  confirmEmail: ['',Validators.required],
             password: ['', Validators.required],
@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
     const formModel = this.registrationForm.value;
     const userModel: User = {
         email: formModel.email as string,
-     //   username:  formModel.username as string,
+        username:  formModel.username as string,
         country: formModel.country as string,
         password: formModel.password as string, 
     };

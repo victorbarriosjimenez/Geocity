@@ -28,7 +28,7 @@ export class AuthenticationService {
                 { 
                     this.authState = user,
                     this._userService.createsUserAndInitialData(user,userForm.country,userForm.username),
-                    this._router.navigate(['/']);
+                    this._router.navigate(['/profile']);
                 }).catch(error => console.log(error));
     }
     public emailLogin(email: string, password: string) {
