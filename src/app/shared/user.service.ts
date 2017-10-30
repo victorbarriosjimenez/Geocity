@@ -19,11 +19,13 @@ export class UserService {
                         this.authState = auth
                 });
     }
-    public createsUserAndInitialData(userstate){ 
+    public createsUserAndInitialData(userstate,country,username){ 
         const path = `users/${userstate.uid}`; 
         const userRef: AngularFireObject<any> = this._afDatabase.object(path);    
         const data = {
             email: userstate.email,
+            username: username,
+            country: country,
             ranking: 0
         }
         userRef.update(data)

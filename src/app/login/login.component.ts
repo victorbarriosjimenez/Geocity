@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.createForm();
   }
-  /*
   public loginWithEmailAndPassword(): void {  
     this._authService.emailLogin(
         this.loginForm.value['email'],
@@ -32,5 +31,5 @@ export class LoginComponent implements OnInit {
   
   public loginWithGoogleAccount(): void {
     this._authService.googleAccountLogin();
-  } */
+  } 
 }

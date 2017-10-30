@@ -11,7 +11,7 @@ import { User } from '../../models';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
- /* public countries: any;
+  public countries: any;
   public loading: boolean;
   public model: any = { };
   public registrationForm: FormGroup;
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   public createForm( ): void {
    this.registrationForm =  this._fb.group({
             email:['',Validators.required],
-            username:['',Validators.required],
+        //  username:['',Validators.required],
             country:['', Validators.required],
           //  confirmEmail: ['',Validators.required],
             password: ['', Validators.required],
@@ -42,8 +42,8 @@ export class RegisterComponent implements OnInit {
     const formModel = this.registrationForm.value;
     const userModel: User = {
         email: formModel.email as string,
-        username:  formModel.username as string,
-     //   country: formModel.country as string,
+     //   username:  formModel.username as string,
+        country: formModel.country as string,
         password: formModel.password as string, 
     };
       return userModel
@@ -51,23 +51,5 @@ export class RegisterComponent implements OnInit {
   public registerAccountWithEmailAndPassword(){
     let user = this.prepareUserForRegistration();
     this._authService.emailSignUp(user);
-  }*/
-  usernameText: string;
-  usernameAvailable: boolean;
-  constructor(public auth: AuthenticationService) { }
-  checkUsername() {
-    this.auth.checkUsername(this.usernameText).subscribe(username => {
-      this.usernameAvailable = !username.$value
-    })
-  }
-  updateUsername() {
-    console.log
-    this.auth.updateUsername(this.usernameText)
-  }
-  signInWithGoogle() {
-    this.auth.googleLogin()
-  }
-  ngOnInit(){
-
   }
 }
