@@ -10,7 +10,7 @@ import { UserService } from '../shared/user.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  user: any;
+  user: User;
   constructor(private auth: AuthenticationService,
               private _userService:  UserService,
               private _router: Router) { }

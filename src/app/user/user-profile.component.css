@@ -12,3 +12,8 @@ header {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+img {
+    width:100px;
+    height: auto;
+    border-radius: 50%;
+}
