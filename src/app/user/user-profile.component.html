@@ -6,10 +6,18 @@
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
                <div class="user-details">
-                    <p>{{ user.username }} <mat-icon>mode edit</mat-icon></p>
+                    <p>
+                        {{ user.username }} 
+                        <span matTooltip="Edita tú perfil">
+                             <a class="user-edit" mat-fab routerLink="profile/update">
+                                  <mat-icon aria-label="Edit profile">mode_edit</mat-icon>
+                             </a>
+                        </span> 
+                    </p>
                     <p class="country">{{ user.country | uppercase }}</p>                    
                     <p>{{ user.ranking }} pts</p>
                </div>
+
             </div>
         </div>
     </div>

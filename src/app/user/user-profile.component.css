@@ -13,13 +13,13 @@ header {
     background-attachment: fixed;
 }
 img {
-    width: 250px;
+    width: 280px;
     height: auto;
     margin-top: 7em;
     border-radius: 50%;
 }
 .user-details {
-    margin-left: 1em;
+    margin-left: .5em;
     margin-top: 7em;
 }
 .user-details p{
@@ -27,6 +27,10 @@ img {
     font-family: 'jaapokkiregularregular';
 }
 .user-details p.country {
-    font-size: 2.5em;
+    font-size: 2em;
     font-family: 'jaapokkiregularregular';
+}
+.user-edit {
+    background-color: rgba(0,0,0, 0.3);
+    margin-left: 30px;
 }

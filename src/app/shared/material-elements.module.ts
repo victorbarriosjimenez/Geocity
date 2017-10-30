@@ -7,7 +7,8 @@ import {
           MatInputModule,
           MatProgressSpinnerModule,
           MatSelectModule,
-          MatStepperModule
+          MatStepperModule,
+          MatTooltipModule
         } from '@angular/material';
 
 import { CommonModule } from '@angular/common';
@@ -21,7 +22,8 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    MatStepperModule
+    MatStepperModule,
+    MatTooltipModule   
   ],
   exports: [
     MatFormFieldModule,
@@ -31,7 +33,8 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    MatStepperModule
+    MatStepperModule,
+    MatTooltipModule   
   ], 
   declarations: [
 ]
