@@ -1,4 +1,31 @@
-<div class="bg-continent">
+<h1>Login</h1>
+<button (click)="signInWithGoogle()" class="button btn-social btn-google"
+        *ngIf="!auth.currentUser">
+         <i class="fa fa-google-plus fa-lg"></i> Connect Google
+</button>
+<button  type="button" class="button"
+         *ngIf="auth.currentUser"
+         (click)="logout()">
+          Logout
+</button>
+<div *ngIf="auth.currentUser && !auth.hasUsername">
+  <h3>Choose a Username</h3>
+  <input type="text" class="input" placeholder="choose a username"
+         [(ngModel)]="usernameText"
+         (keyup)="checkUsername()">
+  <p class="help is-success" *ngIf="usernameAvailable && usernameText">
+    @{{usernameText}} is available
+  </p>
+  <p class="help is-danger" *ngIf="!usernameAvailable && usernameText">
+    @{{usernameText}} has already been taken
+  </p>
+  <button class="button is-primary"
+          [disabled]="!usernameAvailable || !usernameText"
+          (click)="updateUsername()">
+          Select Username
+  </button>
+</div>
+<!--<div class="bg-continent">
     <div class="container">
     <h1 class="text-center">
      <span>
@@ -17,7 +44,6 @@
                             placeholder="Correo electrónico"
                             formControlName="email">
                 </mat-form-field> 
-             
                 <mat-form-field class="full-width">
                         <input 
                             matInput
@@ -25,6 +51,7 @@
                             placeholder="Nombre de Usuario"
                             formControlName="username">
                 </mat-form-field> 
+            <!--
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Pais de Origen" formControlName="country">
                       <mat-option *ngFor="let country of countries" [value]="country.name">
@@ -32,11 +59,13 @@
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
-            <!--
+            
                 <mat-error>
                          Por favor! Ingresa un email válido
                 </mat-error>
-            -->   
+                -->   
+<!--
+
                 <mat-form-field class="full-width">
                         <input 
                             matInput
@@ -52,10 +81,15 @@
                             placeholder="Confirma tu contraseña"
                             formControlName="confirmPassword">
                 </mat-form-field>
-                -->               
+               
+            -->
+            
+        <!--
                 <button mat-raised-button type="submit" color="accent">Acceder</button>
             </form>
         </div>
      </div>
  </div> 
 </div>
+
+-->

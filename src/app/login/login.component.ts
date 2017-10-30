@@ -22,13 +22,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.createForm();
   }
+  /*
   public loginWithEmailAndPassword(): void {  
     this._authService.emailLogin(
         this.loginForm.value['email'],
         this.loginForm.value['password']
     ).then().catch((err) => console.log(err));
   }
+  
   public loginWithGoogleAccount(): void {
     this._authService.googleAccountLogin();
-  } 
+  } */
 }
