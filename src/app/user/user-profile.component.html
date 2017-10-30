@@ -1,6 +1,14 @@
 <header>
-{{ user.username }}
-<img src="{{ user.profilePhotoUrl }}" alt="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ user.profilePhotoUrl }}" alt="">
+            </div>
+            <div class="col-md-6">
+                <p>{{ user.username }}</p>
+            </div>
+        </div>
+    </div>
 </header>
 <app-navigation></app-navigation>
 <button-upper></button-upper>

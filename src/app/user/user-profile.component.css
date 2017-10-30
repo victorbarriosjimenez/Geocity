@@ -7,13 +7,13 @@ header {
     background-image: url(../../assets/images/user-profile-header.jpg); 
     margin-top: -20px;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 img {
-    width:100px;
+    width: 150px;
     height: auto;
     border-radius: 50%;
 }
