@@ -6,9 +6,9 @@
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
                <div class="user-details">
-                    <p>{{ user.username }}</p>
+                    <p>{{ user.username }} <mat-icon>mode edit</mat-icon></p>
+                    <p class="country">{{ user.country | uppercase }}</p>                    
                     <p>{{ user.ranking }} pts</p>
-                    <p>{{ user.country | uppercase }}</p>
                </div>
             </div>
         </div>
