@@ -26,8 +26,7 @@ export class AuthenticationService {
           .then((user)=> 
                 { 
                     this.authState = user,
-                    this._userService.createsUserAndInitialData(),
-                    this._userService.setUpInitialUserData(userForm),
+                    this._userService.createsUserAndInitialData(user),
                     this._router.navigate(['/profile'])  
                 }).catch(error => console.log(error));
     }

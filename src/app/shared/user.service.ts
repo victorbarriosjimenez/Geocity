@@ -19,25 +19,20 @@ export class UserService {
                         this.authState = auth
                 });
     }
-    public createsUserAndInitialData(){ 
-        const path = `users/${this.currentUserId}`; 
+    public createsUserAndInitialData(user){ 
+        const path = `users/${user.uid}`; 
         const userRef: AngularFireObject<any> = this._afDatabase.object(path);    
         const data = {
-          email: this.authState.email,
+            email: this.authState.email,
+            ranking: 0,
         }
         userRef.update(data)
           .catch(error => console.log(error));
-    }
-    public setUpInitialUserData(userForm){ 
-        const path = `users/${this.currentUserId}`; 
-        const userRef: AngularFireObject<any> = this._afDatabase.object(path); 
-        const data = {
-            ranking: 0,
-            username: userForm.username,
-            country: userForm.country,
-        }  
-        userRef.update(data)
-        .catch(error => console.log(error));      
+        const data2 = {
+            email: this.authState.email,
+            ranking: 14,
+            country: 'Malvinas'
+        }
     }
     public getUserData() { 
         const userDataPath = `https://geocity-app.firebaseio.com/users/${this.currentUserId}.json`;

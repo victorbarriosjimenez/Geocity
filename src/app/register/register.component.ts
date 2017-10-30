@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit {
   public prepareUserForRegistration( ): User {
     const formModel = this.registrationForm.value;
     const userModel: User = {
-        uid: null,
         email: formModel.email as string,
         username:  formModel.username as string,
         country: formModel.country as string,
