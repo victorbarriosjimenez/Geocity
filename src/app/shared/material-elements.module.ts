@@ -11,7 +11,6 @@ import {
         } from '@angular/material';
 
 import { CommonModule } from '@angular/common';
-
 @NgModule({
   imports: [
     CommonModule,
