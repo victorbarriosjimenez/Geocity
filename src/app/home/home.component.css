@@ -35,14 +35,50 @@ h3 {
     height: 100vh;
     overflow: hidden;
 }
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px) { 
-}
 .buttons{
     left: 35vw;
     margin: 0 auto;
     padding: 10px 50px 10px 50px;
     position: absolute;
     bottom: 30vh;
+}
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    h1 {
+        top: 25vh;
+        left: 25vw;
+        font-size: 3em;
+    }
+    h2 {
+        top: 37.5vh;
+        left: 2.5vw;
+        margin: 0 auto;
+        font-size: 2em;   
+    }
+    h3 { 
+        padding: 10px 20px;
+        left: 8vw;        
+        font-size: 1em;
+        bottom: 45.5vh;
+        background: rgb(63, 52, 190); 
+        color: white;
+    }
+    .logo-main {
+        width: 60px;
+        height: 60px;
+        margin-right: -20px;
+        margin-bottom: -15px;
+    }
+    .buttons{
+        display: flex;
+        left: 1.5vw;
+        margin: 0 auto;
+        padding: 10px 50px 10px 50px;
+        position: absolute;
+        bottom: 35vh;
+    }
+    .buttons button{
+        margin-right: 10px;
+    }
 }
