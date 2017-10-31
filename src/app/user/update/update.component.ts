@@ -22,6 +22,7 @@ export class UpdateComponent implements OnInit {
               }
   ngOnInit() { 
     this.createForm();    
+    this.getCountries();
     this.getProfileBioData();
   }
   public createForm( ): void {
