@@ -19,8 +19,8 @@ export class UpdateComponent implements OnInit {
   public user: User;
   public countries: any;  
   public userUpdateForm: FormGroup;
-  public  emailSentConfirmationMessage: string = `Hemos enviado un correo a la cuenta para cambiar tu password.`;   
-  public  profileModifiedConfirmationMessage: string = `Tu perfil se ha modificado exitosamente!`;    
+  public emailSentConfirmationMessage: string = `Hemos enviado un correo a la cuenta para cambiar tu password.`;   
+  public profileModifiedConfirmationMessage: string = `Tu perfil se ha modificado exitosamente!`;    
   public isEmailConfirmationSent: boolean;
   constructor(private auth: AuthenticationService,
               private _userService:  UserService,
@@ -72,10 +72,10 @@ export class UpdateComponent implements OnInit {
   public sendsUserUpdateForm(): void {
       const userModelUpdated: User =  this.prepareUserModelUpdated();
       console.log(userModelUpdated);
-     this._userService.updateUserInformation(userModelUpdated)
+      this._userService.updateUserInformation(userModelUpdated)
           .then(() => {
-                      this.showsSnackBarWithDetails(this.profileModifiedConfirmationMessage),
-                      this.restrictUserTimeOportunitiesToUpdate()
+                this.showsSnackBarWithDetails(this.profileModifiedConfirmationMessage),
+                this.restrictUserTimeOportunitiesToUpdate()
           });
   }
   /* -------------------------  User Admnistration methods -------------------------*/
@@ -85,7 +85,7 @@ export class UpdateComponent implements OnInit {
           .then(() => { 
                         this.isEmailConfirmationSent = true,
                         this.showsSnackBarWithDetails(this.emailSentConfirmationMessage)
-                })
+          })
           .catch( (err) => console.log(err));
   }
   private showsSnackBarWithDetails(message: string) : void {
@@ -94,6 +94,6 @@ export class UpdateComponent implements OnInit {
     });   
   }
   public restrictUserTimeOportunitiesToUpdate() {
-      console.log(this._userService.userEditionControl());
+      this._userService.userEditionControl();
   }
 }

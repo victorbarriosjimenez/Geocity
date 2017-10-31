@@ -17,7 +17,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() { 
     this.getProfileBioData();
   }
-  getProfileBioData( ):  void {
+  private getProfileBioData( ):  void {
     this._userService.getUserData()
       .subscribe(data => this.user = data,
                   (err) => console.log(err),
