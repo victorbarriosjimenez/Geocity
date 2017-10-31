@@ -74,7 +74,10 @@
       nos pondremos en contacto contigo enseguida.
       <br>
       <br>
-      <button mat-raised-button color="warn">Enviar correo de confirmación</button>
+      <button style="display: flex; margin: 0 auto;" 
+              mat-raised-button 
+              color="warn"
+              (click)="sendPasswordResetEmail()">Enviar correo de confirmación</button>
     </mat-expansion-panel>
     <h2>Eliminar mi cuenta</h2>    
     <mat-expansion-panel color="warn">
@@ -85,7 +88,6 @@
             </p>
           </mat-panel-title>
           <mat-panel-description>
-             
           </mat-panel-description>
         </mat-expansion-panel-header>
           <p class="text-center"> ¡Cuidado! Al pulsar este botón tu cuenta será eliminida permanentemente,

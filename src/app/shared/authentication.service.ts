@@ -38,12 +38,6 @@ export class AuthenticationService {
           this._router.navigate(['/profile'])
         }).catch(error => console.log(error));
     }
-    public resetPasswordFromEmail(email: string) {
-        const fbAuth = firebase.auth();
-        return fbAuth.sendPasswordResetEmail(email)
-          .then(() => console.log('email sent'))
-          .catch((error) => console.log(error))
-        } 
     public logoutfromGeocity(): void { 
         this.afAuth.auth.signOut();
         this._router.navigate(['/']);

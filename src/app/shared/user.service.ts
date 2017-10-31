@@ -7,6 +7,8 @@ import { User } from '../../models';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/switchMap';
+import * as firebase from 'firebase/app';
+
 @Injectable()
 export class UserService {
     private firebaseUrl: string = 'https://geocity-app.firebaseio.com/';
@@ -37,6 +39,12 @@ export class UserService {
         return this.http.get(userDataPath)
                   .map(response => response.json());
     }
+    public sendsResetPasswordEmail(email: string) {
+        const fbAuth = firebase.auth();
+        return fbAuth.sendPasswordResetEmail(email)
+          .then(() => console.log('email sent'))
+          .catch((error) => console.log(error))
+    } 
     get currentUserId(): string {
         return this.authenticated ? this.authState.uid : '';
     }

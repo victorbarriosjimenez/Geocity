@@ -14,6 +14,7 @@ export class UpdateComponent implements OnInit {
   public user: User;
   public countries: any;  
   public userUpdateForm: FormGroup;
+  public isEmailConfirmationSent: boolean;
   constructor(private auth: AuthenticationService,
               private _userService:  UserService,
               private _formsService: FormsService, 
@@ -49,5 +50,11 @@ export class UpdateComponent implements OnInit {
           profilePhotoUrl: this.user.profilePhotoUrl,
           country: this.user.country
     });
+  }
+  private sendPasswordResetEmail(){
+      const userEmail : string  = this.user.email;
+      this._userService.sendsResetPasswordEmail(userEmail)
+          .then( () => { this.isEmailConfirmationSent = true })
+          .catch( (err) => console.log(err));
   }
 }
