@@ -13,13 +13,15 @@ export class UserService {
     private firebaseUrl: string = 'https://geocity-app.firebaseio.com/';
     public authState: any = null;    
     public currentUser: any;
-    public timesUserHasUpdatedProfile: number = 0;
+    public updateProfileRequests: number;
+    user: User;
     constructor(private http: Http,
                 private _afDatabase: AngularFireDatabase,
                 private _afAuth: AngularFireAuth) { 
                  this._afAuth.authState.subscribe((auth) => {
                         this.authState = auth
-                });
+                 });
+                  this.getTimesUserHasUpdatedProfile();  
     }
 
    /* ---------------------------------- USER CRUD OPERATIONS ----------------------------------  */
@@ -53,38 +55,42 @@ export class UserService {
         return this.http.get(userDataPath)
                   .map(response => response.json());
     }
-   
     /* ---------------------------------- USER ACCOUNT OPERATIONS ----------------------------------  */
-    
     public sendsResetPasswordEmail(email: string) {
         const fbAuth = firebase.auth();
         return fbAuth.sendPasswordResetEmail(email)
           .then(() => console.log('email sent'))
           .catch((error) => console.log(error))
     }
-    public userEditionControl(reset?: boolean):  number {
-        const path = `users/${this.currentUserId}`; 
+    public userEditionControl(reset?: boolean)   {
+        console.log(this.user);
+   /*     const path = `users/${this.currentUserId}`; 
         const userRef: AngularFireObject<any> = this._afDatabase.object(path);        
         if(reset) {
-            this.timesUserHasUpdatedProfile = 0;
-            const data = {
-                  editionResquests: this.timesUserHasUpdatedProfile,
-            }
+            this.updateProfileRequests = 0;
+            const data = { editionResquests: this.updateProfileRequests }
             userRef.update(data);
+            return this.updateProfileRequests;
         }  
         else {
-            this.timesUserHasUpdatedProfile += 1; 
-            const data = {
-                editionResquests: this.timesUserHasUpdatedProfile,
-            }
+            this.updateProfileRequests += 1;  
+            const data = {  editionResquests: this.updateProfileRequests }
             userRef.update(data);
-            return this.timesUserHasUpdatedProfile;
-        }
+            return this.updateProfileRequests;
+        }*/
     }
     /* ---------------------------------- USER PROPERTIES  ----------------------------------  */
     get currentUserId(): string {
         return this.authenticated ? this.authState.uid : '';
     }
+    private getTimesUserHasUpdatedProfile(){
+        const userDataPath = `https://geocity-app.firebaseio.com/users/${this.currentUserId}.json`;
+        this.http.get(userDataPath)
+                  .map(response => response.json())
+                   .subscribe(data => this.user = data,
+                    (err) => console.log(err),
+                    () => console.log('Success'))
+        }
     get authenticated(): boolean {
         return this.authState !== null;
     }

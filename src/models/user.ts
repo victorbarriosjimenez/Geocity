@@ -10,6 +10,7 @@ export class User { 
     public partidas?: Partida[];
     public displayName?: string;
     public profilePhotoUrl?: string;
+    public editionRequests?: number;
     constructor(auth) {
         this.uid = auth.uid
     }
