@@ -11,6 +11,7 @@ import 'rxjs/add/operator/switchMap'
 @Injectable()
 export class AuthenticationService {
     public authState: any = null;
+    private _firebaseAuthentication = firebase.auth();
     public user: Observable<User>;
     constructor(private  afAuth: AngularFireAuth,
                 private  _afStore: AngularFireDatabase, 
@@ -27,6 +28,7 @@ export class AuthenticationService {
           .then((user)=> 
                 { 
                     this.authState = user,
+                    this._firebaseAuthentication.currentUser.sendEmailVerification(userForm.email),
                     this._userService.createsUserAndInitialData(user,userForm.country,userForm.username),
                     this._router.navigate(['/profile']);
                 }).catch(error => console.log(error));

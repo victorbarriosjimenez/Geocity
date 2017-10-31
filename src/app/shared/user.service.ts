@@ -32,6 +32,7 @@ export class UserService {
         }
         userRef.update(data)
           .catch(error => console.log(error));
+        
     }
     public getUserData() { 
         const userDataPath = `https://geocity-app.firebaseio.com/users/${this.currentUserId}.json`;
