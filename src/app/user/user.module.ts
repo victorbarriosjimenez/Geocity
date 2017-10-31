@@ -26,7 +26,6 @@ import { UserService } from '../shared/user.service';
     ButtonUpperComponent,
     FriendsRankingComponent,
     WorldwideRankingComponent
-  
   ],
   exports: [
     NavigationComponent,

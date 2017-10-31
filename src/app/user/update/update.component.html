@@ -1,3 +1,38 @@
-<p>
-  update works!
-</p>
+<app-navigation></app-navigation>
+<header>  
+</header>
+<div class="container">
+    <h1>Editar mi perfil </h1>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p class="user-details">
+              Información general
+            </p>
+          </mat-panel-title>
+          <mat-panel-description>
+            Modificar mis datos
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div *ngIf="user; else loading" class="container">
+            <div>
+                <img src="{{ user.profilePhotoUrl }}" alt="">
+            </div>
+            <div class="user-details">
+                    <p>
+                        {{ user.username }} 
+                    </p>
+                    <p class="country">{{ user.country | uppercase }}</p>                    
+            </div>
+        </div>
+      </mat-expansion-panel>
+
+      <div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+    </div>
+  </div>
+  <h2>Cambiar mi contraseña de Geocity</h2>    
+</div>
