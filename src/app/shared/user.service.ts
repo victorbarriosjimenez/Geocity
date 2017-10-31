@@ -20,6 +20,7 @@ export class UserService {
                         this.authState = auth
                 });
     }
+   /* ---------------------------------- USER CRUD OPERATIONS ----------------------------------  */
     public createsUserAndInitialData(userstate,country,username){ 
         const path = `users/${userstate.uid}`; 
         const userRef: AngularFireObject<any> = this._afDatabase.object(path);    
@@ -48,12 +49,14 @@ export class UserService {
         return this.http.get(userDataPath)
                   .map(response => response.json());
     }
+   /* ---------------------------------- USER ACCOUNT OPERATIONS ----------------------------------  */
     public sendsResetPasswordEmail(email: string) {
         const fbAuth = firebase.auth();
         return fbAuth.sendPasswordResetEmail(email)
           .then(() => console.log('email sent'))
           .catch((error) => console.log(error))
     } 
+    /* ---------------------------------- USER PROPERTIES  ----------------------------------  */
     get currentUserId(): string {
         return this.authenticated ? this.authState.uid : '';
     }
