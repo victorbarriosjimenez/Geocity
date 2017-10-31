@@ -1,5 +1,5 @@
 <header>
-    <div *ngIf="user" class="container">
+    <div *ngIf="user; else loading" class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-4 col-sm-offset-2 col-sm-4 col-xs-12">
                 <img src="{{ user.profilePhotoUrl }}" alt="">
@@ -21,6 +21,9 @@
             </div>
         </div>
     </div>
+    <ng-template #loading>
+       <mat-spinner mode="indeterminate" color="accent"></mat-spinner>
+    </ng-template>
 </header>
 <app-navigation></app-navigation>
 <button-upper></button-upper>

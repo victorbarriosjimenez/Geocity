@@ -9,10 +9,12 @@ import { UserService } from '../shared/user.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  user: User;
+  public user: User;
+  public is_loading: boolean = false;
   constructor(private auth: AuthenticationService,
               private _userService:  UserService,
-              private _router: Router) { }
+              private _router: Router) { 
+              }
   ngOnInit() { 
     this.getProfileBioData();
   }
@@ -20,7 +22,7 @@ export class UserProfileComponent implements OnInit {
     this._userService.getUserData()
       .subscribe(data => this.user = data,
                   (err) => console.log(err),
-                  () => console.log('Success!')
+                  () => console.log('Success')
       );
   }
 }

@@ -23,7 +23,7 @@ import { CommonModule } from '@angular/common';
     MatProgressSpinnerModule,
     MatSelectModule,
     MatStepperModule,
-    MatTooltipModule   
+    MatTooltipModule
   ],
   exports: [
     MatFormFieldModule,
