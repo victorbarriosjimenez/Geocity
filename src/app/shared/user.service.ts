@@ -32,7 +32,16 @@ export class UserService {
         }
         userRef.update(data)
           .catch(error => console.log(error));
-        
+    }
+    public updateUserInformation(userUpdateFormModel: User) {
+        const path = `users/${this.currentUserId}`; 
+        const userRef: AngularFireObject<any> = this._afDatabase.object(path);    
+        const data = {
+            username: userUpdateFormModel.username, 
+            country: userUpdateFormModel.country,
+            profilePhotoUrl: userUpdateFormModel.profilePhotoUrl
+        }       
+        return userRef.update(data);
     }
     public getUserData() { 
         const userDataPath = `https://geocity-app.firebaseio.com/users/${this.currentUserId}.json`;

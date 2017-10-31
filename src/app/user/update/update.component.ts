@@ -24,7 +24,8 @@ export class UpdateComponent implements OnInit {
               private _userService:  UserService,
               private _formsService: FormsService, 
               private _fb: FormBuilder,
-              private _router: Router) { 
+              private _router: Router,
+              private _snackBar: MatSnackBar) { 
               }
   ngOnInit() { 
     this.createForm(); 
@@ -59,10 +60,16 @@ export class UpdateComponent implements OnInit {
   private sendPasswordResetEmail(){
       const userEmail : string  = this.user.email;
       this._userService.sendsResetPasswordEmail(userEmail)
-          .then( () => { this.isEmailConfirmationSent = true })
+          .then( () => { 
+                        this.isEmailConfirmationSent = true,
+                        this.showsSnackBarWithDetailsOFEmailSent(userEmail)
+                      })
           .catch( (err) => console.log(err));
   }
-  private showsSnackBarWithDetailsOFEmailSent( ){
-    
+  private showsSnackBarWithDetailsOFEmailSent(email: string) {
+    const message: string = `Hemos enviado un correo a la cuenta ${email} para cambiar tu password.`; 
+    this._snackBar.open(message, "DE ACUERDO", {
+      duration: 5000,
+    });   
   }
 }
