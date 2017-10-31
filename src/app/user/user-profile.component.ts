@@ -10,7 +10,6 @@ import { UserService } from '../shared/user.service';
 })
 export class UserProfileComponent implements OnInit {
   public user: User;
-  public is_loading: boolean = false;
   constructor(private auth: AuthenticationService,
               private _userService:  UserService,
               private _router: Router) { 
