@@ -2,7 +2,7 @@
 <header>  
 </header>
 <div class="container">
-    <h2>Editar mi perfil </h2>
+    <h2>Editar perfil </h2>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -11,12 +11,12 @@
             </p>
           </mat-panel-title>
           <mat-panel-description>
-            Modificar mis datos
+            Actualizar mi perfil
           </mat-panel-description>
         </mat-expansion-panel-header>
         <div class="row">
             <div class="col-md-6 col-xs-12 col-sm-6">
-              <h3>Modifica tu información </h3>
+              <h3>Modifica tu información general </h3>
               <form (ngSubmit)="registerAccountWithEmailAndPassword()" [formGroup]="userUpdateForm">     
                     <mat-form-field class="full-width">
                             <input 
@@ -26,29 +26,38 @@
                                 formControlName="username">
                     </mat-form-field> 
                     <mat-form-field class="full-width">
-                        <mat-select placeholder="Pais de Origen" formControlName="country">
-                          <mat-option *ngFor="let country of countries" [value]="country.name">
-                              {{ country.name }}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
+                        <input 
+                            matInput
+                            type="text"
+                            placeholder="Foto de perfil"
+                            formControlName="profilePhotoUrl">
+                    </mat-form-field> 
+                    <mat-form-field class="full-width">
+                      <mat-select placeholder="Pais de Origen" formControlName="country">
+                        <mat-option *ngFor="let country of countries" [value]="country.name">
+                            {{ country.name }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
                     <button mat-raised-button type="submit" color="primary">Guardar cambios</button>
                 </form>
             </div>  
-            <div *ngIf="user; else loading" class="col-md-6 col-xs-12 col-sm-6">
+            <div class="col-md-6 col-xs-12 col-sm-6">
                 <div>
-                    <img src="{{ user.profilePhotoUrl }}" alt="">
+                     <img  src="{{ userUpdateForm.value.profilePhotoUrl }}" alt="">
                 </div>
                 <div class="user-details">
-                        <p>
-                            {{ user.username }} 
-                        </p>
-                        <p class="country">{{ user.country | uppercase }}</p>                    
+                      <p>
+                        <span>Username:</span> {{ userUpdateForm.value.username }}
+                      </p>     
+                      <p> 
+                        <span>País de origen:</span>  {{ userUpdateForm.value.country }}                          
+                      </p>         
                 </div>
             </div> 
         </div>
       </mat-expansion-panel>
-  <h2>Cambiar mi contraseña de Geocity</h2>    
+  <h2>Cambiar contraseña</h2>    
   <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -67,23 +76,24 @@
       <br>
       <button mat-raised-button color="warn">Enviar correo de confirmación</button>
     </mat-expansion-panel>
-    <h2>Eliminar mi cuenta de Geocity</h2>    
+    <h2>Eliminar mi cuenta</h2>    
     <mat-expansion-panel color="warn">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <p class="user-details">
-              Eliminar mi cuenta
+              Salirme de Geocity
             </p>
           </mat-panel-title>
           <mat-panel-description>
              
           </mat-panel-description>
         </mat-expansion-panel-header>
-           ¡Cuidado! Al pulsar este botón tu cuenta será eliminida permanentemente,
+          <p class="text-center"> ¡Cuidado! Al pulsar este botón tu cuenta será eliminida permanentemente,
            tú historial de partidas y tu información personal será eliminada de Geocity 
            y no podrá ser recuperada.
+          </p>
         <br>
         <br>
-        <button mat-raised-button color="warn">Eliminar mi cuenta</button>
+        <button style="display: flex; margin: 0 auto;" mat-raised-button color="warn">Eliminar mi cuenta</button>
       </mat-expansion-panel>
 </div>

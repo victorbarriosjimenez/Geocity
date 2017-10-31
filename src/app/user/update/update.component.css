@@ -11,28 +11,37 @@ header {
     justify-content: flex-start;
     background-repeat: no-repeat;
 }
+h1,h2,h3{
+    font-family: 'jaapokkiregularregular';
+    margin-bottom: .5em;
+    margin-top: 1em;  
+}
 h1{
     font-size: 4em;
-    margin-top: 1em;    
-    margin-bottom: .5em;
-    font-family: 'jaapokkiregularregular';
 }
 h2{
     font-size: 3em;
-    margin-top: 1em;
-    margin-bottom: .5em;
-    font-family: 'jaapokkiregularregular';
 }
 img {
     width: 150px;
     height: auto;
-    margin-top: 1em;
+    display: flex;
+    margin-left: auto;
     border-radius: 50%;
+    margin-right: auto;
+    margin-top: 1em;     
+    margin-bottom: -20px; 
 }
 .user-details {
     margin-left: .5em;
     margin-top: 2em;
+    font-family: 'jaapokkiregularregular';
+    font-size: 2em;    
+    text-align: center;
 }
+.user-details span{
+    font-family: 'Ubuntu', sans-serif;    
+}       
 p.user-details {
     margin-top: -1px;
     font-size: 1em;

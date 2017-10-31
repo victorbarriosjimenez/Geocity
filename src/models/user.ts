@@ -9,6 +9,7 @@ export class User { 
     public score?: number;
     public partidas?: Partida[];
     public displayName?: string;
+    public profilePhotoUrl?: string;
     constructor(auth) {
         this.uid = auth.uid
     }

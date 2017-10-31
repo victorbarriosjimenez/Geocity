@@ -21,14 +21,15 @@ export class UpdateComponent implements OnInit {
               private _router: Router) { 
               }
   ngOnInit() { 
-    this.createForm();    
-    this.getCountries();
+    this.createForm(); 
+    this.getCountries();   
     this.getProfileBioData();
   }
   public createForm( ): void {
     this.userUpdateForm =  this._fb.group({
              username:['',Validators.required],
-             country:['', Validators.required],
+             profilePhotoUrl: ['',Validators.required],
+             country:['', Validators.required]
      });
    }
   getProfileBioData( ):  void {
@@ -45,7 +46,8 @@ export class UpdateComponent implements OnInit {
   private InitializeValuesIfUserExists(): void {
     this.userUpdateForm.patchValue({
           username: this.user.username,
-          country: this.user.country,
+          profilePhotoUrl: this.user.profilePhotoUrl,
+          country: this.user.country
     });
   }
 }
