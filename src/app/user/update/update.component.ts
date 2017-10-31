@@ -73,7 +73,10 @@ export class UpdateComponent implements OnInit {
       const userModelUpdated: User =  this.prepareUserModelUpdated();
       console.log(userModelUpdated);
      this._userService.updateUserInformation(userModelUpdated)
-          .then(() => this.showsSnackBarWithDetails(this.profileModifiedConfirmationMessage));
+          .then(() => {
+                      this.showsSnackBarWithDetails(this.profileModifiedConfirmationMessage),
+                      this.restrictUserTimeOportunitiesToUpdate()
+          });
   }
   /* -------------------------  User Admnistration methods -------------------------*/
   private sendPasswordResetEmail() : void {
@@ -89,5 +92,8 @@ export class UpdateComponent implements OnInit {
     this._snackBar.open(message, "DE ACUERDO", {
         duration: 5000,
     });   
+  }
+  public restrictUserTimeOportunitiesToUpdate() {
+      console.log(this._userService.userEditionControl());
   }
 }

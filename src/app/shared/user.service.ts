@@ -13,6 +13,7 @@ export class UserService {
     private firebaseUrl: string = 'https://geocity-app.firebaseio.com/';
     public authState: any = null;    
     public currentUser: any;
+    public timesUserHasUpdatedProfile: number = 0;
     constructor(private http: Http,
                 private _afDatabase: AngularFireDatabase,
                 private _afAuth: AngularFireAuth) { 
@@ -20,8 +21,10 @@ export class UserService {
                         this.authState = auth
                 });
     }
+
    /* ---------------------------------- USER CRUD OPERATIONS ----------------------------------  */
-    public createsUserAndInitialData(userstate,country,username){ 
+    
+   public createsUserAndInitialData(userstate,country,username){ 
         const path = `users/${userstate.uid}`; 
         const userRef: AngularFireObject<any> = this._afDatabase.object(path);    
         const data = {
@@ -29,6 +32,7 @@ export class UserService {
             username: username,
             country: country,
             score: 0,
+            editionResquests: 0,
             profilePhotoUrl: 'http://voice4thought.org/wp-content/uploads/2016/08/default2-1.jpg'
         }
         userRef.update(data)
@@ -49,13 +53,34 @@ export class UserService {
         return this.http.get(userDataPath)
                   .map(response => response.json());
     }
-   /* ---------------------------------- USER ACCOUNT OPERATIONS ----------------------------------  */
+   
+    /* ---------------------------------- USER ACCOUNT OPERATIONS ----------------------------------  */
+    
     public sendsResetPasswordEmail(email: string) {
         const fbAuth = firebase.auth();
         return fbAuth.sendPasswordResetEmail(email)
           .then(() => console.log('email sent'))
           .catch((error) => console.log(error))
-    } 
+    }
+    public userEditionControl(reset?: boolean):  number {
+        const path = `users/${this.currentUserId}`; 
+        const userRef: AngularFireObject<any> = this._afDatabase.object(path);        
+        if(reset) {
+            this.timesUserHasUpdatedProfile = 0;
+            const data = {
+                  editionResquests: this.timesUserHasUpdatedProfile,
+            }
+            userRef.update(data);
+        }  
+        else {
+            this.timesUserHasUpdatedProfile += 1; 
+            const data = {
+                editionResquests: this.timesUserHasUpdatedProfile,
+            }
+            userRef.update(data);
+            return this.timesUserHasUpdatedProfile;
+        }
+    }
     /* ---------------------------------- USER PROPERTIES  ----------------------------------  */
     get currentUserId(): string {
         return this.authenticated ? this.authState.uid : '';

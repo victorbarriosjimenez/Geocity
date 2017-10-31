@@ -41,8 +41,11 @@ export class AuthenticationService {
         }).catch(error => console.log(error));
     }
     public logoutfromGeocity(): void { 
-        this.afAuth.auth.signOut();
-        this._router.navigate(['/']);
+        this.afAuth.auth.signOut().then(
+            () => { 
+                this._userService.userEditionControl(true),
+                this._router.navigate(['/'])
+        });
     } 
     /* -------------------------------- OAuth Authentication Methods -------------------------------------- */ 
     public googleAccountLogin( ){
