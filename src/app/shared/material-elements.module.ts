@@ -9,7 +9,8 @@ import {
           MatSelectModule,
           MatStepperModule,
           MatTooltipModule,
-          MatExpansionModule
+          MatExpansionModule,
+          MatSnackBarModule
         } from '@angular/material';
 import { CommonModule } from '@angular/common';
 @NgModule({
@@ -24,7 +25,8 @@ import { CommonModule } from '@angular/common';
     MatSelectModule,
     MatStepperModule,
     MatTooltipModule,
-    MatExpansionModule    
+    MatExpansionModule,
+    MatSnackBarModule    
   ],
   exports: [
     MatFormFieldModule,
@@ -36,7 +38,8 @@ import { CommonModule } from '@angular/common';
     MatSelectModule,
     MatStepperModule,
     MatTooltipModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule
   ], 
   declarations: [
 ]

@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import  { AuthenticationService } from '../../shared/authentication.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router }  from '@angular/router';
-import  { User } from '../../../models'
+import { MatSnackBar } from '@angular/material';
+/* Services */
 import { FormsService } from '../../shared/forms.service';
 import { UserService } from '../../shared/user.service';
+import  { AuthenticationService } from '../../shared/authentication.service';
+
+/* Classes */
+import  { User } from '../../../models'
+
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
@@ -33,7 +38,7 @@ export class UpdateComponent implements OnInit {
              country:['', Validators.required]
      });
    }
-  getProfileBioData( ):  void {
+  private getProfileBioData( ):  void {
     this._userService.getUserData()
       .subscribe(data => this.user = data,
                   (err) => console.log(err),
@@ -56,5 +61,8 @@ export class UpdateComponent implements OnInit {
       this._userService.sendsResetPasswordEmail(userEmail)
           .then( () => { this.isEmailConfirmationSent = true })
           .catch( (err) => console.log(err));
+  }
+  private showsSnackBarWithDetailsOFEmailSent( ){
+    
   }
 }
