@@ -16,7 +16,24 @@
         </mat-expansion-panel-header>
         <div class="row">
             <div class="col-md-6 col-xs-12 col-sm-6">
-                Holo
+              <h3>Modifica tu información </h3>
+              <form (ngSubmit)="registerAccountWithEmailAndPassword()" [formGroup]="userUpdateForm">     
+                    <mat-form-field class="full-width">
+                            <input 
+                                matInput
+                                type="text"
+                                placeholder="Nombre de Usuario"
+                                formControlName="username">
+                    </mat-form-field> 
+                    <mat-form-field class="full-width">
+                        <mat-select placeholder="Pais de Origen" formControlName="country">
+                          <mat-option *ngFor="let country of countries" [value]="country.name">
+                              {{ country.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    <button mat-raised-button type="submit" color="primary">Guardar cambios</button>
+                </form>
             </div>  
             <div *ngIf="user; else loading" class="col-md-6 col-xs-12 col-sm-6">
                 <div>

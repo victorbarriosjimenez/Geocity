@@ -13,7 +13,6 @@ import { User } from '../../models';
 export class RegisterComponent implements OnInit {
   public countries: any;
   public loading: boolean;
-  public model: any = { };
   public registrationForm: FormGroup;
   constructor(private _formsService: FormsService, 
               private _fb: FormBuilder,
