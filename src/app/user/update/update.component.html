@@ -14,25 +14,40 @@
             Modificar mis datos
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <div *ngIf="user; else loading" class="container">
-            <div>
-                <img src="{{ user.profilePhotoUrl }}" alt="">
-            </div>
-            <div class="user-details">
-                    <p>
-                        {{ user.username }} 
-                    </p>
-                    <p class="country">{{ user.country | uppercase }}</p>                    
-            </div>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 col-sm-6">
+                Holo
+            </div>  
+            <div *ngIf="user; else loading" class="col-md-6 col-xs-12 col-sm-6">
+                <div>
+                    <img src="{{ user.profilePhotoUrl }}" alt="">
+                </div>
+                <div class="user-details">
+                        <p>
+                            {{ user.username }} 
+                        </p>
+                        <p class="country">{{ user.country | uppercase }}</p>                    
+                </div>
+            </div> 
         </div>
       </mat-expansion-panel>
-
-      <div class="row">
-    <div class="col-md-6 col-sm-6 col-xs-12">
-
-    </div>
-    <div class="col-md-6 col-sm-6 col-xs-12">
-    </div>
-  </div>
   <h2>Cambiar mi contraseña de Geocity</h2>    
+  <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <p class="user-details">
+            Cambiar contraseña
+          </p>
+        </mat-panel-title>
+        <mat-panel-description>
+           Enviar a formulario a mi correo 
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      Geocity enviará para el cambio de tu nueva contraseña.
+      Si estás seguro pulsa el siguente botón para hacer el envío,
+      nos pondremos en contacto contigo enseguida.
+      <br>
+      <br>
+      <button mat-raised-button color="warn">Enviar correo de confirmación</button>
+    </mat-expansion-panel>
 </div>
