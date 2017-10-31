@@ -19,6 +19,8 @@ export class UpdateComponent implements OnInit {
   public user: User;
   public countries: any;  
   public userUpdateForm: FormGroup;
+  public  emailSentConfirmationMessage: string = `Hemos enviado un correo a la cuenta para cambiar tu password.`;   
+  public  profileModifiedConfirmationMessage: string = `Tu perfil se ha modificado exitosamente!`;    
   public isEmailConfirmationSent: boolean;
   constructor(private auth: AuthenticationService,
               private _userService:  UserService,
@@ -32,6 +34,7 @@ export class UpdateComponent implements OnInit {
     this.getCountries();   
     this.getProfileBioData();
   }
+  /* -------------------------  Form Admnistration -------------------------*/
   public createForm( ): void {
     this.userUpdateForm =  this._fb.group({
              username:['',Validators.required],
@@ -57,19 +60,34 @@ export class UpdateComponent implements OnInit {
           country: this.user.country
     });
   }
-  private sendPasswordResetEmail(){
+  private prepareUserModelUpdated( ) : User { 
+    const formModel = this.userUpdateForm.value;
+    const userModel: User = {
+        username:  formModel.username as string,
+        country: formModel.country as string,
+        profilePhotoUrl: formModel.profilePhotoUrl as string
+    };
+      return userModel
+  }
+  public sendsUserUpdateForm(): void {
+      const userModelUpdated: User =  this.prepareUserModelUpdated();
+      console.log(userModelUpdated);
+     this._userService.updateUserInformation(userModelUpdated)
+          .then(() => this.showsSnackBarWithDetails(this.profileModifiedConfirmationMessage));
+  }
+  /* -------------------------  User Admnistration methods -------------------------*/
+  private sendPasswordResetEmail() : void {
       const userEmail : string  = this.user.email;
       this._userService.sendsResetPasswordEmail(userEmail)
-          .then( () => { 
+          .then(() => { 
                         this.isEmailConfirmationSent = true,
-                        this.showsSnackBarWithDetailsOFEmailSent(userEmail)
-                      })
+                        this.showsSnackBarWithDetails(this.emailSentConfirmationMessage)
+                })
           .catch( (err) => console.log(err));
   }
-  private showsSnackBarWithDetailsOFEmailSent(email: string) {
-    const message: string = `Hemos enviado un correo a la cuenta ${email} para cambiar tu password.`; 
+  private showsSnackBarWithDetails(message: string) : void {
     this._snackBar.open(message, "DE ACUERDO", {
-      duration: 5000,
+        duration: 5000,
     });   
   }
 }
