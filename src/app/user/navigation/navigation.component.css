@@ -78,3 +78,23 @@ nav{
     height: 40px;
 }
 .navbar {min-height:28px !important;}
+@media only screen 
+and (max-device-width: 640px), 
+only screen and (max-device-width: 667px), 
+only screen and (max-width: 480px)
+{
+    .navbar .navbar-brand img {
+        width: 200px;
+        height: auto;
+        margin-left: 10px;
+        padding-top: 20px;
+    }
+    .navbar.transparent .navbar-toggle {
+        border-color: transparent;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        margin-top: 15px;
+        margin-left:-50px;
+    }
+}

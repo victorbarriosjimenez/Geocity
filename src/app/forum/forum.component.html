@@ -38,7 +38,7 @@
             </form>
     </div>
         <div *ngIf="posts; else loadingPosts" class="row">
-                  <mat-card *ngFor="let post of posts">
+                  <mat-card *ngFor="let post of posts" class="user-post">
                     <mat-card-header>
                       <div mat-card-avatar style="width: 75px; height:75px;" [ngStyle]="{'background-image': 'url('+post.authorProfilePhoto +')'}"></div>
                       <mat-card-title>{{ post.authorUsername }}</mat-card-title>
@@ -56,6 +56,6 @@
                 </mat-card>
         </div>
         <ng-template #loadingPosts>
-                <mat-spinner mode="indeterminate" color="primary"></mat-spinner>
-             </ng-template>
+                <mat-spinner style="display: flex; margin: 0 auto;" mode="indeterminate" color="primary"></mat-spinner>
+        </ng-template>
 </div>
