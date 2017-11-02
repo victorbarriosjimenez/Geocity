@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../shared/user.service';
-import  { User } from '../../models'
+import  { User } from '../../models';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -8,7 +9,8 @@ import  { User } from '../../models'
 })
 export class ForumComponent implements OnInit {
   user: User;
-  constructor(private _userService: UserService) { }
+  constructor(private _userService: UserService,
+              private _afDatabase: AngularFireDatabase) { }
   ngOnInit() {
     this.getProfileBioData();
   }   
@@ -19,4 +21,11 @@ export class ForumComponent implements OnInit {
                   () => console.log('Success')
       );
   }
+  public createNewPost( ): void { 
+
+  }
+  public getListOfPostsFromUser( ): void { 
+
+  }
+
 }
