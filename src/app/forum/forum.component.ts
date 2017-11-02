@@ -29,8 +29,9 @@ export class ForumComponent implements OnInit {
                   () => console.log('Success')
       );
   }
-  public createNewPost(post: string): void { 
-        console.log(this.createPostForm.value['body']);
+  public createNewPost( ): void { 
+      const postModel: Post = this.preparePost();
+      this._postsService.createNewPost(postModel);
   }
   public preparePost() { 
       const formModel = this.createPostForm.value;
@@ -40,6 +41,7 @@ export class ForumComponent implements OnInit {
           authorProfilePhoto: this.user.profilePhotoUrl,
           authorUsername: this.user.username
       }
+      return postModel;
   }
   public getListOfPostsFromUser( ): void {  }
   public createForm( ): void {

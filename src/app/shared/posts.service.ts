@@ -16,9 +16,7 @@ export class PostsService {
 
     constructor(private _afDatabase: AngularFireDatabase,
                 private _afAuth: AngularFireAuth) {
-        this._afAuth.authState.subscribe(user =>{
-            if(user) this.userId = user.uid
-        })
+                    this.postsDatabaseReference = _afDatabase.list('/posts');
     }
     public getListOfUserPosts(query?: any) {
         return this.postsDatabaseReference.snapshotChanges().map(arr => {
@@ -30,11 +28,11 @@ export class PostsService {
         this.post = this._afDatabase.object(itemPath).valueChanges();
         return this.post
     }
-    public createNewPost(post: Post): void { 
+    public createNewPost(post: Post): void {
+        console.log(post); 
         this.postsDatabaseReference.push(post);
     }
     public deletePost(key: string): void { 
-
     }
     public getAllPosts( ) { 
        
