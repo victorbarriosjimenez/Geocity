@@ -25,10 +25,10 @@ import { RoutesModule } from './routes';
 /* Components */ 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './notfound.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
 import { environment } from '../environments/environment';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './user/home/home.component';
 import { UpdateComponent } from './user/update/update.component';
 
 @NgModule({
