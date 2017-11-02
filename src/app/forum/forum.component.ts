@@ -39,7 +39,8 @@ export class ForumComponent implements OnInit {
           body: formModel.body as string, 
           timestamp: new Date(),
           authorProfilePhoto: this.user.profilePhotoUrl,
-          authorUsername: this.user.username
+          authorUsername: this.user.username,
+          userId: this._userService.currentUserId
       }
       return postModel;
   }
