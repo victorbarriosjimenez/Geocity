@@ -23,6 +23,9 @@ export class RegisterComponent implements OnInit {
     this.createForm();
     this.getCountries();
   } 
+  public checkIfUsernameIsAvailable( ): void {
+        
+   }
   public createForm( ): void {
    this.registrationForm =  this._fb.group({
             email:['',Validators.required],

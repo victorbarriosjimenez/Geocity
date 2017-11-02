@@ -47,6 +47,9 @@ export class AuthenticationService {
                 this._router.navigate(['/'])
         });
     } 
+    public chekIfUsernameExists(username:  string): void { 
+        username = username.toLowerCase();
+    }
     /* -------------------------------- OAuth Authentication Methods -------------------------------------- */ 
     public googleAccountLogin( ){
         const provider = new firebase.auth.GoogleAuthProvider();
