@@ -11,8 +11,9 @@ import { PostsService } from './../shared/posts.service'
 })
 export class ForumComponent implements OnInit {
   public createPostForm: FormGroup;
-  user: User;
-  post: string = '';
+  public user: User;
+  public post: string = '';
+  public listOfPosts: Post[];
   constructor(private _postsService:PostsService,
               private _userService: UserService,
               private _afDatabase: AngularFireDatabase,
@@ -20,6 +21,7 @@ export class ForumComponent implements OnInit {
                }
   ngOnInit() {
     this.getProfileBioData();
+    this.getListOfAllPosts();
     this.createForm();
   }   
   private getProfileBioData( ):  void {
@@ -37,14 +39,19 @@ export class ForumComponent implements OnInit {
       const formModel = this.createPostForm.value;
       const postModel: Post = { 
           body: formModel.body as string, 
-          timestamp: new Date(),
-          authorProfilePhoto: this.user.profilePhotoUrl,
-          authorUsername: this.user.username,
-          userId: this._userService.currentUserId
+          timestamp: new Date() as Date,
+          authorProfilePhoto: this.user.profilePhotoUrl as string,
+          authorUsername: this.user.username as string,
+          userId: this._userService.currentUserId as string
       }
       return postModel;
   }
-  public getListOfPostsFromUser( ): void {  }
+  public getListOfAllPosts( ): void { 
+      this._postsService.getListOfAllPosts()
+          .subscribe((posts: Post[]) => { 
+                            this.listOfPosts = posts
+          });
+  }
   public createForm( ): void {
     this.createPostForm =  this._fb.group({
              body:['']

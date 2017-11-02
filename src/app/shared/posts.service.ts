@@ -18,10 +18,10 @@ export class PostsService {
                 private _afAuth: AngularFireAuth) {
                     this.postsDatabaseReference = _afDatabase.list('/posts');
     }
-    public getListOfUserPosts(query?: any) {
+    public getListOfAllPosts(query?: any) {
         return this.postsDatabaseReference.snapshotChanges().map(arr => {
             return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }) )
-        });
+          })
     }
     public getPost(key: string): Observable<Post> { 
         const itemPath = `${this.dataPath}/${key}`;

@@ -25,17 +25,19 @@
     <h2>Crea una nueva publicación</h2>
     <div class="form-container">
             <form (ngSubmit)="createNewPost()" [formGroup]="createPostForm">    
-                    <mat-form-field class="new-post">
-                        <textarea 
-                                matInput
-                                type="text"
-                                formControlName="body"
-                                placeholder="¿Que esta pasando? Compartelo con la comunidad">
-                         </textarea>
-                    </mat-form-field> 
+                <mat-form-field class="new-post">
+                    <textarea 
+                        matInput
+                        type="text"
+                        formControlName="body"
+                        placeholder="¿Que esta pasando? Compartelo con la comunidad">
+                    </textarea>
+                </mat-form-field> 
                     <br>
                     <button style="background-color: blue;" mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
-                    {{ createPostForm.value | json }}
             </form>
+    </div>
+    <div class="row">
+        {{ listOfPosts | json }}
     </div>
 </div>
