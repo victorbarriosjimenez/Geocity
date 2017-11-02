@@ -41,8 +41,7 @@ import { UpdateComponent } from './user/update/update.component';
     UpdateComponent
 ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,    
+    AngularFireModule.initializeApp(environment.firebase),    
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserModule,

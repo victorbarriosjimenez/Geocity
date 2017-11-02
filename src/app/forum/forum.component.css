@@ -23,6 +23,12 @@ h1 {
     font-size: 6em;
     font-family: 'jaapokkiregularregular';
 }
+h2 {
+    margin-top: 1em;
+    font-size: 3em;
+    font-family: 'jaapokkiregularregular';
+    text-align: center;
+}
 img {
     width: 280px;
     height: auto;
@@ -43,4 +49,12 @@ img {
 .user-edit {
     background-color: rgba(0,0,0, 0.3);
     margin-left: 30px;
+}
+.new-post {
+    margin: 20px auto;
+    width: 100%;
+}
+.form-container {
+    display: block;
+    width: 80vw;
 }

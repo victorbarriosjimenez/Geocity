@@ -11,7 +11,7 @@
                                 {{ user.username }} 
                             </p>
                             <p class="country">{{ user.country | uppercase }}</p>                    
-                            <p>{{ user.ranking }} pts</p>
+                            <p>{{ user.score }} pts</p>
                        </div>
         
                     </div>
@@ -22,16 +22,18 @@
             </ng-template>
 </header>
 <div class="container">
-    <h2>Añade un nuevo post</h2>
-    <form (ngSubmit)="registerAccountWithEmailAndPassword()">    
-        <mat-form-field class="full-width">
-                <textarea 
-                    matInput
-                    type="text"
-                    placeholder="Escribe algo que te guste">
-                </textarea>
-        </mat-form-field> 
-        <br>
-        <button mat-raised-button type="submit" color="accent">Acceder</button>
-    </form>
+    <h2>Crea una nueva publicación</h2>
+    <div class="form-container">
+            <form  (ngSubmit)="registerAccountWithEmailAndPassword()">    
+                    <mat-form-field class="new-post">
+                        <textarea 
+                                matInput
+                                type="text"
+                                placeholder="¿Qué está pasando? Compartelo con la comunidad">
+                         </textarea>
+                    </mat-form-field> 
+                    <br>
+                    <button  mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
+            </form>
+    </div>
 </div>

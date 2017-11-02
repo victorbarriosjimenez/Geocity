@@ -10,7 +10,8 @@ import {
           MatStepperModule,
           MatTooltipModule,
           MatExpansionModule,
-          MatSnackBarModule
+          MatSnackBarModule,
+          MatTabsModule
         } from '@angular/material';
 import { CommonModule } from '@angular/common';
 @NgModule({
@@ -26,7 +27,9 @@ import { CommonModule } from '@angular/common';
     MatStepperModule,
     MatTooltipModule,
     MatExpansionModule,
-    MatSnackBarModule    
+    MatSnackBarModule,
+    MatTabsModule
+    
   ],
   exports: [
     MatFormFieldModule,
@@ -39,7 +42,9 @@ import { CommonModule } from '@angular/common';
     MatStepperModule,
     MatTooltipModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule
+    
   ], 
   declarations: [
 ]
