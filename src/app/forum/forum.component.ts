@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../shared/user.service';
-import  { User } from '../../models';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import  { User, Post } from '../../models';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { PostsService } from './../shared/posts.service'
 @Component({
@@ -9,14 +10,17 @@ import { PostsService } from './../shared/posts.service'
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent implements OnInit {
+  public createPostForm: FormGroup;
   user: User;
+  post: string = '';
   constructor(private _postsService:PostsService,
               private _userService: UserService,
-              private _afDatabase: AngularFireDatabase) {
-                
+              private _afDatabase: AngularFireDatabase,
+              private _fb: FormBuilder) {
                }
   ngOnInit() {
     this.getProfileBioData();
+    this.createForm();
   }   
   private getProfileBioData( ):  void {
     this._userService.getUserData()
@@ -25,11 +29,20 @@ export class ForumComponent implements OnInit {
                   () => console.log('Success')
       );
   }
-  public createNewPost( ): void { 
+  public createNewPost(post: string): void { 
+        console.log(this.createPostForm.value['body']);
+  }
+  public preparePost() { 
+      const formModel = this.createPostForm.value;
+      const postModel: Post = { 
+          body: formModel.body as string,   
+      }
 
   }
-  public getListOfPostsFromUser( ): void { 
-
-  }
-
+  public getListOfPostsFromUser( ): void {  }
+  public createForm( ): void {
+    this.createPostForm =  this._fb.group({
+             body:['']
+     });
+   }
 }

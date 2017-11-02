@@ -24,16 +24,16 @@
 <div class="container">
     <h2>Crea una nueva publicación</h2>
     <div class="form-container">
-            <form  (ngSubmit)="registerAccountWithEmailAndPassword()">    
+            <form>    
                     <mat-form-field class="new-post">
                         <textarea 
                                 matInput
                                 type="text"
-                                placeholder="¿Qué está pasando? Compartelo con la comunidad">
+                                placeholder="¿Qué está pasando? Compártelo con la comunidad">
                          </textarea>
                     </mat-form-field> 
                     <br>
-                    <button style="background-color: blue;" mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
+                    <button (click)="createNewPost(post)" style="background-color: blue;" mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
             </form>
     </div>
 </div>
