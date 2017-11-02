@@ -12,8 +12,7 @@ import { PostsService } from './../shared/posts.service'
 export class ForumComponent implements OnInit {
   public createPostForm: FormGroup;
   public user: User;
-  public post: string = '';
-  public listOfPosts: Post[];
+  public posts: Post[];
   constructor(private _postsService:PostsService,
               private _userService: UserService,
               private _afDatabase: AngularFireDatabase,
@@ -49,7 +48,7 @@ export class ForumComponent implements OnInit {
   public getListOfAllPosts( ): void { 
       this._postsService.getListOfAllPosts()
           .subscribe((posts: Post[]) => { 
-                            this.listOfPosts = posts
+                  this.posts = posts
           });
   }
   public createForm( ): void {

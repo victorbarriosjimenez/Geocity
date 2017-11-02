@@ -5,6 +5,7 @@ nav{
    background: transparent;
    border-color: transparent;
    padding-right: 100px;
+   position: absolute;
 }
 .navbar {
     margin-bottom: 0px;
