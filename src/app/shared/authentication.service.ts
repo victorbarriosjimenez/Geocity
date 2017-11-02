@@ -28,7 +28,7 @@ export class AuthenticationService {
           .then((user)=> 
                 { 
                     this.authState = user,
-                   // this._firebaseAuthentication.currentUser.sendEmailVerification(userForm.email),
+                    this._firebaseAuthentication.currentUser.sendEmailVerification({ url : 'https://geocity-app.firebaseapp.com/__/auth/action'}),
                     this._userService.createsUserAndInitialData(user,userForm.country,userForm.username),
                     this._router.navigate(['/profile']);
                 }).catch(error => console.log(error));
