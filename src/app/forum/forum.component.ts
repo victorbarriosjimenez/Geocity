@@ -35,7 +35,9 @@ export class ForumComponent implements OnInit {
   public preparePost() { 
       const formModel = this.createPostForm.value;
       const postModel: Post = { 
-          body: formModel.body as string,   
+          body: formModel.body as string, 
+          timestamp: new Date(),
+            
       }
 
   }
