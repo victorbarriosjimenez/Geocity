@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../shared/user.service';
 import  { User } from '../../models';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { PostsService } from './../shared/posts.service'
 @Component({
   selector: 'app-forum',
