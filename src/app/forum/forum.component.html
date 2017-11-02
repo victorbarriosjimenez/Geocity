@@ -18,7 +18,7 @@
                 </div>
             </div>
             <ng-template #loading>
-               <mat-spinner mode="indeterminate" color="accent"></mat-spinner>
+               <mat-spinner mode="indeterminate" color="primary"></mat-spinner>
             </ng-template>
 </header>
 <div class="container">
@@ -37,7 +37,7 @@
                     <button style="background-color: blue;" mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
             </form>
     </div>
-        <div *ngIf="posts" class="row">
+        <div *ngIf="posts; else loadingPosts" class="row">
                   <mat-card *ngFor="let post of posts">
                     <mat-card-header>
                       <div mat-card-avatar style="width: 75px; height:75px;" [ngStyle]="{'background-image': 'url('+post.authorProfilePhoto +')'}"></div>
@@ -55,4 +55,7 @@
                     </mat-card-actions>
                 </mat-card>
         </div>
+        <ng-template #loadingPosts>
+                <mat-spinner mode="indeterminate" color="primary"></mat-spinner>
+             </ng-template>
 </div>
