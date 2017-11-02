@@ -79,7 +79,7 @@ export class UpdateComponent implements OnInit {
           });
   }
   /* -------------------------  User Admnistration methods -------------------------*/
-  private sendPasswordResetEmail() : void {
+  public sendPasswordResetEmail() : void {
       const userEmail : string  = this.user.email;
       this._userService.sendsResetPasswordEmail(userEmail)
           .then(() => { 
