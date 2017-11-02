@@ -37,9 +37,9 @@ export class ForumComponent implements OnInit {
       const postModel: Post = { 
           body: formModel.body as string, 
           timestamp: new Date(),
-            
+          authorProfilePhoto: this.user.profilePhotoUrl,
+          authorUsername: this.user.username
       }
-
   }
   public getListOfPostsFromUser( ): void {  }
   public createForm( ): void {
