@@ -16,7 +16,7 @@ import { GameplayRoutesModule } from './gameplay.routes';
     GameplayRoutesModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapskey
-    }),
+    })
   ],
   declarations: [
     GameplayComponent

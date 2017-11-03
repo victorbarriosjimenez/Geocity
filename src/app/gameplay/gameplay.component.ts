@@ -9,7 +9,7 @@ export class GameplayComponent implements OnInit {
   lng: number;
   constructor() { }
   ngOnInit() {
-    this.getUserLocation()
+    this.getUserLocation();
   }
   private getUserLocation() {
     if (navigator.geolocation) {
