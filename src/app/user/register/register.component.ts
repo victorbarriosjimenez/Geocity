@@ -28,10 +28,10 @@ export class RegisterComponent implements OnInit {
    }
   public createForm( ): void {
    this.registrationForm =  this._fb.group({
-            email:['',Validators.required],
-            username:['',Validators.required],
+            email:['',Validators.required, Validators.email],
+            username:['',Validators.required, Validators.maxLength(16), Validators.minLength(4)],
             country:['', Validators.required],
-            password: ['', Validators.required],
+            password: ['', Validators.required, Validators],
             confirmPassword: ['', Validators.required]
     });
   }

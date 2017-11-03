@@ -35,6 +35,7 @@ export class ForumComponent implements OnInit {
   public createNewPost( ): void { 
       const postModel: Post = this.preparePost();
       this._forumService.createNewPost(postModel);
+      this.createPostForm.reset();
   }
   public preparePost() { 
       const formModel = this.createPostForm.value;
