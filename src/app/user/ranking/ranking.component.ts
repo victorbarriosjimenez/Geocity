@@ -8,6 +8,5 @@ import { Component, OnInit } from '@angular/core';
 
 export class RankingComponent implements OnInit {
     constructor() { }
-
     ngOnInit() { }
 }
