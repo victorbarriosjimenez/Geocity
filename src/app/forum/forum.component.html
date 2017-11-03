@@ -34,7 +34,7 @@
                     </textarea>
                 </mat-form-field> 
                     <br>
-                    <button style="background-color: blue;" mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
+                    <button [disabled]="!createPostForm.valid" mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
             </form>
     </div>
         <div *ngIf="posts; else loadingPosts" class="row">

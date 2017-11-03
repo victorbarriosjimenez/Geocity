@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../shared/user.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup , Validators} from '@angular/forms';
 import  { User, Post } from '../../models';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ForumService } from './../shared/forum.service'
-
 import { MatSnackBar } from '@angular/material';
-
-
 import * as firebase from 'firebase/app';
-
 
 @Component({
   selector: 'app-forum',
@@ -43,6 +39,7 @@ export class ForumComponent implements OnInit {
       const postModel: Post = this.preparePost();
       this._forumService.createNewPost(postModel);
       this.createPostForm.reset();
+      this.showsSnackOfPostCreated(`Hey ${this.user.username}! tu publicación ha sido publicada`);
   }
   public preparePost() { 
       const formModel = this.createPostForm.value;
@@ -63,12 +60,12 @@ export class ForumComponent implements OnInit {
   }
   public createForm( ): void {
     this.createPostForm =  this._fb.group({
-             body:['']
+             body:['', Validators.required]
      });
    }
    private showsSnackOfPostCreated(message: string) : void {
-    this._snackBar.open(message, "DE ACUERDO", {
-        duration: 5000,
+    this._snackBar.open(message, "OK", {
+        duration: 2000,
     });   
   }
 }
