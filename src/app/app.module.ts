@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialElementsModule  } from './shared/material-elements.module';
 import { UserModule } from './user/user.module';
 import { ForumModule } from './forum/forum.module';
-import { AgmCoreModule } from '@agm/core';
+import { GameplayModule } from './gameplay/gameplay.module';
 
 /* Services */
 import { FormsService } from './shared/forms.service';
@@ -43,9 +43,6 @@ import { UpdateComponent } from './user/update/update.component';
 ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),    
-    AgmCoreModule.forRoot({
-      apiKey: environment.googleMapskey
-    }),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserModule,
@@ -56,7 +53,8 @@ import { UpdateComponent } from './user/update/update.component';
     ReactiveFormsModule,
     UserModule,
     ForumModule,
-    RoutesModule
+    RoutesModule,
+    GameplayModule
   ],
   providers: [
     FormsService,
