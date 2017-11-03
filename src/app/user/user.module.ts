@@ -11,12 +11,13 @@ import { ButtonUpperComponent } from './button-upper/button-upper.component';
 import { FriendsRankingComponent } from './friends-ranking/friends-ranking.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { UserService } from '../shared/user.service';
-
+import { GameplayModule } from './../gameplay/gameplay.module';
 @NgModule({
   imports: [
     CommonModule,
     MaterialElementsModule,
-    UserRoutesModule
+    UserRoutesModule,
+    GameplayModule
   ],
   declarations: [
     UserProfileComponent,

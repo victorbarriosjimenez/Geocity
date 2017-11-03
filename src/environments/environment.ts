@@ -7,5 +7,6 @@ export const environment = {
     projectId: "geocity-app",
     storageBucket: "geocity-app.appspot.com",
     messagingSenderId: "840348035338"
-  }
+  },
+  googleMapskey: 'AIzaSyCymJ3rAVKiul5JjB_RBid-57ZnooRssw8'
 };

@@ -9,6 +9,9 @@ import { MaterialElementsModule  } from '../shared/material-elements.module';
     CommonModule,
     MaterialElementsModule
   ],
-  declarations: [GameplayComponent]
+  declarations: [GameplayComponent],
+  exports:[
+    GameplayComponent
+  ]
 })
 export class GameplayModule { }
