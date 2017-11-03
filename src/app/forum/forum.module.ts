@@ -5,7 +5,7 @@ import { ForumRoutesModule } from './forum-routes';
 import { UserModule } from '../user/user.module';
 import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 
-import { PostsService } from './../shared/posts.service';
+import { ForumService } from './../shared/forum.service';
 import { MaterialElementsModule  } from '../shared/material-elements.module';
 
 @NgModule({
@@ -21,7 +21,7 @@ import { MaterialElementsModule  } from '../shared/material-elements.module';
     ForumComponent
   ],
   providers: [ 
-    PostsService
+    ForumService
   ]
 })
 export class ForumModule { }

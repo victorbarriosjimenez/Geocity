@@ -3,7 +3,7 @@ import { UserService } from './../shared/user.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import  { User, Post } from '../../models';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { PostsService } from './../shared/posts.service'
+import { ForumService } from './../shared/forum.service'
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -13,7 +13,7 @@ export class ForumComponent implements OnInit {
   public createPostForm: FormGroup;
   public user: User;
   public posts: Post[];
-  constructor(private _postsService:PostsService,
+  constructor(private _forumService:ForumService,
               private _userService: UserService,
               private _afDatabase: AngularFireDatabase,
               private _fb: FormBuilder) {
@@ -32,7 +32,7 @@ export class ForumComponent implements OnInit {
   }
   public createNewPost( ): void { 
       const postModel: Post = this.preparePost();
-      this._postsService.createNewPost(postModel);
+      this._forumService.createNewPost(postModel);
   }
   public preparePost() { 
       const formModel = this.createPostForm.value;
@@ -46,7 +46,7 @@ export class ForumComponent implements OnInit {
       return postModel;
   }
   public getListOfAllPosts( ): void { 
-      this._postsService.getListOfAllPosts()
+      this._forumService.getListOfAllPosts()
           .subscribe((posts: Post[]) => { 
                   this.posts = posts
           });
