@@ -56,7 +56,7 @@ img {
 .form-container {
     display: block;
     width: 60vw;
-    margin: 0 auto;
+    margin: 30px auto;
 }
 .user-post {
     max-width: 60%;

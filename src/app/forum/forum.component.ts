@@ -4,7 +4,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import  { User, Post } from '../../models';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ForumService } from './../shared/forum.service'
+
+import { MatSnackBar } from '@angular/material';
+
+
 import * as firebase from 'firebase/app';
+
 
 @Component({
   selector: 'app-forum',
@@ -18,8 +23,10 @@ export class ForumComponent implements OnInit {
   constructor(private _forumService:ForumService,
               private _userService: UserService,
               private _afDatabase: AngularFireDatabase,
-              private _fb: FormBuilder) {
-               }
+              private _fb: FormBuilder,
+              private _snackBar: MatSnackBar) {
+               
+              }
   ngOnInit() {
     this.getProfileBioData();
     this.getListOfAllPosts();
@@ -59,4 +66,9 @@ export class ForumComponent implements OnInit {
              body:['']
      });
    }
+   private showsSnackOfPostCreated(message: string) : void {
+    this._snackBar.open(message, "DE ACUERDO", {
+        duration: 5000,
+    });   
+  }
 }
