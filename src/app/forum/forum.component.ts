@@ -40,7 +40,7 @@ export class ForumComponent implements OnInit {
       const formModel = this.createPostForm.value;
       const postModel: Post = { 
           body: formModel.body as string, 
-          timestamp: firebase.database.ServerValue.TIMESTAMP, 
+          timestamp: firebase.database.ServerValue.TIMESTAMP,
           authorProfilePhoto: this.user.profilePhotoUrl as string,
           authorUsername: this.user.username as string,
           userId: this._userService.currentUserId as string

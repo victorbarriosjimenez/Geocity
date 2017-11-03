@@ -42,7 +42,7 @@
                     <mat-card-header>
                       <div mat-card-avatar style="width: 75px; height:75px;" [ngStyle]="{'background-image': 'url('+post.authorProfilePhoto +')'}"></div>
                       <mat-card-title>{{ post.authorUsername }}</mat-card-title>
-                      <mat-card-subtitle></mat-card-subtitle>
+                      <mat-card-subtitle> {{ post.timestamp | date:'fullDate' }}</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
                       <p>
