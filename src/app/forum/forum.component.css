@@ -27,7 +27,6 @@ h2 {
     margin-top: 1em;
     font-size: 3em;
     font-family: 'jaapokkiregularregular';
-    text-align: center;
 }
 img {
     width: 280px;
@@ -57,4 +56,25 @@ img {
 .form-container {
     display: block;
     width: 60vw;
+    margin: 0 auto;
+}
+.user-post {
+    max-width: 60%;
+    margin: 20px auto;
+}
+.user-post-title {
+    font-family: 'jaapokkiregularregular';
+    font-size: 2em;
+    margin-left: 10px;
+}
+.user-post-timestamp {
+    font-family: 'Ubuntu';
+    margin-left: 15px;
+}
+.user-post-body {
+    margin-left: 10px;
+    margin-top: 30px;
+    font-family: 'Ubuntu';
+    font-size: 1.5em;
+    
 }
