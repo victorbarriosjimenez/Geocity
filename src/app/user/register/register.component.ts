@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { FormsService } from '../shared/forms.service';
-import { AuthenticationService } from '../shared/authentication.service';
+import { FormsService } from '../../shared/forms.service';
+import { AuthenticationService } from '../../shared/authentication.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx'; 
-import { User } from '../../models';
+import { User } from '../../../models';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
