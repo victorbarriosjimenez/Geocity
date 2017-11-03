@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import  { User, Post } from '../../models';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ForumService } from './../shared/forum.service'
+import * as firebase from 'firebase/app';
+
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -38,7 +40,7 @@ export class ForumComponent implements OnInit {
       const formModel = this.createPostForm.value;
       const postModel: Post = { 
           body: formModel.body as string, 
-          timestamp: new Date() as Date,
+          timestamp: firebase.database.ServerValue.TIMESTAMP, 
           authorProfilePhoto: this.user.profilePhotoUrl as string,
           authorUsername: this.user.username as string,
           userId: this._userService.currentUserId as string

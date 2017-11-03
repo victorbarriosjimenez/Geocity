@@ -20,7 +20,7 @@ export class ForumService {
     }
     public getListOfAllPosts(query?: any) {
         return this.postsDatabaseReference.snapshotChanges().map(arr => {
-            return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }) )
+            return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
           })
     }
     public getPost(key: string): Observable<Post> { 
