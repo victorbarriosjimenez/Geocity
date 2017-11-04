@@ -12,7 +12,6 @@ import * as firebase from 'firebase/app';
 export class UserService {
     private firebaseUrl: string = 'https://geocity-app.firebaseio.com/';
     public authState: any = null;    
-    public currentUser: any;
     public updateProfileRequests: number = 0;
     constructor(private http: Http,
                 private _afDatabase: AngularFireDatabase,
