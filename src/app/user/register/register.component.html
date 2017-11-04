@@ -21,11 +21,11 @@
                         <input 
                             matInput
                             type="text"
-                            placeholder="Nombre de Usuario"
+                            placeholder="Nombre de usuario"
                             formControlName="username">
                 </mat-form-field> 
                 <mat-form-field class="full-width">
-                    <mat-select placeholder="Pais de Origen" formControlName="country">
+                    <mat-select placeholder="Pais de origen" formControlName="country">
                       <mat-option *ngFor="let country of countries" [value]="country.name">
                           {{ country.name }}
                       </mat-option>
