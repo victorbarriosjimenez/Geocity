@@ -88,16 +88,20 @@
            Enviar a formulario a mi correo 
         </mat-panel-description>
       </mat-expansion-panel-header>
-        <p style="border-radius: 0px;" class="text-center alert alert-info">
-            Geocity enviará un correo para el cambio de tu contraseña.
-            Si estás seguro <strong>pulsa el siguente botón para hacer el envío</strong> y
-            nos pondremos en contacto contigo.
-            <br>
-            <button style="display: block; margin: 0 auto;" 
-            mat-raised-button 
-            color="accent"
-            (click)="sendPasswordResetEmail()">Enviar correo de confirmación</button>
-        </p>
+       <div style="border-radius: 0px;" class="text-center alert alert-info">
+          <p>
+              Geocity enviará un correo para el cambio de tu contraseña.
+              Si estás seguro <strong>pulsa el siguente botón para hacer el envío</strong> y
+              nos pondremos en contacto contigo.
+          </p>
+          <br>
+          <button style="display: block; margin: 0 auto;" 
+                  mat-raised-button 
+                  color="accent"
+                  (click)="sendPasswordResetEmail()">
+                  Enviar correo de confirmación
+          </button>
+        </div>
     </mat-expansion-panel>
     <h2>Eliminar mi cuenta</h2>    
     <mat-expansion-panel color="warn">
@@ -110,11 +114,12 @@
           <mat-panel-description>
           </mat-panel-description>
         </mat-expansion-panel-header>
-          <p style="border-radius: 0px;" class="text-center alert alert-danger"> 
-            <strong>¡Cuidado!</strong> Al pulsar este botón tu cuenta será eliminida permanentemente
-            <br>
-            <button style="display: flex; margin: 0 auto;" mat-raised-button color="warn">Eliminar mi cuenta</button>
-          </p>
-  
+        <div style="border-radius: 0px;" class="text-center alert alert-danger">
+            <p> 
+                <strong>¡Cuidado!</strong> Al pulsar este botón tu cuenta será eliminida permanentemente
+                <br>
+            </p>
+            <button style="display: flex; margin: 0 auto;" mat-raised-button color="warn">Eliminar mi cuenta</button>            
+        </div>
       </mat-expansion-panel>
 </div>
