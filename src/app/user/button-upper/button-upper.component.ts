@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'button-upper',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonUpperComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private _router:  Router) { }
+  ngOnInit() { }
+  createNewMatch( ): void { 
+    this._router.navigate(['/gameplay']);
   }
-
 }
