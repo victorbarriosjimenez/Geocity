@@ -10,10 +10,10 @@
               Información general
             </p>
           </mat-panel-title>
-          <mat-panel-description>
-            Tienes 3 oportunidades para editar tu perfil
+          <mat-panel-description *ngIf="user">
+            Tienes  {{ 3 - user.editionRequests }} oportunidades para editar tu perfil
           </mat-panel-description>
-        </mat-expansion-panel-header>
+        </mat-expansion-panel-header>  
         <div class="row">
             <div class="col-md-6 col-xs-12 col-sm-6">
               <h3>Modifica tu información general </h3>

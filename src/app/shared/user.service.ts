@@ -60,7 +60,6 @@ export class UserService {
           .then(() => console.log('email sent'))
           .catch((error) => console.log(error))
     }
-    /*  
     public userEditionControl(reset?: boolean) { 
         const path = `users/${this.currentUserId}`; 
         const userRef: AngularFireObject<any> = this._afDatabase.object(path); 
@@ -76,7 +75,7 @@ export class UserService {
             userRef.update(data);
              return this.updateProfileRequests;
         }
-    }*/
+    }
     /* ---------------------------------- USER PROPERTIES  ----------------------------------  */
     get currentUserId(): string {
         return this.authenticated ? this.authState.uid : '';
