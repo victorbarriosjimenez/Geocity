@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GameplayService } from './../shared';
-import { Location } from '../../models';
+import { GameplayService, Continent, continents  } from './../shared';
+import { Location} from '../../models';
 @Component({
   selector: 'app-gameplay',
   templateUrl: './gameplay.component.html',
@@ -9,6 +9,7 @@ import { Location } from '../../models';
 export class GameplayComponent implements OnInit {
   public beginMatch: boolean;
   public locations: any; 
+  public continents =  continents;
   public lat: number;
   public lng: number;
   constructor(private _gameplayService: GameplayService) { 
