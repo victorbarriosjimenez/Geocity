@@ -2,7 +2,6 @@
   <h1>Nueva Partida</h1>
   <h2>Selecciona un continente</h2>
   <div class="row">
-      {{ locations | json }}
     <div *ngFor="let continent of continents" class="col-md-6 col-sm-6 col-xs-12">
       <mat-card 
               class="continent-selection"  

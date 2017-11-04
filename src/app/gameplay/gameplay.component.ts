@@ -16,11 +16,9 @@ export class GameplayComponent implements OnInit {
     this.beginMatch = null;
     this.locations = [ ];
   }
-  ngOnInit() { 
-    this.selectContinentForMatch();
-   }
-  selectContinentForMatch(): void { 
-    this._gameplayService.getMatchLocations()
+  ngOnInit() { }
+  selectContinentForMatch(continent: Continent): void { 
+    this._gameplayService.getMatchLocations(continent.apiEndpoint)
         .subscribe((locations: any) => { this.locations = locations });
   }
 }
