@@ -7,8 +7,6 @@ export class User { 
     public email?: string;
     public country?: string;
     public score?: number;
-    public partidas?: Partida[];
-    public displayName?: string;
     public profilePhotoUrl?: string;
     public editionRequests?: number;
     constructor(auth) {

@@ -14,6 +14,7 @@ import {
           MatTabsModule
         } from '@angular/material';
 import { CommonModule } from '@angular/common';
+import { FooterComponent } from './footer.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -30,6 +31,9 @@ import { CommonModule } from '@angular/common';
     MatSnackBarModule,
     MatTabsModule
     
+  ], 
+  declarations: [
+    FooterComponent
   ],
   exports: [
     MatFormFieldModule,
@@ -43,10 +47,8 @@ import { CommonModule } from '@angular/common';
     MatTooltipModule,
     MatExpansionModule,
     MatSnackBarModule,
-    MatTabsModule
-    
-  ], 
-  declarations: [
-]
+    MatTabsModule, 
+    FooterComponent
+  ]
 })
 export class MaterialElementsModule { }

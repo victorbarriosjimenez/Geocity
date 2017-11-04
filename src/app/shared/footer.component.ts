@@ -4,10 +4,6 @@ import { Component, OnInit } from '@angular/core';
     template: `
         <p>Footer works</p>
     `,
-    styles: [`
-    
-    `]
+    styles: [``]
 })
-export class FooterComponent {
-    constructor() { }
-}
+export class FooterComponent { }
