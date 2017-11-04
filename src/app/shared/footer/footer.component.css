@@ -1,12 +1,16 @@
-h1 {
+.footer {
     font-family: 'jaapokkiregularregular';
-    bottom: 55vh;
-    left: 35vw;
-    font-size: 5em;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 100px;
+    bottom: 0;
+    width: 100%;
+    position: relative;
+    padding: 25px none;
 }
 .logo-main {
-   width: 125px;
-   height: 125px;
-   margin-right: -20px;
-   margin-bottom: -15px;
+   width: 40px;
+   height: 40px;
+   margin-right: -10px;
+   margin-top: -10px;
 }
