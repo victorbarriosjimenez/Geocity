@@ -5,8 +5,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gameplay.component.css']
 })
 export class GameplayComponent implements OnInit {
-  lat: number;
-  lng: number;
+  public continentes = [
+    { "name": "America del Norte", "apiEndpoint": "" },
+    { "name": "America del Sur",   },
+    { "name": "Africa" },
+    { "name": "Asia" },
+    { "name": "Europa" },
+    { "name": "Oceanía", }
+  ] 
+  public lat: number;
+  public lng: number;
   constructor() { }
   ngOnInit() {
     this.getUserLocation();

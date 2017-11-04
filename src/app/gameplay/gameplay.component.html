@@ -1,4 +1,11 @@
 <div class="container">
   <h1>Nueva Partida</h1>
-    
+  <mat-form-field class="full-width">
+      <mat-select placeholder="Escoge un continente">
+        <mat-option *ngFor="let continent of continents" [value]="continent.name">
+          {{ continent.name }}
+        </mat-option>
+      </mat-select>
+  </mat-form-field>
 </div>
+<agm-map></agm-map>
