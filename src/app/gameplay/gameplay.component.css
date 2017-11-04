@@ -2,3 +2,11 @@ agm-map {
     width: 100%;
     height: 500px; 
 }
+.match-chose {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    position: absolute;
+    background-color: white;
+}
