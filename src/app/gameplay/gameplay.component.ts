@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
 export interface Continent { 
       name:  string;
       apiEndpoint: string;
-      lat: number;
-      lon: number;
+      lat?: number;
+      lon?: number;
 }
-
 @Component({
   selector: 'app-gameplay',
   templateUrl: './gameplay.component.html',
@@ -23,7 +21,9 @@ export class GameplayComponent implements OnInit {
   ]; 
   public lat: number;
   public lng: number;
-  constructor() { }
+  constructor() {
+    let show: boolean = false;
+   }
   ngOnInit() {
     this.getUserLocation();
   }

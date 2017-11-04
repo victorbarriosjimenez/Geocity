@@ -9,4 +9,5 @@ agm-map {
     z-index: 999;
     position: absolute;
     background-color: white;
+    padding: 80px;
 }
