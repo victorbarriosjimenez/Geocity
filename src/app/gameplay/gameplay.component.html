@@ -2,8 +2,11 @@
   <h1>Nueva Partida</h1>
   <h2>Selecciona un continente</h2>
   <div class="row">
-    <div *ngFor="let continent of continents" class="col-md-6 col-sm-6 col-xs-12">
-      <mat-card class="continent-selection"  [ngStyle]="{'background-image': 'url('+continent.image +')'}">
+    <div *ngFor="let continent of continents" class="col-md-6 col-sm-6 col-xs-12 col-lg-12">
+      <mat-card 
+              class="continent-selection"  
+              [ngStyle]="{'background-image': 'url('+continent.image +')'}"
+              (click)="selectContinentForMatch(continent)">
           {{ continent.name }}
       </mat-card>
     </div>

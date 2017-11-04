@@ -26,16 +26,8 @@ export class GameplayComponent implements OnInit {
   constructor() {
     let show: boolean = false;
    }
-  ngOnInit() {
-    this.getUserLocation();
+  ngOnInit() {  }
+  selectContinentForMatch(continent: Continent) { 
+    
   }
-  private getUserLocation() {
-    if (navigator.geolocation) {
-       navigator.geolocation.getCurrentPosition(position => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-      });
-    }
-  }
-
 }
