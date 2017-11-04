@@ -10,13 +10,24 @@ export class GameplayComponent implements OnInit {
   public beginMatch: boolean;
   public locations: any; 
   public continents =  continents;
-  public lat: number;
-  public lng: number;
+  lat: number = 70.7440506;
+  lng: number = 21.3015442;
   constructor(private _gameplayService: GameplayService) { 
     this.beginMatch = null;
     this.locations = [ ];
   }
-  ngOnInit() { }
+  ngOnInit() { 
+    this.getUserLocation();
+  }
+  private getUserLocation() {
+    /// locate the user
+    if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(position => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+      });
+    }
+  }
   selectContinentForMatch(continent: Continent): void { 
     this._gameplayService.getMatchLocations(continent.apiEndpoint)
         .subscribe((locations: any) => { this.locations = locations });
