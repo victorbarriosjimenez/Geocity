@@ -1,0 +1,12 @@
+h1 {
+    font-family: 'jaapokkiregularregular';
+    bottom: 55vh;
+    left: 35vw;
+    font-size: 5em;
+}
+.logo-main {
+   width: 125px;
+   height: 125px;
+   margin-right: -20px;
+   margin-bottom: -15px;
+}

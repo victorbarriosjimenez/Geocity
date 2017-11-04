@@ -20,6 +20,6 @@ import { GameplayRoutesModule } from './gameplay.routes';
   ],
   declarations: [
     GameplayComponent
-  ]
+]
 })
 export class GameplayModule { }
