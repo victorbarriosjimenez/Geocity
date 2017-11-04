@@ -63,17 +63,17 @@
         </div>
         <ng-template #showDisclaimerToLogout>
           <div style="border-radius: 0px;" class="text-center alert alert-danger">
-            <p>
-              Geocity solo permite un total de 3 modificaciones de tu perfil por sesión. 
+            <p style="font-family:'Ubuntu';">
+              Geocity solo permite un total de 3 modificaciones de tu perfil por sesión
               <strong> 
-                  ¡Cierra tu sesión actual y vuelve a entrar para modificar tu perfil!
-              </strong>
+                  ¡Cierra tu sesión actual y vuelve a entrar!
+              </strong>    
             </p>
             <br>
-            <button style="display: flex; margin: 0 auto;" mat-raised-button color="warn">
-                Salir de Geocity
-            </button>
           </div>
+          <button style="display: flex; margin: 0 auto;" mat-raised-button color="warn">
+              Salir de Geocity
+          </button>
         </ng-template>
       </mat-expansion-panel>
   <h2>Cambiar contraseña</h2>    
@@ -95,13 +95,13 @@
               nos pondremos en contacto contigo.
           </p>
           <br>
-          <button style="display: block; margin: 0 auto;" 
-                  mat-raised-button 
-                  color="accent"
-                  (click)="sendPasswordResetEmail()">
-                  Enviar correo de confirmación
-          </button>
         </div>
+        <button style="display: block; margin: 0 auto;" 
+        mat-raised-button 
+        color="accent"
+        (click)="sendPasswordResetEmail()">
+        Enviar correo de confirmación
+</button>
     </mat-expansion-panel>
     <h2>Eliminar mi cuenta</h2>    
     <mat-expansion-panel color="warn">
@@ -119,7 +119,7 @@
                 <strong>¡Cuidado!</strong> Al pulsar este botón tu cuenta será eliminida permanentemente
             </p>
             <br>            
-            <button style="display: flex; margin: 0 auto;" mat-raised-button color="warn">Eliminar mi cuenta</button>            
         </div>
+        <button style="display: flex; margin: 0 auto;" mat-raised-button color="warn">Eliminar mi cuenta</button>                    
       </mat-expansion-panel>
 </div>
