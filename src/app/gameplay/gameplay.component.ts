@@ -14,7 +14,7 @@ export interface Continent { 
   styleUrls: ['./gameplay.component.css']
 })
 export class GameplayComponent implements OnInit {
-  public continents = [
+  public continents: Continent[] = [
     { name: "America del Norte", apiEndpoint: "northamerica" , image: "http://www.learner.org/jnorth/images/graphics/maps/North_A_satellite_orth_NASA.jpg" },
     { name: "America del Sur", apiEndpoint:"southamerica", image:"https://openi.nlm.nih.gov/imgs/512/167/4385904/PMC4385904_biodiversity_data_journal-3-e4178-g001_a.png" },
     { name: "Africa", apiEndpoint:"africa", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Africa_satellite_orthographic.jpg/534px-Africa_satellite_orthographic.jpg" },
@@ -23,19 +23,18 @@ export class GameplayComponent implements OnInit {
     { name: "Oceania", apiEndpoint:"australia", image: "http://gpsworld.com/wp-content/uploads/2016/08/australia-O.jpg" }
   ]; 
   public beginMatch: boolean;
-  public locations: Location[]; 
+  public locations: any; 
   public lat: number;
   public lng: number;
   constructor(private _gameplayService: GameplayService) { 
     this.beginMatch = null;
+    this.locations = [ ];
   }
-  ngOnInit() {  }
-  selectContinentForMatch(continent: Continent): void { 
-    this._gameplayService.getMatchLocations(continent)
-        .subscribe((locations: Location[]) => {
-            this.locations = locations,
-            (err) => console.log(err),
-            () => this.beginMatch = true
-        });
+  ngOnInit() { 
+    this.selectContinentForMatch();
+   }
+  selectContinentForMatch(): void { 
+    this._gameplayService.getMatchLocations()
+        .subscribe((locations: any) => { this.locations = locations });
   }
 }

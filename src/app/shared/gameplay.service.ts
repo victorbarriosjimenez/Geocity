@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 export class GameplayService {
     public _locationsAPI: string = "https://geocity-app.firebaseio.com/locations"
     constructor(private _http: Http) { }
-    public getMatchLocations(continentData) { 
+    public getMatchLocations() { 
       return this._http.get(`${this._locationsAPI}/europe.json`)
                  .map(response => response.json()); 
     }
