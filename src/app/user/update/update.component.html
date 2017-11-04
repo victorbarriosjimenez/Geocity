@@ -10,11 +10,16 @@
               Información general
             </p>
           </mat-panel-title>
-          <mat-panel-description *ngIf="user">
-            Tienes  {{ 3 - user.editionRequests }} oportunidades para editar tu perfil
+          <mat-panel-description>
+            <div *ngIf="user && user.editionRequests < 3; else showAlert"> 
+                Tienes  {{ 3 - user.editionRequests }} oportunidades para editar tu perfil
+            </div>
+            <ng-template #showAlert class="alert alert-danger">
+                Has agotado tus oportunidades para editar tu perfil
+            </ng-template>
           </mat-panel-description>
         </mat-expansion-panel-header>  
-        <div class="row">
+        <div *ngIf="user && user.editionRequests < 3; else showDisclaimerToLogout" class="row">
             <div class="col-md-6 col-xs-12 col-sm-6">
               <h3>Modifica tu información general </h3>
               <form (ngSubmit)="sendsUserUpdateForm( )" [formGroup]="userUpdateForm">     
@@ -56,6 +61,20 @@
                 </div>
             </div> 
         </div>
+        <ng-template #showDisclaimerToLogout>
+          <div style="border-radius: 0px;" class="text-center alert alert-danger">
+            <p>
+              Geocity solo permite un total de 3 modificaciones de tu perfil por sesión. 
+              <strong> 
+                  ¡Cierra tu sesión actual y vuelve a entrar para modificar tu perfil!
+              </strong>
+            </p>
+            <br>
+            <button style="display: flex; margin: 0 auto;" mat-raised-button color="warn">
+                Salir de Geocity
+            </button>
+          </div>
+        </ng-template>
       </mat-expansion-panel>
   <h2>Cambiar contraseña</h2>    
   <mat-expansion-panel>
@@ -69,17 +88,16 @@
            Enviar a formulario a mi correo 
         </mat-panel-description>
       </mat-expansion-panel-header>
-        <p>
-          Geocity enviará un correo para el cambio de tu contraseña.
-          Si estás seguro pulsa el siguente botón para hacer el envío y
-          nos pondremos en contacto contigo enseguida.
-       </p>
-       <br>
-      <br>
-      <button style="display: flex; margin: 0 auto;" 
-              mat-raised-button 
-              color="warn"
-              (click)="sendPasswordResetEmail()">Enviar correo de confirmación</button>
+        <p style="border-radius: 0px;" class="text-center alert alert-info">
+            Geocity enviará un correo para el cambio de tu contraseña.
+            Si estás seguro <strong>pulsa el siguente botón para hacer el envío</strong> y
+            nos pondremos en contacto contigo.
+            <br>
+            <button style="display: block; margin: 0 auto;" 
+            mat-raised-button 
+            color="accent"
+            (click)="sendPasswordResetEmail()">Enviar correo de confirmación</button>
+        </p>
     </mat-expansion-panel>
     <h2>Eliminar mi cuenta</h2>    
     <mat-expansion-panel color="warn">
@@ -92,12 +110,11 @@
           <mat-panel-description>
           </mat-panel-description>
         </mat-expansion-panel-header>
-          <p class="text-center"> ¡Cuidado! Al pulsar este botón tu cuenta será eliminida permanentemente,
-           tú historial de partidas y tu información personal será eliminada de Geocity 
-           y no podrá ser recuperada.
+          <p style="border-radius: 0px;" class="text-center alert alert-danger"> 
+            <strong>¡Cuidado!</strong> Al pulsar este botón tu cuenta será eliminida permanentemente
+            <br>
+            <button style="display: flex; margin: 0 auto;" mat-raised-button color="warn">Eliminar mi cuenta</button>
           </p>
-        <br>
-        <br>
-        <button style="display: flex; margin: 0 auto;" mat-raised-button color="warn">Eliminar mi cuenta</button>
+  
       </mat-expansion-panel>
 </div>
