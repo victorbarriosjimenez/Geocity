@@ -20,6 +20,7 @@ export class GameplayComponent implements OnInit {
     { name: "Europa" , apiEndpoint:"europe", image: "http://www.gifex.com/images/0X0/2010-02-21-11784/Satellite-photograph-of-Europe-2005.jpg" },
     { name: "Oceania", apiEndpoint:"australia", image: "http://gpsworld.com/wp-content/uploads/2016/08/australia-O.jpg" }
   ]; 
+  public beginMatch: boolean = false;
   public lat: number;
   public lng: number;
   constructor() {

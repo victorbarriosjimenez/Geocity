@@ -23,15 +23,12 @@ export class RegisterComponent implements OnInit {
     this.createForm();
     this.getCountries();
   } 
-  public checkIfUsernameIsAvailable( ): void {
-        
-   }
   public createForm( ): void {
    this.registrationForm =  this._fb.group({
-            email:['',Validators.required, Validators.email],
-            username:['',Validators.required, Validators.maxLength(16), Validators.minLength(4)],
+            email:['',Validators.required],
+            username:['',Validators.required],
             country:['', Validators.required],
-            password: ['', Validators.required, Validators],
+            password: ['', Validators.required],
             confirmPassword: ['', Validators.required]
     });
   }

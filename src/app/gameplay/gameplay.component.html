@@ -8,8 +8,13 @@
       </mat-card>
     </div>
   </div>
-  <button mat-raised-button color="primary">
-    Comenzar partida
-  </button>
+  <div *ngIf="beginMatch; else #loadingLocations">
+      <button mat-raised-button>
+        Comenzar 
+      </button>
+  </div>
+  <ng-template #loadingLocations>
+    
+  </ng-template>
 </div>
 <agm-map></agm-map>
