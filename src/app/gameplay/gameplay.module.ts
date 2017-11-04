@@ -3,17 +3,15 @@ import { CommonModule } from '@angular/common';
 import { GameplayComponent } from './gameplay.component';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../../environments/environment';
-
-
+import { FormsModule } from '@angular/forms';
 import { MaterialElementsModule  } from '../shared/material-elements.module';
-
 import { GameplayRoutesModule } from './gameplay.routes';
-
 @NgModule({
   imports: [
     CommonModule,
     MaterialElementsModule,
     GameplayRoutesModule,
+    FormsModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapskey
     })

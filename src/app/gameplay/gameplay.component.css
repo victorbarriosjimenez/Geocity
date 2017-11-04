@@ -9,5 +9,30 @@ agm-map {
     z-index: 999;
     position: absolute;
     background-color: white;
-    padding: 80px;
+    padding: 50px 120px;
+}
+h1 {
+    font-family: 'jaapokkiregularregular';
+}
+h1{ 
+    font-size: 4em;
+}
+h2{
+    margin-top: -5px ;
+    margin-bottom: 10px;
+    font-family: 'Ubuntu';    
+    font-size: 2em;
+    color: gray;
+}
+.continent-selection { 
+    width: 100%;
+    margin-bottom: 5px;
+    color: white;
+    font-family: 'jaapokkiregularregular';
+    font-size: 1.5em;    
+    background-repeat: no-repeat;
+}
+.continent-selection:hover {
+    background-color: rgba(0, 0,0,.5); 
+    cursor: pointer;
 }

@@ -1,6 +1,6 @@
 export class Location { 
-    public imagen: string;
-    public descripcion?: string;
+    public locationPhotoUrl: string;
+    public description?: string;
     public lat: string;
     public lon: string;
 }

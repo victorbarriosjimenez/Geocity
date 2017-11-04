@@ -5,5 +5,5 @@ export class Match { 
     public timestamp: Date;
     public locaciones: Location[];
     public completed: boolean;
-    public state: number;
+    public state: boolean;
 }
