@@ -5,6 +5,10 @@ import { AgmCoreModule } from '@agm/core';
 import { FormsModule } from '@angular/forms';
 import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { GameplayRoutesModule } from './gameplay.routes';
+
+/* Services */ 
+import { GameplayService } from './../shared';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +21,9 @@ import { GameplayRoutesModule } from './gameplay.routes';
   ],
   declarations: [
     GameplayComponent
-]
+  ],
+  providers: [
+    GameplayService
+  ]
 })
 export class GameplayModule { }

@@ -5,5 +5,7 @@ export * from './material-elements.module';
 export * from './forum.service';
 export * from './ranking.service';
 export * from './user.service';
+export * from './gameplay.service';
+
 
 

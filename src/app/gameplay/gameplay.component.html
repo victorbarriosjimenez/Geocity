@@ -2,7 +2,7 @@
   <h1>Nueva Partida</h1>
   <h2>Selecciona un continente</h2>
   <div class="row">
-    <div *ngFor="let continent of continents" class="col-md-6 col-sm-6 col-xs-12 col-lg-12">
+    <div *ngFor="let continent of continents" class="col-md-6 col-sm-6 col-xs-12">
       <mat-card 
               class="continent-selection"  
               [ngStyle]="{'background-image': 'url('+continent.image +')'}"
@@ -11,13 +11,11 @@
       </mat-card>
     </div>
   </div>
-  <div *ngIf="beginMatch; else loadingLocations">
-      <button mat-raised-button>
+  <div>
+      <button mat-raised-button 
+              style="background-color: rgb(39, 158, 39); color: white;">
         Comenzar 
       </button>
   </div>
-  <ng-template #loadingLocations>
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>      
-  </ng-template>
 </div>
 <agm-map></agm-map>

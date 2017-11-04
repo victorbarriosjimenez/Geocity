@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GameplayService } from './../shared';
+import { Location } from '../../models';
 export interface Continent { 
       name:  string;
       apiEndpoint: string;
@@ -20,14 +22,20 @@ export class GameplayComponent implements OnInit {
     { name: "Europa" , apiEndpoint:"europe", image: "http://www.gifex.com/images/0X0/2010-02-21-11784/Satellite-photograph-of-Europe-2005.jpg" },
     { name: "Oceania", apiEndpoint:"australia", image: "http://gpsworld.com/wp-content/uploads/2016/08/australia-O.jpg" }
   ]; 
-  public beginMatch: boolean =  true;
+  public beginMatch: boolean;
+  public locations: Location[]; 
   public lat: number;
   public lng: number;
-  constructor() {
-    let show: boolean = false;
-   }
+  constructor(private _gameplayService: GameplayService) { 
+    this.beginMatch = null;
+  }
   ngOnInit() {  }
-  selectContinentForMatch(continent: Continent) { 
-    
+  selectContinentForMatch(continent: Continent): void { 
+    this._gameplayService.getMatchLocations(continent)
+        .subscribe((locations: Location[]) => {
+            this.locations = locations,
+            (err) => console.log(err),
+            () => this.beginMatch = true
+        });
   }
 }
