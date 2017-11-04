@@ -7,7 +7,4 @@ export class User { 
     public score?: number;
     public profilePhotoUrl?: string;
     public editionRequests?: number;
-    constructor(auth) {
-        this.uid = auth.uid
-    }
 }
