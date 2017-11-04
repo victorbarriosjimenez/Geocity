@@ -35,4 +35,5 @@ h2{
 .continent-selection:hover {
     background-color: rgba(0, 0,0,.5); 
     cursor: pointer;
+    transform: scale(1.05);
 }
