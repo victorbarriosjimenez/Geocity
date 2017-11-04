@@ -1,5 +1,5 @@
 import { Location } from '../models'
-export class Partida { 
+export class Match { 
     public continente:  string;
     public puntuacion: number;
     public timestamp: Date;
