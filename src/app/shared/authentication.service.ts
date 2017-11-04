@@ -43,7 +43,7 @@ export class AuthenticationService {
     public logoutfromGeocity(): void { 
         this.afAuth.auth.signOut().then(
             () => { 
-                this._userService.userEditionControl(true),
+                this._userService.userEditionControl(null,true),
                 this._router.navigate(['/'])
         });
     } 

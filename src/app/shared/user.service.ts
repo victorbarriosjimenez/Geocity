@@ -60,7 +60,8 @@ export class UserService {
           .then(() => console.log('email sent'))
           .catch((error) => console.log(error))
     }
-    public userEditionControl(reset?: boolean) { 
+    public userEditionControl(edtions: number,reset?: boolean) { 
+        this.updateProfileRequests = edtions; 
         const path = `users/${this.currentUserId}`; 
         const userRef: AngularFireObject<any> = this._afDatabase.object(path); 
         if(reset) {
@@ -73,7 +74,7 @@ export class UserService {
             this.updateProfileRequests += 1;  
             const data = {  editionRequests: this.updateProfileRequests }
             userRef.update(data);
-             return this.updateProfileRequests;
+            return this.updateProfileRequests;
         }
     }
     /* ---------------------------------- USER PROPERTIES  ----------------------------------  */

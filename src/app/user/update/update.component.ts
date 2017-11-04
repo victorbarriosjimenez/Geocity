@@ -74,7 +74,8 @@ export class UpdateComponent implements OnInit {
       console.log(userModelUpdated);
       this._userService.updateUserInformation(userModelUpdated)
           .then(() => {
-                this.showsSnackBarWithDetails(this.profileModifiedConfirmationMessage)
+                this.showsSnackBarWithDetails(this.profileModifiedConfirmationMessage),
+                this.restrictUserTimeOportunitiesToUpdate()
           });
   }
   /* -------------------------  User Admnistration methods -------------------------*/
@@ -92,5 +93,8 @@ export class UpdateComponent implements OnInit {
         duration: 3000,
     });
     this._router.navigate(['/profile']);  
+  }
+  public restrictUserTimeOportunitiesToUpdate() {
+      this._userService.userEditionControl(this.user.editionRequests);
   }
 }
