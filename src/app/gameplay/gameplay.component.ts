@@ -27,11 +27,9 @@ export class GameplayComponent implements OnInit {
         .subscribe(locations => this.locations = locations,
                   (err) => console.log(err),
                   () => { 
-                      this.isLoadingLocationsFromContinentSelected = false
-                       continent.isContinentSelected = false
+                      this.isLoadingLocationsFromContinentSelected = false,
+                      continent.isContinentSelected = false,
+                      this.isMatchConfigurationDone = true;
                   });
-  }
-  beginMatchAndServeLocations() {
-    this.isMatchConfigurationDone = true;
   }
 }

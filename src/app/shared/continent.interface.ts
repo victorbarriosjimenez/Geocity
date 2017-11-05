@@ -7,10 +7,10 @@ export interface Continent { 
     isContinentSelected?:boolean;
 }
 export const continents: Continent[] = [
-    { name: "America del Norte", apiEndpoint: "northamerica" , image: "http://www.learner.org/jnorth/images/graphics/maps/North_A_satellite_orth_NASA.jpg", isContinentSelected: false },
-    { name: "America del Sur", apiEndpoint:"southamerica", image:"https://openi.nlm.nih.gov/imgs/512/167/4385904/PMC4385904_biodiversity_data_journal-3-e4178-g001_a.png", isContinentSelected: false },
-    { name: "Africa", apiEndpoint:"africa", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Africa_satellite_orthographic.jpg/534px-Africa_satellite_orthographic.jpg", isContinentSelected: false },
-    { name: "Asia", apiEndpoint:"asia", image: "http://www.gifex.com/images/0X0/2009-11-18-11138/Asia-satellite-map.jpg" , isContinentSelected: false },
-    { name: "Europa" , apiEndpoint:"europe", image: "http://www.gifex.com/images/0X0/2010-02-21-11784/Satellite-photograph-of-Europe-2005.jpg" , isContinentSelected: false },
-    { name: "Oceania", apiEndpoint:"australia", image: "http://gpsworld.com/wp-content/uploads/2016/08/australia-O.jpg" , isContinentSelected: false }
+    { name: "America del Norte", apiEndpoint: "northamerica" , image: "https://firebasestorage.googleapis.com/v0/b/geocity-app.appspot.com/o/northamerica.jpg?alt=media&token=a3a9cd68-0ee8-4bde-b07e-4ef0a5fa5188", isContinentSelected: false },
+    { name: "America del Sur", apiEndpoint:"southamerica", image:"https://firebasestorage.googleapis.com/v0/b/geocity-app.appspot.com/o/southamerica.jpg?alt=media&token=74024623-f503-4f38-8617-5462dcc20397", isContinentSelected: false },
+    { name: "Africa", apiEndpoint:"africa", image: "https://firebasestorage.googleapis.com/v0/b/geocity-app.appspot.com/o/africa.jpg?alt=media&token=44696a31-2fbb-44c3-8e36-0b1529087d08", isContinentSelected: false },
+    { name: "Asia", apiEndpoint:"asia", image: "https://firebasestorage.googleapis.com/v0/b/geocity-app.appspot.com/o/asia.jpg?alt=media&token=4fd6f3ef-c188-4617-a3b0-897ff2bb95c8" , isContinentSelected: false },
+    { name: "Europa" , apiEndpoint:"europe", image: "https://firebasestorage.googleapis.com/v0/b/geocity-app.appspot.com/o/europe.jpg?alt=media&token=07673342-97e7-431b-bbe5-ab78535df7b2" , isContinentSelected: false },
+    { name: "Oceania", apiEndpoint:"australia", image: "https://firebasestorage.googleapis.com/v0/b/geocity-app.appspot.com/o/oceania.jpg?alt=media&token=4af4dbcc-6bd6-44f5-bba0-8deb8731d3ba" , isContinentSelected: false }
 ]; 
