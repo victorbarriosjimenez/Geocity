@@ -1,23 +1,25 @@
-<!--
-<div class="match-chose">
+<div *ngIf="!isMatchConfigurationDone" class="match-chose">
   <h1>Nueva Partida</h1>
   <h2>Selecciona un continente</h2>
   <div class="row">
     <div *ngFor="let continent of continents" class="col-md-6 col-sm-6 col-xs-12">
       <mat-card 
-              class="continent-selection"  
+              class="continent-selection"
+              [ngClass]="{ 'continent-selected': continent.isContinentSelected }"  
               [ngStyle]="{'background-image': 'url('+continent.image +')'}"
               (click)="selectContinentForMatch(continent)">
-          {{ continent.name }}
+              {{ continent.name }}
       </mat-card>
     </div>
   </div>
-  <div>
-  <button (click)="beginMatchAndServeLocations( )" mat-raised-button style="background-color: rgb(39, 158, 39); color: white;">
-    Comenzar 
-  </button>
+  <div *ngIf="!isLoadingLocationsFromContinentSelected; else showProgressBar">
+    <button (click)="beginMatchAndServeLocations()" mat-raised-button style="background-color: rgb(39, 158, 39); color: white;">
+          Comenzar 
+      </button>
   </div>
+  <ng-template #showProgressBar>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>      
+  </ng-template>
 </div>
--->
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="3"> 
+<agm-map [latitude]="lat" [latitude]="lat" [longitude]="lng"[longitude]="lng" [zoom]="3"> 
 </agm-map>

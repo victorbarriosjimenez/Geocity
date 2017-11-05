@@ -1,6 +1,6 @@
 agm-map {
-    width: 100vw;
-    height: 100vh; 
+    width: 500px;
+    height: 500px; 
 }
 .match-chose {
     display: block;
@@ -9,7 +9,7 @@ agm-map {
     z-index: 999;
     position: absolute;
     background-color: white;
-    padding: 50px 120px;
+    padding: 50px 50px;
 }
 h1 {
     font-family: 'jaapokkiregularregular';
@@ -36,4 +36,16 @@ h2{
     background-color: rgba(0, 0,0,.5); 
     cursor: pointer;
     transform: scale(1.05);
+}
+.continent-selected {
+    transform: scale(1.1); 
+    z-index: 999;   
+}
+.continent-selected.continent-selection:hover{
+    transform: none;
+    transform: scale(1.1); 
+    z-index: 999; 
+}
+.continent-not-selected{
+    background-color: gray;
 }
