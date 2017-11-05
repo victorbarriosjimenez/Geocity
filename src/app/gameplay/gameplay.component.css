@@ -1,6 +1,6 @@
 agm-map {
-    width: 500px;
-    height: 500px; 
+    width: 100vw;
+    height: 100vh; 
 }
 .match-chose {
     display: block;
@@ -48,4 +48,8 @@ h2{
 }
 .continent-not-selected{
     background-color: gray;
+}
+.card-location {
+    width:  500px;
+    height: 500px;
 }

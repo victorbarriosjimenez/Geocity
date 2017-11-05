@@ -12,8 +12,8 @@ export class GameplayComponent implements OnInit {
   public continents =  continents;
   public isMatchConfigurationDone: boolean;
   public isLoadingLocationsFromContinentSelected: boolean = true;
-  lat: number;
-  lng: number;
+  public lat: number = 52.5429145;
+  public lng: number = 4.4419949;
   constructor(private _gameplayService: GameplayService) { 
     this.beginMatch = null;
     this.locations = [ ];
@@ -28,7 +28,7 @@ export class GameplayComponent implements OnInit {
                   (err) => console.log(err),
                   () => { 
                       this.isLoadingLocationsFromContinentSelected = false
-                       continent.isContinentSelected = true
+                       continent.isContinentSelected = false
                   });
   }
   beginMatchAndServeLocations() {
