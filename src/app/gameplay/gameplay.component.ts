@@ -21,11 +21,17 @@ export class GameplayComponent implements OnInit {
   ngOnInit() { 
     this.isMatchConfigurationDone = false;
   }
-  selectContinentForMatch(continent: Continent): void { 
+  private selectContinentForMatch(continent: Continent): void { 
     continent.isContinentSelected = true;
     this._gameplayService.getMatchLocations(continent.apiEndpoint)
         .subscribe(locations => this.locations = locations,
                   (err) => console.log(err),
-                  () => this.isLoadingLocationsFromContinentSelected = false);
+                  () => { 
+                      this.isLoadingLocationsFromContinentSelected = false
+                       continent.isContinentSelected = true
+                  });
+  }
+  beginMatchAndServeLocations() {
+    this.isMatchConfigurationDone = true;
   }
 }
