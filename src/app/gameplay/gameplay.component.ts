@@ -19,7 +19,7 @@ export class GameplayComponent implements OnInit {
     this.locations = [ ];
   }
   ngOnInit() { 
-    this.isMatchConfigurationDone = false;
+    this.isMatchConfigurationDone = true;
   }
   private selectContinentForMatch(continent: Continent): void { 
     continent.isContinentSelected = true;

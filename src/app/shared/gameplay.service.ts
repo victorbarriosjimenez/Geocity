@@ -9,4 +9,7 @@ export class GameplayService {
       return this._http.get(`${this._locationsAPI}/${apiEndPoint}.json`)
                  .map(response => response.json()); 
     }
+    public returnDistanceBetweenLocationsSelected(){
+        
+    }
 }
