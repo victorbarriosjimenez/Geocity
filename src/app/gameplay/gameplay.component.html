@@ -13,7 +13,10 @@
     </div>
   </div>
 </div>
-<agm-map [latitude]="lat"  [longitude]="lng"  [zoom]="4" [zoomControl]="false" [streetViewControl]="false"> </agm-map>
+<agm-map [latitude]="latitudeOfContinentSelected"  
+         [longitude]="longitudeOfContinentSelected"  
+         [zoom]="3" [zoomControl]="false" [streetViewControl]="false">
+</agm-map>
 <div class="location-card">
-    <img src="https://d16teuje7e44sv.cloudfront.net/spa/cities/spain/madrid-medium.jpg" alt="">
+    {{ locations | json }}
 </div>  

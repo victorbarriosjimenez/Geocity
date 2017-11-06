@@ -12,16 +12,18 @@ export class GameplayComponent implements OnInit {
   public continents =  continents;
   public isMatchConfigurationDone: boolean;
   public isLoadingLocationsFromContinentSelected: boolean = true;
-  public lat: number = 52.5429145;
-  public lng: number = 4.4419949;
+  public latitudeOfContinentSelected: number = 0;
+  public longitudeOfContinentSelected: number = 0;
   constructor(private _gameplayService: GameplayService) { 
     this.beginMatch = null;
     this.locations = [ ];
   }
   ngOnInit() { 
-    this.isMatchConfigurationDone = true;
+    this.isMatchConfigurationDone = false;
   }
-  private selectContinentForMatch(continent: Continent): void { 
+  private selectContinentForMatch(continent: Continent): void {
+    this.latitudeOfContinentSelected = continent.lat;
+    this.longitudeOfContinentSelected = continent.lng;
     continent.isContinentSelected = true;
     this._gameplayService.getMatchLocations(continent.apiEndpoint)
         .subscribe(locations => this.locations = locations,
@@ -29,7 +31,7 @@ export class GameplayComponent implements OnInit {
                   () => { 
                       this.isLoadingLocationsFromContinentSelected = false,
                       continent.isContinentSelected = false,
-                      this.isMatchConfigurationDone = true;
+                      this.isMatchConfigurationDone = true
                   });
   }
 }
