@@ -19,7 +19,7 @@ export class GameplayComponent implements OnInit {
   public isLoadingLocationsFromContinentSelected: boolean = true;
   public latitudeOfContinentSelected: number = 0;
   public longitudeOfContinentSelected: number = 0;
-  public index = 0;
+  public index = 0 ;
   public j = 0;
   public location:  Location ;
   public interval : any;
@@ -46,16 +46,14 @@ export class GameplayComponent implements OnInit {
                   });
   }
   mapClicked($event){
-    console.log(this.location);
-    console.log($event['coords']);
     let meters = this._gameplayService.returnDistanceBetweenLocationsSelected(this.location.lat, this.location.lng, $event['coords'].lat, $event['coords'].lng);
-    console.log(meters);
   }
   gameTest( ){
-    this.interval = setInterval(() => { 
-                        this.location = this.locations[this.index]; 
-                        this.index += 1;
-                  },5000);
+    this.interval = setInterval(() => {
+                      this.location = this.locations[this.index];
+                      console.log(this.location);
+                      this.index += 1;
+                  },1000);
   }
 
 }

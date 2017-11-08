@@ -19,3 +19,6 @@
          (mapClick)="mapClicked($event)">
 </agm-map>
 <h1> {{ index }} </h1>
+<div *ngIf="location">
+  {{ location | json }}
+</div>
