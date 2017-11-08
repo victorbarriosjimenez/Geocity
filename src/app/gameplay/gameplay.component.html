@@ -15,8 +15,9 @@
 </div>
 <agm-map [latitude]="latitudeOfContinentSelected"  
          [longitude]="longitudeOfContinentSelected"  
-         [zoom]="3" [zoomControl]="false" [streetViewControl]="false">
+         [zoom]="3" [zoomControl]="false" [streetViewControl]="false"
+         (mapClick)="mapClicked($event)">
 </agm-map>
-<div class="location-card">
-    {{ locations | json }}
+<div *ngFor="let location of locations" class="location-card">
+    <img src="{{ location.imagen }}" alt="">
 </div>  

@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { GameplayService, Continent, continents  } from './../shared';
-import { Location} from '../../models';
+import { Location } from '../../models';
+export interface coords {
+    lat: number;
+    lng: number;
+}
 @Component({
   selector: 'app-gameplay',
   templateUrl: './gameplay.component.html',
   styleUrls: ['./gameplay.component.css']
 })
-export class GameplayComponent implements OnInit {
+export class GameplayComponent implements OnInit {  
+  public locations: Location[]; 
   public beginMatch: boolean;
-  public locations: any; 
   public continents =  continents;
   public isMatchConfigurationDone: boolean;
   public isLoadingLocationsFromContinentSelected: boolean = true;
@@ -33,5 +37,8 @@ export class GameplayComponent implements OnInit {
                       continent.isContinentSelected = false,
                       this.isMatchConfigurationDone = true
                   });
+  }
+  mapClicked($event): coords { 
+    return $event['coords'];
   }
 }

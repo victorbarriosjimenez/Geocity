@@ -52,6 +52,7 @@ h2{
 .location-card {
     bottom: 100px;
     left: 100px;
+    position: absolute;
 }
 .location-card  img{
     width:  200px;
