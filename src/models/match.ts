@@ -1,8 +1,7 @@
 import { Location } from '../models'
 export class Match { 
-    public continente?:  string;
-    public puntuacion?: number;
+    public userId?: string;
+    public continent?:  string;
+    public score?: number;
     public timestamp?: any;
-    public completed: boolean;
-    public state: boolean;
 }

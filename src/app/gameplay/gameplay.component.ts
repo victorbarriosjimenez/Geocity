@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameplayService, Continent, continents  } from './../shared';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Location } from '../../models';
 import { Observable } from 'rxjs/Rx';
 export interface coords {
@@ -23,7 +24,9 @@ export class GameplayComponent implements OnInit {
   public score: number = 0 
   public location:  Location;
   public interval : any;
-  constructor(private _gameplayService: GameplayService) { 
+  constructor(private _gameplayService: GameplayService,
+           private _afDatabase: AngularFireDatabase  
+  ) { 
     this.beginMatch = null;
     this.locations = [ ];
   }
@@ -54,7 +57,6 @@ export class GameplayComponent implements OnInit {
   gameTest( ){
     this.interval = setInterval(() => {
                       this.location = this.locations[this.index];
-                      console.log(this.location);
                       this.index += 1;
                       if(this.index === 5){
                         clearTimeout(this.interval);
