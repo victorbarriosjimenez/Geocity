@@ -19,11 +19,10 @@ export class GameplayComponent implements OnInit {
   public isLoadingLocationsFromContinentSelected: boolean = true;
   public latitudeOfContinentSelected: number = 0;
   public longitudeOfContinentSelected: number = 0;
-  public index = 0 ;
-  public j = 0;
-  public location:  Location ;
+  public index : number = 0 ;
+  public score: number = 0 
+  public location:  Location;
   public interval : any;
-
   constructor(private _gameplayService: GameplayService) { 
     this.beginMatch = null;
     this.locations = [ ];
@@ -46,6 +45,10 @@ export class GameplayComponent implements OnInit {
                   });
   }
   mapClicked($event){
+    if(this.index === 5){
+      console.log("ya parale")
+      clearTimeout(this.interval);
+    }
     let meters = this._gameplayService.returnDistanceBetweenLocationsSelected(this.location.lat, this.location.lng, $event['coords'].lat, $event['coords'].lng);
   }
   gameTest( ){
@@ -53,6 +56,10 @@ export class GameplayComponent implements OnInit {
                       this.location = this.locations[this.index];
                       console.log(this.location);
                       this.index += 1;
+                      if(this.index === 5){
+                        console.log("ya parale")
+                        clearTimeout(this.interval);
+                      }
                   },1000);
   }
 
