@@ -32,12 +32,14 @@ export class GameplayService {
         return x * Math.PI / 180;
     }
     public createNewMatch(user, match : Match): void {
-        const path = `matches/${user.uid}`; 
+        console.log(user);
+        console.log(match);        
+        /*const path = `matches/${user.uid}`; 
         const data: Match = {
-            userId: match.uid,
+            userId: match.userId,
             timestamp: match.timestamp,
             score:  match.score,
             continent: match.continent    
-        }
+        }*/
     }
 }

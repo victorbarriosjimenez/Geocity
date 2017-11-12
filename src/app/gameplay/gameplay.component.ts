@@ -60,6 +60,7 @@ export class GameplayComponent implements OnInit {
                       this.index += 1;
                       if(this.index === 5){
                         clearTimeout(this.interval);
+                        
                       }
     },1000);
   }
