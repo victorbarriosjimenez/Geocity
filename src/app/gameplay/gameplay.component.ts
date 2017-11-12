@@ -57,10 +57,9 @@ export class GameplayComponent implements OnInit {
                       console.log(this.location);
                       this.index += 1;
                       if(this.index === 5){
-                        console.log("ya parale")
                         clearTimeout(this.interval);
                       }
-                  },1000);
+    },1000);
   }
 
 }
