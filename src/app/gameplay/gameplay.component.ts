@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameplayService, Continent, continents, AuthenticationService } from './../shared';
+import { Match  } from '../../models';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Location } from '../../models';
 import { Observable } from 'rxjs/Rx';
@@ -9,7 +10,9 @@ import { Observable } from 'rxjs/Rx';
   styleUrls: ['./gameplay.component.css']
 })
 export class GameplayComponent implements OnInit {  
+  public match: Match;
   public locations: Location[]; 
+  public secondsTimer: any;
   public beginMatch: boolean;
   public continents =  continents;
   public isMatchConfigurationDone: boolean;
@@ -53,7 +56,7 @@ export class GameplayComponent implements OnInit {
                       if(this.index === 5){
                         clearTimeout(this.interval);
                       }
-    },1000);
+    },5000);
   }
 
 }
