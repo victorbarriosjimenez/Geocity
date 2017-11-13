@@ -3,7 +3,6 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Match } from './../../models'
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
-
 @Injectable()
 export class GameplayService {
     public _locationsAPI: string = "https://geocity-app.firebaseio.com/locations";
@@ -30,8 +29,7 @@ export class GameplayService {
     private rad(x): number {
         return x * Math.PI / 180;
     }
-    public createNewMatch(user, match : Match): void {
-        console.log(user);
+    public createNewMatch(match : Match): void {
         console.log(match);        
         /*const path = `matches/${user.uid}`; 
         const data: Match = {

@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { GameplayService, Continent, continents, AuthenticationService } from './../shared';
+import { GameplayService, Continent, continents, UserService } from './../shared';
 import { Match  } from '../../models';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Location } from '../../models';
 import { Observable } from 'rxjs/Rx';
+import * as firebase from 'firebase/app';
+
 @Component({
   selector: 'app-gameplay',
   templateUrl: './gameplay.component.html',
   styleUrls: ['./gameplay.component.css']
 })
 export class GameplayComponent implements OnInit {  
-  public match: Match;
+  public match: Match = { };
   public locations: Location[]; 
   public secondsTimer: any;
   public beginMatch: boolean;
@@ -20,12 +22,13 @@ export class GameplayComponent implements OnInit {
   public latitudeOfContinentSelected: number = 0;
   public longitudeOfContinentSelected: number = 0;
   public index : number = 0 ;
-  public score: number = 0 
+  public matchScoreControl: number = 0;
+  public userId: string = '';
   public location:  Location;
   public interval : any;
   constructor(private _gameplayService: GameplayService,
-           private _afDatabase: AngularFireDatabase,
-           private _authenticationService: AuthenticationService) { 
+              private _afDatabase: AngularFireDatabase,
+              private _userService: UserService) { 
     this.beginMatch = null;
     this.locations = [ ];
   }
@@ -55,8 +58,16 @@ export class GameplayComponent implements OnInit {
                       this.index += 1;
                       if(this.index === 5){
                         clearTimeout(this.interval);
+
                       }
     },5000);
   }
-
+  public prepareMatchToPost(continentName: string, score: number): void {
+      this.match  = {
+          userId: this._userService.currentUserId,
+          continent: 'Africa',
+          timestamp: firebase.database.ServerValue.TIMESTAMP,
+          score: this.matchScoreControl
+      }
+  }
 }
