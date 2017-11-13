@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { GameplayService, Continent, continents  } from './../shared';
+import { GameplayService, Continent, continents, AuthenticationService } from './../shared';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Location } from '../../models';
 import { Observable } from 'rxjs/Rx';
-export interface coords {
-    lat: number;
-    lng: number;
-}
 @Component({
   selector: 'app-gameplay',
   templateUrl: './gameplay.component.html',
@@ -25,8 +21,8 @@ export class GameplayComponent implements OnInit {
   public location:  Location;
   public interval : any;
   constructor(private _gameplayService: GameplayService,
-           private _afDatabase: AngularFireDatabase  
-  ) { 
+           private _afDatabase: AngularFireDatabase,
+           private _authenticationService: AuthenticationService) { 
     this.beginMatch = null;
     this.locations = [ ];
   }
@@ -48,10 +44,6 @@ export class GameplayComponent implements OnInit {
                   });
   }
   mapClicked($event){
-    if(this.index === 5){
-      console.log("ya parale")
-      clearTimeout(this.interval);
-    }
     let meters = this._gameplayService.returnDistanceBetweenLocationsSelected(this.location.lat, this.location.lng, $event['coords'].lat, $event['coords'].lng);
   }
   gameTest( ){
@@ -60,7 +52,6 @@ export class GameplayComponent implements OnInit {
                       this.index += 1;
                       if(this.index === 5){
                         clearTimeout(this.interval);
-                        
                       }
     },1000);
   }
