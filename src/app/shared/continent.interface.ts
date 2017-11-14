@@ -1,6 +1,6 @@
 export interface Continent { 
-    name:  string;
-    apiEndpoint: string;
+    name?:  string;
+    apiEndpoint?: string;
     lat?: number;
     lng?: number;
     image?: string;

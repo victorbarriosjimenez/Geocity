@@ -22,6 +22,7 @@ export class GameplayComponent implements OnInit {
   public latitudeOfContinentSelected: number = 0;
   public longitudeOfContinentSelected: number = 0;
   public index : number = 0 ;
+  public continent :  Continent;
   public matchScoreControl: number = 0;
   public userId: string = '';
   public location:  Location;
@@ -36,9 +37,10 @@ export class GameplayComponent implements OnInit {
     this.isMatchConfigurationDone = false;
   }
   private selectContinentForMatch(continent: Continent): void {
-    this.latitudeOfContinentSelected = continent.lat;
-    this.longitudeOfContinentSelected = continent.lng;
-    continent.isContinentSelected = true;
+    this.continent = continent; 
+    this.latitudeOfContinentSelected = this.continent.lat
+    this.longitudeOfContinentSelected = this.continent.lng;
+    this.continent.isContinentSelected = true;
     this._gameplayService.getMatchLocations(continent.apiEndpoint)
         .subscribe(locations => this.locations = locations,
                   (err) => console.log(err),
@@ -58,11 +60,11 @@ export class GameplayComponent implements OnInit {
                       this.index += 1;
                       if(this.index === 5){
                         clearTimeout(this.interval);
-
+                        this.prepareMatchToPost();
                       }
     },5000);
   }
-  public prepareMatchToPost(continentName: string, score: number): void {
+  public prepareMatchToPost(): void {
       this.match  = {
           userId: this._userService.currentUserId,
           continent: 'Africa',
