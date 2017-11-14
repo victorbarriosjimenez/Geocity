@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameplayService, Continent, continents, UserService } from './../shared';
 import { Match  } from '../../models';
+import { MatSnackBar } from '@angular/material';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Location } from '../../models';
 import { Observable } from 'rxjs/Rx';
@@ -29,7 +30,8 @@ export class GameplayComponent implements OnInit {
   public interval : any;
   constructor(private _gameplayService: GameplayService,
               private _afDatabase: AngularFireDatabase,
-              private _userService: UserService) { 
+              private _userService: UserService,
+              private _matSnackbar: MatSnackBar) { 
     this.beginMatch = null;
     this.locations = [ ];
   }
@@ -38,8 +40,8 @@ export class GameplayComponent implements OnInit {
   }
   private selectContinentForMatch(continent: Continent): void {
     this.continent = continent; 
-    this.latitudeOfContinentSelected = this.continent.lat
-    this.longitudeOfContinentSelected = this.continent.lng;
+    this.latitudeOfContinentSelected = continent.lat
+    this.longitudeOfContinentSelected = continent.lng;
     this.continent.isContinentSelected = true;
     this._gameplayService.getMatchLocations(continent.apiEndpoint)
         .subscribe(locations => this.locations = locations,
@@ -59,8 +61,8 @@ export class GameplayComponent implements OnInit {
                       this.location = this.locations[this.index];
                       this.index += 1;
                       if(this.index === 5){
-                        clearTimeout(this.interval);
-                        this.prepareMatchToPost();
+                          clearTimeout(this.interval);
+                          this.prepareMatchToPost();
                       }
     },5000);
   }
@@ -71,5 +73,10 @@ export class GameplayComponent implements OnInit {
           timestamp: firebase.database.ServerValue.TIMESTAMP,
           score: this.matchScoreControl
       }
+  }
+  private showsSnackBarWithDetails(result: number) : void {
+    this._matSnackbar.open(`Distancia ${result}`, "DE ACUERDO", {
+        duration: 3000,
+    }); 
   }
 }
