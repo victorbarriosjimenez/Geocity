@@ -55,7 +55,7 @@ export class GameplayComponent implements OnInit {
                       this.gameTest();
                   });
   }
-  mapClicked($event){
+  mapClicked($event):  void {
     this.marker.lat = $event['coords'].lat;
     this.marker.lng = $event['coords'].lng; 
     let kilometers = this._gameplayService.returnDistanceBetweenLocationsSelected(this.location.lat, this.location.lng, $event['coords'].lat, $event['coords'].lng);
@@ -85,7 +85,6 @@ export class GameplayComponent implements OnInit {
           continent: this.continent.name,
           timestamp: firebase.database.ServerValue.TIMESTAMP,
           score: this.matchScoreControl,
-          avatarCover: this.continent.image
       }
       this._gameplayService.createNewMatch(this.match);
   }

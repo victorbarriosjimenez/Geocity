@@ -27,8 +27,8 @@
 <app-navigation></app-navigation>
 <button-upper></button-upper>
 <div class="container">
-    <div  *ngIf="matches; else showNoMatches" class="row">
-        <mat-card *ngFor="let match of matches">
+    <div *ngIf="matches; else showNoMatches" class="row">
+        <mat-card *ngFor="let match of matches" class="match-card">
             {{ match.continent }}   
             {{ match.score }}
             {{ match.timestamp | date }} 
