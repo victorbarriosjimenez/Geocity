@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User , Match } from '../../models';
+import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/switchMap';
@@ -16,7 +17,8 @@ export class UserService {
     public updateProfileRequests: number = 0;
     constructor(private http: Http,
                 private _afDatabase: AngularFireDatabase,
-                private _afAuth: AngularFireAuth) { 
+                private _afAuth: AngularFireAuth,
+                private _router: Router) { 
                  this._afAuth.authState.subscribe((auth) => {
                         this.authState = auth
                  });
@@ -57,9 +59,13 @@ export class UserService {
                   .map((matches: Match[]) => matches.filter((match: Match) => match.userId === this.currentUserId));
     }
     public updateUserScoreAfterMatchFinished(currentUserScore: number, matchScore: number) {
+         let newScoreFromUser = currentUserScore + matchScore;
          const path = `users/${this.currentUserId}`; 
+         const userRef: AngularFireObject<any> = this._afDatabase.object(path); 
+         const data: User =  { score: newScoreFromUser }; 
+         userRef.update(data).then(
+             () => this._router.navigate(['/profile']));
     }
-
     public getUserData()  { 
         const userDataPath = `https://geocity-app.firebaseio.com/users/${this.currentUserId}.json`;
         return this.http.get(userDataPath)

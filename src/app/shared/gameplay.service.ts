@@ -34,35 +34,35 @@ export class GameplayService {
     }
     setScoreFromCalculatedDistance(distanceBetweenPointsInKilometers: number): number { 
         let score = 0;
-        if(distanceBetweenPointsInKilometers > 0 && distanceBetweenPointsInKilometers <= 100){
-            return score += 1000;  
-        }
-        else if(distanceBetweenPointsInKilometers > 100 && distanceBetweenPointsInKilometers <= 200){
-            return score += 800;  
-        }
-        else if(distanceBetweenPointsInKilometers > 200 && distanceBetweenPointsInKilometers <= 300){
-            return score += 700;  
-        }
-        else if(distanceBetweenPointsInKilometers > 300 && distanceBetweenPointsInKilometers <= 400){
-            return score += 600;  
-        }
-        else if(distanceBetweenPointsInKilometers > 400 && distanceBetweenPointsInKilometers <= 500){
-            return score += 500;  
-        }
-        else if(distanceBetweenPointsInKilometers > 500 && distanceBetweenPointsInKilometers <= 600){
-            return score += 400;  
-        }
-        else if(distanceBetweenPointsInKilometers > 600 && distanceBetweenPointsInKilometers <= 700){
-            return score += 300;  
-        }
-        else if(distanceBetweenPointsInKilometers > 700 && distanceBetweenPointsInKilometers <= 1000){
-            return score += 200;  
-        }
-        else if(distanceBetweenPointsInKilometers > 1000 && distanceBetweenPointsInKilometers <= 1500){
+        if(distanceBetweenPointsInKilometers > 0 && distanceBetweenPointsInKilometers <= 20){
             return score += 100;  
         }
+        else if(distanceBetweenPointsInKilometers > 100 && distanceBetweenPointsInKilometers <= 200){
+            return score += 80;  
+        }
+        else if(distanceBetweenPointsInKilometers > 200 && distanceBetweenPointsInKilometers <= 300){
+            return score += 70;  
+        }
+        else if(distanceBetweenPointsInKilometers > 300 && distanceBetweenPointsInKilometers <= 400){
+            return score += 60;  
+        }
+        else if(distanceBetweenPointsInKilometers > 400 && distanceBetweenPointsInKilometers <= 500){
+            return score += 50;  
+        }
+        else if(distanceBetweenPointsInKilometers > 500 && distanceBetweenPointsInKilometers <= 600){
+            return score += 40;  
+        }
+        else if(distanceBetweenPointsInKilometers > 600 && distanceBetweenPointsInKilometers <= 700){
+            return score += 30;  
+        }
+        else if(distanceBetweenPointsInKilometers > 700 && distanceBetweenPointsInKilometers <= 1000){
+            return score += 20;  
+        }
+        else if(distanceBetweenPointsInKilometers > 1000 && distanceBetweenPointsInKilometers <= 1500){
+            return score += 10;  
+        }
         else { 
-            return score += 50; 
+            return score += 5; 
         }
     }
     private rad(x): number {
