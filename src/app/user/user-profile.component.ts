@@ -28,7 +28,7 @@ export class UserProfileComponent implements OnInit {
       );
   }
   public getUserMatches(){
-    this._userService.getAllUserMatches()
+    this._userService.getUserMatches()
                      .subscribe(matches  => this.matches = matches);
   }
 }

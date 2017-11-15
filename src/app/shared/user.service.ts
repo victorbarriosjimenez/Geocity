@@ -20,6 +20,7 @@ export class UserService {
                  this._afAuth.authState.subscribe((auth) => {
                         this.authState = auth
                  });
+                 this.matchesDatabaseReference = _afDatabase.list('/matches');
     }
    /* ---------------------------------- USER CRUD OPERATIONS ----------------------------------  */
    public createsUserAndInitialData(userstate,country,username){ 
@@ -46,11 +47,16 @@ export class UserService {
         }       
         return userRef.update(data);
     }
-    public getAllUserMatches( ) {
-        const matchesDataPath = 'https://geocity-app.firebaseio.com/matches.json';
-        return this.http.get(matchesDataPath)
-                        .map(response => response.json());
+    public getAllMatches( ) {
+        return this.matchesDatabaseReference.snapshotChanges().map(arr => {
+            return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
+        });
     }
+    public getUserMatches(){ 
+       return this.getAllMatches()
+                  .map((matches: Match[]) => matches.filter((match: Match) => match.userId === this.currentUserId));
+    }
+
     public getUserData()  { 
         const userDataPath = `https://geocity-app.firebaseio.com/users/${this.currentUserId}.json`;
         return this.http.get(userDataPath)
