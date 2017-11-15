@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Location } from '../../models';
 import { Observable } from 'rxjs/Rx';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 
 @Component({
@@ -23,14 +24,16 @@ export class GameplayComponent implements OnInit {
   public latitudeOfContinentSelected: number = 0;
   public longitudeOfContinentSelected: number = 0;
   public index : number = 0 ;
-  public continent :  Continent;
+  public continent: Continent;
   public matchScoreControl: number = 0;
   public userId: string = '';
   public location:  Location;
   public interval : any;
+  public marker: any = {};
   constructor(private _gameplayService: GameplayService,
               private _afDatabase: AngularFireDatabase,
               private _userService: UserService,
+              private _router: Router,
               private _matSnackbar: MatSnackBar) { 
     this.beginMatch = null;
     this.locations = [ ];
@@ -54,25 +57,31 @@ export class GameplayComponent implements OnInit {
                   });
   }
   mapClicked($event){
-    let meters = this._gameplayService.returnDistanceBetweenLocationsSelected(this.location.lat, this.location.lng, $event['coords'].lat, $event['coords'].lng);
-  }
+    clearInterval(this.interval);
+    this.marker.lat = $event['coords'].lat;
+    this.marker.lng = $event['coords'].lng; 
+    let kilometers = this._gameplayService.returnDistanceBetweenLocationsSelected(this.location.lat, this.location.lng, $event['coords'].lat, $event['coords'].lng);
+    this.matchScoreControl += this._gameplayService.setScoreFromCalculatedDistance(kilometers);
+    this.gameTest();  
+}
   gameTest( ){
     this.interval = setInterval(() => {
                       this.location = this.locations[this.index];
                       this.index += 1;
                       if(this.index === 5){
-                          clearTimeout(this.interval);
-                          this.prepareMatchToPost();
+                        clearTimeout(this.interval);
+                        this.prepareMatchToPost();
                       }
     },5000);
   }
   public prepareMatchToPost(): void {
       this.match  = {
           userId: this._userService.currentUserId,
-          continent: 'Africa',
+          continent: this.continent.name,
           timestamp: firebase.database.ServerValue.TIMESTAMP,
           score: this.matchScoreControl
       }
+      this._gameplayService.createNewMatch(this.match);
   }
   private showsSnackBarWithDetails(result: number) : void {
     this._matSnackbar.open(`Distancia ${result}`, "DE ACUERDO", {

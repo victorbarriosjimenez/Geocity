@@ -13,12 +13,21 @@
     </div>
   </div>
 </div>
-<agm-map [latitude]="latitudeOfContinentSelected"  
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-sm-6 col-xs-6">
+        <agm-map [latitude]="latitudeOfContinentSelected"  
          [longitude]="longitudeOfContinentSelected"  
-         [zoom]="3" [zoomControl]="false" [streetViewControl]="false"
+         [zoom]="3" [streetViewControl]="false"
          (mapClick)="mapClicked($event)">
-</agm-map>
-<h1> {{ index }} </h1>
-<div *ngIf="location">
-  <img style="width: 500px; height: 500px;" src="{{location.imagen }}" alt="">
+         <agm-marker [latitude]="marker.lat" [longitude]="marker.lng"></agm-marker>
+        </agm-map>
+    </div>
+    <div class="col-sm-6 col-sm-6 col-xs-6">
+        <h1> {{ index }}  - {{ matchScoreControl }}</h1>
+        <div *ngIf="location">
+          <img style="width: 500px; height: 500px;" src="{{location.imagen }}" alt="">
+        </div>
+    </div>
+  </div>
 </div>
