@@ -17,7 +17,7 @@ import {TimerObservable} from "rxjs/observable/TimerObservable";
 export class GameplayComponent implements OnInit {  
   public match: Match = { };
   public locations: Location[]; 
-  public secondsTimer: any;
+  public timer = 0;
   public beginMatch: boolean;
   public continents =  continents;
   public isMatchConfigurationDone: boolean;
@@ -27,10 +27,9 @@ export class GameplayComponent implements OnInit {
   public index : number = 0 ;
   public continent: Continent;
   public matchScoreControl: number = 0;
-  public userId: string = '';
   public location:  Location;
-  public interval : any;
   public marker: any = {};
+  public subscription: any;
   constructor(private _gameplayService: GameplayService,
               private _afDatabase: AngularFireDatabase,
               private _userService: UserService,
@@ -54,26 +53,33 @@ export class GameplayComponent implements OnInit {
                       this.isLoadingLocationsFromContinentSelected = false,
                       continent.isContinentSelected = false,
                       this.isMatchConfigurationDone = true,
-                      this.gameTest()
+                      this.gameTest();
                   });
   }
   mapClicked($event){
-    clearInterval(this.interval);
     this.marker.lat = $event['coords'].lat;
     this.marker.lng = $event['coords'].lng; 
     let kilometers = this._gameplayService.returnDistanceBetweenLocationsSelected(this.location.lat, this.location.lng, $event['coords'].lat, $event['coords'].lng);
     this.matchScoreControl += this._gameplayService.setScoreFromCalculatedDistance(kilometers);
-    this.gameTest();  
-}
-  gameTest( ){
-    this.interval = setInterval(() => {
-                      this.location = this.locations[this.index];
-                      this.index += 1;
-                      if(this.index === 5){
-                        clearTimeout(this.interval);
-                        this.prepareMatchToPost();
-                      }
-    },5000);
+    this.subscription.unsubscribe();
+    this.gameTest();
+ }
+ gameTest( ): void {
+   console.log(this.locations);
+   if(this.index === 5) {
+       this.subscription.unsubscribe();
+       this.prepareMatchToPost();
+   }
+   this.location = this.locations[this.index];
+   this.index += 1; 
+   let timer = Observable.timer(1000,1000);
+   this.subscription = timer.subscribe(t=>{
+     this.timer = t;
+     if(t === 30){
+       this.subscription.unsubscribe();
+       this.gameTest();
+      }
+    });
   }
   public prepareMatchToPost(): void {
       this.match  = {
