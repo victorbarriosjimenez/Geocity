@@ -75,13 +75,7 @@ export class GameplayService {
         this.matchesDatabaseReference.push(dataMatchModel).then(
           () => { this._router.navigate(['/profile'])});
     }
-    public getArrayOfLocations(apiEndPoint: string){
-        this.getMatchLocations(apiEndPoint)
-            .subscribe(locations => { this.locations = locations},
-                        (err)=> console.log(err),
-                        () =>  this.shuffleArray(this.locations));
-    }
-    public shuffleArray(array){
+    public shuffleArray(array): Location[]{
         let currentIndex = array.length, temporaryValue, randomIndex;
         while (0 !== currentIndex) {
             randomIndex = Math.floor(Math.random() * currentIndex);
@@ -90,7 +84,6 @@ export class GameplayService {
             array[currentIndex] = array[randomIndex];
             array[randomIndex] = temporaryValue;
         }
-        console.log(array);
         return array;
     }
 }

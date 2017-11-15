@@ -6,6 +6,7 @@ import { Location } from '../../models';
 import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
+import { take } from 'lodash';
 
 @Component({
   selector: 'app-gameplay',
@@ -14,7 +15,7 @@ import * as firebase from 'firebase/app';
 })
 export class GameplayComponent implements OnInit {  
   public match: Match = { };
-  public locations: Location[]; 
+  public locations: any; 
   public timer = 0;
   public beginMatch: boolean;
   public continents =  continents;
@@ -42,15 +43,17 @@ export class GameplayComponent implements OnInit {
     this.latitudeOfContinentSelected = continent.lat
     this.longitudeOfContinentSelected = continent.lng;
     this.continent.isContinentSelected = true;
-    this._gameplayService.getArrayOfLocations(continent.apiEndpoint);
-        /*.subscribe(locations => this.locations = locations,
+    this._gameplayService.getMatchLocations(continent.apiEndpoint)
+        .subscribe(locations => {
+                    this.locations = take(this._gameplayService.shuffleArray(locations),5)
+                  },
                   (err) => console.log(err),
                   () => { 
                       this.isLoadingLocationsFromContinentSelected = false,
                       continent.isContinentSelected = false,
                       this.isMatchConfigurationDone = true,
                       this.gameTest();
-                  });*/
+                  });
   }
   mapClicked($event){
     this.marker.lat = $event['coords'].lat;
