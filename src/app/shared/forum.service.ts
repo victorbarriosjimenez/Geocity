@@ -12,7 +12,7 @@ export class ForumService {
     private postsDatabaseReference: AngularFireList<Post>;
     private postDatabaseReference:  AngularFireObject<Post>;
     private listOfPosts: Observable<Post[]>; 
-    private post: Observable<Post>;
+    private post:  Observable<Post>;  
 
     constructor(private _afDatabase: AngularFireDatabase,
                 private _afAuth: AngularFireAuth) {

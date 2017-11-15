@@ -42,15 +42,15 @@ export class GameplayComponent implements OnInit {
     this.latitudeOfContinentSelected = continent.lat
     this.longitudeOfContinentSelected = continent.lng;
     this.continent.isContinentSelected = true;
-    this._gameplayService.getMatchLocations(continent.apiEndpoint)
-        .subscribe(locations => this.locations = locations,
+    this._gameplayService.getArrayOfLocations(continent.apiEndpoint);
+        /*.subscribe(locations => this.locations = locations,
                   (err) => console.log(err),
                   () => { 
                       this.isLoadingLocationsFromContinentSelected = false,
                       continent.isContinentSelected = false,
                       this.isMatchConfigurationDone = true,
                       this.gameTest();
-                  });
+                  });*/
   }
   mapClicked($event){
     this.marker.lat = $event['coords'].lat;

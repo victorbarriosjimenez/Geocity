@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { User } from '../../models';
+import { User , Match } from '../../models';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/switchMap';
@@ -11,6 +11,7 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class UserService {
     private firebaseUrl: string = 'https://geocity-app.firebaseio.com/';
+    private matchesDatabaseReference : AngularFireList<Match>;
     public authState: any = null;    
     public updateProfileRequests: number = 0;
     constructor(private http: Http,
@@ -45,10 +46,12 @@ export class UserService {
         }       
         return userRef.update(data);
     }
-    public updateUserScoreAfterMatchCreated(matchScore: number): void {
-    /**/
+    public getAllUserMatches( ) {
+        const matchesDataPath = 'https://geocity-app.firebaseio.com/matches.json';
+        return this.http.get(matchesDataPath)
+                        .map(response => response.json());
     }
-    public getUserData() { 
+    public getUserData()  { 
         const userDataPath = `https://geocity-app.firebaseio.com/users/${this.currentUserId}.json`;
         return this.http.get(userDataPath)
                   .map(response => response.json());

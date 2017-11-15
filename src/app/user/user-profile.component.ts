@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import  { AuthenticationService } from '../shared/authentication.service';
+import { AuthenticationService } from '../shared/authentication.service';
 import { Router }  from '@angular/router';
-import  { User } from '../../models'
-import { UserService } from '../shared/user.service';
+import { User , Match } from '../../models'
+import { UserService, ForumService } from './../shared/';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -10,12 +11,14 @@ import { UserService } from '../shared/user.service';
 })
 export class UserProfileComponent implements OnInit {
   public user: User;
+  public matches: any;
   constructor(private auth: AuthenticationService,
               private _userService:  UserService,
               private _router: Router) { 
               }
   ngOnInit() { 
     this.getProfileBioData();
+    this.getUserMatches();
   }
   private getProfileBioData( ):  void {
     this._userService.getUserData()
@@ -23,5 +26,9 @@ export class UserProfileComponent implements OnInit {
                   (err) => console.log(err),
                   () => console.log('Success')
       );
+  }
+  public getUserMatches(){
+    this._userService.getAllUserMatches()
+                     .subscribe(matches  => this.matches = matches);
   }
 }
