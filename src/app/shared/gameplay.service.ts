@@ -75,7 +75,7 @@ export class GameplayService {
         this.matchesDatabaseReference.push(dataMatchModel).then(
           () => { this._router.navigate(['/profile'])});
     }
-    public shuffleArray(array): Location[]{
+    public shuffleArray(array): Location[] {
         let currentIndex = array.length, temporaryValue, randomIndex;
         while (0 !== currentIndex) {
             randomIndex = Math.floor(Math.random() * currentIndex);

@@ -64,7 +64,6 @@ export class GameplayComponent implements OnInit {
     this.gameTest();
  }
  gameTest( ): void {
-   console.log(this.locations);
    if(this.index === 5) {
        this.subscription.unsubscribe();
        this.prepareMatchToPost();
