@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameplayService, Continent, continents, UserService } from './../shared';
-import { Match  } from '../../models';
+import { Match, User } from '../../models';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Location } from '../../models';
 import { Observable } from 'rxjs/Rx';
@@ -24,6 +24,7 @@ export class GameplayComponent implements OnInit {
   public latitudeOfContinentSelected: number = 0;
   public longitudeOfContinentSelected: number = 0;
   public index : number = 0 ;
+  public user: User;
   public continent: Continent;
   public matchScoreControl: number = 0;
   public location:  Location;
@@ -36,6 +37,8 @@ export class GameplayComponent implements OnInit {
     this.locations = [ ];
   }
   ngOnInit() { 
+    this._userService.getUserData()
+        .subscribe(user=>  this.user  = user);
     this.isMatchConfigurationDone = false;
   }
   private selectContinentForMatch(continent: Continent): void {
@@ -85,6 +88,7 @@ export class GameplayComponent implements OnInit {
           continent: this.continent.name,
           timestamp: firebase.database.ServerValue.TIMESTAMP,
           score: this.matchScoreControl,
+          userScore: this.user.score
       }
       this._gameplayService.createNewMatch(this.match);
   }

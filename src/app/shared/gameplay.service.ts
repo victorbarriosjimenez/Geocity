@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { Match } from './../../models'
+import { UserService } from './../shared'
+
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 @Injectable()
 export class GameplayService {
@@ -11,6 +13,7 @@ export class GameplayService {
     public _locationsAPI: string = "https://geocity-app.firebaseio.com/locations";
     constructor(private _http: Http,
                 private _afDatabase: AngularFireDatabase,
+                private _userService: UserService,
                 private _router: Router) { 
                      this.matchesDatabaseReference  = _afDatabase.list('/matches');
     }
@@ -73,7 +76,10 @@ export class GameplayService {
             continent: match.continent,
         }
         this.matchesDatabaseReference.push(dataMatchModel).then(
-          () => { this._router.navigate(['/profile'])});
+          () => { 
+                this._userService.updateUserScoreAfterMatchFinished(match.userScore,match.score);
+                this._router.navigate(['/profile']) 
+        });
     }
     public shuffleArray(array): Location[] {
         let currentIndex = array.length, temporaryValue, randomIndex;

@@ -56,6 +56,9 @@ export class UserService {
        return this.getAllMatches()
                   .map((matches: Match[]) => matches.filter((match: Match) => match.userId === this.currentUserId));
     }
+    public updateUserScoreAfterMatchFinished(currentUserScore: number, matchScore: number) {
+         const path = `users/${this.currentUserId}`; 
+    }
 
     public getUserData()  { 
         const userDataPath = `https://geocity-app.firebaseio.com/users/${this.currentUserId}.json`;
