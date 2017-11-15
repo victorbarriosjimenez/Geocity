@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core'
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 import { Match } from './../../models'
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 @Injectable()
 export class GameplayService {
     public _locationsAPI: string = "https://geocity-app.firebaseio.com/locations";
     constructor(private _http: Http,
-                private _afDatabase: AngularFireDatabase) { }
+                private _afDatabase: AngularFireDatabase,
+                private _router: Router) { }
     public getMatchLocations(apiEndPoint: string) { 
       return this._http.get(`${this._locationsAPI}/${apiEndPoint}.json`)
                  .map(response => response.json()); 
@@ -68,6 +70,7 @@ export class GameplayService {
             score:  match.score,
             continent: match.continent    
         }
-        matchDatabaseReference.update(dataMatchModel);
+        matchDatabaseReference.update(dataMatchModel)
+                              .then(() => this._router.navigate(['/profile']));
     }
 }

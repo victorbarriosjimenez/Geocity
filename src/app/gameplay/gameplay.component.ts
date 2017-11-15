@@ -7,6 +7,7 @@ import { Location } from '../../models';
 import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
+import {TimerObservable} from "rxjs/observable/TimerObservable";
 
 @Component({
   selector: 'app-gameplay',
@@ -71,7 +72,6 @@ export class GameplayComponent implements OnInit {
                       if(this.index === 5){
                         clearTimeout(this.interval);
                         this.prepareMatchToPost();
-                        this.
                       }
     },5000);
   }
