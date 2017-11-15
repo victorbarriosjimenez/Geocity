@@ -24,8 +24,7 @@ export class UserProfileComponent implements OnInit {
     this._userService.getUserData()
       .subscribe(data => this.user = data,
                   (err) => console.log(err),
-                  () => console.log('Success')
-      );
+                  () => console.log('Success'));
   }
   public getUserMatches(){
     this._userService.getUserMatches()
