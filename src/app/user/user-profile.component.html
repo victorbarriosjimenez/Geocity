@@ -28,15 +28,15 @@
 <app-navigation></app-navigation>
 <button-upper></button-upper>
 <div class="container">
-    <div  *ngIf="matches" class="row">
-        {{ matches | json }}
-        <!-- 
+    <div  *ngIf="matches; else showNoMatches" class="row">
         <mat-card *ngFor="let match of matches" class="empty-card">
             {{ match.continent }}   
             {{ match.score }}
-            {{ match.timestamp }} 
-         </mat-card>    -->
+            {{ match.timestamp | date }} 
+         </mat-card>   
     </div>
-
+    <ng-template #showNoMatches>
+        No tienes partidas jugadas
+    </ng-template>
 </div>
 <app-footer></app-footer>
