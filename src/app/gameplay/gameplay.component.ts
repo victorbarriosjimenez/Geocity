@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { GameplayService, Continent, continents, UserService } from './../shared';
 import { Match  } from '../../models';
-import { MatSnackBar } from '@angular/material';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Location } from '../../models';
 import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
-import {TimerObservable} from "rxjs/observable/TimerObservable";
 
 @Component({
   selector: 'app-gameplay',
@@ -32,9 +30,7 @@ export class GameplayComponent implements OnInit {
   public subscription: any;
   constructor(private _gameplayService: GameplayService,
               private _afDatabase: AngularFireDatabase,
-              private _userService: UserService,
-              private _router: Router,
-              private _matSnackbar: MatSnackBar) { 
+              private _userService: UserService) { 
     this.beginMatch = null;
     this.locations = [ ];
   }
