@@ -3,13 +3,16 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { Match } from './../../models'
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 @Injectable()
 export class GameplayService {
+    private matchesDatabaseReference : AngularFireList<Match>;
     public _locationsAPI: string = "https://geocity-app.firebaseio.com/locations";
     constructor(private _http: Http,
                 private _afDatabase: AngularFireDatabase,
-                private _router: Router) { }
+                private _router: Router) { 
+                     this.matchesDatabaseReference  = _afDatabase.list('/matches');
+    }
     public getMatchLocations(apiEndPoint: string) { 
       return this._http.get(`${this._locationsAPI}/${apiEndPoint}.json`)
                  .map(response => response.json()); 
@@ -62,15 +65,13 @@ export class GameplayService {
         return x * Math.PI / 180;
     }
     public createNewMatch(match : Match): void {
-        const path = `matches/${match.userId}`; 
-        const matchDatabaseReference: AngularFireObject<any> = this._afDatabase.object(path); 
         const dataMatchModel: Match = {
             userId: match.userId,
             timestamp: match.timestamp,
             score:  match.score,
             continent: match.continent    
         }
-        matchDatabaseReference.update(dataMatchModel)
-                              .then(() => this._router.navigate(['/profile']));
+        this.matchesDatabaseReference.push(dataMatchModel).then(
+          () => { this._router.navigate(['/profile'])});
     }
 }

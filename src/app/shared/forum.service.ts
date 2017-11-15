@@ -11,8 +11,8 @@ export class ForumService {
     private dataPath: string = '/posts';
     private postsDatabaseReference: AngularFireList<Post>;
     private postDatabaseReference:  AngularFireObject<Post>;
-    private listOfPosts: Observable<Post[]>; //  list of objects
-    private post:  Observable<Post>;   //   single object
+    private listOfPosts: Observable<Post[]>; 
+    private post: Observable<Post>;
 
     constructor(private _afDatabase: AngularFireDatabase,
                 private _afAuth: AngularFireAuth) {
@@ -29,7 +29,6 @@ export class ForumService {
         return this.post
     }
     public createNewPost(post: Post): void {
-        console.log(post); 
         this.postsDatabaseReference.push(post);
     }
     public deletePost(key: string): void { 
