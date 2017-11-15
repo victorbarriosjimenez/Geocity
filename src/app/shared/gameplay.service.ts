@@ -6,16 +6,13 @@ import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 @Injectable()
 export class GameplayService {
     public _locationsAPI: string = "https://geocity-app.firebaseio.com/locations";
-    constructor(private _http: Http) { }
+    constructor(private _http: Http,
+                private _afDatabase: AngularFireDatabase) { }
     public getMatchLocations(apiEndPoint: string) { 
       return this._http.get(`${this._locationsAPI}/${apiEndPoint}.json`)
                  .map(response => response.json()); 
     }
-    public returnDistanceBetweenLocationsSelected(
-                                    locationSetLatitude: number, 
-                                    locationSetLongitude : number,
-                                    LocationClickedLatitude: number,
-                                    locationClickedLongitude: number): number {
+    public returnDistanceBetweenLocationsSelected(locationSetLatitude: number, locationSetLongitude : number, LocationClickedLatitude: number, locationClickedLongitude: number): number {
         var R = 6378137; 
         var dLat = this.rad(LocationClickedLatitude - locationSetLatitude)
         var dLong = this.rad(locationClickedLongitude - locationSetLongitude)
@@ -63,13 +60,14 @@ export class GameplayService {
         return x * Math.PI / 180;
     }
     public createNewMatch(match : Match): void {
-        console.log(match);        
         const path = `matches/${match.userId}`; 
-        const data: Match = {
+        const matchDatabaseReference: AngularFireObject<any> = this._afDatabase.object(path); 
+        const dataMatchModel: Match = {
             userId: match.userId,
             timestamp: match.timestamp,
             score:  match.score,
             continent: match.continent    
         }
+        matchDatabaseReference.update(dataMatchModel);
     }
 }

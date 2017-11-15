@@ -71,6 +71,7 @@ export class GameplayComponent implements OnInit {
                       if(this.index === 5){
                         clearTimeout(this.interval);
                         this.prepareMatchToPost();
+                        this.
                       }
     },5000);
   }
