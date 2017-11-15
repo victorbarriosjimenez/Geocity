@@ -17,7 +17,6 @@
                     <p class="country">{{ user.country | uppercase }}</p>                    
                     <p>{{ user.score }} pts</p>
                </div>
-
             </div>
         </div>
     </div>
@@ -29,14 +28,16 @@
 <button-upper></button-upper>
 <div class="container">
     <div  *ngIf="matches; else showNoMatches" class="row">
-        <mat-card *ngFor="let match of matches" class="empty-card">
+        <mat-card *ngFor="let match of matches">
             {{ match.continent }}   
             {{ match.score }}
             {{ match.timestamp | date }} 
          </mat-card>   
     </div>
     <ng-template #showNoMatches>
-        No tienes partidas jugadas
+         <mat-card class="empty-card">
+            No tienes partidas jugadas
+         </mat-card> 
     </ng-template>
 </div>
 <app-footer></app-footer>

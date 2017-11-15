@@ -4,4 +4,5 @@ export class Match { 
     public continent?:  string;
     public score?: number;
     public timestamp?: any;
+    public avatarCover?: string;
 }

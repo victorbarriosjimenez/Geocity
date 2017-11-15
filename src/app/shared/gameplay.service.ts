@@ -70,7 +70,8 @@ export class GameplayService {
             userId: match.userId,
             timestamp: match.timestamp,
             score:  match.score,
-            continent: match.continent    
+            continent: match.continent,
+            avatarCover: match.avatarCover   
         }
         this.matchesDatabaseReference.push(dataMatchModel).then(
           () => { this._router.navigate(['/profile'])});

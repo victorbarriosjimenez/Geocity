@@ -84,7 +84,8 @@ export class GameplayComponent implements OnInit {
           userId: this._userService.currentUserId,
           continent: this.continent.name,
           timestamp: firebase.database.ServerValue.TIMESTAMP,
-          score: this.matchScoreControl
+          score: this.matchScoreControl,
+          avatarCover: this.continent.image
       }
       this._gameplayService.createNewMatch(this.match);
   }
