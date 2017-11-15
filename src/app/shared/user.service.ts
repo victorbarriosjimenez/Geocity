@@ -20,9 +20,7 @@ export class UserService {
                         this.authState = auth
                  });
     }
-
    /* ---------------------------------- USER CRUD OPERATIONS ----------------------------------  */
-    
    public createsUserAndInitialData(userstate,country,username){ 
         const path = `users/${userstate.uid}`; 
         const userRef: AngularFireObject<any> = this._afDatabase.object(path);    
@@ -46,6 +44,9 @@ export class UserService {
             profilePhotoUrl: userUpdateFormModel.profilePhotoUrl
         }       
         return userRef.update(data);
+    }
+    public updateUserScoreAfterMatchCreated(matchScore: number): void {
+    /**/
     }
     public getUserData() { 
         const userDataPath = `https://geocity-app.firebaseio.com/users/${this.currentUserId}.json`;

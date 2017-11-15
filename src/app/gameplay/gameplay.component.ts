@@ -90,9 +90,4 @@ export class GameplayComponent implements OnInit {
       }
       this._gameplayService.createNewMatch(this.match);
   }
-  private showsSnackBarWithDetails(result: number) : void {
-    this._matSnackbar.open(`Distancia ${result}`, "DE ACUERDO", {
-        duration: 3000,
-    }); 
-  }
 }
