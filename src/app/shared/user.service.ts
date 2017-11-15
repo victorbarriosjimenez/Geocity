@@ -67,13 +67,11 @@ export class UserService {
             this.updateProfileRequests = 0;
             const data = { editionRequests: this.updateProfileRequests };
             userRef.update(data);
-                return this.updateProfileRequests;
         }  
         else {
             this.updateProfileRequests += 1;  
             const data = {  editionRequests: this.updateProfileRequests }
             userRef.update(data);
-            return this.updateProfileRequests;
         }
     }
     /* ---------------------------------- USER PROPERTIES  ----------------------------------  */
