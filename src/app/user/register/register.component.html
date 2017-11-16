@@ -9,23 +9,38 @@
     <div class="row">
             <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12 col-lg-4 col-lg-offset-4 ">
             <h3 class="text-center">¡Crea una cuenta y comienza!</h3> <br>       
-            <form (ngSubmit)="registerAccountWithEmailAndPassword()" [formGroup]="registrationForm">    
+            <form (ngSubmit)="registerAccountWithEmailAndPassword()">    
                 <mat-form-field class="full-width">
                         <input 
                             matInput
                             type="email"
                             placeholder="Correo electrónico"
-                            formControlName="email">
+                            [formControl]="emailFormControl"
+                            required>
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                            Ingresa una dirección de correo válida
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                            Email is <strong>required</strong>
+                        </mat-error>
                 </mat-form-field>   
+       <!--  
                 <mat-form-field class="full-width">
                         <input 
                             matInput
                             type="text"
                             placeholder="Nombre de usuario"
-                            formControlName="username">
+                            formControlName="usernameFormControl"
+                            required>
+                            <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                                    class="alert alert-danger">
+                                <div *ngIf="username.errors.required">
+                                    Name is required.
+                                </div>
+                            </div>
                 </mat-form-field> 
                 <mat-form-field class="full-width">
-                    <mat-select placeholder="Pais de origen" formControlName="country">
+                    <mat-select placeholder="Pais de origen" formControlName="countryFormControl">
                       <mat-option *ngFor="let country of countries" [value]="country.name">
                           {{ country.name }}
                       </mat-option>
@@ -36,8 +51,9 @@
                             matInput
                             type="password"
                             placeholder="Contraseña"
-                            formControlName="password">
+                            formControlName="passwordFormControl">
                 </mat-form-field>  
+                -->
                 <button mat-raised-button type="submit" color="primary">Crear mi cuenta</button>
             </form>
             <hr>

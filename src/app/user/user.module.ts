@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms'; 
 import { UserProfileComponent } from './user-profile.component';
  
 import { UserSearchComponent } from  './user-search/user-search.component'; 
@@ -16,6 +17,8 @@ import { GameplayModule } from './../gameplay/gameplay.module';
   imports: [
     CommonModule,
     MaterialElementsModule,
+    FormsModule,
+    ReactiveFormsModule,
     UserRoutesModule,
     GameplayModule
   ],

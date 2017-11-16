@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { Match } from './../../models'
-import { UserService } from './../shared'
+import { UserService } from './user.service';
 
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 @Injectable()
