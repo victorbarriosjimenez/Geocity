@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup,FormControl , FormGroupDirective, NgForm} from '@angular/forms';
 import { FormsService } from '../../shared/forms.service';
 import { AuthenticationService } from '../../shared/authentication.service';
-import {ErrorStateMatcher} from '@angular/material/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx'; 
 import { User } from '../../../models';
@@ -11,11 +10,7 @@ import { User } from '../../../models';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit, ErrorStateMatcher {
-   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
+export class RegisterComponent implements OnInit {
   public countries: any;
   public loading: boolean;
   public registrationForm: FormGroup;
@@ -51,7 +46,7 @@ export class RegisterComponent implements OnInit, ErrorStateMatcher {
     };
       return userModel
   }
-  public registerAccountWithEmailAndPassword(){
+  public registerAccountWithEmailAndPassword(): void {
     let user = this.prepareUserForRegistration();
     this._authService.emailSignUp(user);
   }
