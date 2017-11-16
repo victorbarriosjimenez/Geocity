@@ -8,7 +8,6 @@ import  { UserRoutesModule } from './user.routes'
 import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { AuthenticationService } from '../shared/authentication.service';
 import { NavigationComponent } from './navigation/navigation.component';
-import { ButtonUpperComponent } from './button-upper/button-upper.component';
 import { FriendsRankingComponent } from './friends-ranking/friends-ranking.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { UserService } from '../shared/user.service';
@@ -26,13 +25,11 @@ import { GameplayModule } from './../gameplay/gameplay.module';
     UserProfileComponent,
     UserSearchComponent,
     NavigationComponent,
-    ButtonUpperComponent,
     FriendsRankingComponent,
     RankingComponent
   ],
   exports: [
-    NavigationComponent,
-    ButtonUpperComponent
+    NavigationComponent
   ],
   providers: [
     AuthenticationService,
