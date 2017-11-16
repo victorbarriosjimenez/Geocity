@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit, ErrorStateMatcher {
     const userModel: User = {
         email: formModel.emailFormControl as string,
         username:  formModel.usernameFormControl as string,
-        country: formModel.countryFormControlas as string,
+        country: formModel.countryFormControl as string,
         password: formModel.passwordFormControl as string
     };
       return userModel

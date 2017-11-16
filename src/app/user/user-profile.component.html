@@ -25,13 +25,12 @@
     </ng-template>
 </header>
 <app-navigation></app-navigation>
-<button-upper></button-upper>
 <div class="container">
     <div *ngIf="matches; else showNoMatches" class="row">
         <mat-card *ngFor="let match of matches" class="match-card">
             <div class="match-header">
                 <p class="continent"> Continente: {{ match.continent }}</p>  
-                <p class="score">Puntuación: {{ match.score }} <span style="color: lightgreen; margin-right: 10px;"> / 5000 </span>  pts</p>
+                <p class="score"> Puntuación: {{ match.score }} <span style="color: lightgreen; margin-right: 10px;"> / 5000 </span>  pts</p>
                 <p class="timestamp"> Fecha: {{ match.timestamp | date }}</p>                  
             </div>
          </mat-card>   
