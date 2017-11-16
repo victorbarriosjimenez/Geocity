@@ -40,7 +40,7 @@ export class AuthenticationService {
     }
     public checkIfEmailIsVerified(){
        let userSession = this._firebaseAuthentication.currentUser;
-       let invitationToVerifyEmail = `Un correo de verificación de tu cuenta fue enviado a : ${this.currentUserEmail}.`;
+       let invitationToVerifyEmail = `Un correo de verificación de tu cuenta fue enviado a: ${this.currentUserEmail}. Para seguir diviertiéndonos es necesario que lo confirmes!`;
        if(userSession != null){ 
            if(!userSession.emailVerified){
                 this.showSnackBarForNotifications(invitationToVerifyEmail);

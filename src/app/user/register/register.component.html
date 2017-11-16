@@ -65,7 +65,7 @@
                             La contraseña debe tener <strong>mínimo 8 caracteres</strong> 
                         </mat-error>
                 </mat-form-field> 
-                <button mat-raised-button type="submit" color="primary">Crear mi cuenta</button>
+                <button [disabled]="!registrationForm.valid" mat-raised-button type="submit" color="primary">Crear mi cuenta</button>
             </form>
             <hr>
             <p class="register-invitation">¿Ya tienes una cuenta? Da click <a routerLink="/login">aquí</a> y entra a tu cuenta de Geocity.</p>

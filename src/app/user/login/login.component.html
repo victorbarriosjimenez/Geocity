@@ -33,7 +33,7 @@
                                     Ingresa tu <strong>contraseña</strong>
                                 </mat-error>
                         </mat-form-field>
-                        <button mat-raised-button color="accent" type="submit">                              
+                        <button [disabled]="!loginForm.valid" mat-raised-button color="accent" type="submit">                              
                             Acceder a mi cuenta
                         </button>
                 </form>
