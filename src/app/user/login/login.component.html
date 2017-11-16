@@ -14,7 +14,7 @@
                                 <input 
                                     matInput
                                     type="email"
-                                    placeholder="Correo electrónico"
+                                    placeholder="Ingresa tu correo electrónico"
                                     formControlName="email">
                                  <mat-error *ngIf="loginForm.controls.email.hasError('email') && !loginForm.controls.email.hasError('required')">
                                     Ingresa un email válido
@@ -27,7 +27,7 @@
                                 <input 
                                     matInput
                                     type="password"
-                                    placeholder="Contraseña"
+                                    placeholder="Contraseña de Geocity"
                                     formControlName="password">
                                 <mat-error *ngIf="loginForm.controls.password.hasError('required')">
                                     Ingresa tu <strong>contraseña</strong>

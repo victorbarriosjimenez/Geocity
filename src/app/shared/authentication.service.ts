@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { UserService } from './user.service';
+import { MatSnackBar } from '@angular/material';
 import { User } from '../../models';
 import { Router } from '@angular/router'; 
 import * as firebase from 'firebase/app';
@@ -14,7 +15,8 @@ export class AuthenticationService {
     private _firebaseAuthentication = firebase.auth();
     public user: Observable<User>;
     constructor(private  afAuth: AngularFireAuth,
-                private  _afStore: AngularFireDatabase, 
+                private _snackBar: MatSnackBar,
+                private _afStore: AngularFireDatabase, 
                 private _router: Router,
                 private _userService: UserService) 
                 {           
@@ -31,18 +33,26 @@ export class AuthenticationService {
                     this._firebaseAuthentication.currentUser.sendEmailVerification({ url : 'https://geocity-app.firebaseapp.com/__/auth/action'}),
                     this._userService.createsUserAndInitialData(user,userForm.country,userForm.username),
                     this._router.navigate(['/profile']);
+                    setTimeout(this.checkIfEmailIsVerified(),3000),
                 }).catch(error => console.log(error));
     }
     public checkIfEmailIsVerified(){
        let userSession = this._firebaseAuthentication.currentUser;
+       let invitationToVerifyEmail = `Hey! Para seguir diviertiéndote con Geocity, es necesario que verifiques el correo de confirmación que hemos enviado a ${this.currentUserEmail}.`;
+       let indicationMessage = `Si no encuentras el email, puedes volver a enviarlo en la cofiguración de tu perfil`; 
        if(userSession != null){ 
            if(!userSession.emailVerified){
-             console.log("User hasnt been verified");
+                this.showSnackBarForNotifications(invitationToVerifyEmail);
            }
            else { 
-               console.log("User email has been confirmed");
+               return;
            }
        }
+    }
+    public showSnackBarForNotifications(message: string){ 
+        this._snackBar.open(message, "DE ACUERDO", {
+            duration: 3000,
+        });
     }
     public emailLogin(email: string, password: string) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
