@@ -33,13 +33,14 @@ export class AuthenticationService {
                     this._firebaseAuthentication.currentUser.sendEmailVerification({ url : 'https://geocity-app.firebaseapp.com/__/auth/action'}),
                     this._userService.createsUserAndInitialData(user,userForm.country,userForm.username),
                     this._router.navigate(['/profile']);
-                    setTimeout(this.checkIfEmailIsVerified(),3000),
-                }).catch(error => console.log(error));
+                    setTimeout(this.checkIfEmailIsVerified(),3000);
+                }).catch(
+                    () => console.log()
+                );
     }
     public checkIfEmailIsVerified(){
        let userSession = this._firebaseAuthentication.currentUser;
-       let invitationToVerifyEmail = `Hey! Para seguir diviertiéndote con Geocity, es necesario que verifiques el correo de confirmación que hemos enviado a ${this.currentUserEmail}.`;
-       let indicationMessage = `Si no encuentras el email, puedes volver a enviarlo en la cofiguración de tu perfil`; 
+       let invitationToVerifyEmail = `Un correo de verificación de tu cuenta fue enviado a : ${this.currentUserEmail}.`;
        if(userSession != null){ 
            if(!userSession.emailVerified){
                 this.showSnackBarForNotifications(invitationToVerifyEmail);
@@ -51,14 +52,15 @@ export class AuthenticationService {
     }
     public showSnackBarForNotifications(message: string){ 
         this._snackBar.open(message, "DE ACUERDO", {
-            duration: 3000,
+            duration: 5000,
         });
     }
     public emailLogin(email: string, password: string) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
                     .then((user) => {
-                     this.authState = user,      
-                     this._router.navigate(['/profile'])
+                         this.authState = user,      
+                         this._router.navigate(['/profile']);
+                         setTimeout(this.checkIfEmailIsVerified(),3000);
                     }).catch(error => console.log(error));
     }
     public logoutfromGeocity(): void { 
