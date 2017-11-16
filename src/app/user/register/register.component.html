@@ -18,10 +18,10 @@
                             formControlName="emailFormControl"
                             required>
                         <mat-error *ngIf="registrationForm.controls.emailFormControl.hasError('email') && !registrationForm.controls.emailFormControl.hasError('required')">
-                            Ingresa una dirección de correo válida
+                            Ingresa un email válido
                         </mat-error>
                         <mat-error *ngIf="registrationForm.controls.emailFormControl.hasError('required')">
-                            Email is <strong>required</strong>
+                            Ingresa un <strong>email</strong>
                         </mat-error>
                 </mat-form-field>     
               <mat-form-field class="full-width">
@@ -30,12 +30,12 @@
                             type="text"
                             placeholder="Nombre de usuario"
                             formControlName="usernameFormControl"
-                            required minlength="6">
+                            required minlength="6" maxlength="15">
                         <mat-error *ngIf="registrationForm.controls.usernameFormControl.hasError('required')">
                             Ingresa un <strong>nombre de usuario</strong>
                         </mat-error>
                          <mat-error *ngIf="registrationForm.controls.usernameFormControl.hasError('minlength')">
-                            El nombre de usuario debe tener <strong>mínimo 6 caracteres</strong>
+                            El nombre de usuario debe tener <strong>mínimo 6 caracteres, máximo de 15 caracteres</strong> 
                         </mat-error>
                 </mat-form-field>  
                 <mat-form-field class="full-width">
@@ -44,15 +44,22 @@
                           {{ country.name }}
                       </mat-option>
                     </mat-select>
+                    <mat-error *ngIf="registrationForm.controls.countryFormControl.hasError('required')">
+                            Ingresa tu <strong>pais de origen</strong>
+                    </mat-error>
                   </mat-form-field>
                 <mat-form-field class="full-width">
                         <input 
                             matInput
                             type="password"
                             placeholder="Contraseña"
-                            formControlName="passwordFormControl">
-                        <mat-error *ngIf="registrationForm.controls.countryFormControl.hasError('required')">
+                            formControlName="passwordFormControl"
+                            required minlength="8" maxlength="20">
+                        <mat-error *ngIf="registrationForm.controls.passwordFormControl.hasError('required')">
                             Ingresa una <strong>contraseña</strong>
+                        </mat-error>
+                         <mat-error *ngIf="registrationForm.controls.passwordFormControl.hasError('minlength')">
+                            La contraseña debe tener <strong>mínimo 8 caracteres</strong> 
                         </mat-error>
                 </mat-form-field> 
                 <button mat-raised-button type="submit" color="primary">Crear mi cuenta</button>

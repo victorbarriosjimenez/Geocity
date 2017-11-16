@@ -30,16 +30,6 @@ export class RegisterComponent implements OnInit, ErrorStateMatcher {
     this.getCountries();
   } 
   public createForm( ): void {
-    /*   this.registrationForm = new FormGroup({ 
-          emailFormControl:  new FormControl('', [ Validators.required,Validators.email]),
-          usernameFormControl:  new FormControl(' ',[ Validators.required, Validators.minLength(6)]),
-          countryFormControl:  new FormControl(' ',[ Validators.required ]),
-          passwordFormControl:  new FormControl(' ',[ Validators.required ]),
-      })
-   this.emailFormControl = new FormControl('', [
-            Validators.required,
-            Validators.email,
-    ]);*/
    this.registrationForm =  this._fb.group({
             emailFormControl:['', Validators.compose([Validators.required, Validators.email])],
             usernameFormControl:['', Validators.compose([Validators.required, Validators.minLength(6)])],
@@ -54,10 +44,10 @@ export class RegisterComponent implements OnInit, ErrorStateMatcher {
   public prepareUserForRegistration( ): User {
     const formModel = this.registrationForm.value;
     const userModel: User = {
-        email: formModel.email as string,
-        username:  formModel.username as string,
-        country: formModel.country as string,
-        password: formModel.password as string, 
+        email: formModel.emailFormControl as string,
+        username:  formModel.usernameFormControl as string,
+        country: formModel.countryFormControlas as string,
+        password: formModel.passwordFormControl as string
     };
       return userModel
   }
