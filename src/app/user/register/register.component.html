@@ -37,6 +37,9 @@
                          <mat-error *ngIf="registrationForm.controls.usernameFormControl.hasError('minlength')">
                             El nombre de usuario debe tener <strong>mínimo 6 caracteres, máximo de 15 caracteres</strong> 
                         </mat-error>
+                         <mat-error *ngIf="registrationForm.controls.usernameFormControl.hasError('minlength')">
+                            El nombre de usuario debe tener <strong>máximo 15 caracteres</strong> 
+                        </mat-error>
                 </mat-form-field>  
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Pais de origen" formControlName="countryFormControl">

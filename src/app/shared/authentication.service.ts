@@ -33,12 +33,15 @@ export class AuthenticationService {
                     this._router.navigate(['/profile']);
                 }).catch(error => console.log(error));
     }
+    public checkIfEmailIsVerified(){
+
+    }
     public emailLogin(email: string, password: string) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-        .then((user) => {
-          this.authState = user,      
-          this._router.navigate(['/profile'])
-        }).catch(error => console.log(error));
+                    .then((user) => {
+                     this.authState = user,      
+                     this._router.navigate(['/profile'])
+                    }).catch(error => console.log(error));
     }
     public logoutfromGeocity(): void { 
         this.afAuth.auth.signOut().then(
