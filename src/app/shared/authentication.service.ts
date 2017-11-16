@@ -34,7 +34,15 @@ export class AuthenticationService {
                 }).catch(error => console.log(error));
     }
     public checkIfEmailIsVerified(){
-
+       let userSession = this._firebaseAuthentication.currentUser;
+       if(userSession != null){ 
+           if(!userSession.emailVerified){
+             console.log("User hasnt been verified");
+           }
+           else { 
+               console.log("User email has been confirmed");
+           }
+       }
     }
     public emailLogin(email: string, password: string) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
