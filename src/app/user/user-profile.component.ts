@@ -26,8 +26,11 @@ export class UserProfileComponent implements OnInit {
                   (err) => console.log(err),
                   () => console.log('Success'));
   }
-  public getUserMatches(){
+  public getUserMatches(): void {
     this._userService.getUserMatches()
                      .subscribe(matches  => this.matches = matches);
   }
+  public createNewMatch( ): void {
+      this._router.navigate(['/gameplay']);
+   }
 }

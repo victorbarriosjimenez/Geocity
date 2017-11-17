@@ -12,6 +12,8 @@ import 'rxjs/add/operator/switchMap'
 @Injectable()
 export class AuthenticationService {
     public authState: any = null;
+    public loginFormErrorsCode: any;
+    public signupFormErrorsCode: any;
     private _firebaseAuthentication = firebase.auth();
     public user: Observable<User>;
     constructor(private  afAuth: AngularFireAuth,
@@ -34,13 +36,26 @@ export class AuthenticationService {
                     this._userService.createsUserAndInitialData(user,userForm.country,userForm.username),
                     this._router.navigate(['/profile']);
                     setTimeout(this.checkIfEmailIsVerified(),3000);
-                }).catch(
-                    () => console.log()
-                );
+                }).catch((error) => {
+                     this.signupFormErrorsCode = error.code;
+                     switch(this.signupFormErrorsCode){
+                         case 'auth/email-already-in-use':
+                                this.showSnackBarForNotifications('Este correo electrónico ya ha sido registrado.');
+                                break;
+                         case 'auth/invalid-email':
+                                this.showSnackBarForNotifications('Este correo electrónico no es válido, intenta con otro.');
+                                break;
+                         case 'auth/weak-password':
+                                this.showSnackBarForNotifications('La contraseña no es muy fuerte ¡Intenta con otra contraseña!');
+                                break;
+                         default: 
+                                return;
+                     }
+                });
     }
     public checkIfEmailIsVerified(){
        let userSession = this._firebaseAuthentication.currentUser;
-       let invitationToVerifyEmail = `Un correo de verificación de tu cuenta fue enviado a: ${this.currentUserEmail}. Para seguir diviertiéndonos es necesario que lo confirmes!`;
+       let invitationToVerifyEmail = `Recuerda verificar tu correo enviado a: ${this.currentUserEmail} para seguir diviertiéndonos!`;
        if(userSession != null){ 
            if(!userSession.emailVerified){
                 this.showSnackBarForNotifications(invitationToVerifyEmail);
@@ -52,7 +67,7 @@ export class AuthenticationService {
     }
     public showSnackBarForNotifications(message: string){ 
         this._snackBar.open(message, "DE ACUERDO", {
-            duration: 5000,
+            duration: 6000,
         });
     }
     public emailLogin(email: string, password: string) {
@@ -61,7 +76,24 @@ export class AuthenticationService {
                          this.authState = user,      
                          this._router.navigate(['/profile']);
                          setTimeout(this.checkIfEmailIsVerified(),3000);
-                    }).catch(error => console.log(error));
+                    }).catch(
+                        (error) =>{
+                            this.loginFormErrorsCode =  error.code;
+                            switch(this.loginFormErrorsCode){
+                                case 'auth/wrong-password':
+                                     this.showSnackBarForNotifications('Contraseña Incorrecta, vuelve a intentarlo.');
+                                     break;
+                                case 'auth/user-not-found':
+                                     this.showSnackBarForNotifications('El usuario con este email no ha sido encontrado.');
+                                     break;
+                                case 'auth/user-not-found':
+                                     this.showSnackBarForNotifications('El usuario con este email no ha sido encontrado.');
+                                     break;
+                                default: 
+                                    return;
+                            }
+                        } 
+                    );
     }
     public logoutfromGeocity(): void { 
         this.afAuth.auth.signOut().then(

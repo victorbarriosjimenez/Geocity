@@ -24,11 +24,11 @@
        <mat-spinner mode="indeterminate" color="accent"></mat-spinner>
     </ng-template>
 </header>
-<a mat-fab class="fab-position" routerLink="/gameplay">
-    <mat-icon aria-label="Create new match">add</mat-icon>        
-</a>
 <app-navigation></app-navigation>
 <div class="container">
+    <a class="fancy-button bg-gradient2" routerLink="/gameplay">
+       <span>Nueva Partida</span>      
+    </a>
     <div *ngIf="matches; else showNoMatches" class="row">
         <mat-card *ngFor="let match of matches" class="match-card">
             <div class="match-header">
