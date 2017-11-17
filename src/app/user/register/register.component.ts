@@ -12,6 +12,7 @@ import { User } from '../../../models';
 })
 export class RegisterComponent implements OnInit {
   public countries: any;
+  public hide: boolean = true;
   public loading: boolean;
   public registrationForm: FormGroup;
   public emailFormControl: FormControl;

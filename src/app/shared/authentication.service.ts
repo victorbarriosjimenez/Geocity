@@ -9,6 +9,7 @@ import { User } from '../../models';
 import { Router } from '@angular/router'; 
 import * as firebase from 'firebase/app';
 import 'rxjs/add/operator/switchMap'
+
 @Injectable()
 export class AuthenticationService {
     public authState: any = null;
@@ -55,7 +56,7 @@ export class AuthenticationService {
     }
     public checkIfEmailIsVerified(){
        let userSession = this._firebaseAuthentication.currentUser;
-       let invitationToVerifyEmail = `Recuerda verificar tu correo enviado a: ${this.currentUserEmail} para seguir diviertiéndonos!`;
+       let invitationToVerifyEmail = `Recuerda verificar tu correo enviado a: ${this.currentUserEmail}!`;
        if(userSession != null){ 
            if(!userSession.emailVerified){
                 this.showSnackBarForNotifications(invitationToVerifyEmail);

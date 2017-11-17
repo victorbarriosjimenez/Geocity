@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
@@ -13,10 +14,12 @@ import { MaterialElementsModule  } from './shared/material-elements.module';
 import { UserModule } from './user/user.module';
 import { ForumModule } from './forum/forum.module';
 import { GameplayModule } from './gameplay/gameplay.module';
+import { TourMatMenuModule } from 'ngx-tour-md-menu/';
 
 /* Services */
 import { FormsService } from './shared/forms.service';
 import { AuthenticationService } from './shared/authentication.service';
+
 
 import { AuthGuard } from './shared/auth.guard';
 
@@ -42,7 +45,8 @@ import { UpdateComponent } from './user/update/update.component';
     UpdateComponent
 ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),    
+    AngularFireModule.initializeApp(environment.firebase),  
+    RouterModule,  
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserModule,
@@ -54,7 +58,8 @@ import { UpdateComponent } from './user/update/update.component';
     UserModule,
     ForumModule,
     RoutesModule,
-    GameplayModule
+    GameplayModule,
+    TourMatMenuModule.forRoot()
   ],
   providers: [
     FormsService,
