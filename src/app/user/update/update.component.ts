@@ -18,11 +18,13 @@ import  { User } from '../../../models'
 export class UpdateComponent implements OnInit {
   public user: User;
   public countries: any;  
+  public  usernameInsertedCopy: string = '';
+  public isUsernameAvailable: boolean = true;
   public userUpdateForm: FormGroup;
   public emailSentConfirmationMessage: string = `Hemos enviado un correo a la cuenta para cambiar tu password.`;   
   public profileModifiedConfirmationMessage: string = `Tu perfil se ha modificado exitosamente!`;    
   public isEmailConfirmationSent: boolean;
-  constructor(private auth: AuthenticationService,
+  constructor(private _authService: AuthenticationService,
               private _userService:  UserService,
               private _formsService: FormsService, 
               private _fb: FormBuilder,
@@ -96,5 +98,10 @@ export class UpdateComponent implements OnInit {
   }
   public restrictUserTimeOportunitiesToUpdate() {
       this._userService.userEditionControl(this.user.editionRequests);
+  }
+  public checkUsernameAvailability(): void {
+    this.usernameInsertedCopy = this.userUpdateForm.value.username.toLowerCase();
+    this._authService.getUsernames()
+                     .subscribe((usernames: any[]) =>  usernames.find((username: any) => username.username == this.usernameInsertedCopy ? this.isUsernameAvailable = false : this.isUsernameAvailable = true ));
   }
 }

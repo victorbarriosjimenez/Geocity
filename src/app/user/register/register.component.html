@@ -31,6 +31,7 @@
                             placeholder="Nombre de usuario"
                             formControlName="usernameFormControl"
                             required minlength="6" maxlength="15"
+                            autocomplete="off"
                             (keyup)="checkUsernameAvailability()">
                         <mat-error *ngIf="registrationForm.controls.usernameFormControl.hasError('required')">
                             Ingresa un <strong>nombre de usuario</strong>
@@ -42,11 +43,11 @@
                             El nombre de usuario debe tener <strong>máximo 15 caracteres</strong> 
                         </mat-error>
                 </mat-form-field>  
-                <p style="color: rgb(0, 123, 255); font-size: .9em;" *ngIf="isUsernameAvailable && usernameInsertedCopy">
-                    @{{ usernameInsertedCopy }} está disponible
+                <p style="color: rgb(18, 160, 255); font-size: .9em; margin-top:-10px;" *ngIf="isUsernameAvailable && !!usernameInsertedCopy && registrationForm.controls.usernameFormControl.valid">
+                    @{{ usernameInsertedCopy }} <strong>está disponible</strong>
                 </p>
-                <p style="color: rgb(255, 0, 0); font-size: .9em;" *ngIf="!isUsernameAvailable && usernameInsertedCopy">
-                    @{{ usernameInsertedCopy }} no está disponible
+                <p style="color: rgb(255, 0, 0); font-size: .9em; margin-top:-10px;" *ngIf="!isUsernameAvailable && !!usernameInsertedCopy">
+                    @{{ usernameInsertedCopy }} <strong>no está disponible</strong>
                 </p>
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Pais de origen" formControlName="countryFormControl">
@@ -57,7 +58,7 @@
                     <mat-error *ngIf="registrationForm.controls.countryFormControl.hasError('required')">
                             Ingresa tu <strong>pais de origen</strong>
                     </mat-error>
-                  </mat-form-field>
+                </mat-form-field>
                 <mat-form-field class="full-width">
                         <input 
                             matInput
