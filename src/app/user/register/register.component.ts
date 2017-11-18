@@ -13,11 +13,12 @@ import { User } from '../../../models';
 export class RegisterComponent implements OnInit {
   public countries: any;
   public hide: boolean = true;
-  public loading: boolean;
+  public loading: boolean =  true;
   usernames = [];
   public userNameText: string;
   public usernameAvailable: boolean;
   public registrationForm: FormGroup;
+  public isAvailable:  boolean;
   public emailFormControl: FormControl;
   constructor(private _formsService: FormsService, 
               private _fb: FormBuilder,
@@ -27,7 +28,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.getCountries();
-    this.getUsernames();
   } 
   public createForm( ): void {
    this.registrationForm =  this._fb.group({
@@ -55,8 +55,9 @@ export class RegisterComponent implements OnInit {
     let user = this.prepareUserForRegistration();
     this._authService.emailSignUp(user);
   }
-  public getUsernames(){
+  public checkUsernameAvailability(){
+    let usernameInserted = this.registrationForm.value.usernameFormControl;
     this._authService.getUsernames()
-        .subscribe(usernames => this.usernames = usernames);
-  }
+        .subscribe((usernames: any[]) =>  usernames.find((username: any) => username.username === usernameInserted ? this.isAvailable = false : this.isAvailable = true ));
+    }
 }

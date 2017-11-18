@@ -106,7 +106,6 @@ export class AuthenticationService {
         return this.usernamesDatabaseReference.snapshotChanges().map(arr => {
             return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
         });
-      
     }
     /* -------------------------------- OAuth Authentication Methods -------------------------------------- */ 
     public googleAccountLogin( ){
