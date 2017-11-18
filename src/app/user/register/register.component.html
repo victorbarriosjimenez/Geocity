@@ -30,14 +30,15 @@
                             type="text"
                             placeholder="Nombre de usuario"
                             formControlName="usernameFormControl"
-                            required minlength="6" maxlength="15">
+                            required minlength="6" maxlength="15"
+                            (keyup)="checkUsernameAvailability()">
                         <mat-error *ngIf="registrationForm.controls.usernameFormControl.hasError('required')">
                             Ingresa un <strong>nombre de usuario</strong>
                         </mat-error>
                          <mat-error *ngIf="registrationForm.controls.usernameFormControl.hasError('minlength')">
                             El nombre de usuario debe tener <strong>mínimo 6 caracteres, máximo de 15 caracteres</strong> 
-                        </mat-error>
-                         <mat-error *ngIf="registrationForm.controls.usernameFormControl.hasError('minlength')">
+                        </mat-error> 
+                         <mat-error *ngIf="registrationForm.controls.usernameFormControl.hasError('maxlength')">
                             El nombre de usuario debe tener <strong>máximo 15 caracteres</strong> 
                         </mat-error>
                 </mat-form-field>  

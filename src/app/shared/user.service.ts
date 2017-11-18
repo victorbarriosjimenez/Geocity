@@ -26,8 +26,10 @@ export class UserService {
     }
    /* ---------------------------------- USER CRUD OPERATIONS ----------------------------------  */
    public createsUserAndInitialData(userstate,country,username){ 
-        const path = `users/${userstate.uid}`; 
-        const userRef: AngularFireObject<any> = this._afDatabase.object(path);    
+        const path = `users/${userstate.uid}`;
+        const usernamesPath = `usernames/${userstate.uid}`;  
+        const userRef: AngularFireObject<any> = this._afDatabase.object(path);
+        const usernamesRef: AngularFireObject<any> = this._afDatabase.object(usernamesPath);                
         const data = {
             email: userstate.email,
             username: username,
@@ -36,8 +38,12 @@ export class UserService {
             editionRequests: 0,
             profilePhotoUrl: 'http://voice4thought.org/wp-content/uploads/2016/08/default2-1.jpg'
         }
+        const usernameNewData  = {
+            username: username 
+        }
         userRef.update(data)
-          .catch(error => console.log(error));
+          .then(() => usernamesRef.update(usernameNewData))
+          .catch(error => console.log(error))
     }
     public updateUserInformation(userUpdateFormModel: User) {
         const path = `users/${this.currentUserId}`; 

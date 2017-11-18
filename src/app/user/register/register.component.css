@@ -14,6 +14,4 @@ h1 {
 .bg-continent {
     width: 100vw;
     height: 100vh;
-    background-size: cover;
-    background-image: url(../../../assets/images/world-map.png);
 }

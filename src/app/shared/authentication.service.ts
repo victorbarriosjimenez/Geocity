@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase , AngularFireList} from 'angularfire2/database';
 import { UserService } from './user.service';
 import { MatSnackBar } from '@angular/material';
 import { User } from '../../models';
@@ -14,18 +14,20 @@ import 'rxjs/add/operator/switchMap'
 export class AuthenticationService {
     public authState: any = null;
     public loginFormErrorsCode: any;
+    public usernamesDatabaseReference: AngularFireList<any>;
     public signupFormErrorsCode: any;
     private _firebaseAuthentication = firebase.auth();
     public user: Observable<User>;
     constructor(private  afAuth: AngularFireAuth,
                 private _snackBar: MatSnackBar,
-                private _afStore: AngularFireDatabase, 
+                private _afDatabase: AngularFireDatabase, 
                 private _router: Router,
                 private _userService: UserService) 
                 {           
                   this.afAuth.authState.subscribe((auth) => {
                     this.authState = auth
                 }); 
+               this.usernamesDatabaseReference =  this._afDatabase.list('/usernames');
     }  
     /* -------------------------------- Email Authentication Functions -------------------------------------- */ 
    public emailSignUp(userForm) {
@@ -87,9 +89,6 @@ export class AuthenticationService {
                                 case 'auth/user-not-found':
                                      this.showSnackBarForNotifications('El usuario con este email no ha sido encontrado.');
                                      break;
-                                case 'auth/user-not-found':
-                                     this.showSnackBarForNotifications('El usuario con este email no ha sido encontrado.');
-                                     break;
                                 default: 
                                     return;
                             }
@@ -103,8 +102,11 @@ export class AuthenticationService {
                 this._router.navigate(['/'])
         });
     } 
-    public chekIfUsernameExists(username:  string): void { 
-        username = username.toLowerCase();
+    public getUsernames() { 
+        return this.usernamesDatabaseReference.snapshotChanges().map(arr => {
+            return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
+        });
+      
     }
     /* -------------------------------- OAuth Authentication Methods -------------------------------------- */ 
     public googleAccountLogin( ){

@@ -14,6 +14,9 @@ export class RegisterComponent implements OnInit {
   public countries: any;
   public hide: boolean = true;
   public loading: boolean;
+  usernames = [];
+  public userNameText: string;
+  public usernameAvailable: boolean;
   public registrationForm: FormGroup;
   public emailFormControl: FormControl;
   constructor(private _formsService: FormsService, 
@@ -24,6 +27,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.getCountries();
+    this.getUsernames();
   } 
   public createForm( ): void {
    this.registrationForm =  this._fb.group({
@@ -51,5 +55,8 @@ export class RegisterComponent implements OnInit {
     let user = this.prepareUserForRegistration();
     this._authService.emailSignUp(user);
   }
-
+  public getUsernames(){
+    this._authService.getUsernames()
+        .subscribe(usernames => this.usernames = usernames);
+  }
 }
