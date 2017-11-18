@@ -14,11 +14,12 @@ export class RegisterComponent implements OnInit {
   public countries: any;
   public hide: boolean = true;
   public loading: boolean =  true;
+  public usernameInsertedCopy: string = '';
   usernames = [];
   public userNameText: string;
   public usernameAvailable: boolean;
   public registrationForm: FormGroup;
-  public isAvailable:  boolean;
+  public isUsernameAvailable:  boolean = true;
   public emailFormControl: FormControl;
   constructor(private _formsService: FormsService, 
               private _fb: FormBuilder,
@@ -55,9 +56,9 @@ export class RegisterComponent implements OnInit {
     let user = this.prepareUserForRegistration();
     this._authService.emailSignUp(user);
   }
-  public checkUsernameAvailability(){
-    let usernameInserted = this.registrationForm.value.usernameFormControl;
-    this._authService.getUsernames()
-        .subscribe((usernames: any[]) =>  usernames.find((username: any) => username.username === usernameInserted ? this.isAvailable = false : this.isAvailable = true ));
+  public checkUsernameAvailability(): void {
+        this.usernameInsertedCopy = this.registrationForm.value.usernameFormControl.toLowerCase();
+        this._authService.getUsernames()
+        .subscribe((usernames: any[]) =>  usernames.find((username: any) => username.username === this.usernameInsertedCopy ? this.isUsernameAvailable = false : this.isUsernameAvailable = true ));
     }
 }

@@ -23,7 +23,7 @@
                         <mat-error *ngIf="registrationForm.controls.emailFormControl.hasError('required')">
                             Ingresa un <strong>email</strong>
                         </mat-error>
-                </mat-form-field>     
+                </mat-form-field>                   
               <mat-form-field class="full-width">
                         <input 
                             matInput
@@ -36,12 +36,17 @@
                             Ingresa un <strong>nombre de usuario</strong>
                         </mat-error>
                          <mat-error *ngIf="registrationForm.controls.usernameFormControl.hasError('minlength')">
-                            El nombre de usuario debe tener <strong>mínimo 6 caracteres, máximo de 15 caracteres</strong> 
+                            El nombre de usuario debe tener <strong>mínimo 6 caracteres</strong> 
                         </mat-error> 
-                         <mat-error *ngIf="registrationForm.controls.usernameFormControl.hasError('maxlength')">
+                        <mat-error *ngIf="registrationForm.controls.usernameFormControl.hasError('maxlength')">
                             El nombre de usuario debe tener <strong>máximo 15 caracteres</strong> 
                         </mat-error>
-                        {{ isAvailable }}
+                        <p style="color: lightblue;" *ngIf="isUsernameAvailable && usernameInsertedCopy">
+                            @{{ usernameInsertedCopy }} está disponible
+                        </p>
+                        <p style="color: red;" *ngIf="!isUsernameAvailable && usernameInsertedCopy">
+                            @{{ usernameInsertedCopy }} no está disponible
+                        </p>
                 </mat-form-field>  
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Pais de origen" formControlName="countryFormControl">
