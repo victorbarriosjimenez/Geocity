@@ -39,7 +39,7 @@ export class UpdateComponent implements OnInit {
   /* -------------------------  Form Admnistration -------------------------*/
   public createForm( ): void {
     this.userUpdateForm =  this._fb.group({
-             username:['',Validators.required],
+             username:['', Validators.compose([ Validators.required, Validators.minLength(6) , Validators.maxLength(15)])],
              profilePhotoUrl: ['',Validators.required],
              country:['', Validators.required]
      });
@@ -73,7 +73,6 @@ export class UpdateComponent implements OnInit {
   }
   public sendsUserUpdateForm(): void {
       const userModelUpdated: User =  this.prepareUserModelUpdated();
-      console.log(userModelUpdated);
       this._userService.updateUserInformation(userModelUpdated)
           .then(() => {
                 this.showsSnackBarWithDetails(this.profileModifiedConfirmationMessage),

@@ -28,8 +28,23 @@
                                 matInput
                                 type="text"
                                 placeholder="Nombre de Usuario"
-                                formControlName="username">
+                                formControlName="username"
+                                autocomplete="off"
+                                (keyup)="checkUsernameAvailability()"
+                                required minlength="6" maxlength="15">
+                                <mat-error *ngIf="userUpdateForm.controls.username.hasError('required')">
+                                  Ingresa un <strong>nombre de usuario</strong>
+                              </mat-error>
+                               <mat-error *ngIf="userUpdateForm.controls.username.hasError('minlength')">
+                                  El nombre de usuario debe tener <strong>mínimo 6 caracteres</strong> 
+                              </mat-error> 
                     </mat-form-field> 
+                    <p style="color: rgb(18, 160, 255); font-size: .9em; margin-top:-10px;" *ngIf="isUsernameAvailable && !!usernameInsertedCopy && userUpdateForm.controls.username.valid">
+                      @{{ usernameInsertedCopy }} <strong>está disponible</strong>
+                  </p>
+                  <p style="color: rgb(255, 0, 0); font-size: .9em; margin-top:-10px;" *ngIf="!isUsernameAvailable && !!usernameInsertedCopy">
+                      @{{ usernameInsertedCopy }} <strong>no está disponible</strong>
+                  </p>
                     <mat-form-field class="full-width">
                         <input 
                             matInput

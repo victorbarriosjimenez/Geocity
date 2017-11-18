@@ -47,13 +47,17 @@ export class UserService {
     }
     public updateUserInformation(userUpdateFormModel: User) {
         const path = `users/${this.currentUserId}`; 
+        const usernamesPath = `usernames/${this.currentUserId}`; 
+        const usernamesReference:   AngularFireObject<any> = this._afDatabase.object(usernamesPath);    
         const userRef: AngularFireObject<any> = this._afDatabase.object(path);    
         const data = {
-            username: userUpdateFormModel.username, 
+            username: userUpdateFormModel.username.toLowerCase(),
             country: userUpdateFormModel.country,
             profilePhotoUrl: userUpdateFormModel.profilePhotoUrl
         }       
-        return userRef.update(data);
+        return userRef.update(data).then(() => {
+                usernamesReference.update({ username : userUpdateFormModel.username.toLowerCase( ) });
+        });
     }
     public getAllMatches( ) {
         return this.matchesDatabaseReference.snapshotChanges().map(arr => {
