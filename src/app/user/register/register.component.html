@@ -41,13 +41,13 @@
                         <mat-error *ngIf="registrationForm.controls.usernameFormControl.hasError('maxlength')">
                             El nombre de usuario debe tener <strong>máximo 15 caracteres</strong> 
                         </mat-error>
-                        <p style="color: lightblue;" *ngIf="isUsernameAvailable && usernameInsertedCopy">
-                            @{{ usernameInsertedCopy }} está disponible
-                        </p>
-                        <p style="color: red;" *ngIf="!isUsernameAvailable && usernameInsertedCopy">
-                            @{{ usernameInsertedCopy }} no está disponible
-                        </p>
                 </mat-form-field>  
+                <p style="color: rgb(0, 123, 255); font-size: .9em;" *ngIf="isUsernameAvailable && usernameInsertedCopy">
+                    @{{ usernameInsertedCopy }} está disponible
+                </p>
+                <p style="color: rgb(255, 0, 0); font-size: .9em;" *ngIf="!isUsernameAvailable && usernameInsertedCopy">
+                    @{{ usernameInsertedCopy }} no está disponible
+                </p>
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Pais de origen" formControlName="countryFormControl">
                       <mat-option *ngFor="let country of countries" [value]="country.name">
