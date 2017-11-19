@@ -16,8 +16,8 @@
 <div *ngIf="matchState">
     <div class="match-details"> 
         <p class="match-timer"> Tiempo:  {{ 30 - timer }} s </p>
-        <p>Oportunidad:  {{ index }} / 5 </p> 
-        <p>Puntaje: {{ matchScoreControl }}</p>
+        <p class="match-timer">Oportunidad:  {{ index }} / 5 </p> 
+        <p class="match-timer">Puntaje: {{ matchScoreControl }}</p>
       </div>
       <agm-map [latitude]="latitudeOfContinentSelected"  
                     [longitude]="longitudeOfContinentSelected"  
