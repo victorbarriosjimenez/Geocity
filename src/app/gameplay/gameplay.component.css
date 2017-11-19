@@ -18,7 +18,9 @@ agm-map {
     top: 10%;
     left: 120px;
     z-index: 10;
-    background-color:  green;
+    background-color: pink;
+    margin: 0 auto;
+    width: 90%;
 }
 .location{
     position: absolute;
