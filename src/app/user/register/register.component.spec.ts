@@ -3,9 +3,11 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { RegisterComponent } from './register.component';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormsService, AuthenticationService } from '../../shared';
+import { FormsService, AuthenticationService, MaterialElementsModule } from '../../shared';
+import { RouterTestingModule } from '@angular/router/testing';
+
 describe('RegisterComponent', () => {
 
 });
