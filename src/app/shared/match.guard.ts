@@ -10,6 +10,6 @@ export class MatchFinishedGuard implements CanDeactivate<GameplayComponent> {
     canDeactivate(
         component: GameplayComponent
     ): Observable<boolean>|Promise<boolean>|boolean {
-        return 
+        component.canDeactivateRouteOfGame.
     }
 }

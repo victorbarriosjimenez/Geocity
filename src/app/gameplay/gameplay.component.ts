@@ -17,7 +17,6 @@ export class GameplayComponent implements OnInit {
   public match: Match = { };
   public locations: any; 
   public timer = 0;
-  public beginMatch: boolean;
   public continents =  continents;
   public isMatchConfigurationDone: boolean;
   public isLoadingLocationsFromContinentSelected: boolean = true;
@@ -28,17 +27,16 @@ export class GameplayComponent implements OnInit {
   public continent: Continent;
   public matchScoreControl: number = 0;
   public location:  Location;
-  public marker: any = {};
+  public marker: any = { };
   public subscription: any;
   constructor(private _gameplayService: GameplayService,
               private _afDatabase: AngularFireDatabase,
               private _userService: UserService) { 
-    this.beginMatch = null;
     this.locations = [ ];
   }
   ngOnInit() { 
     this._userService.getUserData()
-        .subscribe(user=>  this.user  = user);
+        .subscribe( user =>  this.user  = user);
     this.isMatchConfigurationDone = false;
   }
   private selectContinentForMatch(continent: Continent): void {
@@ -55,7 +53,7 @@ export class GameplayComponent implements OnInit {
                       this.isLoadingLocationsFromContinentSelected = false,
                       continent.isContinentSelected = false,
                       this.isMatchConfigurationDone = true,
-                      this.gameTest();
+                      this.beginMatch();
                   });
   }
   mapClicked($event):  void {
@@ -64,9 +62,9 @@ export class GameplayComponent implements OnInit {
     let kilometers = this._gameplayService.returnDistanceBetweenLocationsSelected(this.location.lat, this.location.lng, $event['coords'].lat, $event['coords'].lng);
     this.matchScoreControl += this._gameplayService.setScoreFromCalculatedDistance(kilometers);
     this.subscription.unsubscribe();
-    this.gameTest();
+    this.beginMatch();
  }
- gameTest( ): void {
+  beginMatch( ): void {
    if(this.index === 5) {
        this.subscription.unsubscribe();
        this.prepareMatchToPost();
@@ -78,7 +76,7 @@ export class GameplayComponent implements OnInit {
      this.timer = t;
      if(t === 30){
        this.subscription.unsubscribe();
-       this.gameTest();
+       this.beginMatch();
       }
     });
   }
@@ -91,5 +89,8 @@ export class GameplayComponent implements OnInit {
           userScore: this.user.score
       }
       this._gameplayService.createNewMatch(this.match);
+  }
+  public canDeactivateRouteOfGame(){ 
+    
   }
 }
