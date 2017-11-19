@@ -1,21 +1,35 @@
 agm-map {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
 }
 .match-chose {
     display: block;
     width: 100vw;
     height: 100vh;
-    z-index: 3;
+    z-index: 10;
     position: absolute;
     background-color: white;
     padding: 50px 100px;
 }
 h1 {
     font-family: 'jaapokkiregularregular';
+    position: absolute;
+    top: 10%;
+    left: 120px;
+    z-index: 10;
+    background-color:  green;
 }
-h1{ 
-    font-size: 3em;
+.location{
+    position: absolute;
+    bottom: 10%;
+    left: 120px;
+    z-index: 2;
+    margin-top: -500px;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+
 }
 h2{
     margin-top: -5px ;

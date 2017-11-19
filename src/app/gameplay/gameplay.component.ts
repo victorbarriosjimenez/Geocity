@@ -39,7 +39,7 @@ export class GameplayComponent implements OnInit {
   ngOnInit() { 
     this._userService.getUserData()
         .subscribe(user=>  this.user  = user);
-    this.isMatchConfigurationDone = true;
+    this.isMatchConfigurationDone = false;
   }
   private selectContinentForMatch(continent: Continent): void {
     this.continent = continent; 
