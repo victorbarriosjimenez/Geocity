@@ -24,6 +24,7 @@ export class GameplayComponent implements OnInit {
   public longitudeOfContinentSelected: number = 0;
   public index : number = 0 ;
   public user: User;
+  public matchState: boolean = false; 
   public continent: Continent;
   public matchScoreControl: number = 0;
   public location:  Location;
@@ -54,6 +55,7 @@ export class GameplayComponent implements OnInit {
                       continent.isContinentSelected = false,
                       this.isMatchConfigurationDone = true,
                       this.beginMatch();
+                      this.matchState = true;
                   });
   }
   mapClicked($event):  void {
@@ -91,6 +93,9 @@ export class GameplayComponent implements OnInit {
       this._gameplayService.createNewMatch(this.match);
   }
   public canDeactivateRouteOfGame(){ 
-    
+    console.log('i am navigating away');
+    if(this.matchState == true){
+      return window.confirm('Discard changes?');
+    }
   }
 }

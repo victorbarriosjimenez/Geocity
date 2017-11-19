@@ -7,7 +7,7 @@ export * from './ranking.service';
 export * from './user.service';
 export * from './gameplay.service';
 export * from './continent.interface';
-
+export *  from './match.guard';
 
 
 
