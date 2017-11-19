@@ -7,17 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  paises: any;
-  constructor(private _formsService: FormsService,
-             private _router: Router) { }
-
-  ngOnInit() {
-    this.getCountries();
-  }
-  private getCountries() { 
-    this._formsService.getCountries()
-        .subscribe(paises => this.paises = paises);
-  } 
+  constructor(private _router: Router) { }
+  ngOnInit() {}
   public loginToGeocityAccount(){
     this._router.navigate(['/login']);
   }
