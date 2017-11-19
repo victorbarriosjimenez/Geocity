@@ -12,20 +12,31 @@ agm-map {
     background-color: white;
     padding: 50px 100px;
 }
+.match-timer{
+    font-size: 2em;
+}
 .match-details {
     font-family: 'jaapokkiregularregular';
     position: absolute;
-    top: 10%;
-    left: 120px;
+    top: 5%;
+    left: 2%;
     z-index: 10;
-    background-color: pink;
     margin: 0 auto;
     width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: left;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none;
 }
 .location{
     position: absolute;
     background-color: transparent;
-    bottom: 10%;
+    bottom: 5%;
     left: 120px;
     border-radius: 5px;
     z-index: 2;
@@ -35,6 +46,7 @@ agm-map {
     -webkit-box-shadow: 2px 11px 96px -14px rgba(0,0,0,0.64);
     -moz-box-shadow: 2px 11px 96px -14px rgba(0,0,0,0.64);
     box-shadow: 2px 11px 96px -14px rgba(0,0,0,0.64);
+    overflow: hidden;
 }
 h2{
     margin-top: -5px ;

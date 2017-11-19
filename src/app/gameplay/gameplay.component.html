@@ -13,16 +13,19 @@
     </div>
   </div>
 </div>
-        <div class="match-details"> Tiempo:  {{ timer }} 
-            Oportunidad:  {{ index }} / 5  
-            Puntaje: {{ matchScoreControl }}
-        </div>
-        <agm-map [latitude]="latitudeOfContinentSelected"  
-              [longitude]="longitudeOfContinentSelected"  
-              [zoom]="3" [streetViewControl]="false"
-              (mapClick)="mapClicked($event)">
-                   <agm-marker [latitude]="marker.lat" [longitude]="marker.lng"></agm-marker>
-        </agm-map>
-        <div class="location" *ngIf="location">
-            <img style="width: 100%; height: auto; border-radius: 5px;" src="{{ location.imagen }}" alt="{{ location.imaen }}">            
-        </div>
+<div *ngIf="matchState">
+    <div class="match-details"> 
+        <p class="match-timer"> Tiempo:  {{ 30 - timer }} s </p>
+        <p>Oportunidad:  {{ index }} / 5 </p> 
+        <p>Puntaje: {{ matchScoreControl }}</p>
+      </div>
+      <agm-map [latitude]="latitudeOfContinentSelected"  
+                    [longitude]="longitudeOfContinentSelected"  
+                    [zoom]="3" [streetViewControl]="false"
+                    (mapClick)="mapClicked($event)">
+                         <agm-marker [latitude]="marker.lat" [longitude]="marker.lng"></agm-marker>
+      </agm-map>
+      <div class="location" *ngIf="location">
+          <img style="width: 100%; height: auto; border-radius: 5px;" src="{{ location.imagen }}" alt="{{ location.imaen }}">            
+      </div>
+</div>

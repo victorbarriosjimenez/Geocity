@@ -93,7 +93,6 @@ export class GameplayComponent implements OnInit {
       this._gameplayService.createNewMatch(this.match);
   }
   public canDeactivateRouteOfGame(){ 
-    console.log('i am navigating away');
     if(this.matchState == true){
       return window.confirm('Discard changes?');
     }
