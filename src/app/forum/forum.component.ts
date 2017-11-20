@@ -12,6 +12,7 @@ import * as firebase from 'firebase/app';
   templateUrl: './forum.component.html',
   styleUrls: ['./forum.component.css']
 })
+
 export class ForumComponent implements OnInit {
   public createPostForm: FormGroup;
   public user: User;
