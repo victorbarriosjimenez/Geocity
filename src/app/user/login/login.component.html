@@ -33,9 +33,12 @@
                                     Ingresa tu <strong>contraseña</strong>
                                 </mat-error>
                         </mat-form-field>
-                        <button [disabled]="!loginForm.valid" mat-raised-button color="accent" type="submit">                              
+                        <button *ngIf="!isLoginIn; else isLoadingLoginIn" [disabled]="!loginForm.valid" mat-raised-button color="accent" type="submit">                              
                             Acceder a mi cuenta
                         </button>
+                        <ng-template #isLoadingLoginIn>
+                            <mat-progress-bar mode="indeterminate"></mat-progress-bar>                
+                        </ng-template>
                 </form>
                         <hr>
                         <p class="register-invitation">¿No tienes una cuenta? Da click <a routerLink="/register">aquí</a> y regístrate en Geocity.</p>    

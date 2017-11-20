@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Rx';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
+  public isLoginIn: boolean = false;
   constructor(private _fb: FormBuilder, 
               private _authService: AuthenticationService,
               private _router: Router) { }
@@ -23,10 +24,16 @@ export class LoginComponent implements OnInit {
     this.createForm();
   }
   public loginWithEmailAndPassword(): void {  
+    this.isLoginIn = true;
     this._authService.emailLogin(
         this.loginForm.value['email'],
         this.loginForm.value['password']
-    ).then().catch((err) => console.log(err));
+    ).then( ( )=>{
+      this.isLoginIn = false 
+    }
+    ).catch( () => {
+      this.isLoginIn = false 
+    });
   }
   public loginWithGoogleAccount(): void {
     this._authService.googleAccountLogin();
