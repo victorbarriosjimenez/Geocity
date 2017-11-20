@@ -12,15 +12,12 @@ import { User } from '../../../models';
 })
 export class RegisterComponent implements OnInit {
   public countries: any;
-  public hide: boolean = true;
-  public loading: boolean =  true;
+  private isCreatingAccount:  boolean =  false;
   public usernameInsertedCopy: string = '';
-  usernames = [];
-  public userNameText: string;
-  public usernameAvailable: boolean;
+  public usernames = [];
   public registrationForm: FormGroup;
   public isUsernameAvailable:  boolean = true;
-  public emailFormControl: FormControl;
+  
   constructor(private _formsService: FormsService, 
               private _fb: FormBuilder,
               private _router: Router,
