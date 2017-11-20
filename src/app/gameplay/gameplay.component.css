@@ -10,7 +10,7 @@ agm-map {
     z-index: 10;
     position: absolute;
     background-color: white;
-    padding: 50px 100px;
+    padding: 50px 80px;
 }
 .match-timer{
     font-size: 2em;
@@ -48,6 +48,9 @@ agm-map {
     box-shadow: 2px 11px 96px -14px rgba(0,0,0,0.64);
     overflow: hidden;
 }
+h1{
+    font-family: 'jaapokkiregularregular';    
+} 
 h2{
     margin-top: -5px ;
     margin-bottom: 30px;

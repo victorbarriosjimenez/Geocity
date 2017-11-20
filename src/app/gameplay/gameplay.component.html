@@ -1,17 +1,16 @@
 <div *ngIf="!isMatchConfigurationDone" class="match-chose">
   <h1>Nueva Partida</h1>
   <h2>Escoge un continente</h2>   
-  <div class="row">
-    <div *ngFor="let continent of continents" class="col-md-12 col-sm-12 col-xs-12">
+  <div *ngFor="let continent of continents" class="col-md-2 col-sm-2 col-xs-4">
       <mat-card 
               class="continent-selection"
               [ngClass]="{ 'continent-selected': continent.isContinentSelected }"  
               [ngStyle]="{'background-image': 'url('+continent.image +')'}"
               (click)="selectContinentForMatch(continent)">
-              {{ continent.name }}
+          {{ continent.name }}
       </mat-card>
-    </div>
   </div>
+ 
 </div>
 <div *ngIf="matchState">
     <div class="match-details"> 

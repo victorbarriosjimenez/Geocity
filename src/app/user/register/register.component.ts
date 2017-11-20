@@ -51,7 +51,12 @@ export class RegisterComponent implements OnInit {
   }
   public registerAccountWithEmailAndPassword(): void {
     let user = this.prepareUserForRegistration();
-    this._authService.emailSignUp(user);
+    this._authService.emailSignUp(user).then(
+      ()=> {
+          this.isCreatingAccount = true
+    }).catch(()=>{
+        this.isCreatingAccount = false
+    });
   }
   public checkUsernameAvailability(): void {
         this.usernameInsertedCopy = this.registrationForm.value.usernameFormControl.toLowerCase();
