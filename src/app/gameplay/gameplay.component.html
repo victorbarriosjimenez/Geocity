@@ -1,7 +1,7 @@
 <div *ngIf="!isMatchConfigurationDone" class="match-chose">
   <div class="container-fluid">
-      <h1>Nueva Partida</h1>
-      <h2 style="font-family: 'Ubuntu'; margin-bottom: 20px; margin-left: 20px;  ">Escoge un continente</h2> 
+      <h1 class="text-center">Nueva Partida</h1>
+      <h2 class="text-center" style="font-family: 'Ubuntu'; margin-bottom: 40px; margin-left: 20px; font-size: 2em;">Escoge un continente</h2> 
       <div class="row">
           <div *ngFor="let continent of continents" class="col-md-2 col-sm-2 col-xs-6">
               <div 
@@ -12,6 +12,9 @@
                   {{ continent.name }}
               </div>
           </div>
+          <a class="fancy-button bg-gradient2" routerLink="/gameplay">
+            <span>Nueva Partida</span>      
+         </a>
       </div>
   </div>  
 </div>

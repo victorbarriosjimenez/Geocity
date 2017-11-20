@@ -11,4 +11,4 @@ export class NavigationComponent implements OnInit {
   public logoutFromGeocity(): void {
     this.auth.logoutfromGeocity();
   } 
-}
+} 
