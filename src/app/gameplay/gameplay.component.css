@@ -173,6 +173,7 @@ a:hover, a:focus, a:active {
 }
 .fancy-button:hover {
   color: #ffffff;
+  cursor: pointer;
 }
 .fancy-button:hover span {
   -webkit-filter: brightness(0.9) contrast(1.2);
