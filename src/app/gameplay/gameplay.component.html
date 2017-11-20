@@ -1,19 +1,22 @@
 <div *ngIf="!isMatchConfigurationDone" class="match-chose">
-  <h1>Nueva Partida</h1>
-  <h2>Escoge un continente</h2>   
-  <div *ngFor="let continent of continents" class="col-md-2 col-sm-2 col-xs-4">
-      <mat-card 
-              class="continent-selection"
-              [ngClass]="{ 'continent-selected': continent.isContinentSelected }"  
-              [ngStyle]="{'background-image': 'url('+continent.image +')'}"
-              (click)="selectContinentForMatch(continent)">
-          {{ continent.name }}
-      </mat-card>
-  </div>
- 
+  <div class="container-fluid">
+      <h1>Nueva Partida</h1>
+      <h2 style="font-family: 'Ubuntu'; margin-bottom: 20px; ">Escoge un continente</h2> 
+      <div class="row">
+          <div *ngFor="let continent of continents" class="col-md-2 col-sm-2 col-xs-6">
+              <div 
+                      class="continent-selection"
+                      [ngClass]="{ 'continent-selected': continent.isContinentSelected }"  
+                      [ngStyle]="{'background-image': 'url('+continent.image +')'}"
+                      (click)="selectContinentForMatch(continent)">
+                  {{ continent.name }}
+              </div>
+          </div>
+      </div>
+  </div>  
 </div>
 <div *ngIf="matchState">
-    <div class="match-details"> 
+      <div class="match-details"> 
         <p class="match-timer"> Tiempo:  {{ 30 - timer }} s </p>
         <p class="match-timer">Oportunidad:  {{ index }} / 5 </p> 
         <p class="match-timer">Puntaje: {{ matchScoreControl }}</p>
@@ -22,7 +25,7 @@
                     [longitude]="longitudeOfContinentSelected"  
                     [zoom]="3" [streetViewControl]="false"
                     (mapClick)="mapClicked($event)">
-                         <agm-marker [latitude]="marker.lat" [longitude]="marker.lng"></agm-marker>
+              <agm-marker [latitude]="marker.lat" [longitude]="marker.lng"></agm-marker>
       </agm-map>
       <div class="location" *ngIf="location">
           <img style="width: 100%; height: auto; border-radius: 5px;" src="{{ location.imagen }}" alt="{{ location.imaen }}">            
