@@ -50,10 +50,11 @@ export class RegisterComponent implements OnInit {
       return userModel
   }
   public registerAccountWithEmailAndPassword(): void {
+    this.isCreatingAccount = true;
     let user = this.prepareUserForRegistration();
     this._authService.emailSignUp(user).then(
       ()=> {
-          this.isCreatingAccount = true
+          this.isCreatingAccount = false
     }).catch(()=>{
         this.isCreatingAccount = false
     });
