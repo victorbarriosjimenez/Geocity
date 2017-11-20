@@ -6,5 +6,5 @@ import { DebugElement } from '@angular/core';
 import { GameplayComponent } from './gameplay.component';
 
 describe('GameplayComponent', () => {
-  
+   
 });
