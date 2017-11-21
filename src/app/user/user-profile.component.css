@@ -149,14 +149,16 @@ a:hover, a:focus, a:active {
 }
 .friends-list, .ranking-list{
   width: 100%;
-  padding: 20px 10px;
-  height: 60vh;
+  padding: 5px 10px;
+  position: relative;
   display: flex;
   flex-flow: row wrap;
 }
 .friend-data{
   flex: 1;
   flex-basis: 25%;  
+  box-sizing: border-box;
+  margin-top: -25px;
 }
 .friend-data img{
   width: 80px;

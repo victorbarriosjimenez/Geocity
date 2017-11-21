@@ -60,26 +60,30 @@
         <div class="col-md-7">
             <p class="heading">Ranking</p>
             <div class="ranking-list">
-
             </div>
         </div>
     </div>
 </div>
-<!--
 <div class="container">
-    <div *ngIf="matches; else showNoMatches" class="row">
-        <div *ngFor="let match of matches">
-            <div class="match-header">
-                <p class="continent"> Continente: {{ match.continent }}</p>  
-                <p class="score"> Puntuación: {{ match.score }} <span style="color: lightgreen; margin-right: 10px;"> / 500</span>  pts</p>
-                <p class="timestamp"> Fecha: {{ match.timestamp | date }}</p>                  
-            </div>
-        </div>   
+    <p class="heading">Partidas recientes</p>
+    <div class="row">
+        <div *ngIf="matches; else showNoMatches" class="row">
+                <div *ngFor="let match of matches">
+                    <div class="match-header">
+                        <p class="continent">{{ match.continent }}</p>  
+                        <p class="score"> {{ match.score }} <span style="color: lightgreen; margin-right: 10px;"> / 500</span>  pts</p>
+                        <p class="timestamp"> {{ match.timestamp | date }}</p>                  
+                    </div>
+                </div>   
+        </div>
+        <ng-template #showNoMatches>
+            <mat-card class="empty-card">
+                No tienes partidas jugadas
+            </mat-card> 
+        </ng-template>
+        <ng-template #showNoMatches>
+                <mat-spinner></mat-spinner> 
+            </ng-template>
     </div>
-    <ng-template #showNoMatches>
-         <mat-card class="empty-card">
-            No tienes partidas jugadas
-         </mat-card> 
-    </ng-template>
-</div>-->
+</div>
 <app-footer></app-footer>
