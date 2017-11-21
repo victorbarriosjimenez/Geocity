@@ -16,8 +16,9 @@ export class NavigationComponent implements OnInit {
   ];
   constructor(private auth: AuthenticationService, private _router: Router) { }
   ngOnInit() { }
-  redirectsToRouteSelected(routeSelected: string){
-    this._router.navigate([`/${routeSelected}`])
+  public navigate(routeSelected: string){
+    let route = `/${routeSelected}`;
+    this._router.navigate([route]);
   }
   public logoutFromGeocity(): void {
     this.auth.logoutfromGeocity();

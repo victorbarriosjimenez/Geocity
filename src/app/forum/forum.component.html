@@ -1,26 +1,7 @@
 <app-navigation></app-navigation>
-<header>
-        <div *ngIf="user; else loading" class="container">
-                <div class="row">
-                    <div class="col-md-offset-2 col-md-4 col-sm-offset-2 col-sm-4 col-xs-12">
-                        <img src="{{ user.profilePhotoUrl }}" alt="">
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                       <div class="user-details">
-                            <p>
-                                {{ user.username }} 
-                            </p>
-                            <p class="country">{{ user.country | uppercase }}</p>                    
-                            <p>{{ user.score }} pts</p>
-                       </div>
-        
-                    </div>
-                </div>
-            </div>
-            <ng-template #loading>
-               <mat-spinner mode="indeterminate" color="primary"></mat-spinner>
-            </ng-template>
-</header>
+<br>
+<br>
+<br>
 <div class="container">
     <h2>Crea una nueva publicación</h2>
     <div class="form-container">
@@ -37,7 +18,7 @@
                     <button [disabled]="!createPostForm.valid" mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
             </form>
     </div>
-        <div *ngIf="posts"; class="row">
+        <div *ngIf="posts" class="row">
                   <mat-card *ngFor="let post of posts" class="user-post">
                     <mat-card-header>
                       <div mat-card-avatar style="width: 75px; height:75px;" [ngStyle]="{'background-image': 'url('+post.authorProfilePhoto +')'}"></div>

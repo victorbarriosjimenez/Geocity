@@ -12,7 +12,8 @@ import { User } from '../../../models';
 })
 export class RegisterComponent implements OnInit {
   public countries: any;
-  private isCreatingAccount:  boolean =  false;
+  public hide: boolean =  true
+  public isCreatingAccount:  boolean =  false;
   public usernameInsertedCopy: string = '';
   public usernames = [];
   public registrationForm: FormGroup;

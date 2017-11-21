@@ -3,11 +3,26 @@
             <img src="assets/images/brand-logo.png" alt="">
         </a>
         <span class="example-spacer"></span>
-        <button *ngFor="let route of routes" mat-icon-button>
-                <span matTooltip="{{ route.tooltip }}" (click)="redirectsToRouteSelected(route.endPoint)">
-                        <mat-icon aria-label="Example icon-button with a heart icon">{{ route.icon }}</mat-icon>
+        <button mat-icon-button>
+                <span matTooltip="Mi perfil" (click)="navigate('profile')">
+                        <mat-icon aria-label="Example icon-button with a heart icon">perm_identity</mat-icon>
                 </span>
-        </button>  
+        </button> 
+        <button mat-icon-button>
+                <span matTooltip="Amigos" (click)="navigate('friends')">
+                        <mat-icon aria-label="Example icon-button with a heart icon">people</mat-icon>
+                </span>
+        </button> 
+        <button mat-icon-button>
+                <span matTooltip="Comunidad" (click)="navigate('community')">
+                        <mat-icon aria-label="Example icon-button with a heart icon">chat</mat-icon>
+                </span>
+        </button> 
+        <button mat-icon-button>
+                <span matTooltip="Ranking" (click)="navigate('ranking')">
+                        <mat-icon aria-label="Example icon-button with a heart icon">sort</mat-icon>
+                </span>
+        </button> 
         <button mat-icon-button (click)="logoutFromGeocity()">
                 <span matTooltip="Salir">
                   <mat-icon aria-label="Example icon-button with a heart icon">exit_to_app</mat-icon>
