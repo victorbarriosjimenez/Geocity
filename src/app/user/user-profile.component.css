@@ -10,6 +10,7 @@ header {
     align-items: center;
     justify-content: center;
     background-repeat: no-repeat;
+    background-image: url(../../assets/images/user-profile-header.png);
 }
 img {
     width: 250px;
@@ -58,8 +59,6 @@ img {
 .match-header p.score{
     margin-left: 50px;
 }
-/* Mixins */
-/* bg shortcodes */
 .bg-gradient2 span,
 .bg-gradient2:before {
   background: #39c2c9;
