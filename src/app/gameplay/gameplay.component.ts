@@ -1,5 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { Component, OnInit } from '@angular/core';
 import { GameplayService, Continent, continents, UserService } from './../shared';
 import { Match, User } from '../../models';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
@@ -68,7 +67,7 @@ export class GameplayComponent implements OnInit {
     this.beginMatch();
  }
   beginMatch( ): void {
-   if(this.index < 5) {
+   if(this.index === 4) {
        this.subscription.unsubscribe();
        this.prepareMatchToPost();
    }

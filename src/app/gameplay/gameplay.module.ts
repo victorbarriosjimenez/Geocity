@@ -20,7 +20,7 @@ import { GameplayService } from './../shared';
   ],
   declarations: [
     GameplayComponent
-  ],
+],
   providers: [
     GameplayService
   ]
