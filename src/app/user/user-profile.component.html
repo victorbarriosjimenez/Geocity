@@ -76,11 +76,11 @@
                     </div>
                 </div>   
         </div>
-        <ng-template #showNoMatches>
+        <div *ngIf="!matches">
             <mat-card class="empty-card">
                 No tienes partidas jugadas
             </mat-card> 
-        </ng-template>
+        </div>
         <ng-template #showNoMatches>
                 <mat-spinner></mat-spinner> 
             </ng-template>

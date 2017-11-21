@@ -2,8 +2,16 @@
         <a routerLink="/profile">
             <img src="assets/images/brand-logo.png" alt="">
         </a>
-          <span class="example-spacer"></span>
-          <mat-icon class="example-icon">favorite</mat-icon>
-          <mat-icon class="example-icon">delete</mat-icon>
+        <span class="example-spacer"></span>
+        <button *ngFor="let route of routes" mat-icon-button>
+                <span matTooltip="{{ route.tooltip }}" (click)="redirectsToRouteSelected(route.endPoint)">
+                        <mat-icon aria-label="Example icon-button with a heart icon">{{ route.icon }}</mat-icon>
+                </span>
+        </button>  
+        <button mat-icon-button (click)="logoutFromGeocity()">
+                <span matTooltip="Salir">
+                  <mat-icon aria-label="Example icon-button with a heart icon">exit_to_app</mat-icon>
+                </span>
+        </button>          
 </mat-toolbar>
       
