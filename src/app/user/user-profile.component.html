@@ -1,10 +1,11 @@
+<app-navigation></app-navigation>
 <header>
     <div *ngIf="user; else loading" class="container">
         <div class="row">
-            <div class="col-md-offset-2 col-md-4 col-sm-offset-2 col-sm-4 col-xs-12">
+            <div class="col-md-4 col-sm-4 col-xs-4">
                 <img src="{{ user.profilePhotoUrl }}" alt="">
             </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="col-md-5 col-sm-5 col-xs-5">
                <div class="user-details">
                     <p>
                         {{ user.username }} 
@@ -18,17 +19,28 @@
                     <p>{{ user.score }} pts</p>
                </div>
             </div>
+            <div class="col-md-3 col-sm-3 col-xs-3 button-container">
+                <a class="fancy-button bg-gradient2" routerLink="/gameplay">
+                     <span>Nueva Partida</span>      
+                </a>
+            </div>
         </div>
     </div>
     <ng-template #loading>
        <mat-spinner mode="indeterminate" color="accent"></mat-spinner>
     </ng-template>
 </header>
-<app-navigation></app-navigation>
 <div class="container">
-    <a class="fancy-button bg-gradient2" routerLink="/gameplay">
-       <span>Nueva Partida</span>      
-    </a>
+    <div class="row">
+        <div class="col-md-5">
+            Amigos
+        </div>
+        <div class="col-md-7">
+            Ranking
+        </div>
+    </div>
+</div>
+<div class="container">
     <div *ngIf="matches; else showNoMatches" class="row">
         <mat-card *ngFor="let match of matches" class="match-card">
             <div class="match-header">

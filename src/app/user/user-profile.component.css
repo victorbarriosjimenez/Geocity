@@ -1,10 +1,9 @@
 header {
     padding: 20px 40px;
-    color: white; 
+    color: black; 
     width: 100vw;
     height: 70vh; 
     background-size: cover;
-    background-image: url(../../assets/images/user-profile-header.jpg); 
     margin-top: -20px;
     margin-bottom: 50px;
     display: flex;
@@ -13,21 +12,21 @@ header {
     background-repeat: no-repeat;
 }
 img {
-    width: 280px;
+    width: 250px;
     height: auto;
-    margin-top: 7em;
+    margin-top: 3em;
     border-radius: 50%;
 }
 .user-details {
     margin-left: .5em;
-    margin-top: 7em;
+    margin-top: 3em;
 }
 .user-details p{
-    font-size: 4em;
+    font-size: 3em;
     font-family: 'jaapokkiregularregular';
 }
 .user-details p.country {
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: 'jaapokkiregularregular';
 }
 .user-edit {
@@ -147,4 +146,9 @@ a:hover, a:focus, a:active {
 .fancy-button:active span {
   -webkit-filter: brightness(0.75) contrast(1.7);
           filter: brightness(0.75) contrast(1.7);
+}
+.button-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

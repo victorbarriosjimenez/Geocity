@@ -12,7 +12,8 @@ import {
           MatExpansionModule,
           MatSnackBarModule,
           MatTabsModule,
-          MatProgressBarModule
+          MatProgressBarModule,
+          MatToolbarModule
         } from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
@@ -32,7 +33,9 @@ import { FooterComponent } from './footer/footer.component';
     MatExpansionModule,
     MatSnackBarModule,
     MatTabsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatToolbarModule
+    
   ], 
   declarations: [
     FooterComponent
@@ -51,7 +54,9 @@ import { FooterComponent } from './footer/footer.component';
     MatSnackBarModule,
     MatTabsModule,
     FooterComponent,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatToolbarModule
+    
   ]
 })
 export class MaterialElementsModule { }
