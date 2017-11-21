@@ -10,9 +10,9 @@
                     <p>
                         {{ user.username }} 
                         <span matTooltip="Editar mi perfil">
-                             <a class="user-edit" mat-fab routerLink="/update-profile">
-                                  <mat-icon aria-label="Edit profile">mode_edit</mat-icon>
-                             </a>
+                                <a class="user-edit" mat-fab routerLink="/update-profile">
+                                             <mat-icon aria-label="Edit profile">mode_edit</mat-icon>
+                                </a>
                         </span> 
                     </p>
                     <p class="country">{{ user.country | uppercase }}</p>                    
@@ -39,20 +39,20 @@
         </div>
         <div class="col-md-7">
             <div class="ranking-list">
-                        <p>Amigos</p>
+                <p>Ranking</p>
             </div>
         </div>
     </div>
 </div>
 <div class="container">
     <div *ngIf="matches; else showNoMatches" class="row">
-        <mat-card *ngFor="let match of matches" class="match-card">
+        <div *ngFor="let match of matches">
             <div class="match-header">
                 <p class="continent"> Continente: {{ match.continent }}</p>  
                 <p class="score"> Puntuación: {{ match.score }} <span style="color: lightgreen; margin-right: 10px;"> / 500</span>  pts</p>
                 <p class="timestamp"> Fecha: {{ match.timestamp | date }}</p>                  
             </div>
-         </mat-card>   
+        </div>   
     </div>
     <ng-template #showNoMatches>
          <mat-card class="empty-card">
