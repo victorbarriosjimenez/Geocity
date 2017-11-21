@@ -18,7 +18,6 @@ export class RegisterComponent implements OnInit {
   public usernames = [];
   public registrationForm: FormGroup;
   public isUsernameAvailable:  boolean = true;
-  
   constructor(private _formsService: FormsService, 
               private _fb: FormBuilder,
               private _router: Router,
@@ -62,6 +61,7 @@ export class RegisterComponent implements OnInit {
   }
   public checkUsernameAvailability(): void {
         this.usernameInsertedCopy = this.registrationForm.value.usernameFormControl.toLowerCase();
+        console.log(this.usernameInsertedCopy);
         this._authService.getUsernames()
                          .subscribe((usernames: any[]) =>  usernames.find((username: any) => username.username == this.usernameInsertedCopy ? this.isUsernameAvailable = false : this.isUsernameAvailable = true ));
     }
