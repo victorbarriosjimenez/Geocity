@@ -42,7 +42,6 @@ export class GameplayComponent implements OnInit {
     this._userService.getUserData()
         .subscribe( user =>  this.user  = user);
     this.isMatchConfigurationDone = false;
-    this.openDialogWithResultsOfLocationSelected();
   }
   private selectContinentForMatch(continent: Continent): void {
     this.continent = continent; 
@@ -97,14 +96,10 @@ export class GameplayComponent implements OnInit {
       }
       this._gameplayService.createNewMatch(this.match);
   }
-  public canDeactivateRouteOfGame(){ 
-    if(this.matchState == true){
-      return window.confirm('Discard changes?');
-    }
-  }
   public openDialogWithResultsOfLocationSelected( ): void {
     let dialogRef = this._matDialog.open(DialogComponent, {
-      width: '40%',
+      width: '40vw',
+      height: '40vh',
       data: { name: 'lol', animal: 'tu gfa' }
     });
     dialogRef.afterClosed().subscribe(result => {
