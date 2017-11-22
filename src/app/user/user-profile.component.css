@@ -147,12 +147,17 @@ a:hover, a:focus, a:active {
   align-items: center;
   justify-content: center;
 }
-.friends-list, .ranking-list{
+.friends-list{
   width: 100%;
   padding: 5px 10px;
   position: relative;
   display: flex;
   flex-flow: row wrap;
+}
+.ranking-list{
+  width: 100%;
+  padding: 5px 10px;
+  position: relative;
 }
 .friend-data{
   flex: 1;
@@ -164,6 +169,17 @@ a:hover, a:focus, a:active {
   width: 80px;
   height: auto;
 }
+.user-ranking {
+   display: flex;
+   flex-flow: row wrap;
+}
+.user-ranking p{
+  font-family:'jaapokkiregularregular';
+  font-size: 2em;
+}
+.user-ranking img {
+    width: 80px; 
+}
 p.friend {
   font-family: 'Ubuntu', sans-serif;
   margin: 10px auto 5px auto;
@@ -171,5 +187,6 @@ p.friend {
 p.heading {
     font-family: 'jaapokkiregularregular';
     font-size: 2.5em;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }

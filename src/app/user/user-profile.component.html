@@ -88,7 +88,8 @@
         <div class="col-md-7">
             <p class="heading">Ranking</p>
             <div class="ranking-list">
-                    <div class="friend-data">
+                    <div class="user-ranking">
+                            <p>1ª</p>
                             <img src="https://i.pinimg.com/originals/e6/50/32/e65032b045b7919ab19e4bdf85743390.jpg" alt="">
                             <p class="friend">kayser_digi</p>
                     </div>
@@ -99,13 +100,13 @@
 <div class="container">
     <p class="heading">Partidas recientes</p>
     <div class="row">
-        <div *ngIf="matches" class="row">
+        <div *ngIf="matches" class="col-sm-12 col-md-12 col-xs-12">
                 <div *ngFor="let match of matches">
-                    <div class="match-header">
-                        <p class="continent">{{ match.continent }}</p>  
-                        <p class="score"> {{ match.score }} <span style="color: lightgreen; margin-right: 10px;"> / 500</span>  pts</p>
-                        <p class="timestamp"> {{ match.timestamp | date }}</p>                  
-                    </div>
+                    <mat-card class="match-header">
+                        <p style="font-family:'jaapokkiregularregular';">{{ match.continent }}</p>  
+                        <p style="font-family:'jaapokkiregularregular';"> {{ match.score }} <span style="color: lightgreen; margin-right: 10px;"> / 500</span>  pts</p>
+                        <p style="font-family:'Ubuntu';"> {{ match.timestamp | date }}</p>                  
+                    </mat-card>
                 </div>   
         </div>
         <div *ngIf="!matches">
