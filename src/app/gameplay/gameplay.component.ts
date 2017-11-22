@@ -70,7 +70,7 @@ export class GameplayComponent implements OnInit {
     this.subscription.unsubscribe();
   }
   public beginMatch( ): void {
-   if(this.index === 4) {
+   if(this.index === 5) {
        this.subscription.unsubscribe();
        this.prepareMatchToPost();
    }
