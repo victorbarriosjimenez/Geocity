@@ -99,7 +99,6 @@ export class GameplayComponent implements OnInit {
   public openDialogWithResultsOfLocationSelected(location: Location, distanceFromMarkerSelected: number, points: number): void {
     let dialogRef = this._matDialog.open(DialogComponent, {
       width: '40vw',
-      height: '40vh',
       data: { 
         name: this.location.nombre,
         image: this.location.imagen,
@@ -111,5 +110,4 @@ export class GameplayComponent implements OnInit {
         this.beginMatch();
     });
   }
-
 }

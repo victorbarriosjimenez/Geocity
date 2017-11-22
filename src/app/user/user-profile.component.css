@@ -179,6 +179,7 @@ a:hover, a:focus, a:active {
 }
 .user-ranking img {
     width: 80px; 
+    height: auto;
 }
 p.friend {
   font-family: 'Ubuntu', sans-serif;
