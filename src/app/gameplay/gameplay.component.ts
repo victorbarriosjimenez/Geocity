@@ -64,9 +64,10 @@ export class GameplayComponent implements OnInit {
   mapClicked($event):  void {
     this.marker.lat = $event['coords'].lat;
     this.marker.lng = $event['coords'].lng; 
-    let kilometers = this._gameplayService.returnDistanceBetweenLocationsSelected(this.location.lat, this.location.lng, $event['coords'].lat, $event['coords'].lng);
-    this.matchScoreControl += this._gameplayService.setScoreFromCalculatedDistance(kilometers);
-    this.openDialogWithResultsOfLocationSelected(this.location,kilometers,this.matchScoreControl);
+    let kilometers: number = this._gameplayService.returnDistanceBetweenLocationsSelected(this.location.lat, this.location.lng, $event['coords'].lat, $event['coords'].lng);
+    let pointsGiven: number = this._gameplayService.setScoreFromCalculatedDistance(kilometers);
+    this.matchScoreControl += pointsGiven
+    this.openDialogWithResultsOfLocationSelected(this.location,kilometers,pointsGiven);
     this.subscription.unsubscribe();
   }
   public beginMatch( ): void {

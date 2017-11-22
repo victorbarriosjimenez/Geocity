@@ -1,6 +1,12 @@
-<h2 mat-dialog-title> {{ data.name }}</h2>
+<h2 mat-dialog-title style="margin-left: 10px; font-family: 'jaapokkiregularregular';"> {{ data.name }}</h2>
 <mat-dialog-content>
-  <img class="img img-responsive" src="{{ data.image }}" alt="">
+  <div class="col-md-6 col-sm-6 col-xs-6">
+      <img style="width: 100px; height: 100px;" src="{{ data.image }}" alt="">
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-6">
+      <p style="font-family: 'Ubuntu';"> <strong>Tu precisión fue por:</strong></p> {{ data.distance | number:'.1-2' }} km!
+      <p style="font-family: 'Ubuntu';"><strong>Has conseguido: </strong></p> {{ data.points }} puntos!
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button style="display:block; margin:0 auto;" 
