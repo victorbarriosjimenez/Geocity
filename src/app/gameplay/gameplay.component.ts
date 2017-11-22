@@ -66,10 +66,9 @@ export class GameplayComponent implements OnInit {
     this.marker.lng = $event['coords'].lng; 
     let kilometers = this._gameplayService.returnDistanceBetweenLocationsSelected(this.location.lat, this.location.lng, $event['coords'].lat, $event['coords'].lng);
     this.matchScoreControl += this._gameplayService.setScoreFromCalculatedDistance(kilometers);
+    this.openDialogWithResultsOfLocationSelected(this.location,kilometers,this.matchScoreControl);
     this.subscription.unsubscribe();
-    this.beginMatch();
- }
- 
+  }
   public beginMatch( ): void {
    if(this.index === 4) {
        this.subscription.unsubscribe();
@@ -96,14 +95,19 @@ export class GameplayComponent implements OnInit {
       }
       this._gameplayService.createNewMatch(this.match);
   }
-  public openDialogWithResultsOfLocationSelected( ): void {
+  public openDialogWithResultsOfLocationSelected(location: Location, distanceFromMarkerSelected: number, points: number): void {
     let dialogRef = this._matDialog.open(DialogComponent, {
       width: '40vw',
       height: '40vh',
-      data: { name: 'lol', animal: 'tu gfa' }
+      data: { 
+        name: this.location.nombre,
+        image: this.location.imagen,
+        distance: distanceFromMarkerSelected,
+        points: points
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+        this.beginMatch();
     });
   }
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GameplayComponent } from './gameplay.component';
-import { AuthGuard, MatchFinishedGuard } from '../shared';
+import { AuthGuard } from '../shared';
 const gameplayRoutes: Routes = [
   { path: 'gameplay',  component: GameplayComponent, canActivate: [AuthGuard] , data: { animation: 'gameplay' }}
 ];
