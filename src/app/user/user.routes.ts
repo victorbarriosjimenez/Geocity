@@ -6,7 +6,6 @@ import { AuthGuard } from '../shared/auth.guard'
 import { UpdateComponent } from './update/update.component';
 import { FriendsRankingComponent } from './friends-ranking/friends-ranking.component';
 import { RankingComponent } from './ranking/ranking.component';
-
 const userRoutes: Routes = [
     { path: 'profile',  component: UserProfileComponent, canActivate: [AuthGuard] },
     { path: 'update-profile', component: UpdateComponent, canActivate: [AuthGuard] },
