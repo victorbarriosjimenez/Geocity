@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { take } from 'lodash';
+import { MatDialog } from '@angular/material';
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'app-gameplay',
@@ -32,13 +34,15 @@ export class GameplayComponent implements OnInit {
   public subscription: any;
   constructor(private _gameplayService: GameplayService,
               private _afDatabase: AngularFireDatabase,
-              private _userService: UserService) { 
+              private _userService: UserService,
+            private _matDialog: MatDialog) { 
     this.locations = [ ];
   }
   ngOnInit() { 
     this._userService.getUserData()
         .subscribe( user =>  this.user  = user);
     this.isMatchConfigurationDone = false;
+    this.openDialog();
   }
   private selectContinentForMatch(continent: Continent): void {
     this.continent = continent; 
@@ -66,6 +70,7 @@ export class GameplayComponent implements OnInit {
     this.subscription.unsubscribe();
     this.beginMatch();
  }
+ 
   beginMatch( ): void {
    if(this.index === 4) {
        this.subscription.unsubscribe();
@@ -97,4 +102,15 @@ export class GameplayComponent implements OnInit {
       return window.confirm('Discard changes?');
     }
   }
+  public openDialog(): void {
+    let dialogRef = this._matDialog.open(DialogComponent, {
+      width: '300px',
+      data: { name: 'lol', animal: 'tu gfa' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 }

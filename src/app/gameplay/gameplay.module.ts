@@ -8,6 +8,7 @@ import { GameplayRoutesModule } from './gameplay.routes';
 
 /* Services */ 
 import { GameplayService } from './../shared';
+import { DialogComponent } from './dialog/dialog.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,10 +20,14 @@ import { GameplayService } from './../shared';
     })
   ],
   declarations: [
-    GameplayComponent
+    GameplayComponent,
+    DialogComponent
 ],
   providers: [
     GameplayService
+  ],
+  entryComponents: [
+    DialogComponent
   ]
 })
 export class GameplayModule { }
