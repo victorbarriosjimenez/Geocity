@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../shared/authentication.service';
 import { Router }  from '@angular/router';
-import { User , Match } from '../../models'
+import { FormBuilder, FormGroup , Validators} from '@angular/forms';
+import { User , Match, Post } from '../../models'
 import { UserService, ForumService } from './../shared/';
+import { MatSnackBar } from '@angular/material';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,14 +14,26 @@ import { UserService, ForumService } from './../shared/';
 })
 export class UserProfileComponent implements OnInit {
   public user: User;
+  public createPostForm: FormGroup;  
   public matches: any;
+  public posts: Post[];
   constructor(private auth: AuthenticationService,
+               private _forumService:ForumService,
               private _userService:  UserService,
-              private _router: Router) { 
+              private _fb: FormBuilder,
+              private _router: Router,
+              private _snackBar: MatSnackBar) { 
               }
   ngOnInit() { 
     this.getProfileBioData();
     this.getUserMatches();
+    this.createForm();
+  }
+  public createNewPost( ): void { 
+    const postModel: Post = this.preparePost();
+    this._forumService.createNewPost(postModel);
+    this.createPostForm.reset();
+    this.showsSnackOfPostCreated(`Hey ${this.user.username}! tu publicación ha sido publicada`);
   }
   private getProfileBioData( ):  void {
     this._userService.getUserData()
@@ -33,4 +48,31 @@ export class UserProfileComponent implements OnInit {
   public createNewMatch( ): void {
       this._router.navigate(['/gameplay']);
    }
+  public preparePost() { 
+    const formModel = this.createPostForm.value;
+    const postModel: Post = { 
+        body: formModel.body as string, 
+        timestamp: firebase.database.ServerValue.TIMESTAMP,
+        authorProfilePhoto: this.user.profilePhotoUrl as string,
+        authorUsername: this.user.username as string,
+        userId: this._userService.currentUserId as string
+    }
+    return postModel;
+  }
+  public getListOfAllPosts( ): void { 
+    this._forumService.getListOfAllPosts()
+        .subscribe((posts: Post[]) => { 
+                this.posts = posts
+        });
+  }
+  public createForm( ): void {
+    this.createPostForm =  this._fb.group({ 
+             body:['', Validators.required]
+     });
+   }
+   private showsSnackOfPostCreated(message: string) : void {
+    this._snackBar.open(message, "OK", {
+        duration: 2000,
+    }); 
+  }
 }

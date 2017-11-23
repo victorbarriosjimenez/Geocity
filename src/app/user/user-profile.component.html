@@ -84,34 +84,76 @@
                         <p class="friend">kayser_digi</p>
                 </div>
             </div>
-        </div>
-        <div class="col-md-7">
-            <p class="heading">Ranking</p>
-            <div class="ranking-list">
-                    <div class="user-ranking">
-                            <p>1ª</p>
-                            <p class="friend">kayser_digi</p>
+            <div>
+                <p class="heading">Ranking</p>
+                    <div class="ranking-list">
+                            <mat-card class="match-header">
+                                    <p style="font-family:'jaapokkiregularregular';">hola</p>  
+                                    <p style="font-family:'jaapokkiregularregular';"> hkbkukiuiug </p>
+                                    <p style="font-family:'Ubuntu';"> 6565756756567</p>                  
+                            </mat-card>
+                            <mat-card class="match-header">
+                                    <p style="font-family:'jaapokkiregularregular';">hola</p>  
+                                    <p style="font-family:'jaapokkiregularregular';"> hkbkukiuiug </p>
+                                    <p style="font-family:'Ubuntu';"> 6565756756567</p>                  
+                            </mat-card>
+                            <mat-card class="match-header">
+                                    <p style="font-family:'jaapokkiregularregular';">hola</p>  
+                                    <p style="font-family:'jaapokkiregularregular';"> hkbkukiuiug </p>
+                                    <p style="font-family:'Ubuntu';"> 6565756756567</p>                  
+                            </mat-card>
                     </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <p class="heading">Partidas recientes</p>
-    <div class="row">
-        <div *ngIf="matches" class="col-sm-12 col-md-12 col-xs-12">
-                <div *ngFor="let match of matches">
+            <div>
+                    <p class="heading">Partidas recientes</p>
                     <mat-card class="match-header">
-                        <p style="font-family:'jaapokkiregularregular';">{{ match.continent }}</p>  
-                        <p style="font-family:'jaapokkiregularregular';"> {{ match.score }} <span style="color: lightgreen; margin-right: 10px;"> / 500</span>  pts</p>
-                        <p style="font-family:'Ubuntu';"> {{ match.timestamp | date }}</p>                  
+                            <p style="font-family:'jaapokkiregularregular';">hola</p>  
+                            <p style="font-family:'jaapokkiregularregular';"> hkbkukiuiug </p>
+                            <p style="font-family:'Ubuntu';"> 6565756756567</p>                  
                     </mat-card>
-                </div>   
+                    <mat-card class="match-header">
+                            <p style="font-family:'jaapokkiregularregular';">hola</p>  
+                            <p style="font-family:'jaapokkiregularregular';"> hkbkukiuiug </p>
+                            <p style="font-family:'Ubuntu';"> 6565756756567</p>                  
+                    </mat-card>
+                    <mat-card class="match-header">
+                            <p style="font-family:'jaapokkiregularregular';">hola</p>  
+                            <p style="font-family:'jaapokkiregularregular';"> hkbkukiuiug </p>
+                            <p style="font-family:'Ubuntu';"> 6565756756567</p>                  
+                    </mat-card>
+            </div>
         </div>
-        <div *ngIf="!matches">
-            <div class="empty-card">
-                No tienes partidas jugadas
-            </div> 
+        <div class="col-md-7 col-sm-7 col-xs-12">
+                <p class="heading">Nueva publicación</p>
+               <form (ngSubmit)="createNewPost()" [formGroup]="createPostForm">    
+                <mat-form-field class="new-post">
+                    <textarea 
+                        matInput
+                        type="text"
+                        formControlName="body"
+                        placeholder="¿Qué está pasando? ¡Compártelo con la comunidad!">
+                    </textarea>
+                </mat-form-field> 
+                    <br>
+                    <button [disabled]="!createPostForm.valid" mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
+            </form>
+            <div *ngIf="posts" class="row">
+                    <mat-card *ngFor="let post of posts" class="user-post">
+                      <mat-card-header>
+                        <div mat-card-avatar style="width: 75px; height:75px;" [ngStyle]="{'background-image': 'url('+post.authorProfilePhoto +')'}"></div>
+                        <mat-card-title class="user-post-title">{{ post.authorUsername }}</mat-card-title>
+                        <mat-card-subtitle class="user-post-timestamp"> {{ post.timestamp | date:'fullDate' }}</mat-card-subtitle>
+                      </mat-card-header>
+                      <mat-card-content>
+                        <p class="user-post-body">
+                           {{ post.body }}
+                        </p>
+                      </mat-card-content>
+                      <mat-card-actions>
+                        <button mat-button>LIKE</button>
+                      </mat-card-actions>
+                  </mat-card>
+            </div>
         </div>
     </div>
 </div>
