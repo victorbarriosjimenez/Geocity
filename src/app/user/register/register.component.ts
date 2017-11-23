@@ -61,7 +61,6 @@ export class RegisterComponent implements OnInit {
   }
   public checkUsernameAvailability(): void {
         this.usernameInsertedCopy = this.registrationForm.value.usernameFormControl.toLowerCase();
-        console.log(this.usernameInsertedCopy);
         this._authService.getUsernames()
                          .subscribe((usernames: any[]) =>  usernames.find((username: any) => username.username == this.usernameInsertedCopy ? this.isUsernameAvailable = false : this.isUsernameAvailable = true ));
     }
