@@ -12,6 +12,7 @@ import { FriendsRankingComponent } from './friends-ranking/friends-ranking.compo
 import { RankingComponent } from './ranking/ranking.component';
 import { UserService } from '../shared/user.service';
 import { GameplayModule } from './../gameplay/gameplay.module';
+import { RankingService } from '../shared/index';
 @NgModule({
   imports: [
     CommonModule,
@@ -33,7 +34,8 @@ import { GameplayModule } from './../gameplay/gameplay.module';
   ],
   providers: [
     AuthenticationService,
-    UserService
+    UserService,
+    RankingService
   ]
 })
 

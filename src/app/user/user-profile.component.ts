@@ -3,9 +3,11 @@ import { AuthenticationService } from '../shared/authentication.service';
 import { Router }  from '@angular/router';
 import { FormBuilder, FormGroup , Validators} from '@angular/forms';
 import { User , Match, Post } from '../../models'
-import { UserService, ForumService } from './../shared/';
+import { UserService, ForumService, RankingService } from './../shared/';
 import { MatSnackBar } from '@angular/material';
 import * as firebase from 'firebase/app';
+import { take , orderBy } from 'lodash';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -13,12 +15,14 @@ import * as firebase from 'firebase/app';
 })
 export class UserProfileComponent implements OnInit {
   public user: User;
+  public podiumUsers: User[];
   public createPostForm: FormGroup;  
   public matches: any;
   public posts: Post[];
   constructor(private auth: AuthenticationService,
                private _forumService:ForumService,
               private _userService:  UserService,
+              private _rankingService: RankingService,
               private _fb: FormBuilder,
               private _router: Router,
               private _snackBar: MatSnackBar) { 
@@ -28,6 +32,7 @@ export class UserProfileComponent implements OnInit {
     this.getUserMatches();
     this.getListOfAllPosts();
     this.createForm();
+    this.getWorldRankingPodium();
   }
   public createNewPost( ): void { 
     const postModel: Post = this.preparePost();
@@ -73,6 +78,20 @@ export class UserProfileComponent implements OnInit {
    private showsSnackOfPostCreated(message: string) : void {
     this._snackBar.open(message, "OK", {
         duration: 2000,
-    }); 
-  }
+      }); 
+    }
+    public getWorldRankingPodium(): void  {
+      this._rankingService.getListOfAllUsers()
+          .subscribe(users => {  this.filterUsersAsPodium(users); },  
+          ()=>{ this.showsSnackOfPostCreated('Ocurrio un error'); }
+        )
+    }
+    public filterUsersAsPodium(users: User[]){
+        if(users){
+           this.podiumUsers = orderBy(take(users,3),['score'],['desc']); 
+        }
+        else { 
+          return;
+        }
+    }
 }

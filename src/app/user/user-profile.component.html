@@ -85,42 +85,39 @@
                 </div>
             </div>
             <div>
-                <p class="heading">Ranking</p>
-                    <div class="ranking-list">
-                            <mat-card class="match-header">
-                                    <p style="font-family:'jaapokkiregularregular';">hola</p>  
-                                    <p style="font-family:'jaapokkiregularregular';"> hkbkukiuiug </p>
-                                    <p style="font-family:'Ubuntu';"> 6565756756567</p>                  
-                            </mat-card>
-                            <mat-card class="match-header">
-                                    <p style="font-family:'jaapokkiregularregular';">hola</p>  
-                                    <p style="font-family:'jaapokkiregularregular';"> hkbkukiuiug </p>
-                                    <p style="font-family:'Ubuntu';"> 6565756756567</p>                  
-                            </mat-card>
-                            <mat-card class="match-header">
-                                    <p style="font-family:'jaapokkiregularregular';">hola</p>  
-                                    <p style="font-family:'jaapokkiregularregular';"> hkbkukiuiug </p>
-                                    <p style="font-family:'Ubuntu';"> 6565756756567</p>                  
-                            </mat-card>
-                    </div>
+                <p class="heading">Ranking Mundial</p>
+                <mat-card  *ngFor="let podiumUser of podiumUsers; index as i" class="match-header">
+                        <p class="ranked">{{  i + 1 }}</p>    
+                        <img src="{{ podiumUser.profilePhotoUrl }}" alt="">                        
+                        <div class="ranked-user-details">
+                             <p class="ranked-user-details-username">{{ podiumUser.username }}</p>
+                             <p class="ranked-user-details-country">{{ podiumUser.country }}</p>
+                        </div>
+                        <p class="ranked-user-score"> {{ podiumUser.score }} <span>pts</span></p>  
+                </mat-card>
             </div>
+            <div>
+                <p class="heading">Ranking de Amigos</p>
+                        <mat-card class="match-header">
+                                        <p class="ranked">1st</p>    
+                                        <img src="https://i.pinimg.com/originals/e6/50/32/e65032b045b7919ab19e4bdf85743390.jpg" alt="">                        
+                                        <div class="ranked-user-details">
+                                        <p class="ranked-user-details-username">vicstaples</p>
+                                        <p class="ranked-user-details-country"> MEXICO</p>
+                                        </div>
+                                        <p class="ranked-user-score">21020 <span>pts</span></p>  
+                        </mat-card>
+                </div>
             <div>
                     <p class="heading">Partidas recientes</p>
                     <mat-card class="match-header">
-                            <p style="font-family:'jaapokkiregularregular';">hola</p>  
-                            <p style="font-family:'jaapokkiregularregular';"> hkbkukiuiug </p>
-                            <p style="font-family:'Ubuntu';"> 6565756756567</p>                  
-                    </mat-card>
-                    <mat-card class="match-header">
-                            <p style="font-family:'jaapokkiregularregular';">hola</p>  
-                            <p style="font-family:'jaapokkiregularregular';"> hkbkukiuiug </p>
-                            <p style="font-family:'Ubuntu';"> 6565756756567</p>                  
-                    </mat-card>
-                    <mat-card class="match-header">
-                            <p style="font-family:'jaapokkiregularregular';">hola</p>  
-                            <p style="font-family:'jaapokkiregularregular';"> hkbkukiuiug </p>
-                            <p style="font-family:'Ubuntu';"> 6565756756567</p>                  
-                    </mat-card>
+                           <div>
+                                <p style="font-family:'jaapokkiregularregular';">Europa</p>  
+                                <p>timestamp</p>               
+                           </div>         
+                            <p style="font-family:'jaapokkiregularregular';">100/500 pts</p>  
+                    </mat-card>                       
+                                
             </div>
         </div>
         <div class="col-md-7 col-sm-7 col-xs-12">

@@ -54,9 +54,16 @@ img {
     flex-flow: row wrap;
     flex-wrap: wrap;
     font-size: 1.5em;
+    border-left: 5px solid rgb(47, 0, 255);;
 }
-.match-header p.score{
-    margin-left: 50px;
+.match-header p.ranked{
+  font-size: 1em;
+  font-family: 'jaapokkiregularregular';  
+}
+.match-header img{
+    width: 60px;
+    margin: 0;
+    height: 60px;
 }
 .bg-gradient2 span,
 .bg-gradient2:before {
@@ -216,6 +223,19 @@ p.heading {
   margin-left: 10px;
   margin-top: 30px;
   font-family: 'Ubuntu';
-  font-size: 1.25em;
-  
+  font-size: 1.25em; 
 }
+.ranked-user-details-username {
+  font-family: 'jaapokkiregularregular';
+  font-size: 1.1em;
+}
+.ranked-user-details-country {
+  font-family: 'Ubuntu';
+  font-size: .7em;
+} 
+.ranked-user-score {
+  font-family: 'jaapokkiregularregular';  
+}
+.ranked-user-score span{
+    color: rgb(47, 0, 255); 
+}  
