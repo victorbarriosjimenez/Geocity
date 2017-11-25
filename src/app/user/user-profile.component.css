@@ -147,7 +147,7 @@ a:hover, a:focus, a:active {
   align-items: center;
   justify-content: center;
 }
-.friends-list{
+.friends-list {
   width: 100%;
   padding: 5px 10px;
   position: relative;
@@ -159,13 +159,13 @@ a:hover, a:focus, a:active {
   padding: 5px 10px;
   position: relative;
 }
-.friend-data{
+.friend-data {
   flex: 1;
   flex-basis: 25%;  
   box-sizing: border-box;
   margin-top: -25px;
 }
-.friend-data img{
+.friend-data img {
   width: 80px;
   height: auto;
 }
@@ -192,7 +192,6 @@ p.heading {
     margin-top: 15px;
 }
 .new-post {
-  margin: 20px auto;
   width: 100%;
 }
 .form-container {

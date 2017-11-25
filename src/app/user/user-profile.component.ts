@@ -6,7 +6,6 @@ import { User , Match, Post } from '../../models'
 import { UserService, ForumService } from './../shared/';
 import { MatSnackBar } from '@angular/material';
 import * as firebase from 'firebase/app';
-
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -27,6 +26,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() { 
     this.getProfileBioData();
     this.getUserMatches();
+    this.getListOfAllPosts();
     this.createForm();
   }
   public createNewPost( ): void { 

@@ -108,6 +108,7 @@ export class GameplayComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
         this.beginMatch();
+        
     });
   }
 }

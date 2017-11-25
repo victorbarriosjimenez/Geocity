@@ -124,7 +124,7 @@
             </div>
         </div>
         <div class="col-md-7 col-sm-7 col-xs-12">
-                <p class="heading">Nueva publicación</p>
+               <p class="heading">Nueva publicación</p>
                <form (ngSubmit)="createNewPost()" [formGroup]="createPostForm">    
                 <mat-form-field class="new-post">
                     <textarea 
@@ -134,8 +134,8 @@
                         placeholder="¿Qué está pasando? ¡Compártelo con la comunidad!">
                     </textarea>
                 </mat-form-field> 
-                    <br>
-                    <button [disabled]="!createPostForm.valid" mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
+                <br>
+                <button [disabled]="!createPostForm.valid" mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
             </form>
             <div *ngIf="posts" class="row">
                     <mat-card *ngFor="let post of posts" class="user-post">
