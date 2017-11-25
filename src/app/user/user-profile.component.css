@@ -38,15 +38,11 @@ img {
     background-color: rgba(235, 235, 235, 0.3);  
     text-align: center;
 }
-.match-card {
-    font-family: 'jaapokkiregularregular';
-    margin-bottom: 20px;
-    display: flex;
-}
-.timestamp{
+
+.timestamp {
     color: darkgray;
-    font-size: 1em;
-    margin-left: 50px;
+    font-size: .60em;
+    font-family: 'Ubuntu';
 }
 .match-header {
     display: flex;
@@ -196,7 +192,7 @@ p.heading {
     font-family: 'jaapokkiregularregular';
     font-size: 2.5em;
     margin-bottom: 15px;
-    margin-top: 15px;
+    margin-top: 30px;
 }
 .new-post {
   width: 100%;
@@ -239,3 +235,13 @@ p.heading {
 .ranked-user-score span{
     color: rgb(47, 0, 255); 
 }  
+.see-more{
+  margin: 10px 5px 20px 5px; 
+  position: relative;
+  float: right;
+}
+.user-panel {
+  margin: 20px 5px;
+  padding: 10px;
+  background-color: pink;
+}
