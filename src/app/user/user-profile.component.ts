@@ -20,7 +20,7 @@ export class UserProfileComponent implements OnInit {
   public comment:  string = '';
   public matches: any;
   public posts: Post[];
-  public post: Post;
+  public postSelected: Post;
   constructor(private auth: AuthenticationService,
                private _forumService:ForumService,
               private _userService:  UserService,
@@ -28,6 +28,7 @@ export class UserProfileComponent implements OnInit {
               private _fb: FormBuilder,
               private _router: Router,
               private _snackBar: MatSnackBar) { 
+                this.postSelected = { };
               }
   ngOnInit() { 
     this.getProfileBioData();
@@ -96,13 +97,23 @@ export class UserProfileComponent implements OnInit {
           return;
         }
     }
-    public addComment( ): void { 
+    public addComment(comment: string): void { 
       const commentModel : Comment = {
           body: this.comment as string, 
           timestamp: firebase.database.ServerValue.TIMESTAMP,
           authorProfilePhoto: this.user.profilePhotoUrl as string,
           authorUsername: this.user.username as string,
-          userId: this._userService.currentUserId as string
-        }
-      }  
-    }
+          userId: this._userService.currentUserId as string,
+          postId: this.postSelected.$key as string
+      }
+      this._forumService.createNewComment(commentModel);
+    }  
+    public selectPost(post: Post): void { 
+        this.postSelected = post;
+        this._forumService.getCommentsFromPostSelected(this.postSelected.$key)
+                          .subscribe(comments => this.postSelected.comments = comments,
+                                     (err) => console.log(err),
+                                     () => console.log("Success")
+                          );
+    }    
+}

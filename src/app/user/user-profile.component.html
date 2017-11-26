@@ -153,9 +153,10 @@
                       <mat-card-actions style="margin-left: 10px;">
                         <button mat-icon-button> <mat-icon>thumb_up</mat-icon> </button>
                         <button mat-icon-button> <mat-icon>thumb_down</mat-icon> </button>
-                        <button mat-button>Comentarios</button>
+                        <button mat-button (click)="selectPost(post)">Comentarios</button>
                       </mat-card-actions>
-                      <div>
+                      <div *ngIf="post.comments"> 
+                        
                         <mat-form-field style="width: 80%;">
                                 <textarea 
                                         matInput
@@ -167,7 +168,8 @@
                         </mat-form-field> 
                         <br>
                         <button mat-button type="submit" (click)="addComment(comment)">Comentar</button>
-                      </div>
+                        {{ post.comments | json }}
+                        </div>
                   </mat-card>
             </div>
             <ng-template #noPosts>     

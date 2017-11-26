@@ -4,18 +4,20 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angular
 import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Post } from '../../models';
+import { Post, Comment } from '../../models';
 @Injectable()
 export class ForumService {
     private userId: string;
     private dataPath: string = '/posts';
     private postsDatabaseReference: AngularFireList<Post>;
+    private commentsDatabaseReference: AngularFireList<Comment>;
     private postDatabaseReference:  AngularFireObject<Post>;
     private listOfPosts: Observable<Post[]>; 
     private post:  Observable<Post>;  
     constructor(private _afDatabase: AngularFireDatabase,
                 private _afAuth: AngularFireAuth) {
                     this.postsDatabaseReference = _afDatabase.list('/posts');
+                    this.commentsDatabaseReference =  _afDatabase.list('/comments');                
     }
     public getListOfAllPosts(query?: any) {
         return this.postsDatabaseReference.snapshotChanges().map(arr => {
@@ -32,7 +34,16 @@ export class ForumService {
     }
     public deletePost(key: string): void { 
     }
-    public getAllPosts( ) { 
-       
+    public createNewComment(comment: Comment) { 
+        this.commentsDatabaseReference.push(comment);
+    }
+    public getAllComments() {
+        return this.commentsDatabaseReference.snapshotChanges().map(arr => {
+            return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
+          })
+    }
+    public getCommentsFromPostSelected(postId: string){
+        return this.getAllComments()
+                   .map((comments: Comment[]) => comments.filter((comment: Comment) => comment.postId === postId));
     }
 }
