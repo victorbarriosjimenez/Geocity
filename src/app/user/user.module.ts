@@ -12,7 +12,7 @@ import { FriendsRankingComponent } from './friends-ranking/friends-ranking.compo
 import { RankingComponent } from './ranking/ranking.component';
 import { UserService } from '../shared/user.service';
 import { GameplayModule } from './../gameplay/gameplay.module';
-import { RankingService } from '../shared/index';
+import { RankingService, FilterPipe } from '../shared/index';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,7 +27,8 @@ import { RankingService } from '../shared/index';
     UserSearchComponent,
     NavigationComponent,
     FriendsRankingComponent,
-    RankingComponent
+    RankingComponent,
+    FilterPipe
   ],
   exports: [
     NavigationComponent
