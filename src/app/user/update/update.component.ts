@@ -103,7 +103,7 @@ export class UpdateComponent implements OnInit {
     this._authService.getUsernames()
                      .subscribe((usernames: any[]) =>  usernames.find((username: any) => username.username == this.usernameInsertedCopy ? this.isUsernameAvailable = false : this.isUsernameAvailable = true ));
   }
-  public logout(){
+  public logout(): void {
     this._authService.logoutfromGeocity();
   }
 }

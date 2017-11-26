@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../shared/user.service';
 import { FormBuilder, FormGroup , Validators} from '@angular/forms';
-import  { User, Post } from '../../models';
+import  { User, Post, Comment } from '../../models';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ForumService } from './../shared/forum.service'
 import { MatSnackBar } from '@angular/material';
@@ -17,6 +17,8 @@ export class ForumComponent implements OnInit {
   public createPostForm: FormGroup;
   public user: User;
   public posts: Post[];
+  public postSelected: Post;  
+  public postsLoading: boolean = true;  
   constructor(private _forumService:ForumService,
               private _userService: UserService,
               private _afDatabase: AngularFireDatabase,
@@ -69,4 +71,15 @@ export class ForumComponent implements OnInit {
         duration: 2000,
     });   
   }
+  public addComment(comment: string): void { 
+    const commentModel : Comment = {
+        body: this.postSelected.commentText as string, 
+        timestamp: firebase.database.ServerValue.TIMESTAMP,
+        authorProfilePhoto: this.user.profilePhotoUrl as string,
+        authorUsername: this.user.username as string,
+        userId: this._userService.currentUserId as string,
+        postId: this.postSelected.$key as string
+    }
+    this._forumService.createNewComment(commentModel);
+  }  
 }
