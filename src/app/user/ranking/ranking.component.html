@@ -13,14 +13,13 @@
                 <p class="heading"> <mat-icon>search</mat-icon> Buscar</p>
                     <form class="form">
                               <mat-form-field class="full-width">
-                                <input name="searchTerm" type="text" matInput placeholder="Buscar en el ranking" [(ngModel)]="searchTerm">
+                                <input name="term" type="text" matInput placeholder="Buscar en el ranking" [(ngModel)]="term">
                                 <mat-icon matSuffix>search</mat-icon>
                               </mat-form-field>
                     </form>
             </div> 
             <div>
                     <p class="heading"> <mat-icon>filter_list</mat-icon>  Filtrar </p>
-                    
                         <p class="filter-heading">Filtrar por fecha</p>
                         <ul style="list-style-type: none;">
                             <li>Hoy</li>                        
@@ -31,7 +30,7 @@
         </div>  
         <div class="col-md-9 col-sm-9 col-xs-12">
             <p class="heading"> <mat-icon>trending_up</mat-icon> Los mejores de hoy</p>
-                <mat-card  *ngFor="let rankedUser of rankedUsers; index as i; | filter: searchTerm" class="match-header">
+                <mat-card *ngFor="let rankedUser of rankedUsers | filter: term; index as i" class="match-header">
                     <p class="ranked">{{  i + 1 }}°</p>    
                     <img src="{{ rankedUser.profilePhotoUrl }}" draggable="false" alt="">                        
                     <div class="ranked-user-details">

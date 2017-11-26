@@ -4,9 +4,7 @@ import { User } from '../../models/index';
     name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-    transform(items: any[], term): any {
-        return term 
-            ? items.filter(item => item.title.indexOf(term) !== -1)
-            : items;
+    transform(users: User[],SearchTerm: string): User[] { 
+        return SearchTerm.toLowerCase() ? users.filter((user: User) => user.username.toLowerCase().indexOf(SearchTerm) !== -1) : users;
     }
 }
