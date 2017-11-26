@@ -11,7 +11,7 @@
                         {{ user.username }} 
                         <span matTooltip="Editar mi perfil">
                                 <a class="user-edit" mat-fab routerLink="/update-profile">
-                                             <mat-icon aria-label="Edit profile">mode_edit</mat-icon>
+                                   <mat-icon aria-label="Edit profile">mode_edit</mat-icon>
                                 </a>
                         </span> 
                     </p>
@@ -150,14 +150,16 @@
                            {{ post.body }}
                         </p>
                       </mat-card-content>
-                      <mat-card-actions>
-                        <button mat-button>LIKE</button>
+                      <mat-card-actions style="margin-left: 10px;">
+                        <button mat-icon-button> <mat-icon>thumb_up</mat-icon> </button>
+                        <button mat-icon-button> <mat-icon>thumb_down</mat-icon> </button>
+                        <button mat-button>Comentar</button>
                       </mat-card-actions>
                   </mat-card>
             </div>
             <ng-template #noPosts>     
                 <div style="font-family: 'Ubuntu'; color: rgb(182, 182, 182); display: block; margin: 30px auto;">
-                  No hay publicaciones que mostrar.
+                  No hay publicaciones que mostrar
                 </div>
             </ng-template>
         </div>

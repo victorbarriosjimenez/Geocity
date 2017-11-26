@@ -51,12 +51,12 @@ export class UserService {
         const usernamesReference:   AngularFireObject<any> = this._afDatabase.object(usernamesPath);    
         const userRef: AngularFireObject<any> = this._afDatabase.object(path);    
         const data = {
-            username: userUpdateFormModel.username.toLowerCase(),
+            username: userUpdateFormModel.username,
             country: userUpdateFormModel.country,
             profilePhotoUrl: userUpdateFormModel.profilePhotoUrl
         }       
         return userRef.update(data).then(() => {
-                usernamesReference.update({ username : userUpdateFormModel.username.toLowerCase( ) });
+                usernamesReference.update({ username : userUpdateFormModel.username });
         });
     }
     public getAllMatches( ) {
