@@ -67,7 +67,7 @@ export class UserProfileComponent implements OnInit {
   public getListOfAllPosts( ): void { 
     this._forumService.getListOfAllPosts()
         .subscribe((posts: Post[]) => { 
-                this.posts = posts
+                this.posts = posts.reverse();
         });
   }
   public createForm( ): void {

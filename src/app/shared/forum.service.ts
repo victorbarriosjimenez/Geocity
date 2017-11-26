@@ -13,7 +13,6 @@ export class ForumService {
     private postDatabaseReference:  AngularFireObject<Post>;
     private listOfPosts: Observable<Post[]>; 
     private post:  Observable<Post>;  
-
     constructor(private _afDatabase: AngularFireDatabase,
                 private _afAuth: AngularFireAuth) {
                     this.postsDatabaseReference = _afDatabase.list('/posts');
