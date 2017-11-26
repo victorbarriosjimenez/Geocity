@@ -17,7 +17,6 @@ export class UserProfileComponent implements OnInit {
   public user: User;
   public podiumUsers: User[];
   public createPostForm: FormGroup; 
-  public comment:  string = '';
   public postsLoading: boolean = true;
   public matches: any;
   public posts: Post[];
@@ -101,7 +100,7 @@ export class UserProfileComponent implements OnInit {
     }
     public addComment(comment: string): void { 
       const commentModel : Comment = {
-          body: this.comment as string, 
+          body: this.postSelected.commentText as string, 
           timestamp: firebase.database.ServerValue.TIMESTAMP,
           authorProfilePhoto: this.user.profilePhotoUrl as string,
           authorUsername: this.user.username as string,
@@ -109,11 +108,11 @@ export class UserProfileComponent implements OnInit {
           postId: this.postSelected.$key as string
       }
       this._forumService.createNewComment(commentModel);
-      this.comment = '';
     }  
     public selectPost(post: Post): void { 
         this.postSelected = post;
         this.postSelected.showForm = true;
+        this.postSelected.commentText = '';
         this._forumService.getCommentsFromPostSelected(this.postSelected.$key)
                           .subscribe(comments => this.postSelected.comments = comments,
                                      (err) => console.log(err),

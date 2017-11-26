@@ -168,14 +168,14 @@
                                         </mat-card-content>
                         </mat-card>   
                         <div *ngIf="post.showForm">
-                           <mat-card class="user-post">
+                           <mat-card class="user-comment">
                                 <mat-form-field  class="full-width">
                                                         <textarea 
                                                                 matInput
                                                                 type="text"
                                                                 name= "comment"
                                                                 placeholder="Escibe un comentario"
-                                                                [(ngModel)]="comment">
+                                                                [(ngModel)]="post.commentText">
                                                         </textarea>
                                 </mat-form-field> 
                                 <button mat-raised-button type="submit" color="accent" (click)="addComment(comment)">Comentar</button>                          
