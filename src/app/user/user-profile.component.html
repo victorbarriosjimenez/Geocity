@@ -153,11 +153,22 @@
                       <mat-card-actions style="margin-left: 10px;">
                         <button mat-icon-button> <mat-icon>thumb_up</mat-icon> </button>
                         <button mat-icon-button> <mat-icon>thumb_down</mat-icon> </button>
-                        <button mat-button (click)="selectPost(post)">Comentarios</button>
+                        <button mat-button (click)="selectPost(post)">COMENTARIOS</button>
                       </mat-card-actions>
-                      <div *ngIf="post.comments"> 
-                        
-                        <mat-form-field style="width: 80%;">
+                      <div *ngIf="post.comments; else commentInvitation"> 
+                        <mat-card *ngFor="let comment of post.comments" class="user-post">
+                                        <mat-card-header>
+                                                <div mat-card-avatar style="width: 75px; height:75px;" [ngStyle]="{'background-image': 'url('+comment.authorProfilePhoto +')'}"></div>
+                                                <mat-card-title class="user-post-title">{{ comment.authorUsername }}</mat-card-title>
+                                                        <mat-card-subtitle class="user-post-timestamp"> {{ comment.timestamp | date:'shortDate' }}</mat-card-subtitle>
+                                        </mat-card-header>
+                                        <mat-card-content>
+                                                <p class="user-post-body">
+                                                        {{ comment.body }}
+                                                </p>
+                                        </mat-card-content>
+                        </mat-card>                                
+                        <mat-form-field class="full-width">
                                 <textarea 
                                         matInput
                                         type="text"
@@ -167,8 +178,7 @@
                                 </textarea>
                         </mat-form-field> 
                         <br>
-                        <button mat-button type="submit" (click)="addComment(comment)">Comentar</button>
-                        {{ post.comments | json }}
+                        <button mat-button type="submit" color="accent" (click)="addComment(comment)">Comentar</button>
                         </div>
                   </mat-card>
             </div>

@@ -18,6 +18,7 @@ export class UserProfileComponent implements OnInit {
   public podiumUsers: User[];
   public createPostForm: FormGroup; 
   public comment:  string = '';
+  public postsLoading: boolean = true;
   public matches: any;
   public posts: Post[];
   public postSelected: Post;
@@ -70,7 +71,9 @@ export class UserProfileComponent implements OnInit {
   public getListOfAllPosts( ): void { 
     this._forumService.getListOfAllPosts()
         .subscribe((posts: Post[]) => { 
-                this.posts = posts.reverse();
+                this.posts = posts.reverse(),
+                (err) => this.showsSnackOfPostCreated(err),
+                () => this.postsLoading = false
         });
   }
   public createForm( ): void {
@@ -107,6 +110,7 @@ export class UserProfileComponent implements OnInit {
           postId: this.postSelected.$key as string
       }
       this._forumService.createNewComment(commentModel);
+      this.comment = '';
     }  
     public selectPost(post: Post): void { 
         this.postSelected = post;
