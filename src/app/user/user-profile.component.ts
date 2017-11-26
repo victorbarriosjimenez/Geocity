@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../shared/authentication.service';
 import { Router }  from '@angular/router';
 import { FormBuilder, FormGroup , Validators} from '@angular/forms';
-import { User , Match, Post } from '../../models'
+import { User , Match, Post, Comment } from '../../models'
 import { UserService, ForumService, RankingService } from './../shared/';
 import { MatSnackBar } from '@angular/material';
 import * as firebase from 'firebase/app';
@@ -97,6 +97,13 @@ export class UserProfileComponent implements OnInit {
         }
     }
     public addComment( ): void { 
-        
+      const commentModel : Comment = {
+          body: this.comment as string, 
+          timestamp: firebase.database.ServerValue.TIMESTAMP,
+          authorProfilePhoto: this.user.profilePhotoUrl as string,
+          authorUsername: this.user.username as string,
+          userId: this._userService.currentUserId as string
+        }
+      }  
     }
 }
