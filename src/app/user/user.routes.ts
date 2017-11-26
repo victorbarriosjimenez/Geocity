@@ -10,7 +10,7 @@ const userRoutes: Routes = [
     { path: 'profile',  component: UserProfileComponent, canActivate: [AuthGuard] },
     { path: 'update-profile', component: UpdateComponent, canActivate: [AuthGuard] },
     { path: 'friends', component: FriendsRankingComponent,canActivate: [AuthGuard] },
-    { path: 'ranking', component: RankingComponent, canActivate: [AuthGuard] }    
+    { path: 'world-ranking', component: RankingComponent, canActivate: [AuthGuard] }    
   ];
 @NgModule({
   imports: [

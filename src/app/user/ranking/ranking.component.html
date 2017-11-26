@@ -1,1 +1,44 @@
 <app-navigation></app-navigation>
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <p class="heading"> <mat-icon>filter_list</mat-icon>  Filtrar </p>
+            <div>
+                <p class="filter-heading">Fecha</p>
+                <ul style="list-style-type: none;">
+                    <li>Semanalmente</li>
+                    <li>Mensualmente</li>                    
+                </ul>
+            </div>    
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <p class="heading"> <mat-icon>sort</mat-icon>  Ranking</p>
+                <mat-card  *ngFor="let rankedUser of rankedUsers; index as i" class="match-header">
+                    <p class="ranked">{{  i + 1 }}°</p>    
+                    <img src="{{ rankedUser.profilePhotoUrl }}" alt="">                        
+                    <div class="ranked-user-details">
+                         <p class="ranked-user-details-username">{{ rankedUser.username }}</p>
+                         <p class="ranked-user-details-country">{{ rankedUser.country }}</p>
+                    </div>
+                    <p class="ranked-user-score"> {{ rankedUser.score }} <span>pts</span></p>  
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item>
+                                <mat-icon>person_add</mat-icon>
+                                <span>Seguir</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon>person</mat-icon>
+                                <span>Ver perfil</span>
+                            </button>
+                        </mat-menu>  
+                </mat-card>    
+        </div>
+    </div>
+</div>
