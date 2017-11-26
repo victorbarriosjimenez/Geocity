@@ -1,1 +1,38 @@
 <app-navigation></app-navigation>
+<app-navigation></app-navigation>
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1> <mat-icon style="font-size: 30px; margin-right: 20px;">group</mat-icon>Social</h1>    
+    <div class="row">
+        <div class="col-md-5 col-sm-5 col-xs-12">
+                <div>
+                        <p class="heading"> <mat-icon>search</mat-icon> Buscar amigos</p>
+                            <form class="form">
+                                      <mat-form-field class="full-width">
+                                        <input name="term" type="text" matInput placeholder="Buscar usuarios en Geocity" [(ngModel)]="term">
+                                        <button mat-button *ngIf="term" matSuffix mat-icon-button aria-label="Clear" (click)="term=''">
+                                            <mat-icon>close</mat-icon>
+                                        </button>
+                                      </mat-form-field>
+                            </form>
+                    </div> 
+        </div>  
+        <div class="col-md-7 col-sm-7 col-xs-12">
+            <p class="heading"> <mat-icon>trending_up</mat-icon> Mi ranking de amigos</p>
+            <div>
+                    <p class="heading"> <mat-icon>filter_list</mat-icon>  Filtrar </p>
+                          <p class="filter-heading">Filtrar por fecha</p>
+                            <ul style="list-style-type: none;">
+                                <li>Hoy</li>                        
+                                <li>Semana</li>
+                                <li>Mes</li>                    
+                            </ul> 
+                </div>  
+        </div>
+    </div>
+</div>
