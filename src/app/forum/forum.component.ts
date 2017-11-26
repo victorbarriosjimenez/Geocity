@@ -66,9 +66,9 @@ export class ForumComponent implements OnInit {
              body:['', Validators.required]
      });
    }
-   private showsSnackOfPostCreated(message: string) : void {
-    this._snackBar.open(message, "OK", {
-        duration: 2000,
+  private showsSnackOfPostCreated(message: string) : void {
+      this._snackBar.open(message, "OK", {
+          duration: 2000,
     });   
   }
   public addComment(comment: string): void { 
@@ -81,5 +81,16 @@ export class ForumComponent implements OnInit {
         postId: this.postSelected.$key as string
     }
     this._forumService.createNewComment(commentModel);
+    this.postSelected.commentText = '';    
   }  
+  public selectPost(post: Post): void { 
+    this.postSelected = post;
+    this.postSelected.showForm = true;
+    this.postSelected.commentText = '';
+    this._forumService.getCommentsFromPostSelected(this.postSelected.$key)
+                      .subscribe(comments => this.postSelected.comments = comments,
+                                 (err) => console.log(err),
+                                 () => console.log("Success")
+                      );
+  } 
 }

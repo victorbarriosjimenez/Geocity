@@ -46,7 +46,21 @@
                                             {{ comment.body }}
                                     </p>
                             </mat-card-content>
-                    </mat-card>   
+                    </mat-card> 
+                    <div *ngIf="post.showForm">
+                            <mat-card class="user-comment">
+                                 <mat-form-field  class="full-width">
+                                                         <textarea 
+                                                                 matInput
+                                                                 type="text"
+                                                                 name= "comment"
+                                                                 placeholder="Escibe un comentario"
+                                                                 [(ngModel)]="post.commentText">
+                                                         </textarea>
+                                 </mat-form-field> 
+                                 <button mat-raised-button type="submit" color="accent" (click)="addComment(comment)">Comentar</button>                          
+                            </mat-card>
+                    </div>  
                 </mat-card>
         </div>
 </div>

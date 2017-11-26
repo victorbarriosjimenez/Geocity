@@ -108,6 +108,7 @@ export class UserProfileComponent implements OnInit {
           postId: this.postSelected.$key as string
       }
       this._forumService.createNewComment(commentModel);
+      this.postSelected.commentText = '';
     }  
     public selectPost(post: Post): void { 
         this.postSelected = post;
