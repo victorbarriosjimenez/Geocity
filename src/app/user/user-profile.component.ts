@@ -16,7 +16,8 @@ import { take , orderBy } from 'lodash';
 export class UserProfileComponent implements OnInit {
   public user: User;
   public podiumUsers: User[];
-  public createPostForm: FormGroup;  
+  public createPostForm: FormGroup; 
+  public createCommentForm:  FormGroup; 
   public matches: any;
   public posts: Post[];
   public post: Post;
@@ -73,9 +74,14 @@ export class UserProfileComponent implements OnInit {
   }
   public createForm( ): void {
     this.createPostForm =  this._fb.group({ 
-             body:['', Validators.required]
+          body:['', Validators.required]
      });
    }
+   public createComment(): void { 
+      this.createCommentForm  = this._fb.group({ 
+           commentBody:['', Validators.required]
+      });
+   } 
    private showsSnackOfPostCreated(message: string) : void {
     this._snackBar.open(message, "OK", {
         duration: 2000,
