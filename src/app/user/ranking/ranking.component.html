@@ -4,20 +4,33 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>
     <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-12">
-            <p class="heading"> <mat-icon>filter_list</mat-icon>  Filtrar </p>
+        <h1> <mat-icon>sort</mat-icon>  Ranking Mundial</h1>    
+        <div class="col-md-3 col-sm-3 col-xs-12">
             <div>
-                <p class="filter-heading">Fecha</p>
-                <ul style="list-style-type: none;">
-                    <li>Hoy</li>                        
-                    <li>Semanalmente</li>
-                    <li>Mensualmente</li>                    
-                </ul>
-            </div>    
-        </div>
-        <div class="col-md-8 col-sm-8 col-xs-12">
-            <p class="heading"> <mat-icon>sort</mat-icon>  Ranking</p>
+                <p class="heading"> <mat-icon>search</mat-icon> Buscar</p>
+                    <form class="form">
+                              <mat-form-field class="full-width">
+                                <input type="text" matInput placeholder="Buscar en el ranking">
+                                <mat-icon matSuffix>search</mat-icon>
+                              </mat-form-field>
+                    </form>
+            </div> 
+            <div>
+                    <p class="heading"> <mat-icon>filter_list</mat-icon>  Filtrar </p>
+                    
+                        <p class="filter-heading">Filtrar por fecha</p>
+                        <ul style="list-style-tpe: none;">
+                            <li>Hoy</li>                        
+                            <li>Semana</li>
+                            <li>Mes</li>                    
+                        </ul> 
+                </div>
+        </div>  
+        <div class="col-md-9 col-sm-9 col-xs-12">
+            <p class="heading"> <mat-icon>trending_up</mat-icon> Los mejores de hoy</p>
                 <mat-card  *ngFor="let rankedUser of rankedUsers; index as i" class="match-header">
                     <p class="ranked">{{  i + 1 }}°</p>    
                     <img src="{{ rankedUser.profilePhotoUrl }}" draggable="false" alt="">                        

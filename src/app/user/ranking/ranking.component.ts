@@ -10,6 +10,7 @@ import { User } from '../../../models/index';
 
 export class RankingComponent implements OnInit {
     public rankedUsers: User[];
+    public value: string = '';
     constructor(private _rankingService: RankingService) { }
     ngOnInit() {
         this.getWorldRankingPodium();
