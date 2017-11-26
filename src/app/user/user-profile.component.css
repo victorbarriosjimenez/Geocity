@@ -230,9 +230,21 @@ p.heading {
   font-size: 1.5em;
   margin-left: 10px;
 }
+.user-comment-timestamp{
+  font-family: 'Ubuntu';
+  font-size: .7em;
+  margin-left: 10px;
+}
+.user-comment-body{ 
+  margin-left: 10px;
+  margin-top: 30px;
+  font-family: 'Ubuntu';
+  font-size: 1em; 
+}
+  
 .user-post-timestamp {
   font-family: 'Ubuntu';
-  font-size: .9em;
+  font-size: 1em;
   margin-left: 10px;
 }
 .ranked-user-details-username {

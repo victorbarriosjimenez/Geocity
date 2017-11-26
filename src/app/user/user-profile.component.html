@@ -154,18 +154,17 @@
                         <button mat-icon-button> <mat-icon>thumb_down</mat-icon> </button>
                         <button mat-button (click)="selectPost(post)">COMENTAR</button>                       
                       </mat-card-actions>
-                      <div> 
                         <mat-card *ngFor="let comment of post.comments" class="user-comment">
-                                        <mat-card-header>
-                                                <div mat-card-avatar style="width: 50px; height:50px;" [ngStyle]="{'background-image': 'url('+comment.authorProfilePhoto +')'}"></div>
-                                                <mat-card-title class="user-comment-title">{{ comment.authorUsername }}</mat-card-title>
-                                                        <mat-card-subtitle class="user-post-timestamp"> {{ comment.timestamp | date:'fullDate' }}</mat-card-subtitle>
-                                        </mat-card-header>
-                                        <mat-card-content>
-                                                <p class="user-post-body">
-                                                        {{ comment.body }}
-                                                </p>
-                                        </mat-card-content>
+                                                        <mat-card-header>
+                                                                <div mat-card-avatar style="width: 50px; height:50px;" [ngStyle]="{'background-image': 'url('+comment.authorProfilePhoto +')'}"></div>
+                                                                <mat-card-title class="user-comment-title">{{ comment.authorUsername }}</mat-card-title>
+                                                                        <mat-card-subtitle class="user-comment-timestamp"> {{ comment.timestamp | date:'fullDate' }}</mat-card-subtitle>
+                                                        </mat-card-header>
+                                                        <mat-card-content>
+                                                                <p class="user-comment-body">
+                                                                        {{ comment.body }}
+                                                                </p>
+                                                        </mat-card-content>
                         </mat-card>   
                         <div *ngIf="post.showForm">
                            <mat-card class="user-comment">
@@ -181,7 +180,7 @@
                                 <button mat-raised-button type="submit" color="accent" (click)="addComment(comment)">Comentar</button>                          
                            </mat-card>
                         </div>                           
-                </div>
+
                 </mat-card>
      </div>
             <mat-spinner *ngIf="postsLoading" style="display: block; float: none; margin: 20% auto;"></mat-spinner>            
