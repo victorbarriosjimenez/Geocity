@@ -221,6 +221,20 @@ p.heading {
   font-family: 'Ubuntu';
   font-size: 1.25em; 
 }
+.user-commnet {
+  max-width: 100%;
+  margin: 10px auto;
+}
+.user-comment-title {
+  font-family: 'jaapokkiregularregular';
+  font-size: 1.5em;
+  margin-left: 10px;
+}
+.user-post-timestamp {
+  font-family: 'Ubuntu';
+  font-size: .9em;
+  margin-left: 10px;
+}
 .ranked-user-details-username {
   font-family: 'jaapokkiregularregular';
   font-size: 1.1em;

@@ -113,6 +113,7 @@ export class UserProfileComponent implements OnInit {
     }  
     public selectPost(post: Post): void { 
         this.postSelected = post;
+        this.postSelected.showForm = true;
         this._forumService.getCommentsFromPostSelected(this.postSelected.$key)
                           .subscribe(comments => this.postSelected.comments = comments,
                                      (err) => console.log(err),
