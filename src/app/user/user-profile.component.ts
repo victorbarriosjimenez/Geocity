@@ -19,6 +19,7 @@ export class UserProfileComponent implements OnInit {
   public createPostForm: FormGroup;  
   public matches: any;
   public posts: Post[];
+  public post: Post;
   constructor(private auth: AuthenticationService,
                private _forumService:ForumService,
               private _userService:  UserService,
