@@ -6,6 +6,7 @@ export class Post { 
     public authorProfilePhoto?: string;
     public authorUsername?: string; 
     public comments?: Comment[];
+    public showForm?: boolean;
 }
 export class Comment { 
     public userId?: string;

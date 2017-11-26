@@ -71,9 +71,8 @@ export class UserProfileComponent implements OnInit {
   public getListOfAllPosts( ): void { 
     this._forumService.getListOfAllPosts()
         .subscribe((posts: Post[]) => { 
-                this.posts = posts.reverse(),
-                (err) => this.showsSnackOfPostCreated(err),
-                () => this.postsLoading = false
+                this.posts = posts.reverse(), this.postsLoading = false,
+                (err) => this.showsSnackOfPostCreated(err)
         });
   }
   public createForm( ): void {
@@ -121,3 +120,4 @@ export class UserProfileComponent implements OnInit {
                           );
     }    
 }
+ 
