@@ -4,4 +4,6 @@ export class Post { 
     public timestamp?: any;
     public authorProfilePhoto?: string;
     public authorUsername?: string; 
+    public showCommentForm?: boolean;
+    public comments?: Post[];
 }

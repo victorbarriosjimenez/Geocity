@@ -153,21 +153,20 @@
                       <mat-card-actions style="margin-left: 10px;">
                         <button mat-icon-button> <mat-icon>thumb_up</mat-icon> </button>
                         <button mat-icon-button> <mat-icon>thumb_down</mat-icon> </button>
-                        <button mat-button>Comentar</button>
+                        <button mat-button>Comentarios</button>
                       </mat-card-actions>
                       <div>
-                        <form (ngSubmit)="createNewPost()" [formGroup]="createPostForm">    
-                                <mat-form-field class="new-post">
-                                        <textarea 
-                                                matInput
-                                                type="text"
-                                                formControlName="body"
-                                                placeholder="¿Qué está pasando? ¡Compártelo con la comunidad!">
-                                        </textarea>
-                                </mat-form-field> 
-                                <br>
-                                <button [disabled]="!createPostForm.valid" mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
-                                </form>
+                        <mat-form-field style="width: 80%;">
+                                <textarea 
+                                        matInput
+                                        type="text"
+                                        name= "comment"
+                                        placeholder="Escibe un comentario"
+                                        [(ngModel)]="comment">
+                                </textarea>
+                        </mat-form-field> 
+                        <br>
+                        <button mat-button type="submit" (click)="addComment(comment)">Comentar</button>
                       </div>
                   </mat-card>
             </div>

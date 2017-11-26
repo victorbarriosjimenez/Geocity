@@ -17,7 +17,7 @@ export class UserProfileComponent implements OnInit {
   public user: User;
   public podiumUsers: User[];
   public createPostForm: FormGroup; 
-  public createCommentForm:  FormGroup; 
+  public comment:  string = '';
   public matches: any;
   public posts: Post[];
   public post: Post;
@@ -77,11 +77,6 @@ export class UserProfileComponent implements OnInit {
           body:['', Validators.required]
      });
    }
-   public createComment(): void { 
-      this.createCommentForm  = this._fb.group({ 
-           commentBody:['', Validators.required]
-      });
-   } 
    private showsSnackOfPostCreated(message: string) : void {
     this._snackBar.open(message, "OK", {
         duration: 2000,
@@ -93,12 +88,15 @@ export class UserProfileComponent implements OnInit {
           ()=>{ this.showsSnackOfPostCreated('Ocurrio un error'); }
         )
     }
-    public filterUsersAsPodium(users: User[]){
+    public filterUsersAsPodium(users: User[]): void {
         if(users){
            this.podiumUsers = orderBy(take(users,3),['score'],['desc']); 
         }
         else { 
           return;
         }
+    }
+    public addComment( ): void { 
+        
     }
 }
