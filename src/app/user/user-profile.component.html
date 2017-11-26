@@ -34,7 +34,7 @@
     <div class="row">
 <div class="col-md-5 col-sm-5 col-xs-12">
         <div class="user-panel">
-                        <p class="heading">Amigos</p>
+        <p class="heading">Amigos</p>
                         <div class="friends-list">
                             <div class="friend-data">
                                 <img src="https://i.pinimg.com/originals/e6/50/32/e65032b045b7919ab19e4bdf85743390.jpg" alt="">
@@ -85,6 +85,7 @@
                                     <p class="friend">kayser_digi</p>
                             </div>
                         </div>
+                        <a class="see-more" mat-raised-button routerLink="/friends" color="primary">Ver la lista completa</a>
         </div>
         <div class="user-panel">
                 <p class="heading">Ranking Mundial</p>
@@ -137,7 +138,7 @@
                 <br>
                 <button [disabled]="!createPostForm.valid" mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
             </form>
-            <div *ngIf="posts" class="row">
+            <div *ngIf="posts; else noPosts" class="row">
                     <mat-card *ngFor="let post of posts" class="user-post">
                       <mat-card-header>
                         <div mat-card-avatar style="width: 75px; height:75px;" [ngStyle]="{'background-image': 'url('+post.authorProfilePhoto +')'}"></div>
@@ -154,6 +155,11 @@
                       </mat-card-actions>
                   </mat-card>
             </div>
+            <ng-template #noPosts>     
+                <div style="font-family: 'Ubuntu'; color: rgb(182, 182, 182); display: block; margin: 30px auto;">
+                  No hay publicaciones que mostrar.
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>

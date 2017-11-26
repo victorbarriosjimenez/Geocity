@@ -10,6 +10,7 @@
             <div>
                 <p class="filter-heading">Fecha</p>
                 <ul style="list-style-type: none;">
+                    <li>Hoy</li>                        
                     <li>Semanalmente</li>
                     <li>Mensualmente</li>                    
                 </ul>
@@ -19,7 +20,7 @@
             <p class="heading"> <mat-icon>sort</mat-icon>  Ranking</p>
                 <mat-card  *ngFor="let rankedUser of rankedUsers; index as i" class="match-header">
                     <p class="ranked">{{  i + 1 }}°</p>    
-                    <img src="{{ rankedUser.profilePhotoUrl }}" alt="">                        
+                    <img src="{{ rankedUser.profilePhotoUrl }}" draggable="false" alt="">                        
                     <div class="ranked-user-details">
                          <p class="ranked-user-details-username">{{ rankedUser.username }}</p>
                          <p class="ranked-user-details-country">{{ rankedUser.country }}</p>
