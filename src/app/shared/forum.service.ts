@@ -3,12 +3,10 @@ import { Observable } from 'rxjs/Observable';
 
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { mapValues, groupBy, get } from 'lodash';
 import { Post, Comment } from '../../models';
-
 @Injectable()
 export class ForumService {
     private userId: string;
@@ -33,7 +31,7 @@ export class ForumService {
     public getPost(key: string): Observable<Post> { 
         const itemPath = `${this.dataPath}/${key}`;
         this.post = this._afDatabase.object(itemPath).valueChanges();
-        return this.post
+        return this.post;
     }
     public createNewPost(post: Post): void {
         this.postsDatabaseReference.push(post);
@@ -43,7 +41,7 @@ export class ForumService {
         const postRef: AngularFireObject<any> = this._afDatabase.object(itemPath);         
         postRef.remove();
     }
-    /* ---------------------------------- COMMENTS MANAGEMENT ----------------------------------  */
+    /* ---------------------------------- COMMENTS MANAGEMENT ----------------------------  ------  */
     public deleteComment(key: string): void { 
         const itemPath =  `/comments/${key}`;
         const postRef: AngularFireObject<any> = this._afDatabase.object(itemPath);         
