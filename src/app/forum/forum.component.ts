@@ -6,13 +6,11 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { ForumService } from './../shared/forum.service'
 import { MatSnackBar } from '@angular/material';
 import * as firebase from 'firebase/app';
-
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
   styleUrls: ['./forum.component.css']
 })
-
 export class ForumComponent implements OnInit {
   public createPostForm: FormGroup;
   public user: User;
@@ -58,8 +56,8 @@ export class ForumComponent implements OnInit {
   public getListOfAllPosts( ): void { 
       this._forumService.getListOfAllPosts()
           .subscribe((posts: Post[]) => { 
-                  this.posts = posts
-          });
+                  this.posts = posts.reverse()
+      });
   }
   public createForm( ): void {
     this.createPostForm =  this._fb.group({ 
