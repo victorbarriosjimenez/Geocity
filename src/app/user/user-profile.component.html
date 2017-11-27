@@ -68,22 +68,6 @@
                                     <img src="https://i.pinimg.com/originals/e6/50/32/e65032b045b7919ab19e4bdf85743390.jpg" alt="">
                                     <p class="friend">kayser_digi</p>
                             </div>
-                            <div class="friend-data">
-                                    <img src="https://i.pinimg.com/originals/e6/50/32/e65032b045b7919ab19e4bdf85743390.jpg" alt="">
-                                    <p class="friend">kayser_digi</p>
-                            </div>
-                            <div class="friend-data">
-                                    <img src="https://i.pinimg.com/originals/e6/50/32/e65032b045b7919ab19e4bdf85743390.jpg" alt="">
-                                    <p class="friend">kayser_digi</p>
-                            </div>
-                            <div class="friend-data">
-                                    <img src="https://i.pinimg.com/originals/e6/50/32/e65032b045b7919ab19e4bdf85743390.jpg" alt="">
-                                    <p class="friend">kayser_digi</p>
-                            </div>
-                            <div class="friend-data">
-                                    <img src="https://i.pinimg.com/originals/e6/50/32/e65032b045b7919ab19e4bdf85743390.jpg" alt="">
-                                    <p class="friend">kayser_digi</p>
-                            </div>
                         </div>
                         <a class="see-more" mat-raised-button routerLink="/friends" color="primary">Ver la lista completa</a>
         </div>
@@ -153,7 +137,12 @@
                       <mat-card-actions style="margin-left: 10px;">
                         <button mat-icon-button> <mat-icon>thumb_up</mat-icon> </button>
                         <button mat-icon-button> <mat-icon>thumb_down</mat-icon> </button>
-                        <button mat-button (click)="selectPost(post)">COMENTAR</button>                       
+                        <button mat-button (click)="selectPost(post)">COMENTAR</button>
+                        <button  style="float:right; position:absolute;" mat-button [matMenuTriggerFor]="menu"> <mat-icon>more_horiz</mat-icon> </button>
+                        <mat-menu #menu="matMenu">
+                          <button mat-menu-item>Item 1</button>
+                          <button mat-menu-item>Item 2</button>
+                        </mat-menu>                                               
                       </mat-card-actions>
                         <mat-card *ngFor="let comment of post.comments" class="user-comment">
                                                         <mat-card-header>
