@@ -4,17 +4,17 @@
       <h2 class="text-center" style="font-family: 'Ubuntu'; margin-bottom: 40px; margin-left: 20px; font-size: 2em;">Escoge un continente</h2> 
       <div class="row">
           <div class="col-md-2">
-                <button mat-fab (click)="goBack()">
+                <button [disabled]="!enableButtonToGoPrevious" mat-fab (click)="goToPreviousContinent()">
                         <mat-icon aria-label="">arrow_back</mat-icon>
                 </button>
           </div>
           <div 
-          class="continent-selection"
-          [ngStyle]="{'background-image': 'url('+continent.image +')'}">
-              {{ continent.name }}
+                class="continent-selection"
+                [ngStyle]="{'background-image': 'url('+continent.image +')'}">
+            {{ continent.name }}
           </div>
-          <div class="col-md-2" (click)="goNext()">
-                <button mat-fab>
+          <div class="col-md-2" (click)="goToNextContinent()">
+                <button [disabled]="!enableButtonToGoNext" mat-fab>
                         <mat-icon aria-label="">arrow_forward</mat-icon>
                 </button>
           </div>
@@ -22,6 +22,9 @@
   </div>  
   <a class="fancy-button bg-gradient2" (click)="selectContinentForMatch(continent)">
       <span>Iniciar</span>      
+  </a>
+  <a class="fancy-button bg-gradient2" routerLink="/profile">
+        <span>Volver al perfil</span>      
   </a>
 </div>
 <div *ngIf="matchState">

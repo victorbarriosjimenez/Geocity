@@ -19,7 +19,9 @@ export class GameplayComponent implements OnInit {
   public match: Match = { };
   public locations: any; 
   public timer = 0;
-  public continents =  continents;
+  public enableButtonToGoNext: boolean =  true;
+  public enableButtonToGoPrevious: boolean = true;
+  public continents = continents;
   public isMatchConfigurationDone: boolean;
   public isLoadingLocationsFromContinentSelected: boolean = true;
   public latitudeOfContinentSelected: number = 0;
@@ -89,7 +91,7 @@ export class GameplayComponent implements OnInit {
     });
   }
   public prepareMatchToPost(): void {
-      this.match  = {
+      this.match = {
           userId: this._userService.currentUserId,
           continent: this.continent.name,
           timestamp: firebase.database.ServerValue.TIMESTAMP,
@@ -112,22 +114,25 @@ export class GameplayComponent implements OnInit {
         this.beginMatch();
     });
   }
-  goNext(){
+  private goToNextContinent(): void {
     if(this.indexOfContinent < 5){
-      this.indexOfContinent += 1 
-      this.continent = continents[this.indexOfContinent];      
+      this.enableButtonToGoNext = true
+      this.enableButtonToGoPrevious = true; 
+      this.continent = continents[this.indexOfContinent += 1 ];      
     }
     else {
+      this.enableButtonToGoNext = false;
       return;      
     }
   }
-
-  goBack(){
+  private goToPreviousContinent(): void {
     if(this.indexOfContinent > 0){
-      this.indexOfContinent -= 1 
-      this.continent = continents[this.indexOfContinent];      
+      this.enableButtonToGoPrevious = true;
+      this.enableButtonToGoNext = true;
+      this.continent = continents[this.indexOfContinent -= 1];      
     }
     else {
+      this.enableButtonToGoPrevious = false;
       return;      
     }
   }
