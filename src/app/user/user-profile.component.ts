@@ -19,7 +19,7 @@ export class UserProfileComponent implements OnInit {
   public matches: any;
   public posts: Post[];
   public postSelected: Post;
-  constructor(private auth: AuthenticationService,
+  constructor(private auth: AuthenticationService, 
                private _forumService:ForumService,
               private _userService:  UserService,
               private _rankingService: RankingService,
@@ -117,7 +117,7 @@ export class UserProfileComponent implements OnInit {
     }  
     public selectPost(post: Post): void { 
         this.postSelected = post;
-        this.postSelected.showForm = true;
+        this.postSelected.showForm = !this.postSelected.showForm;
         this.postSelected.commentText = '';
         this._forumService.getCommentsFromPostSelected(this.postSelected.$key)
                           .subscribe(comments => this.postSelected.comments = comments,
