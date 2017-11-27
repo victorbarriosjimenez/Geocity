@@ -4,11 +4,11 @@
       <h2 class="text-center" style="font-family: 'Ubuntu'; margin-bottom: 40px; margin-left: 20px; font-size: 2em;">Escoge un continente</h2> 
       <div class="row">
           <div class="col-md-2">
-                <button mat-fab>
+                <button mat-fab (click)="goBack()">
                         <mat-icon aria-label="">arrow_back</mat-icon>
                 </button>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2" (click)="goNext()">
                 <button mat-fab>
                         <mat-icon aria-label="">arrow_forward</mat-icon>
                 </button>
@@ -17,14 +17,13 @@
                 <div 
                 class="continent-selection"
                 [ngClass]="{ 'continent-selected': continent.isContinentSelected }"  
-                [ngStyle]="{'background-image': 'url('+continent.image +')'}"
-                (click)="selectContinentForMatch(continent)">
+                [ngStyle]="{'background-image': 'url('+continent.image +')'}">
                     {{ continent.name }}
                 </div>
           </div>
       </div>
   </div>  
-  <a class="fancy-button bg-gradient2">
+  <a class="fancy-button bg-gradient2" (click)="selectContinentForMatch(continent)">
       <span>Iniciar</span>      
   </a>
 </div>

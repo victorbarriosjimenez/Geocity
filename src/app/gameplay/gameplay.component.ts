@@ -42,6 +42,7 @@ export class GameplayComponent implements OnInit {
     this._userService.getUserData()
         .subscribe( user =>  this.user  = user);
     this.isMatchConfigurationDone = false;
+    this.continent = continents[0];
   }
   private selectContinentForMatch(continent: Continent): void {
     this.continent = continent; 
@@ -110,5 +111,9 @@ export class GameplayComponent implements OnInit {
         this.beginMatch();
         
     });
+  }
+  lol(ob){
+    console.log("lol");
+    console.log(ob);    
   }
 }
