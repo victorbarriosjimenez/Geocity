@@ -1,4 +1,5 @@
 export class User { 
+    public $key?: string;
     public uid?: string;
     public username?: string;
     public password?: string;

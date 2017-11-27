@@ -49,7 +49,10 @@ export class UserProfileComponent implements OnInit {
   }
   private getProfileBioData( ):  void {
     this._userService.getUserData()
-      .subscribe(data => this.user = data,
+      .subscribe(actions => {
+        this.user.$key = actions.key
+        this.user = actions.payload.val()
+      },
                   (err) => console.log(err),
                   () => console.log('Success'));
   }
