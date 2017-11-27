@@ -7,7 +7,6 @@ import { UserService, ForumService, RankingService } from './../shared/';
 import { MatSnackBar } from '@angular/material';
 import * as firebase from 'firebase/app';
 import { take , orderBy } from 'lodash';
-
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -17,7 +16,6 @@ export class UserProfileComponent implements OnInit {
   public user: User;
   public podiumUsers: User[];
   public createPostForm: FormGroup; 
-  public postsLoading: boolean = true;
   public matches: any;
   public posts: Post[];
   public postSelected: Post;
@@ -70,8 +68,7 @@ export class UserProfileComponent implements OnInit {
   public getListOfAllPosts( ): void { 
     this._forumService.getListOfAllPosts()
         .subscribe((posts: Post[]) => { 
-                this.posts = posts.reverse(), this.postsLoading = false,
-                (err) => this.showsSnackOfPostCreated(err)
+                this.posts = posts.reverse()
         });
   }
   public createForm( ): void {
@@ -119,6 +116,10 @@ export class UserProfileComponent implements OnInit {
                                      (err) => console.log(err),
                                      () => console.log("Success")
                           );
-    }    
+    }   
+    public deletePost(key: string): void {
+        this._forumService.deletePost(key);
+        this.showsSnackOfPostCreated('Publicación eliminada');
+    } 
 }
  

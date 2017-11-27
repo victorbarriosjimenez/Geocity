@@ -140,8 +140,8 @@
                         <button mat-button (click)="selectPost(post)">COMENTAR</button>
                         <button  style="float:right; position:absolute;" mat-button [matMenuTriggerFor]="menu"> <mat-icon>more_horiz</mat-icon> </button>
                         <mat-menu #menu="matMenu">
-                          <button mat-menu-item>Item 1</button>
-                          <button mat-menu-item>Item 2</button>
+                          <button mat-menu-item><mat-icon>share</mat-icon>Compartir</button>
+                          <button mat-menu-item (click)="deletePost(post.$key)"><mat-icon>delete</mat-icon> Eliminar</button>                          
                         </mat-menu>                                               
                       </mat-card-actions>
                         <mat-card *ngFor="let comment of post.comments" class="user-comment">
@@ -172,7 +172,6 @@
                         </div>                           
                 </mat-card>
      </div>
-            <mat-spinner *ngIf="postsLoading" style="display: block; float: none; margin: 20% auto;"></mat-spinner>            
             <ng-template #noPosts>     
                 <div style="font-family: 'Ubuntu'; color: rgb(182, 182, 182); display: block; margin: 30px auto;">
                   No hay publicaciones que mostrar
