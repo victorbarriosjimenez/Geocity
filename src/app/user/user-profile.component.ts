@@ -36,10 +36,16 @@ export class UserProfileComponent implements OnInit {
     this.getWorldRankingPodium();
   }
   public createNewPost( ): void { 
-    const postModel: Post = this.preparePost();
-    this._forumService.createNewPost(postModel);
-    this.createPostForm.reset();
-    this.showsSnackOfPostCreated(`Hey ${this.user.username}! tu publicación ha sido publicada`);
+    if(this.createPostForm.value.body === ''){
+        this.showsSnackOfPostCreated('La publicación está vacía.');
+      return;
+    }
+    else {
+      const postModel: Post = this.preparePost();
+      this._forumService.createNewPost(postModel);
+      this.createPostForm.reset();
+      this.showsSnackOfPostCreated(`Hey ${this.user.username}! tu publicación ha sido publicada`);
+     } 
   }
   private getProfileBioData( ):  void {
     this._userService.getUserData()
@@ -56,14 +62,14 @@ export class UserProfileComponent implements OnInit {
    }
   public preparePost() { 
     const formModel = this.createPostForm.value;
-    const postModel: Post = { 
+      const postModel: Post = { 
         body: formModel.body as string, 
         timestamp: firebase.database.ServerValue.TIMESTAMP,
         authorProfilePhoto: this.user.profilePhotoUrl as string,
         authorUsername: this.user.username as string,
         userId: this._userService.currentUserId as string
-    }
-    return postModel;
+      }
+        return postModel;
   }
   public getListOfAllPosts( ): void { 
     this._forumService.getListOfAllPosts()
@@ -73,7 +79,7 @@ export class UserProfileComponent implements OnInit {
   }
   public createForm( ): void {
     this.createPostForm =  this._fb.group({ 
-          body:['', Validators.required]
+          body:['']
      });
    }
    private showsSnackOfPostCreated(message: string) : void {
