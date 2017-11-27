@@ -33,6 +33,9 @@ export class ForumService {
         this.postsDatabaseReference.push(post);
     }
     public deletePost(key: string): void { 
+        const itemPath =  `${this.dataPath}/${key}`;
+        const postRef: AngularFireObject<any> = this._afDatabase.object(itemPath);         
+        postRef.remove();
     }
     public createNewComment(comment: Comment) { 
         this.commentsDatabaseReference.push(comment);
@@ -46,4 +49,4 @@ export class ForumService {
         return this.getAllComments()
                    .map((comments: Comment[]) => comments.filter((comment: Comment) => comment.postId === postId));
     }
-}
+}                                          
