@@ -3,14 +3,24 @@
       <h1 class="text-center">Nueva Partida</h1>
       <h2 class="text-center" style="font-family: 'Ubuntu'; margin-bottom: 40px; margin-left: 20px; font-size: 2em;">Escoge un continente</h2> 
       <div class="row">
-          <div *ngFor="let continent of continents" class="col-md-2 col-sm-2 col-xs-6">
-              <div 
-                      class="continent-selection"
-                      [ngClass]="{ 'continent-selected': continent.isContinentSelected }"  
-                      [ngStyle]="{'background-image': 'url('+continent.image +')'}"
-                      (click)="selectContinentForMatch(continent)">
-                  {{ continent.name }}
-              </div>
+          <div class="col-md-2">
+                <button mat-fab>
+                        <mat-icon aria-label="">arrow_back</mat-icon>
+                </button>
+          </div>
+          <div class="col-md-2">
+                <button mat-fab>
+                        <mat-icon aria-label="">arrow_forward</mat-icon>
+                </button>
+          </div>
+          <div class="col-md-4">
+                <div 
+                class="continent-selection"
+                [ngClass]="{ 'continent-selected': continent.isContinentSelected }"  
+                [ngStyle]="{'background-image': 'url('+continent.image +')'}"
+                (click)="selectContinentForMatch(continent)">
+                    {{ continent.name }}
+                </div>
           </div>
       </div>
   </div>  
