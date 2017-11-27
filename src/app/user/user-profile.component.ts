@@ -50,8 +50,7 @@ export class UserProfileComponent implements OnInit {
   private getProfileBioData( ):  void {
     this._userService.getUserData()
       .subscribe(actions => {
-        this.user.$key = actions.key
-        this.user = actions.payload.val()
+        this.user = actions.payload.val();
       },
                   (err) => console.log(err),
                   () => console.log('Success'));
@@ -130,5 +129,9 @@ export class UserProfileComponent implements OnInit {
         this._forumService.deletePost(key);
         this.showsSnackOfPostCreated('Publicación eliminada');
     } 
+    public deleteComment(key: string): void {
+      this._forumService.deleteComment(key);
+      this.showsSnackOfPostCreated('Comentario eliminado');      
+    }
 }
  

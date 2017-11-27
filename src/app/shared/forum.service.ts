@@ -37,6 +37,11 @@ export class ForumService {
         const postRef: AngularFireObject<any> = this._afDatabase.object(itemPath);         
         postRef.remove();
     }
+    public deleteComment(key: string): void { 
+        const itemPath =  `/comments/${key}`;
+        const postRef: AngularFireObject<any> = this._afDatabase.object(itemPath);         
+        postRef.remove();
+    }
     public createNewComment(comment: Comment) { 
         this.commentsDatabaseReference.push(comment);
     }
