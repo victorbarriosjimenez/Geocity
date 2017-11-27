@@ -34,7 +34,7 @@ export class GameplayService {
     }
     setScoreFromCalculatedDistance(distanceBetweenPointsInKilometers: number): number { 
         let score = 0;
-        if(distanceBetweenPointsInKilometers > 0 && distanceBetweenPointsInKilometers <= 20){
+        if(distanceBetweenPointsInKilometers > 0 && distanceBetweenPointsInKilometers <= 100){
             return score += 100;  
         }
         else if(distanceBetweenPointsInKilometers > 100 && distanceBetweenPointsInKilometers <= 200){
