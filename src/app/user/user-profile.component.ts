@@ -6,7 +6,8 @@ import { User , Match, Post, Comment } from '../../models'
 import { UserService, ForumService, RankingService } from './../shared/';
 import { MatSnackBar } from '@angular/material';
 import * as firebase from 'firebase/app';
-import { take , orderBy } from 'lodash';
+import { take , orderBy, get } from 'lodash';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -17,6 +18,11 @@ export class UserProfileComponent implements OnInit {
   public podiumUsers: User[];
   public createPostForm: FormGroup; 
   public matches: any;
+  showEmojis = false;
+  emojiList: string[];
+  reactionCount: any;
+  userReaction: any;
+  subscription: any;
   public posts: Post[];
   public postSelected: Post;
   constructor(private auth: AuthenticationService, 
@@ -132,5 +138,5 @@ export class UserProfileComponent implements OnInit {
     public deleteComment(key: string): void {
       this._forumService.deleteComment(key);
       this.showsSnackOfPostCreated('Comentario eliminado');      
-    }
+    } 
 }

@@ -59,21 +59,4 @@ export class ForumService {
         return this.getAllComments()
                    .map((comments: Comment[]) => comments.filter((comment: Comment) => comment.postId === postId));
     }
-    /* ---------------------------------- REACTIONS MANAGEMENT ----------------------------------  */
-    public getReactions(itemId): AngularFireObject<any> {
-        return this._afDatabase.object(`reactions/${itemId}`)
-    }
-    public updateReaction(itemId, reaction=0): void {
-        const data = { [this.userId]: reaction }
-        this._afDatabase.object(`reactions/${itemId}`).update(data)
-    }
-    public removeReaction(postId: string,userId: string ): void  {
-        this._afDatabase.object(`reactions/${postId}/${userId}`).remove()
-    }
-    public countReactions(reactions: Array<any>) {
-        return mapValues(groupBy(reactions), 'length')
-    }
-    public userReaction(reactions: Array<any>) {
-        return get(reactions, this.userId)
-    }
 }                                          
