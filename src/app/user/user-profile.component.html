@@ -96,8 +96,8 @@
                                                 <p class="ranked-user-score">21020 <span>pts</span></p>  
                                 </mat-card>
                 </div>
-                <div>
-                        <p class="heading">Partidas recientes</p>
+                <div class="user-panel">
+                 <p class="heading">Partidas recientes</p>
                         <mat-card *ngFor="let match of matches" class="match-header">
                                 <div>
                                         <p style="font-family:'jaapokkiregularregular';">{{ match.continent}}</p>  
@@ -105,7 +105,6 @@
                                 </div>         
                                 <p style="font-family:'jaapokkiregularregular';">{{ match.score }}pts</p>  
                         </mat-card>  
-                        <a class="see-more" mat-raised-button routerLink="/friends" color="primary">Ver la lista completa</a>                    
                 </div>
         </div>
         <div class="col-md-7 col-sm-7 col-xs-12">

@@ -57,12 +57,12 @@ export class UserProfileComponent implements OnInit {
   }
   public getUserMatches(): void {
     this._userService.getUserMatches()
-                     .subscribe(matches  => this.matches =  take(matches.reverse(),5));
+                     .subscribe(matches  => this.matches =  take(matches.reverse(),10));
   }
   public createNewMatch( ): void {
       this._router.navigate(['/gameplay']);
    }
-  public preparePost() { 
+  public preparePost(): Post { 
     const formModel = this.createPostForm.value;
       const postModel: Post = { 
         body: formModel.body as string, 
@@ -71,7 +71,7 @@ export class UserProfileComponent implements OnInit {
         authorUsername: this.user.username as string,
         userId: this._userService.currentUserId as string
       }
-        return postModel;
+      return postModel;
   }
   public getListOfAllPosts( ): void { 
     this._forumService.getListOfAllPosts()
@@ -134,4 +134,3 @@ export class UserProfileComponent implements OnInit {
       this.showsSnackOfPostCreated('Comentario eliminado');      
     }
 }
- 
