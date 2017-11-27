@@ -8,17 +8,15 @@
                         <mat-icon aria-label="">arrow_back</mat-icon>
                 </button>
           </div>
+          <div 
+          class="continent-selection"
+          [ngStyle]="{'background-image': 'url('+continent.image +')'}">
+              {{ continent.name }}
+          </div>
           <div class="col-md-2" (click)="goNext()">
                 <button mat-fab>
                         <mat-icon aria-label="">arrow_forward</mat-icon>
                 </button>
-          </div>
-          <div class="col-md-4">
-                <div 
-                class="continent-selection"
-                [ngStyle]="{'background-image': 'url('+continent.image +')'}">
-                    {{ continent.name }}
-                </div>
           </div>
       </div>
   </div>  

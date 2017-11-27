@@ -110,11 +110,25 @@ export class GameplayComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
         this.beginMatch();
-        
     });
   }
-  lol(ob){
-    console.log("lol");
-    console.log(ob);    
+  goNext(){
+    if(this.indexOfContinent < 5){
+      this.indexOfContinent += 1 
+      this.continent = continents[this.indexOfContinent];      
+    }
+    else {
+      return;      
+    }
+  }
+
+  goBack(){
+    if(this.indexOfContinent > 0){
+      this.indexOfContinent -= 1 
+      this.continent = continents[this.indexOfContinent];      
+    }
+    else {
+      return;      
+    }
   }
 }
