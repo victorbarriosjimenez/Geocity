@@ -43,7 +43,7 @@ import { FooterComponent } from './footer/footer.component';
   ], 
   declarations: [
     FooterComponent
-  ],
+],
   exports: [
     MatFormFieldModule,
     MatCardModule,
@@ -61,8 +61,7 @@ import { FooterComponent } from './footer/footer.component';
     MatProgressBarModule,
     MatToolbarModule,
     MatDialogModule ,
-    MatMenuModule
-    
+    MatMenuModule 
   ]
 })
 export class MaterialElementsModule { }

@@ -7,6 +7,7 @@ import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 
 import { ForumService } from './../shared/forum.service';
 import { MaterialElementsModule  } from '../shared/material-elements.module';
+import { VotingComponent } from './voting/voting.component';
 
 @NgModule({
   imports: [
@@ -18,10 +19,14 @@ import { MaterialElementsModule  } from '../shared/material-elements.module';
     ReactiveFormsModule
   ],
   declarations: [
-    ForumComponent
+    ForumComponent,
+    VotingComponent
   ],
   providers: [ 
     ForumService
+  ],
+  exports:[
+    VotingComponent
   ]
 })
 export class ForumModule { }
