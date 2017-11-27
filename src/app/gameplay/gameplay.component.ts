@@ -24,6 +24,7 @@ export class GameplayComponent implements OnInit {
   public isLoadingLocationsFromContinentSelected: boolean = true;
   public latitudeOfContinentSelected: number = 0;
   public longitudeOfContinentSelected: number = 0;
+  public indexOfContinent: number = 0; 
   public index : number = 0 ;
   public user: User;
   public matchState: boolean = false; 
@@ -42,7 +43,7 @@ export class GameplayComponent implements OnInit {
     this._userService.getUserData()
         .subscribe( user =>  this.user  = user);
     this.isMatchConfigurationDone = false;
-    this.continent = continents[0];
+    this.continent = continents[this.indexOfContinent];
   }
   private selectContinentForMatch(continent: Continent): void {
     this.continent = continent; 
