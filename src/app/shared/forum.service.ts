@@ -59,4 +59,10 @@ export class ForumService {
         return this.getAllComments()
                    .map((comments: Comment[]) => comments.filter((comment: Comment) => comment.postId === postId));
     }
+    /* ---------------------------------- VOTING MANAGEMENT ----------------------------  ------  */
+    updateUserVote(itemId, userId, vote): void {
+        let data = {};
+        data[userId] = vote;
+        this._afDatabase.object(`upvotes/${itemId}`).update(data);
+    }
 }                                          

@@ -20,8 +20,8 @@ import { RankingService, FilterPipe } from '../shared/index';
     FormsModule,
     ReactiveFormsModule,
     UserRoutesModule,
-    GameplayModule
-  ],
+    GameplayModule 
+   ],
   declarations: [
     UserProfileComponent,
     UserSearchComponent,

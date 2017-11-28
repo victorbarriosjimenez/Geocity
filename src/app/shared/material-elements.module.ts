@@ -19,6 +19,7 @@ import {
         } from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
+import { VotingComponent } from './voting/voting.component';
 
 @NgModule({
   imports: [
@@ -39,10 +40,10 @@ import { FooterComponent } from './footer/footer.component';
     MatToolbarModule,
     MatDialogModule,
     MatMenuModule
-    
   ], 
   declarations: [
-    FooterComponent
+    FooterComponent,
+    VotingComponent
 ],
   exports: [
     MatFormFieldModule,
@@ -58,6 +59,7 @@ import { FooterComponent } from './footer/footer.component';
     MatSnackBarModule,
     MatTabsModule,
     FooterComponent,
+    VotingComponent,
     MatProgressBarModule,
     MatToolbarModule,
     MatDialogModule ,
