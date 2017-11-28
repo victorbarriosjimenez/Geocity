@@ -46,10 +46,9 @@ export class UpdateComponent implements OnInit {
    }
   private getProfileBioData( ):  void {
     this._userService.getUserData()
-      .subscribe(data => this.user = data,
-                  (err) => console.log(err),
-                  () => this.InitializeValuesIfUserExists()
-      );
+                    .subscribe(data => this.user = data,
+                        (err)=> console.log(err),
+                        ()=> this.InitializeValuesIfUserExists());
   }
   private getCountries() { 
     this._formsService.getCountries()

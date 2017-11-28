@@ -55,8 +55,8 @@ export class UserProfileComponent implements OnInit {
   }
   private getProfileBioData( ):  void {
     this._userService.getUserData()
-      .subscribe(actions => {
-        this.user = actions.payload.val();
+      .subscribe(data => {
+        this.user = data;
       },
                   (err) => console.log(err),
                   () => console.log('Success'));

@@ -77,8 +77,9 @@ export class UserService {
              () => this._router.navigate(['/profile']));
     }
     public getUserData()  { 
-        const userPath =  `users/${this.currentUserId}`;
-        return this._afDatabase.object(userPath).snapshotChanges();
+        const userDataPath = `https://geocity-app.firebaseio.com/users/${this.currentUserId}.json`;
+        return this.http.get(userDataPath)
+                  .map(response => response.json());
     }
     /* ---------------------------------- USER ACCOUNT OPERATIONS ----------------------------------  */
     public sendsResetPasswordEmail(email: string) {
