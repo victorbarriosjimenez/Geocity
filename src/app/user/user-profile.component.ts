@@ -63,7 +63,7 @@ export class UserProfileComponent implements OnInit {
   }
   public getUserMatches(): void {
     this._userService.getUserMatches()
-                     .subscribe(matches  => this.matches =  take(matches.reverse(),10));
+                     .subscribe(matches  => this.matches =  take(matches.reverse(),5));
   }
   public createNewMatch( ): void {
       this._router.navigate(['/gameplay']);
