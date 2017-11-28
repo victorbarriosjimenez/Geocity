@@ -43,7 +43,7 @@ export class GameplayComponent implements OnInit {
   }
   ngOnInit() { 
     this._userService.getUserData()
-        .subscribe( user =>  this.user  = user);
+        .subscribe(actions =>    this.user = actions.payload.val());
     this.isMatchConfigurationDone = false;
     this.continent = continents[this.indexOfContinent];
   }
@@ -115,7 +115,7 @@ export class GameplayComponent implements OnInit {
     });
   }
   private goToNextContinent(): void {
-    if(this.indexOfContinent < 5){
+    if(this.indexOfContinent < continents.length - 1 ){
       this.enableButtonToGoNext = true
       this.enableButtonToGoPrevious = true; 
       this.continent = continents[this.indexOfContinent += 1 ];      
