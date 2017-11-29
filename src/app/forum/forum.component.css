@@ -65,3 +65,23 @@ img {
     font-size: 1.25em;
     
 }
+.user-comment {
+    max-width: 100%;
+    margin: 10px auto;
+  }
+  .user-comment-title {
+    font-family: 'jaapokkiregularregular';
+    font-size: 1.5em;
+    margin-left: 10px;
+  }
+  .user-comment-timestamp{
+    font-family: 'Ubuntu';
+    font-size: .7em;
+    margin-left: 10px;
+  }
+  .user-comment-body{ 
+    margin-left: 10px;
+    margin-top: 30px;
+    font-family: 'Ubuntu';
+    font-size: 1em; 
+  }
