@@ -1,6 +1,6 @@
 <span
-    [ngClass]="{'votes-down' : totalVotes < 0,'votes-up' : totalVotes > 0 }">
-    {{ totalVotes }} likes 
+    [ngClass]="{'votes-down' : totalVotes < 0, 'votes-up' : totalVotes > 0 , 'neutral-votes':totalVotes == 0 }">
+    {{ totalVotes }} <strong>likes</strong>
 </span>
 <button mat-icon-button 
         [ngClass]="{'votes-up' : userVote > 0 }"

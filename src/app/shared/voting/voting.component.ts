@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ForumService } from '../index';
 import { sum, values } from 'lodash';
 @Component({
@@ -6,7 +6,7 @@ import { sum, values } from 'lodash';
   templateUrl: './voting.component.html',
   styleUrls: ['./voting.component.css']
 })
-export class VotingComponent implements OnInit {
+export class VotingComponent implements OnInit, OnChanges {
   @Input('postId') postId: string;
   @Input('userId') userId: string;
   public totalVotes: number = 0;
@@ -19,6 +19,12 @@ export class VotingComponent implements OnInit {
           this.assign( votes.payload.val())
         );
   }
+  ngOnChanges() {
+    this._forumService.getPostVotes(this.postId) 
+        .subscribe(votes => 
+            this.assign( votes.payload.val())
+          );
+  }
   public assign(votes: any){
     if (this.userId) {
       this.userVote = votes[this.userId]
@@ -26,10 +32,12 @@ export class VotingComponent implements OnInit {
     this.totalVotes = sum(values(votes))
   }
   public upVotePost(): void {
+    this.ngOnChanges();
     let vote = this.userVote == 1 ? 0 : 1;
     this._forumService.updateUserVote(this.postId,this.userId,1);
   }
   public downVotePost(): void { 
+    this.ngOnChanges();    
     let vote = this.userVote == 1 ? 0 : -1;
     this._forumService.updateUserVote(this.postId,this.userId,-1);    
   }
