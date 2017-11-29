@@ -13,6 +13,7 @@ import { RankingComponent } from './ranking/ranking.component';
 import { UserService } from '../shared/user.service';
 import { GameplayModule } from './../gameplay/gameplay.module';
 import { RankingService, FilterPipe } from '../shared/index';
+import { FriendsListComponent } from './friends-list/friends-list.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,6 +29,7 @@ import { RankingService, FilterPipe } from '../shared/index';
     NavigationComponent,
     FriendsRankingComponent,
     RankingComponent,
+    FriendsListComponent,
     FilterPipe
   ],
   exports: [
