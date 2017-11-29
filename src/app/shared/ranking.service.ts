@@ -13,10 +13,4 @@ export class RankingService {
             return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
           })
     }
-    public getListOfUsersByContryAndUsername(){
-        this.usersDatabaseReference = this._afDatabase.list('users', ref => ref.orderByChild('country').equalTo('Spain'));
-        return this.usersDatabaseReference.snapshotChanges().map(arr => {
-            return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
-          })
-    }
 }

@@ -25,7 +25,8 @@
                                         <input name="term" type="text" name="username" 
                                                matInput 
                                                placeholder="Nombre de usuario" 
-                                               [(ngModel)]="username">
+                                               [(ngModel)]="username"
+                                               (keyup)="filterUsers()">
                                         <mat-icon matSuffix *ngIf="!username; else showDelete">search</mat-icon>
                                         <ng-template #showDelete>
                                             <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
@@ -36,6 +37,7 @@
                         </div>
                 </div> 
         </div> 
+        {{ users | json }}
         <div class="col-md-7 col-sm-7 col-xs-12">
             <p class="heading"> <mat-icon>trending_up</mat-icon> Mi ranking de amigos</p>
             <div>
