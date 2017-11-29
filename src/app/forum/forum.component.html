@@ -30,7 +30,11 @@
                     </mat-card-content>
                     <mat-card-actions style="margin-left: 10px;">
                             <app-voting [postId]="post.$key" [userId]="_userService.currentUserId"></app-voting>
-                            <button mat-button (click)="selectPost(post)">COMENTAR</button>                       
+                            <button mat-button (click)="selectPost(post)">Comentar</button>      
+                            <button  style="float:right; position:relative;" mat-icon-button [matMenuTriggerFor]="menu"> <mat-icon>more_horiz</mat-icon> </button>
+                            <mat-menu #menu="matMenu">
+                              <button [disabled]="_userService.currentUserId != post.userId" mat-menu-item (click)="deletePost(post.$key)"><mat-icon>delete</mat-icon> Eliminar</button>                          
+                            </mat-menu>                  
                     </mat-card-actions>
                     <mat-card *ngFor="let comment of post.comments" class="user-comment">
                             <mat-card-header>

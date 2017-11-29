@@ -91,4 +91,12 @@ export class ForumComponent implements OnInit {
                                  () => console.log("Success")
                       );
   } 
+  public deletePost(key: string): void {
+    this._forumService.deletePost(key);
+    this.showsSnackOfPostCreated('Publicación eliminada');
+} 
+  public deleteComment(key: string): void {
+    this._forumService.deleteComment(key);
+    this.showsSnackOfPostCreated('Comentario eliminado');      
+  } 
 }
