@@ -83,7 +83,7 @@ export class ForumComponent implements OnInit {
   }  
   public selectPost(post: Post): void { 
     this.postSelected = post;
-    this.postSelected.showForm = true;
+    this.postSelected.showForm = !this.postSelected.showForm;    
     this.postSelected.commentText = '';
     this._forumService.getCommentsFromPostSelected(this.postSelected.$key)
                       .subscribe(comments => this.postSelected.comments = comments,

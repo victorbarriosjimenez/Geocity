@@ -16,7 +16,7 @@ export class VotingComponent implements OnInit, OnChanges {
   ngOnInit() { 
    this._forumService.getPostVotes(this.postId) 
       .subscribe(votes => 
-          this.assign( votes.payload.val())
+          this.assign(votes.payload.val())
         );
   }
   ngOnChanges() {
@@ -26,10 +26,9 @@ export class VotingComponent implements OnInit, OnChanges {
           );
   }
   public assign(votes: any){
-    if (this.userId) {
+    if (this.userId) 
       this.userVote = votes[this.userId]
-    }
-    this.totalVotes = sum(values(votes))
+    this.totalVotes = sum(values(votes));
   }
   public upVotePost(): void {
     this.ngOnChanges();

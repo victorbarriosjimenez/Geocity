@@ -7,7 +7,19 @@
     <br>
     <h1> <mat-icon style="font-size: 30px; margin-right: 20px;">group</mat-icon>Social</h1>    
     <div class="row">
-                        <div class="col-md-12">
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <p class="heading"> <mat-icon>trending_up</mat-icon> Mi ranking de amigos</p>
+            <div>
+                    <p class="heading"> <mat-icon>filter_list</mat-icon>  Filtrar </p>
+                          <p class="filter-heading">Filtrar por fecha</p>
+                            <ul style="list-style-type: none;">
+                                <li>Hoy</li>                        
+                                <li>Semana</li>
+                                <li>Mes</li>                    
+                            </ul> 
+            </div>
+            <!--
+                <div class="col-md-12">
                                 <div *ngIf="rankedUsers; else noRankedUsers" class="col-md-9 col-sm-9 col-xs-12">
                                             <mat-card *ngFor="let rankedUser of rankedUsers; index as i" class="match-header">
                                                 <img src="{{ rankedUser.profilePhotoUrl }}" draggable="false" alt="">                        
@@ -30,18 +42,8 @@
                                                     </mat-menu>  
                                             </mat-card>  
                                     </div>
-                        </div>
-        <div class="col-md-8 col-sm-8 col-xs-12">
-            <p class="heading"> <mat-icon>trending_up</mat-icon> Mi ranking de amigos</p>
-            <div>
-                    <p class="heading"> <mat-icon>filter_list</mat-icon>  Filtrar </p>
-                          <p class="filter-heading">Filtrar por fecha</p>
-                            <ul style="list-style-type: none;">
-                                <li>Hoy</li>                        
-                                <li>Semana</li>
-                                <li>Mes</li>                    
-                            </ul> 
-                </div>  
+                    </div>
+             -->  
         </div>
     </div>
 </div>

@@ -13,6 +13,7 @@ export class FriendsListComponent implements OnInit {
   public username: string = '';
   public country: string = '';
   ngOnInit() {
+    this.getInitialListOfFriends();
     this.getListOfCountries();
   }
   constructor(private formsService: FormsService,
@@ -50,6 +51,10 @@ export class FriendsListComponent implements OnInit {
         });
        }
     }
+  }
+  public getInitialListOfFriends(){
+    this.rankingService.getListOfAllUsers()
+        .subscribe(users => this.rankedUsers = users);
   }
 
 }
