@@ -35,9 +35,32 @@
                                         </ng-template>
                                 </mat-form-field>
                         </div>
+                        <div class="col-md-12">
+                                <div *ngIf="rankedUsers; else noRankedUsers" class="col-md-9 col-sm-9 col-xs-12">
+                                            <mat-card *ngFor="let rankedUser of rankedUsers; index as i" class="match-header">
+                                                <img src="{{ rankedUser.profilePhotoUrl }}" draggable="false" alt="">                        
+                                                <div class="ranked-user-details">
+                                                     <p class="ranked-user-details-username">{{ rankedUser.username }}</p>
+                                                     <p class="ranked-user-details-country">{{ rankedUser.country }}</p>
+                                                </div>
+                                                <button mat-icon-button [matMenuTriggerFor]="menu">
+                                                        <mat-icon>more_vert</mat-icon>
+                                                      </button>
+                                                    <mat-menu #menu="matMenu">
+                                                        <button mat-menu-item>
+                                                            <mat-icon>person_add</mat-icon>
+                                                            <span>Seguir</span>
+                                                        </button>
+                                                        <button mat-menu-item>
+                                                            <mat-icon>person</mat-icon>
+                                                            <span>Ver perfil</span>
+                                                        </button>
+                                                    </mat-menu>  
+                                            </mat-card>  
+                                    </div>
+                        </div>
                 </div> 
         </div> 
-        {{ users | json }}
         <div class="col-md-7 col-sm-7 col-xs-12">
             <p class="heading"> <mat-icon>trending_up</mat-icon> Mi ranking de amigos</p>
             <div>
