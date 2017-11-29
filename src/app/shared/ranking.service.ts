@@ -6,9 +6,15 @@ import { take } from 'lodash';
 export class RankingService {
     private usersDatabaseReference: AngularFireList<User>;    
     constructor(private _afDatabase: AngularFireDatabase) { 
-        this.usersDatabaseReference = _afDatabase.list('users',)
+        this.usersDatabaseReference = _afDatabase.list('users')
     }
     public getListOfAllUsers(){ 
+        return this.usersDatabaseReference.snapshotChanges().map(arr => {
+            return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
+          })
+    }
+    public getListOfUsersByContryAndUsername(){
+        this.usersDatabaseReference = this._afDatabase.list('users', ref => ref.orderByChild('country').equalTo('Spain'));
         return this.usersDatabaseReference.snapshotChanges().map(arr => {
             return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
           })

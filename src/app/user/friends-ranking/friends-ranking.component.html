@@ -6,30 +6,36 @@
     <br>
     <br>
     <br>
-    <br>
     <h1> <mat-icon style="font-size: 30px; margin-right: 20px;">group</mat-icon>Social</h1>    
     <div class="row">
         <div class="col-md-5 col-sm-5 col-xs-12">
-                <div>
-                        <p class="heading"> <mat-icon>search</mat-icon> Buscar amigos</p>
-                                <mat-form-field style="width: 30%;">
-                                            <mat-select placeholder="Pais de origen">
-                                            <mat-option *ngFor="let country of countries"  [value]="country.name">
-                                                {{ country.name }}
-                                            </mat-option>
-                                            </mat-select>
+                <div class="row">
+                    <p class="heading"> <mat-icon>search</mat-icon> Buscar amigos</p>
+                        <div class="col-md-5 col-sm-5 col-xs-5">
+                                <mat-form-field style="width: 100%;">
+                                        <mat-select placeholder="Pais de origen" name="country" [(ngModel)]="country">
+                                        <mat-option *ngFor="let country of countries"  [value]="country.name">
+                                            {{ country.name }}
+                                        </mat-option>
+                                        </mat-select>
                                 </mat-form-field>
-                                <mat-form-field style="width: 70%;">
+                        </div>
+                        <div class="col-md-7 col-sm-7 col-xs-7">
+                                <mat-form-field style="width: 100%;">
                                         <input name="term" type="text" name="username" 
-                                        matInput 
-                                        placeholder="Buscar usuarios en Geocity" 
-                                        [(ngModel)]="username">
-                                        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
-                                            <mat-icon>close</mat-icon>
-                                        </button>
+                                               matInput 
+                                               placeholder="Nombre de usuario" 
+                                               [(ngModel)]="username">
+                                        <mat-icon matSuffix *ngIf="!username; else showDelete">search</mat-icon>
+                                        <ng-template #showDelete>
+                                            <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
+                                                        <mat-icon>close</mat-icon>
+                                            </button>
+                                        </ng-template>
                                 </mat-form-field>
+                        </div>
                 </div> 
-        </div>  
+        </div> 
         <div class="col-md-7 col-sm-7 col-xs-12">
             <p class="heading"> <mat-icon>trending_up</mat-icon> Mi ranking de amigos</p>
             <div>
