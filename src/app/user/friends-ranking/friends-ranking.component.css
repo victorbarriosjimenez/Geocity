@@ -3,7 +3,6 @@
     justify-content: space-around;
     flex-flow: row wrap;
     flex-wrap: wrap;
-    border-left: 5px solid rgb(0, 247, 255);
     margin: 10px auto;
     font-family: 'jaapokkiregularregular';
 }
