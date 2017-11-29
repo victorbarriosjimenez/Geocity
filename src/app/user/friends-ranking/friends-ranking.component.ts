@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsService } from '../../shared/index';
-import { FormGroup } from '@angular/forms/';
+import { FormGroup, FormBuilder } from '@angular/forms/';
 @Component({
   selector: 'app-friends-ranking',
   templateUrl: './friends-ranking.component.html',
@@ -9,7 +9,10 @@ import { FormGroup } from '@angular/forms/';
 export class FriendsRankingComponent implements OnInit {
   public countries: any;
   public searchFriendForm : FormGroup
-  constructor(private formsService: FormsService) { }
+  public username = ''
+  public country = ''
+  constructor(private formsService: FormsService,
+              private _fb: FormBuilder) { }
   ngOnInit() {
     this.getListOfCountries();
   }
@@ -17,10 +20,4 @@ export class FriendsRankingComponent implements OnInit {
     this.formsService.getCountries()
         .subscribe(countries => this.countries = countries);
   }
-  public createForm( ): void {
-    this.searchFriendForm =  this._fb.group({
-             usernameFormControl:[''],
-             countryFormControl:[''],
-     });
-   }
 }
