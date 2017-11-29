@@ -14,9 +14,9 @@ export class ForumService {
     private postsDatabaseReference: AngularFireList<Post>;
     private commentsDatabaseReference: AngularFireList<Comment>;
     private postDatabaseReference:  AngularFireObject<Post>;
+    private votesDatabaseReference:  AngularFireObject<Post>;    
     private listOfPosts: Observable<Post[]>; 
     private post:  Observable<Post>;  
-    public emojiList = ['like', 'love', 'wow', 'haha', 'sad', 'angry'];
     constructor(private _afDatabase: AngularFireDatabase,
                 private _afAuth: AngularFireAuth) {
                     this.postsDatabaseReference = _afDatabase.list('/posts');
@@ -60,9 +60,13 @@ export class ForumService {
                    .map((comments: Comment[]) => comments.filter((comment: Comment) => comment.postId === postId));
     }
     /* ---------------------------------- VOTING MANAGEMENT ----------------------------  ------  */
-    updateUserVote(itemId, userId, vote): void {
+    public updateUserVote(itemId, userId, vote): void {
         let data = {};
         data[userId] = vote;
-        this._afDatabase.object(`upvotes/${itemId}`).update(data);
+        this._afDatabase.object(`votes/${itemId}`).update(data);
+    }
+    public getPostVotes(postId){
+        this.votesDatabaseReference = this._afDatabase.object(`votes/${postId}`);
+        return this.votesDatabaseReference.snapshotChanges();
     }
 }                                          
