@@ -1,3 +1,12 @@
-{{ userVote }} {{ totalVotes }}
-<button mat-icon-button (click)="upVotePost()"> <mat-icon>thumb_up</mat-icon> </button>
-<button mat-icon-button (click)="downVotePost()"> <mat-icon>thumb_down</mat-icon> </button>
+<span
+    [ngClass]="{'votes-up' : totalVotes > 0 ,'votes-down' : totalVotes < 0 }">
+    {{ totalVotes }} Votos 
+</span>
+<button mat-icon-button 
+        [ngClass]="{'vote-active' : userVote > 0 }"
+        (click)="upVotePost()"> <mat-icon>thumb_up</mat-icon> 
+</button>
+<button mat-icon-button (click)="downVotePost()"
+        [ngClass]="{'vote-active' : userVote < 0 }">
+     <mat-icon>thumb_down</mat-icon> 
+</button>

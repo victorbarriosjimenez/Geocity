@@ -1,0 +1,11 @@
+.vote-active {
+    color: rgb(49, 108, 235);
+}
+.votes-up{
+    font-family: 'Ubuntu';
+    color: rgb(49, 108, 235);    
+}
+.votes-down {
+    color: rgb(208, 30, 63); 
+    font-family: 'Ubuntu';       
+}
