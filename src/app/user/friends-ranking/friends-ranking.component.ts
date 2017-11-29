@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsService, RankingService } from '../../shared/index';
-import { FormGroup, FormBuilder } from '@angular/forms/';
 import { User } from '../../../models/index';
 import  { filter } from 'lodash';
+
 @Component({
   selector: 'app-friends-ranking',
   templateUrl: './friends-ranking.component.html',
@@ -17,8 +17,7 @@ export class FriendsRankingComponent implements OnInit {
     this.getListOfCountries();
   }
   constructor(private formsService: FormsService,
-              private rankingService: RankingService,
-              private _fb: FormBuilder) { }
+              private rankingService: RankingService) { }
   public getListOfCountries(){
     this.formsService.getCountries()
         .subscribe(countries => this.countries = countries);
