@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ForumService } from '../index';
 import { sum, values } from 'lodash';
-
 @Component({
   selector: 'app-voting',
   templateUrl: './voting.component.html',
