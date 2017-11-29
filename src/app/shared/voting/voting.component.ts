@@ -20,8 +20,7 @@ export class VotingComponent implements OnInit {
         );
   }
   public assign(votes: any){
-    if (this.userId) 
-    {
+    if (this.userId) {
       this.userVote = votes[this.userId]
     }
     this.totalVotes = sum(values(votes))
