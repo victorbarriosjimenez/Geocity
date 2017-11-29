@@ -7,6 +7,7 @@ import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 
 import { ForumService } from './../shared/forum.service';
 import { MaterialElementsModule  } from '../shared/material-elements.module';
+import { FriendsListComponent } from './Users/vicbarriosjimenez/Desktop/game-project/web-app/src/app/user/friends-list/friends-list.component';
 
 @NgModule({
   imports: [
@@ -18,8 +19,9 @@ import { MaterialElementsModule  } from '../shared/material-elements.module';
     ReactiveFormsModule
   ],
   declarations: [
-    ForumComponent
-  ],
+    ForumComponent,
+    FriendsListComponent
+],
   providers: [ 
     ForumService
   ]

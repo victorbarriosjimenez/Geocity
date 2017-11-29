@@ -6,10 +6,12 @@ import { AuthGuard } from '../shared/auth.guard'
 import { UpdateComponent } from './update/update.component';
 import { FriendsRankingComponent } from './friends-ranking/friends-ranking.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { FriendsListComponent } from './friends-list/friends-list.component';
 const userRoutes: Routes = [
     { path: 'profile',  component: UserProfileComponent, canActivate: [AuthGuard] },
+    { path: 'profile/friends',  component: FriendsListComponent, canActivate: [AuthGuard] },    
     { path: 'update-profile', component: UpdateComponent, canActivate: [AuthGuard] },
-    { path: 'friends', component: FriendsRankingComponent,canActivate: [AuthGuard] },
+    { path: 'social', component: FriendsRankingComponent,canActivate: [AuthGuard] },
     { path: 'world-ranking', component: RankingComponent, canActivate: [AuthGuard] }    
   ];
 @NgModule({

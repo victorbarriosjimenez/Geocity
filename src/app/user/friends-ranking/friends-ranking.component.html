@@ -6,11 +6,11 @@
     <br>
     <br>
     <br>
-    <h1> <mat-icon style="font-size: 30px; margin-right: 20px;">group</mat-icon>Social</h1>    
+    <h1> <mat-icon style="font-size: 30px; margin-right: 20px;">group</mat-icon>Social</h1> 
     <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <p class="heading"> <mat-icon>search</mat-icon> Buscar amigos</p>
                 <div class="row">
-                    <p class="heading"> <mat-icon>search</mat-icon> Buscar amigos</p>
                         <div class="col-md-5 col-sm-5 col-xs-5">
                                 <mat-form-field style="width: 100%;">
                                         <mat-select placeholder="Pais de origen" name="country" [(ngModel)]="country" (change)="filterByCountryControl()">
@@ -36,6 +36,10 @@
                                         </ng-template>
                                 </mat-form-field>
                         </div>
+                </div>
+            </div>
+    </div>   
+    <div class="row">
                         <div class="col-md-12">
                                 <div *ngIf="rankedUsers; else noRankedUsers" class="col-md-9 col-sm-9 col-xs-12">
                                             <mat-card *ngFor="let rankedUser of rankedUsers; index as i" class="match-header">
@@ -60,8 +64,6 @@
                                             </mat-card>  
                                     </div>
                         </div>
-                </div> 
-        </div> 
         <div class="col-md-8 col-sm-8 col-xs-12">
             <p class="heading"> <mat-icon>trending_up</mat-icon> Mi ranking de amigos</p>
             <div>
