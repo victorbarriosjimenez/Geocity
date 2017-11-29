@@ -63,10 +63,11 @@ export class ForumService {
     public updateUserVote(itemId, userId, vote): void {
         let data = {};
         data[userId] = vote;
-        this._afDatabase.object(`votes/${itemId}`).update(data);
+        this._afDatabase.object(`likes/${itemId}`).update(data);
     }
+
     public getPostVotes(postId){
-        this.votesDatabaseReference = this._afDatabase.object(`votes/${postId}`);
+        this.votesDatabaseReference = this._afDatabase.object(`likes/${postId}`);
         return this.votesDatabaseReference.snapshotChanges();
     }
 }                                          

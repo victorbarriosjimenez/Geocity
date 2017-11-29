@@ -2,10 +2,6 @@
     font-family: 'Ubuntu';
     color: rgb(49, 108, 235);    
 }
-.votes-down {
-    color: rgb(208, 30, 63); 
-    font-family: 'Ubuntu';       
-}
 .neutral-votes{
     color: rgb(128, 128, 128); 
     font-family: 'Ubuntu';   

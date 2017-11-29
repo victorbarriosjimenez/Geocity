@@ -19,7 +19,7 @@ export class VotingComponent implements OnInit, OnChanges {
           this.assign(votes.payload.val())
         );
   }
-  ngOnChanges() {
+  ngOnChanges() {    
     this._forumService.getPostVotes(this.postId) 
         .subscribe(votes => 
             this.assign( votes.payload.val())
@@ -34,10 +34,5 @@ export class VotingComponent implements OnInit, OnChanges {
     this.ngOnChanges();
     let vote = this.userVote == 1 ? 0 : 1;
     this._forumService.updateUserVote(this.postId,this.userId,1);
-  }
-  public downVotePost(): void { 
-    this.ngOnChanges();    
-    let vote = this.userVote == 1 ? 0 : -1;
-    this._forumService.updateUserVote(this.postId,this.userId,-1);    
   }
 }

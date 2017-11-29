@@ -1,12 +1,8 @@
 <span
-    [ngClass]="{'votes-down' : totalVotes < 0, 'votes-up' : totalVotes > 0 , 'neutral-votes':totalVotes == 0 }">
+    [ngClass]="{'votes-up' : totalVotes > 0 , 'neutral-votes':totalVotes == 0 }">
     {{ totalVotes }} <strong>likes</strong>
 </span>
 <button mat-icon-button 
         [ngClass]="{'votes-up' : userVote > 0 }"
         (click)="upVotePost()"> <mat-icon>thumb_up</mat-icon> 
-</button>
-<button mat-icon-button (click)="downVotePost()"
-        [ngClass]="{'votes-down' : userVote < 0 }">
-     <mat-icon>thumb_down</mat-icon> 
 </button>

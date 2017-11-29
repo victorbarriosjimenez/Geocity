@@ -104,10 +104,26 @@ export class UserService {
         }
     }
     /* ---------------------------------- USER PROPERTIES  ----------------------------------  */
+    follow(followerId: string, followedId: string) {
+        this._afDatabase.object(`followers/${followedId}`).update({ [followerId]: true } )
+        this._afDatabase.object(`following/${followerId}`).update({ [followedId]: true } )
+    }
+      unfollow(followerId: string, followedId: string) {
+        this._afDatabase.object(`followers/${followedId}/${followerId}`).remove()
+        this._afDatabase.object(`following/${followerId}/${followedId}`).remove()
+    }
+    getFollowers(userId: string) {
+        return this._afDatabase.object(`followers/${userId}`)
+    }
+    getFollowing(followerId:string, followedId:string) {
+        return this._afDatabase.object(`following/${followerId}/${followedId}`)
+    }   
+    /* ---------------------------------- USER PROPERTIES  ----------------------------------  */
     get currentUserId(): string {
         return this.authenticated ? this.authState.uid : '';
     }
     get authenticated(): boolean {
         return this.authState !== null;
     }
+
 }
