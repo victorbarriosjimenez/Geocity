@@ -20,6 +20,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { VotingComponent } from './voting/voting.component';
+import { FollowButtonComponent } from './follow-button/follow-button.component';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { VotingComponent } from './voting/voting.component';
   ], 
   declarations: [
     FooterComponent,
-    VotingComponent
+    VotingComponent,
+    FollowButtonComponent
 ],
   exports: [
     MatFormFieldModule,
