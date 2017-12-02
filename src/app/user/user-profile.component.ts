@@ -6,7 +6,7 @@ import { User , Match, Post, Comment } from '../../models'
 import { UserService, ForumService, RankingService } from './../shared/';
 import { MatSnackBar } from '@angular/material';
 import * as firebase from 'firebase/app';
-import { take , orderBy, get, size } from 'lodash';
+import { take , orderBy, get, size, keys } from 'lodash';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 @Component({
   selector: 'app-user-profile',
@@ -18,6 +18,7 @@ export class UserProfileComponent implements OnInit {
   public podiumUsers: User[];
   public createPostForm: FormGroup; 
   public matches: any;
+  public friends: User[];
   followerCount;
   public posts: Post[];
   public postSelected: Post;
@@ -29,6 +30,7 @@ export class UserProfileComponent implements OnInit {
               private _router: Router,
               private _snackBar: MatSnackBar) { 
               this.postSelected = { };
+              this.friends = [];
               }
   ngOnInit() { 
     this.getProfileBioData();
@@ -36,17 +38,24 @@ export class UserProfileComponent implements OnInit {
     this.getListOfAllPosts();
     this.createForm();
     this.getWorldRankingPodium();
+    this.getNumberOfFriends();
+  }
+  private getNumberOfFriends(){
     this._userService.getFollowingList(this._userService.currentUserId)
     .subscribe(followers => {
+      this.setFriendKey(followers);
       this.followerCount = this.countFollowers(followers);
-     });
+    });
   }
   private countFollowers(followers) {
     if (followers.$value===null) return 0
     else return size(followers)
   }
-  private countFollowing( ) {
-
+  public setFriendKey(followers){
+     keys(followers).map(key => this._userService.getFriendData(key)
+                    .subscribe(friend => this.friends.push(friend), 
+                              (err) => console.log(err),
+                              () => console.log("Succes")));
   }
   public createNewPost( ): void { 
     if(this.createPostForm.value.body === ''){

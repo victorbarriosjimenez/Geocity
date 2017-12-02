@@ -7,8 +7,7 @@ import { UserService } from '../../shared/index';
   styleUrls: ['./follower.card.component.css']
 })
 export class FollowerCardComponent implements OnInit {
-  @Input('follower-key') followerKey: string;
+  @Input('friend-key') friendKey: string;
   constructor(private _userService: UserService) { }
-  ngOnInit() {
-  }
+  ngOnInit() { }
 }

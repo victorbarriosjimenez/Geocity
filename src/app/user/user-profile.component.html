@@ -25,6 +25,9 @@
                 </a>
             </div>
         </div>
+        <div *ngIf="friends">
+                {{ friends | json }}
+        </div>
     </div>
     <ng-template #loading>
        <mat-spinner mode="indeterminate" color="accent"></mat-spinner>

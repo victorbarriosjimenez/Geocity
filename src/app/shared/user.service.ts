@@ -81,6 +81,11 @@ export class UserService {
         return this.http.get(userDataPath)
                   .map(response => response.json());
     }
+    public getFriendData(friendKey: string)  { 
+        const userDataPath = `https://geocity-app.firebaseio.com/users/${friendKey}.json`;
+        return this.http.get(userDataPath)
+                  .map(response => response.json());
+    }
     /* ---------------------------------- USER ACCOUNT OPERATIONS ----------------------------------  */
     public sendsResetPasswordEmail(email: string) {
         const fbAuth = firebase.auth();
@@ -104,19 +109,19 @@ export class UserService {
         }
     }
     /* ---------------------------------- USER PROPERTIES  ----------------------------------  */
-    follow(followerId: string, followedId: string) {
+    public follow(followerId: string, followedId: string) {
         this._afDatabase.object(`following/${followerId}`).update({ [followedId]: true } )
     }
-    unfollow(followerId: string, followedId: string) {
+    public unfollow(followerId: string, followedId: string) {
         this._afDatabase.object(`following/${followerId}/${followedId}`).remove()
     }
-    getFollowers(userId: string) {
+    public getFollowers(userId: string) {
         return this._afDatabase.object(`followers/${userId}`).valueChanges();
     }
-    getFollowingList(userId: string) {
+    public getFollowingList(userId: string) {
         return this._afDatabase.object(`following/${userId}`).valueChanges();
     }
-    getFollowing(followerId:string, followedId:string) {
+    public getFollowing(followerId:string, followedId:string) {
         return this._afDatabase.object(`following/${followerId}/${followedId}`).valueChanges();
     }   
     /* ---------------------------------- USER PROPERTIES  ----------------------------------  */
