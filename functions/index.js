@@ -6,8 +6,8 @@ exports.fcmSend = functions.database.ref('/messages/{userId}/{messageId}').onCre
   const userId  = event.params.userId
   const payload = {
         notification: {
-          title:message.title,
-          body: message.body,
+          title: message.title,
+          body:  message.body,
           icon: "https://placeimg.com/250/250/people"
         }
       };
@@ -16,7 +16,7 @@ exports.fcmSend = functions.database.ref('/messages/{userId}/{messageId}').onCre
         .once('value')
         .then(token => token.val() )
         .then(userFcmToken => {
-          return admin.messaging().sendToDevice(userFcmToken, payload)
+          return admin.messaging().sendToDevice(userFcmToken, payload);
         })
         .then(res => {
           console.log("Sent Successfully", res);

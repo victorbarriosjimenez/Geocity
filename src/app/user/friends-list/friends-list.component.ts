@@ -12,9 +12,8 @@ export class FriendsListComponent implements OnInit {
   public rankedUsers: any[] = [];
   public username: string = '';
   public country: string = '';
-  public friends: User[] = [];x
+  public friends: User[] = [];
   public followerCount: number;
-  
   ngOnInit() {
     this.getInitialListOfFriends();
     this.getListOfCountries();
@@ -26,7 +25,7 @@ export class FriendsListComponent implements OnInit {
     this.formsService.getCountries()
         .subscribe(countries => this.countries = countries);
   }
-  public filterByTextControl(): void{
+  public filterByTextControl(): void {
     let userquery = this.username;
     let countryquery = this.country;
     this.rankedUsers = userquery === '' ? [] : this.rankedUsers;
@@ -41,7 +40,7 @@ export class FriendsListComponent implements OnInit {
                     this.rankedUsers =  users.filter((user: User) => user.username.toLowerCase().indexOf(userquery) !== -1);
                 }
         }); 
-      }
+    }
   }
   public filterByCountryControl(): void {
     let userquery = this.username;

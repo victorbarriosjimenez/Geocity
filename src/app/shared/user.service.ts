@@ -110,7 +110,8 @@ export class UserService {
     }
     /* ---------------------------------- USER PROPERTIES  ----------------------------------  */
     public follow(followerId: string, followedId: string) {
-        this._afDatabase.object(`following/${followerId}`).update({ [followedId]: true } )
+        this._afDatabase.object(`following/${followerId}`).update({ [followedId]: true } );
+        this._afDatabase.list(`messages/${followerId}`).push({ title : 'Hello World', body: 'qwqwewqe' });        
     }
     public unfollow(followerId: string, followedId: string) {
         this._afDatabase.object(`following/${followerId}/${followedId}`).remove();
