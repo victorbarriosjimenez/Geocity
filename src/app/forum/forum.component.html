@@ -4,7 +4,7 @@
 <br>
 <div class="container">
     <h2>Crea una nueva publicación</h2>
-    <form (ngSubmit)="createNewPost()" [formGroup]="createPostForm">``
+    <form (ngSubmit)="createNewPost()" [formGroup]="createPostForm">
                 <mat-form-field class="new-post">
                     <textarea 
                         matInput
@@ -13,7 +13,6 @@
                         placeholder="¿Qué está pasando? ¡Compártelo con la comunidad!">
                     </textarea>
                 </mat-form-field> 
-                
                     <br>
                     <button [disabled]="!createPostForm.valid" mat-raised-button type="submit" color="warn">CREAR PUBLICACIÓN</button>
      </form>

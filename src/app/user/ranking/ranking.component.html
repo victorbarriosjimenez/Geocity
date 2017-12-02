@@ -40,6 +40,7 @@
                          <p class="ranked-user-details-country">{{ rankedUser.country }}</p>
                     </div>
                     <p class="ranked-user-score"> {{ rankedUser.score }} <span>pts</span></p>  
+                    <app-follow-button [currentUserId]="_userService.currentUserId" [userId]="rankedUser.$key"></app-follow-button>
                 </mat-card> 
         </div>
          <ng-template #noRankedUsers>  

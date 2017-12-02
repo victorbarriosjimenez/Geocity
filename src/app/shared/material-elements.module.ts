@@ -65,7 +65,8 @@ import { FollowButtonComponent } from './follow-button/follow-button.component';
     MatProgressBarModule,
     MatToolbarModule,
     MatDialogModule ,
-    MatMenuModule 
+    MatMenuModule, 
+    FollowButtonComponent
   ]
 })
 export class MaterialElementsModule { }

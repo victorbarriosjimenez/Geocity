@@ -108,7 +108,7 @@ export class UserService {
         this._afDatabase.object(`followers/${followedId}`).update({ [followerId]: true } )
         this._afDatabase.object(`following/${followerId}`).update({ [followedId]: true } )
     }
-      unfollow(followerId: string, followedId: string) {
+    unfollow(followerId: string, followedId: string) {
         this._afDatabase.object(`followers/${followedId}/${followerId}`).remove()
         this._afDatabase.object(`following/${followerId}/${followedId}`).remove()
     }
@@ -116,7 +116,7 @@ export class UserService {
         return this._afDatabase.object(`followers/${userId}`)
     }
     getFollowing(followerId:string, followedId:string) {
-        return this._afDatabase.object(`following/${followerId}/${followedId}`)
+        return this._afDatabase.object(`following/${followerId}/${followedId}`).valueChanges();
     }   
     /* ---------------------------------- USER PROPERTIES  ----------------------------------  */
     get currentUserId(): string {

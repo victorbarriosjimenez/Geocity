@@ -18,21 +18,16 @@ export class UserProfileComponent implements OnInit {
   public podiumUsers: User[];
   public createPostForm: FormGroup; 
   public matches: any;
-  showEmojis = false;
-  emojiList: string[];
-  reactionCount: any;
-  userReaction: any;
-  subscription: any;
   public posts: Post[];
   public postSelected: Post;
   constructor(private auth: AuthenticationService, 
-               private _forumService:ForumService,
+              private _forumService:ForumService,
               private _userService:  UserService,
               private _rankingService: RankingService,
               private _fb: FormBuilder,
               private _router: Router,
               private _snackBar: MatSnackBar) { 
-                this.postSelected = { };
+              this.postSelected = { };
               }
   ngOnInit() { 
     this.getProfileBioData();
