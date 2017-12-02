@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material';
 import * as firebase from 'firebase/app';
 import { take , orderBy, get, size, keys } from 'lodash';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { NotificationsService } from '../shared/notifications.service';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -21,16 +22,21 @@ export class UserProfileComponent implements OnInit {
   public followerCount: number
   public posts: Post[];
   public postSelected: Post;
+  public message: any;
   constructor(private auth: AuthenticationService, 
               private _forumService:ForumService,
               private _userService:  UserService,
               private _rankingService: RankingService,
               private _fb: FormBuilder,
               private _router: Router,
-              private _snackBar: MatSnackBar) { 
+              private _snackBar: MatSnackBar,
+              private _notificationService: NotificationsService) { 
               this.postSelected = { };
               }
   ngOnInit() { 
+    this._notificationService.getPermission();
+    this._notificationService.receiveMessage()
+    this.message = this._notificationService.currentMessage;
     this.getProfileBioData();
     this.getUserMatches();
     this.getListOfAllPosts();
