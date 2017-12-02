@@ -61,7 +61,7 @@ export class ForumComponent implements OnInit {
   }
   public createForm( ): void {
     this.createPostForm =  this._fb.group({ 
-             body:['', Validators.required]
+             body:['']
      });
    }
   private showsSnackOfPostCreated(message: string) : void {
