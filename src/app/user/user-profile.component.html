@@ -33,13 +33,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5 col-sm-5 col-xs-12">
-                <div class="user-panel">
-                <p class="heading"> {{ followerCount }} Follower</p>
-                                <div class="friends-list">
-                                
-                                </div>
-                                <a class="see-more" mat-raised-button routerLink="/profile/friends" color="primary">Ver la lista completa</a>
-                </div>
+          <!--      <div style="display:flex;">-->
+                        <p style="" class="heading"> {{ followerCount }} Amigos</p>
+              <!--           <p style="margin-left:20px;" class="heading"> {{ followerCount }} Siguiendo</p>                
+                </div>-->
                 <div class="user-panel">
                         <p class="heading">Ranking Mundial</p>
                         <mat-card  *ngFor="let podiumUser of podiumUsers; index as i" class="match-header">

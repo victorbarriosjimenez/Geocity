@@ -36,14 +36,17 @@ export class UserProfileComponent implements OnInit {
     this.getListOfAllPosts();
     this.createForm();
     this.getWorldRankingPodium();
-    this._userService.getFollowers(this._userService.currentUserId)
+    this._userService.getFollowingList(this._userService.currentUserId)
     .subscribe(followers => {
       this.followerCount = this.countFollowers(followers);
-     })
+     });
   }
   private countFollowers(followers) {
     if (followers.$value===null) return 0
     else return size(followers)
+  }
+  private countFollowing( ) {
+
   }
   public createNewPost( ): void { 
     if(this.createPostForm.value.body === ''){

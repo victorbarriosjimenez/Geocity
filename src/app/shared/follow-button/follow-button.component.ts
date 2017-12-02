@@ -18,7 +18,7 @@ export class FollowButtonComponent implements OnInit, OnDestroy {
     .subscribe(following => {
         this.isFollowing = following
         this.icon = this.isFollowing ? 'people' : 'person_add';
-        this.instruction = this.isFollowing ? 'Seguido' : 'Seguir';         
+        this.instruction = this.isFollowing ? 'Amigos' : 'Agregar';         
     });
   }
   public toggleFollow() {
