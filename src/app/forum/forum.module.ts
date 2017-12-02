@@ -18,7 +18,7 @@ import { MaterialElementsModule  } from '../shared/material-elements.module';
     ReactiveFormsModule
   ],
   declarations: [
-    ForumComponent
+    ForumComponent,
 ],
   providers: [ 
     ForumService

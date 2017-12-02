@@ -113,7 +113,7 @@ export class UserService {
         this._afDatabase.object(`following/${followerId}/${followedId}`).remove()
     }
     getFollowers(userId: string) {
-        return this._afDatabase.object(`followers/${userId}`)
+        return this._afDatabase.object(`followers/${userId}`).valueChanges();
     }
     getFollowing(followerId:string, followedId:string) {
         return this._afDatabase.object(`following/${followerId}/${followedId}`).valueChanges();
@@ -125,5 +125,4 @@ export class UserService {
     get authenticated(): boolean {
         return this.authState !== null;
     }
-
 }

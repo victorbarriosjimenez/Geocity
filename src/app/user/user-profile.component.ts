@@ -6,7 +6,7 @@ import { User , Match, Post, Comment } from '../../models'
 import { UserService, ForumService, RankingService } from './../shared/';
 import { MatSnackBar } from '@angular/material';
 import * as firebase from 'firebase/app';
-import { take , orderBy, get } from 'lodash';
+import { take , orderBy, get, size } from 'lodash';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 @Component({
   selector: 'app-user-profile',
@@ -18,6 +18,7 @@ export class UserProfileComponent implements OnInit {
   public podiumUsers: User[];
   public createPostForm: FormGroup; 
   public matches: any;
+  followerCount;
   public posts: Post[];
   public postSelected: Post;
   constructor(private auth: AuthenticationService, 
@@ -35,6 +36,14 @@ export class UserProfileComponent implements OnInit {
     this.getListOfAllPosts();
     this.createForm();
     this.getWorldRankingPodium();
+    this._userService.getFollowers(this._userService.currentUserId)
+    .subscribe(followers => {
+      this.followerCount = this.countFollowers(followers);
+     })
+  }
+  private countFollowers(followers) {
+    if (followers.$value===null) return 0
+    else return size(followers)
   }
   public createNewPost( ): void { 
     if(this.createPostForm.value.body === ''){

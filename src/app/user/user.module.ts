@@ -14,6 +14,7 @@ import { UserService } from '../shared/user.service';
 import { GameplayModule } from './../gameplay/gameplay.module';
 import { RankingService, FilterPipe } from '../shared/index';
 import { FriendsListComponent } from './friends-list/friends-list.component';
+import { FollowerCardComponent } from './follower.card/follower.card.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -30,7 +31,8 @@ import { FriendsListComponent } from './friends-list/friends-list.component';
     FriendsRankingComponent,
     RankingComponent,
     FriendsListComponent,
-    FilterPipe
+    FilterPipe,
+    FollowerCardComponent
   ],
   exports: [
     NavigationComponent
