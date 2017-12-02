@@ -113,7 +113,7 @@ export class UserService {
         this._afDatabase.object(`following/${followerId}`).update({ [followedId]: true } )
     }
     public unfollow(followerId: string, followedId: string) {
-        this._afDatabase.object(`following/${followerId}/${followedId}`).remove()
+        this._afDatabase.object(`following/${followerId}/${followedId}`).remove();
     }
     public getFollowers(userId: string) {
         return this._afDatabase.object(`followers/${userId}`).valueChanges();

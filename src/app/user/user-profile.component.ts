@@ -18,8 +18,7 @@ export class UserProfileComponent implements OnInit {
   public podiumUsers: User[];
   public createPostForm: FormGroup; 
   public matches: any;
-  public friends: User[];
-  followerCount;
+  public followerCount: number
   public posts: Post[];
   public postSelected: Post;
   constructor(private auth: AuthenticationService, 
@@ -30,7 +29,6 @@ export class UserProfileComponent implements OnInit {
               private _router: Router,
               private _snackBar: MatSnackBar) { 
               this.postSelected = { };
-              this.friends = [];
               }
   ngOnInit() { 
     this.getProfileBioData();
@@ -42,20 +40,13 @@ export class UserProfileComponent implements OnInit {
   }
   private getNumberOfFriends(){
     this._userService.getFollowingList(this._userService.currentUserId)
-    .subscribe(followers => {
-      this.setFriendKey(followers);
-      this.followerCount = this.countFollowers(followers);
+                    .subscribe(followers => {
+                      this.followerCount = this.countFollowers(followers);
     });
   }
   private countFollowers(followers) {
     if (followers.$value===null) return 0
     else return size(followers)
-  }
-  public setFriendKey(followers){
-     keys(followers).map(key => this._userService.getFriendData(key)
-                    .subscribe(friend => this.friends.push(friend), 
-                              (err) => console.log(err),
-                              () => console.log("Succes")));
   }
   public createNewPost( ): void { 
     if(this.createPostForm.value.body === ''){
