@@ -22,6 +22,7 @@
                       <div mat-card-avatar style="width: 75px; height:75px;" [ngStyle]="{'background-image': 'url('+post.authorProfilePhoto +')'}"></div>
                       <mat-card-title class="user-post-title">{{ post.authorUsername }}</mat-card-title>
                       <mat-card-subtitle class="user-post-timestamp"> {{ post.timestamp | date:'fullDate' }}</mat-card-subtitle>
+                      <app-follow-button style="float: right; position:relative;" [currentUserId]="this._userService.currentUserId" [userId]="post.userId"></app-follow-button>                      
                     </mat-card-header>
                     <mat-card-content>
                       <p class="user-post-body">
@@ -69,6 +70,4 @@
                 </mat-card>
         </div>
 </div>
-{{ userposts | json }}
-
 <app-footer></app-footer>

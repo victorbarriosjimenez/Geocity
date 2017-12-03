@@ -43,6 +43,9 @@ import {
   ]
 })
 export class AppComponent {
+  constructor(){
+    
+  }
   getRouteAnimation(outlet) {
     return outlet.activatedRouteData.animation
   }

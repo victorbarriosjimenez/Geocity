@@ -7,6 +7,7 @@ import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 
 import { ForumService } from './../shared/forum.service';
 import { MaterialElementsModule  } from '../shared/material-elements.module';
+import { UserService } from '../shared/index';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { MaterialElementsModule  } from '../shared/material-elements.module';
     ForumComponent,
 ],
   providers: [ 
-    ForumService
+    ForumService,
+    UserService
   ]
 })
 export class ForumModule { }
