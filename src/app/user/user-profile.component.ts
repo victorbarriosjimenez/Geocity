@@ -146,7 +146,7 @@ export class UserProfileComponent implements OnInit {
     } 
     public setFriendKey(followers): void {
       keys(followers).map(key => this._userService.getFriendData(key)
-                     .subscribe(friend => this.friends.push(friend), 
+                     .subscribe(friend => this.friends.push(friend.payload.val()), 
                                (err) => console.log(err),
                                () => { 
                                 this.friends = this.friends.slice(0,13);

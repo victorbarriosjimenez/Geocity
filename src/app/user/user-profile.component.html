@@ -33,7 +33,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5 col-sm-5 col-xs-12">
-                <div class="user-panel">
+                <section class="user-panel">
                         <p class="heading"> {{ followerCount }} Amigos</p>
                         <div class="friends-list">
                                 <div *ngFor="let friend of friends" class="friend-data">
@@ -42,8 +42,8 @@
                                 </div>
                         </div>
                         <a class="see-more" mat-raised-button routerLink="/profile/friends" color="primary">Ver la lista completa</a>
-                </div>
-                <div class="user-panel">
+                </section>
+                <section class="user-panel">
                         <p class="heading">Ranking Mundial</p>
                         <mat-card  *ngFor="let podiumUser of podiumUsers; index as i" class="match-header">
                                 <p class="ranked">{{  i + 1 }}°</p>    
@@ -52,29 +52,11 @@
                                 <p class="ranked-user-details-username">{{ podiumUser.username }}</p>
                                 <p class="ranked-user-details-country">{{ podiumUser.country }}</p>
                                 </div>
-                                <button  style="float:right; position:relative;" mat-icon-button [matMenuTriggerFor]="menu"> <mat-icon>more_horiz</mat-icon> </button>
-                                <mat-menu #menu="matMenu">
-                                  <button mat-menu-item (click)="deletePost(post.$key)"><mat-icon>delete</mat-icon> Eliminar</button>                          
-                                </mat-menu> 
                                 <p class="ranked-user-score"> {{ podiumUser.score }} <span>pts</span></p>  
                         </mat-card>
                         <a class="see-more" *ngIf="podiumUsers" mat-raised-button routerLink="/world-ranking" color="primary">Ver la lista completa</a>
-                </div>
-        <!--
-                <div class="user-panel">
-                        <p class="heading">Ranking de Amigos</p>
-                                <mat-card *ngFor="let rankedFriend of rankedFriends; index as rankedIndex" class="match-header">
-                                                <p class="ranked">{{ rankedIndex + 1 }} º</p>    
-                                                <img src="{{ rankedFriend.profilePhotoUrl }}" alt="{{ rankedFriend.username }}">                        
-                                                <div class="ranked-user-details">
-                                                <p class="ranked-user-details-username">{{ rankedFriend.username }}</p>
-                                                <p class="ranked-user-details-country"> {{ rankedFriend.country }}</p>
-                                                </div>
-                                                <p class="ranked-user-score">{{ rankedFriend.score }}<span>pts</span></p>  
-                                </mat-card>
-                </div>
-        -->
-                <div class="user-panel">
+                </section>
+                <section class="user-panel">
                  <p class="heading">Partidas recientes</p>
                         <mat-card *ngFor="let match of matches" class="match-header">
                                 <div>
@@ -83,7 +65,7 @@
                                 </div>         
                                 <p style="font-family:'jaapokkiregularregular';">{{ match.score }}pts</p>  
                         </mat-card>  
-                </div>
+                </section>
         </div>
         <div class="col-md-7 col-sm-7 col-xs-12">
                <p class="heading">Nueva publicación</p>
