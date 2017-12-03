@@ -19,6 +19,7 @@ export class UserProfileComponent implements OnInit {
   public podiumUsers: User[];
   public createPostForm: FormGroup; 
   public matches: any;
+  public friends: User[] = [];
   public followerCount: number
   public posts: Post[];
   public postSelected: Post;
@@ -44,16 +45,11 @@ export class UserProfileComponent implements OnInit {
     this.getWorldRankingPodium();
     this.getNumberOfFriends();
   }
-  private getNumberOfFriends(){
-    this._userService.getFollowingList(this._userService.currentUserId)
-                    .subscribe(followers => {
-                      this.followerCount = this.countFollowers(followers);
-    });
-  }
   private countFollowers(followers) {
     if (followers.$value===null) return 0
     else return size(followers)
   }
+  
   public createNewPost( ): void { 
     if(this.createPostForm.value.body === ''){
         this.showsSnackOfPostCreated('La publicación está vacía.');
@@ -93,11 +89,9 @@ export class UserProfileComponent implements OnInit {
       return postModel;
   }
   public getListOfAllPosts( ): void { 
-    this._forumService.getListOfAllPosts()
-        .subscribe((posts: Post[]) => { 
-                this.posts = posts.reverse()
-        });
-  }
+    this._forumService.getListOfPostsFromGivenUser(this._userService.currentUserId)
+     .subscribe(data=> this.posts = data.reverse());
+  }   
   public createForm( ): void {
     this.createPostForm =  this._fb.group({ 
           body:['']
@@ -115,12 +109,8 @@ export class UserProfileComponent implements OnInit {
         )
     }
     public filterUsersAsPodium(users: User[]): void {
-        if(users){
-           this.podiumUsers = orderBy(take(users,3),['score'],['desc']); 
-        }
-        else { 
-          return;
-        }
+        let orderedUsers =  orderBy(users,['score'],['desc']); 
+        this.podiumUsers = orderedUsers.slice(0,3);
     }
     public addComment(comment: string): void { 
       const commentModel : Comment = {
@@ -152,4 +142,18 @@ export class UserProfileComponent implements OnInit {
       this._forumService.deleteComment(key);
       this.showsSnackOfPostCreated('Comentario eliminado');      
     } 
+    public setFriendKey(followers): void {
+      keys(followers).map(key => this._userService.getFriendData(key)
+                     .subscribe(friend => this.friends.push(friend), 
+                               (err) => console.log(err),
+                               () => console.log("Succes")));
+      this.friends = this.friends.slice(0,13);  
+    }
+    private getNumberOfFriends(): void {
+      this._userService.getFollowingList(this._userService.currentUserId)
+                       .subscribe(followers => {
+                        this.setFriendKey(followers);
+                        this.followerCount = this.countFollowers(followers);
+      });
+    }
 }

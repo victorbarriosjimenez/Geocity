@@ -1,4 +1,4 @@
-<button mat-button (click)="toggleFollow()">
+<button *ngIf="currentUserId !== userId" mat-button (click)="toggleFollow()">
     <mat-icon>{{ icon }}</mat-icon>
     <span>{{ instruction }}</span>
 </button>

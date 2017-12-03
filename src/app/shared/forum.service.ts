@@ -12,6 +12,7 @@ export class ForumService {
     private userId: string;
     private dataPath: string = '/posts';
     private postsDatabaseReference: AngularFireList<Post>;
+    private userPostsDatabaseReference: AngularFireList<Post>;
     private commentsDatabaseReference: AngularFireList<Comment>;
     private postDatabaseReference:  AngularFireObject<Post>;
     private votesDatabaseReference:  AngularFireObject<Post>;    
@@ -20,7 +21,7 @@ export class ForumService {
     constructor(private _afDatabase: AngularFireDatabase,
                 private _afAuth: AngularFireAuth) {
                     this.postsDatabaseReference = _afDatabase.list('/posts');
-                    this.commentsDatabaseReference =  _afDatabase.list('/comments');                
+                    this.commentsDatabaseReference =  _afDatabase.list('/comments');
     }
     /* ---------------------------------- POSTS MANAGEMENT ----------------------------------  */
     public getListOfAllPosts(query?: any) {
@@ -32,6 +33,11 @@ export class ForumService {
         const itemPath = `${this.dataPath}/${key}`;
         this.post = this._afDatabase.object(itemPath).valueChanges();
         return this.post;
+    }
+    public getListOfPostsFromGivenUser(key: string){
+      return this._afDatabase.list('/posts', ref=> ref.orderByChild('userId').equalTo(key)).snapshotChanges().map(arr => {
+        return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
+      });
     }
     public createNewPost(post: Post): void {
         this.postsDatabaseReference.push(post);

@@ -15,6 +15,7 @@ export class ForumComponent implements OnInit {
   public createPostForm: FormGroup;
   public user: User;
   public posts: Post[];
+  userposts = [];
   public postSelected: Post;  
   public postsLoading: boolean = true;  
   constructor(private _forumService:ForumService,
@@ -28,7 +29,7 @@ export class ForumComponent implements OnInit {
     this.getProfileBioData();
     this.getListOfAllPosts();
     this.createForm();
-  }   
+  }
   private getProfileBioData( ):  void {
     this._userService.getUserData()
       .subscribe(data => this.user = data,

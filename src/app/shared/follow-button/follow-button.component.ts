@@ -14,12 +14,12 @@ export class FollowButtonComponent implements OnInit, OnDestroy {
   public following: any;
   constructor(private _userService: UserService) { }
   ngOnInit() {
-    this.following = this._userService.getFollowing(this.currentUserId, this.userId)
-    .subscribe(following => {
-        this.isFollowing = following
-        this.icon = this.isFollowing ? 'people' : 'person_add';
-        this.instruction = this.isFollowing ? 'Amigos' : 'Agregar';         
-    });
+      this.following = this._userService.getFollowing(this.currentUserId, this.userId)
+      .subscribe(following => {
+              this.isFollowing = following
+              this.icon = this.isFollowing ? 'people' : 'person_add';
+              this.instruction = this.isFollowing ? 'Amigos' : 'Agregar';         
+      });  
   }
   public toggleFollow() {
     const userId = this.userId

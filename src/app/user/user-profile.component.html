@@ -35,6 +35,12 @@
         <div class="col-md-5 col-sm-5 col-xs-12">
                 <div class="user-panel">
                         <p class="heading"> {{ followerCount }} Amigos</p>
+                        <div class="friends-list">
+                                <div *ngFor="let friend of friends" class="friend-data">
+                                        <img src="{{ friend.profilePhotoUrl }}" alt="{{ friend.username }}">
+                                        <p class="friend">{{ friend.username}}</p>
+                                </div>
+                        </div>
                 </div>
                 <div class="user-panel">
                         <p class="heading">Ranking Mundial</p>
