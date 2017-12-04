@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/switchMap';
 import * as firebase from 'firebase/app';
+import { sumBy } from 'lodash';
 @Injectable()
 export class UserService {
     private firebaseUrl: string = 'https://geocity-app.firebaseio.com/';
@@ -62,6 +63,12 @@ export class UserService {
     }
     public getAllMatches( ) {
         return this.matchesDatabaseReference.snapshotChanges().map(arr => {
+            return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
+        });
+    }
+    public getUserMatchesToFilter(key: string) {
+        let userMatchesReference = this._afDatabase.list('/matches', ref => ref.orderByChild('userId').equalTo(key));
+        return userMatchesReference.snapshotChanges().map(arr => {
             return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
         });
     }
@@ -135,21 +142,17 @@ export class UserService {
     /* ------------------------- Set Rankings for users ---------------*/
     public setFriendsRankingForToday(listOfRankedUsers: User[]){
        let listOfMatchesFound = []; 
-       listOfRankedUsers.map(
-            (user: User)=> {
-                return this._afDatabase.list('/matches', ref => ref.orderByChild('userId').equalTo(user.$key)).snapshotChanges().map(arr => {
-                    return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
-                }).subscribe(matches => this.filterMatchesByDate(listOfMatchesFound)); 
-            }
-        );   
+       listOfRankedUsers.forEach(
+            (user: User) => { 
+                this.getUserMatchesToFilter(user.$key)
+                    .subscribe(matches => { 
+                       user.score = sumBy(this.filterMatchesByDate(matches),'score');
+                    })
+            });   
     }
-    public filterMatchesByDate(matches: Match[]){
-        let today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; 
-        var yyyy = today.getFullYear();        
-        let t = `${dd}-${mm}-${yyyy}`;
-        console.log(matches);
-        //matches.filter(match => match.timestamp === t)
+    public filterMatchesByDate(matches: Match[]): Match[ ] { 
+        let today = new Date()
+        today.setHours(0,0,0,0);
+        return matches.filter(match => new Date(match.timestamp) > today);
     }
 }
