@@ -9,25 +9,14 @@
     <h1> <mat-icon>sort</mat-icon> Ranking de Amigos</h1>    
     <div class="row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-                <div>
-                        <p class="heading"> <mat-icon>search</mat-icon> Buscar</p>
-                            <form class="form">
-                                      <mat-form-field class="full-width">
-                                        <input name="term" type="text" matInput placeholder="Buscar usuarios" [(ngModel)]="term">
-                                        <button mat-button *ngIf="term" matSuffix mat-icon-button aria-label="Clear" (click)="term=''">
-                                            <mat-icon>close</mat-icon>
-                                        </button>
-                                      </mat-form-field>
-                            </form>
-                    </div> 
                     <div>
                         <p class="heading"> <mat-icon>filter_list</mat-icon>  Filtrar </p>
-                              <p class="filter-heading">Filtrar por fecha</p>
-                                <ul style="list-style-type: none;">
-                                    <li (click)="getTodaysFriendsRanking()">Hoy</li>                        
-                                    <li>Semana</li>
-                                    <li>Mes</li>                    
-                                </ul> 
+                            <ul class="list-filter">
+                                <li *ngFor="let filter of filters" (click)="getTodaysFriendRanking( )">
+                                    <mat-icon>{{ filter.icon }}</mat-icon> {{ filter.label }}
+                                </li>                          
+                                <li (click)="getHistoricalFriendsRanking()"><mat-icon>timeline</mat-icon> Histórico</li>                                                        
+                            </ul> 
                         </div>  
         </div>  
         <div *ngIf="rankedUsers; else noRankedUsers" class="col-md-9 col-sm-9 col-xs-12">

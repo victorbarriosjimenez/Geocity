@@ -34,8 +34,17 @@ p.heading {
     margin-bottom: 15px;
     margin-top: 30px;
 }
-.filter-heading {
-    font-family: 'jaapokkiregularregular';
+.list-filter {
+    list-style-type: none;
+}
+.list-filter  li{
+    list-style-type: none;  
+    cursor: pointer;  
+    margin: 10px none 10px none;
+    color: rgb(112, 112, 112);
+    font-family: 'Ubuntu'; 
     font-size: 1em;
-    color: lightslategray;
+}
+.list-filter  li:hover{
+    color: black;
 }

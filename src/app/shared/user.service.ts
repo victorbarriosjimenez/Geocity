@@ -10,6 +10,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/switchMap';
 import * as firebase from 'firebase/app';
 import { sumBy } from 'lodash';
+import * as moment from 'moment'
 @Injectable()
 export class UserService {
     private firebaseUrl: string = 'https://geocity-app.firebaseio.com/';
@@ -147,12 +148,18 @@ export class UserService {
                 this.getUserMatchesToFilter(user.$key)
                     .subscribe(matches => { 
                        user.score = sumBy(this.filterMatchesByDate(matches),'score');
-                    })
-            });   
+                    })});   
     }
     public filterMatchesByDate(matches: Match[]): Match[ ] { 
-        let today = new Date()
-        today.setHours(0,0,0,0);
-        return matches.filter(match => new Date(match.timestamp) > today);
+        var date = new Date(), y = date.getFullYear(), m = date.getMonth();
+        var firstDay = new Date(y, m, 1);
+        var lastDay = new Date(y, m + 1, 0);
+        let weekb =  moment().startOf('week').toDate();
+        let weekf = moment().endOf('week').toDate();
+        let monthb =  moment().startOf('month').toDate();        
+        let monthe = moment().endOf('month').toDate();
+        //  let today = new Date()
+        // today.setHours(0,0,0,0);
+        return matches.filter(match => new Date(match.timestamp) > monthb &&  new Date(match.timestamp) < monthe);
     }
 }

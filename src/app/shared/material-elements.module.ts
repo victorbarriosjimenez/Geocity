@@ -15,7 +15,8 @@ import {
           MatProgressBarModule,
           MatToolbarModule,
           MatDialogModule,
-          MatMenuModule
+          MatMenuModule,
+          MatCheckboxModule
         } from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
@@ -40,7 +41,9 @@ import { FollowButtonComponent } from './follow-button/follow-button.component';
     MatProgressBarModule,
     MatToolbarModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule
+    
   ], 
   declarations: [
     FooterComponent,
@@ -66,7 +69,9 @@ import { FollowButtonComponent } from './follow-button/follow-button.component';
     MatToolbarModule,
     MatDialogModule ,
     MatMenuModule, 
-    FollowButtonComponent
+    FollowButtonComponent,
+    MatCheckboxModule
+    
   ]
 })
 export class MaterialElementsModule { }
