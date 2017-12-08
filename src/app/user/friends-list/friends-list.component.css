@@ -39,7 +39,3 @@ p.heading {
     font-size: 1em;
     color: lightslategray;
 }
-.filter-active {
-    color: black;
-    transform: scale(1.0111);
-}

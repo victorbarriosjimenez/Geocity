@@ -49,3 +49,10 @@ p.heading {
 .list-filter  li:hover{
     color: black;
 }
+.list-filter span {
+    margin-bottom: -20px;
+    font-size: 15px;
+}
+.filter-active {
+    color: black;
+}

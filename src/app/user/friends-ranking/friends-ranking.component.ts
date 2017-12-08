@@ -9,7 +9,8 @@ import { take , orderBy, get, size, keys, slice, assign } from 'lodash';
   styleUrls: ['./friends-ranking.component.css']
 })
 export class FriendsRankingComponent implements OnInit {
-  public rankedUsers: User[] = [];  
+  public rankedUsers: User[] = [];
+  public filterSelected: any = { };   
   public filters = [
     { icon: 'today', label: 'Hoy', isActive: false, datePeriod: 'today' },
     { icon: 'line_style', label: 'Semana' , isActive: false, datePeriod: 'weekly'  },
@@ -33,12 +34,13 @@ export class FriendsRankingComponent implements OnInit {
                    .subscribe(friend => { this.rankedUsers.push(assign(friend.payload.val(),{ $key: friend.key }))}, 
                              (err) => console.log(err),
                              () => { 
-                                  this.rankedUsers = orderBy(this.rankedUsers,['score','asc']);
+                          this.rankedUsers = orderBy(this.rankedUsers,['score','asc']).reverse();
                     }));
   }  
   public getFriendsRankingPeriod(filter) {
-    filter.isActive = true;
-    this._userService.setFriendsRankingForToday(this.rankedUsers, filter.datePeriod);
+    this.filterSelected = filter;
+    this.filterSelected.isActive = true; 
+    this._userService.setFriendsRankingForToday(this.rankedUsers, this.filterSelected.datePeriod);
   }
 
 }

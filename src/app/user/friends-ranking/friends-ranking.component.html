@@ -13,9 +13,9 @@
                 <p class="heading"> <mat-icon>filter_list</mat-icon>  Filtrar </p>
                     <ul class="list-filter">
                         <li [ngClass]="{'filter-active': filter.isActive }" *ngFor="let filter of filters" (click)="getFriendsRankingPeriod(filter)">
-                            <mat-icon>{{ filter.icon }}</mat-icon> {{ filter.label }}
+                            <mat-icon>{{ filter.icon }}</mat-icon>  <span> {{ filter.label }}</span>
                         </li>                          
-                        <li (click)="getHistoricalFriendsRanking()"><mat-icon>timeline</mat-icon> Histórico</li>                                                        
+                        <li (click)="getHistoricalFriendsRanking()"><mat-icon>timeline</mat-icon> <span> Histórico </span></li>                                                        
                     </ul> 
             </div>  
         </div>  
