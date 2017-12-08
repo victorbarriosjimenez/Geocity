@@ -10,17 +10,19 @@ import { take , orderBy, get, size, keys, slice, assign } from 'lodash';
 })
 export class FriendsRankingComponent implements OnInit {
   public rankedUsers: User[] = [];
+  public rankingDescription: string = '';
   public filterSelected: any = { };   
   public filters = [
-    { icon: 'today', label: 'Hoy', isActive: false, datePeriod: 'today' },
-    { icon: 'line_style', label: 'Semana' , isActive: false, datePeriod: 'weekly'  },
-    { icon: 'date_range', label: 'Este Mes', isActive: false, datePeriod: 'monthly' }  
+    { icon: 'today', label: 'Hoy', isActive: false, datePeriod: 'today', periodText: 'hoy.' },
+    { icon: 'line_style', label: 'Semana' , isActive: false, datePeriod: 'weekly', periodText: 'la semana.'  },
+    { icon: 'date_range', label: 'Este Mes', isActive: false, datePeriod: 'monthly', periodText: 'este mes.' }  
   ];
   ngOnInit( ) {
     this.getHistoricalFriendsRanking(); 
   }
   constructor(private _userService: UserService){ }
   private getHistoricalFriendsRanking(): void {
+   this.rankingDescription = 'todos los tiempos';
     if(this.rankedUsers)
       this.rankedUsers = [ ];
     this._userService.getFollowingList(this._userService.currentUserId)
@@ -34,12 +36,14 @@ export class FriendsRankingComponent implements OnInit {
                    .subscribe(friend => { this.rankedUsers.push(assign(friend.payload.val(),{ $key: friend.key }))}, 
                              (err) => console.log(err),
                              () => { 
-                          this.rankedUsers = orderBy(this.rankedUsers,['score','asc']).reverse();
+                          this.rankedUsers = orderBy(this.rankedUsers,['score','asc']);
+                          this.rankedUsers = this.rankedUsers.reverse();
                     }));
   }  
   public getFriendsRankingPeriod(filter) {
     this.filterSelected = filter;
-    this.filterSelected.isActive = true; 
+    this.filterSelected.isActive = true;
+    this.rankingDescription = this.filterSelected.periodText;
     this._userService.setFriendsRankingForToday(this.rankedUsers, this.filterSelected.datePeriod);
   }
 

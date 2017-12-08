@@ -16,7 +16,7 @@
                         </span> 
                     </p>
                     <p class="country">{{ user.country | uppercase }}</p>                    
-                    <p>{{ user.score }} pts</p>
+                    <p>{{ user.score }} avg</p>
                </div>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-3 button-container">
@@ -52,7 +52,7 @@
                                 <p class="ranked-user-details-username">{{ podiumUser.username }}</p>
                                 <p class="ranked-user-details-country">{{ podiumUser.country }}</p>
                                 </div>
-                                <p class="ranked-user-score"> {{ podiumUser.score }} <span>pts</span></p>  
+                                <p class="ranked-user-score"> {{ podiumUser.score }} <span>avg</span></p>  
                         </mat-card>
                         <a class="see-more" *ngIf="podiumUsers" mat-raised-button routerLink="/world-ranking" color="primary">Ver la lista completa</a>
                 </section>

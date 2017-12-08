@@ -20,7 +20,7 @@
             </div>  
         </div>  
         <div *ngIf="rankedUsers; else noRankedUsers" class="col-md-9 col-sm-9 col-xs-12">
-            <p class="heading"> <mat-icon>trending_up</mat-icon> Los mejores de hoy</p>
+            <p class="heading"> <mat-icon>trending_up</mat-icon> Los mejores de {{ rankingDescription }}</p>
                 <mat-card *ngFor="let rankedUser of rankedUsers; index as i" class="match-header">
                     <p class="ranked">{{  i + 1 }}°</p>    
                     <img src="{{ rankedUser.profilePhotoUrl }}" draggable="false" alt="">                        
