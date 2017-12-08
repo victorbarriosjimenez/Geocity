@@ -16,7 +16,7 @@
                             <p class="ranked-user-details-username">{{ rankedUser.username }}</p>
                             <p class="ranked-user-details-country">{{ rankedUser.country }}</p>
                     </div>
-                    <app-follow-button></app-follow-button>
+                    <app-follow-button style="float: right; position:relative;" [currentUserId]="this._userService.currentUserId" [userId]="rankedUser.$key"></app-follow-button>                       
                 </mat-card>  
             </div>
       </div>
