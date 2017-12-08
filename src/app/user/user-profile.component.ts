@@ -19,7 +19,7 @@ export class UserProfileComponent implements OnInit {
   public podiumUsers: User[];
   public createPostForm: FormGroup; 
   public matches: any;
-  public friends: User[] = [];
+  public friends: any[];
   public followerCount: number
   public posts: Post[];
   public postSelected: Post;
@@ -34,7 +34,7 @@ export class UserProfileComponent implements OnInit {
               private _snackBar: MatSnackBar,
               private _notificationService: NotificationsService) { 
               this.postSelected = { };
-              this.rankedFriends = [ ];
+              this.friends = [ ];
               }
   ngOnInit() { 
     this._notificationService.getPermission();

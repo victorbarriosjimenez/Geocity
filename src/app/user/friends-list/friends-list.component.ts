@@ -19,14 +19,13 @@ export class FriendsListComponent implements OnInit {
     .subscribe(followers => {
                 this.setFriendKey(followers);
                 this.followerCount = this.countFollowers(followers);
-              });
+    });
   }
   public setFriendKey(followers): void {
     keys(followers).map(key => this._userService.getFriendData(key)
                    .subscribe(friend => this.friends.push(friend.payload.val()), 
                              (err) => console.log(err),
                              () => { 
-                              this.friends = this.friends.slice(0,13);
                             }));
   }
   private countFollowers(followers) {

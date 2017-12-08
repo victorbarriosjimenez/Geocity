@@ -33,7 +33,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5 col-sm-5 col-xs-12">
-                <section class="user-panel">
+                <section *ngIf="friends " class="user-panel">
                         <p class="heading"> {{ followerCount }} Amigos</p>
                         <div class="friends-list">
                                 <div *ngFor="let friend of friends" class="friend-data">
@@ -42,18 +42,6 @@
                                 </div>
                         </div>
                         <a class="see-more" mat-raised-button routerLink="/profile/friends" color="primary">Ver la lista completa</a>
-                </section>
-                <section class="user-panel">
-                        <p class="heading">Ranking Geocity</p>
-                        <mat-card  *ngFor="let podiumUser of podiumUsers; index as i" class="match-header">
-                                <p class="ranked">{{  i + 1 }}°</p>    
-                                <img src="{{ podiumUser.profilePhotoUrl }}" alt="">                        
-                                <div class="ranked-user-details">
-                                <p class="ranked-user-details-username">{{ podiumUser.username }}</p>
-                                <p class="ranked-user-details-country">{{ podiumUser.country }}</p>
-                                </div>
-                                <p class="ranked-user-score"> {{ podiumUser.score }} <span>pts</span></p>  
-                        </mat-card>
                 </section>
                 <section class="user-panel">
                  <p class="heading">Partidas recientes</p>
