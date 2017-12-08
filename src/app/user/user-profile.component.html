@@ -33,12 +33,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5 col-sm-5 col-xs-12">
-                <section *ngIf="friends " class="user-panel">
+                <section *ngIf="friends" class="user-panel">
                         <p class="heading"> {{ followerCount }} Amigos</p>
                         <div class="friends-list">
                                 <div *ngFor="let friend of friends" class="friend-data">
                                         <img src="{{ friend.profilePhotoUrl }}" alt="{{ friend.username }}">
-                                        <p class="friend">{{ friend.username}}</p>
+                                        <p class="friend">{{ friend.username }}</p>
                                 </div>
                         </div>
                         <a class="see-more" mat-raised-button routerLink="/profile/friends" color="primary">Ver la lista completa</a>

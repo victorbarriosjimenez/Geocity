@@ -6,7 +6,7 @@ import { User , Match, Post, Comment } from '../../models'
 import { UserService, ForumService, RankingService } from './../shared/';
 import { MatSnackBar } from '@angular/material';
 import * as firebase from 'firebase/app';
-import { take , orderBy, get, size, keys, slice } from 'lodash';
+import { take , orderBy, get, size, keys, slice , assign } from 'lodash';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { NotificationsService } from '../shared/notifications.service';
 @Component({
@@ -19,7 +19,7 @@ export class UserProfileComponent implements OnInit {
   public podiumUsers: User[];
   public createPostForm: FormGroup; 
   public matches: any;
-  public friends: any[];
+  public friends: User[];
   public followerCount: number
   public posts: Post[];
   public postSelected: Post;
@@ -146,7 +146,7 @@ export class UserProfileComponent implements OnInit {
     } 
     public setFriendKey(followers): void {
       keys(followers).map(key => this._userService.getFriendData(key)
-                     .subscribe(friend => this.friends.push(friend.payload.val()), 
+                     .subscribe(friend => this.friends.push(assign(friend.payload.val(),{ $key: friend.key })), 
                                (err) => console.log(err),
                                () => { 
                                 this.friends = this.friends.slice(0,13);
