@@ -9,15 +9,15 @@
     <h1> <mat-icon>sort</mat-icon> Ranking de Amigos</h1>    
     <div class="row">
         <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div>
-                        <p class="heading"> <mat-icon>filter_list</mat-icon>  Filtrar </p>
-                            <ul class="list-filter">
-                                <li *ngFor="let filter of filters" (click)="getTodaysFriendRanking( )">
-                                    <mat-icon>{{ filter.icon }}</mat-icon> {{ filter.label }}
-                                </li>                          
-                                <li (click)="getHistoricalFriendsRanking()"><mat-icon>timeline</mat-icon> Histórico</li>                                                        
-                            </ul> 
-                        </div>  
+            <div>
+                <p class="heading"> <mat-icon>filter_list</mat-icon>  Filtrar </p>
+                    <ul class="list-filter">
+                        <li [ngClass]="{'filter-active': filter.isActive }" *ngFor="let filter of filters" (click)="getFriendsRankingPeriod(filter)">
+                            <mat-icon>{{ filter.icon }}</mat-icon> {{ filter.label }}
+                        </li>                          
+                        <li (click)="getHistoricalFriendsRanking()"><mat-icon>timeline</mat-icon> Histórico</li>                                                        
+                    </ul> 
+            </div>  
         </div>  
         <div *ngIf="rankedUsers; else noRankedUsers" class="col-md-9 col-sm-9 col-xs-12">
             <p class="heading"> <mat-icon>trending_up</mat-icon> Los mejores de hoy</p>

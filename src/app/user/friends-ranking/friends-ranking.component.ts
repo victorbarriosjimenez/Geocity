@@ -11,15 +11,17 @@ import { take , orderBy, get, size, keys, slice, assign } from 'lodash';
 export class FriendsRankingComponent implements OnInit {
   public rankedUsers: User[] = [];  
   public filters = [
-    { icon: 'today', label: 'Hoy', isActive: false },
-    { icon: 'line_style', label: 'Semana' , isActive: false },
-    { icon: 'date_range', label: 'Este Mes', isActive: false }  
+    { icon: 'today', label: 'Hoy', isActive: false, datePeriod: 'today' },
+    { icon: 'line_style', label: 'Semana' , isActive: false, datePeriod: 'weekly'  },
+    { icon: 'date_range', label: 'Este Mes', isActive: false, datePeriod: 'monthly' }  
   ];
   ngOnInit( ) {
     this.getHistoricalFriendsRanking(); 
   }
   constructor(private _userService: UserService){ }
   private getHistoricalFriendsRanking(): void {
+    if(this.rankedUsers)
+      this.rankedUsers = [ ];
     this._userService.getFollowingList(this._userService.currentUserId)
                      .subscribe(followers => {
                       this.setFriendKey(followers);
@@ -34,7 +36,9 @@ export class FriendsRankingComponent implements OnInit {
                                   this.rankedUsers = orderBy(this.rankedUsers,['score','asc']);
                     }));
   }  
-  public getTodaysFriendsRanking() {
-    this.rankedUsers ? this._userService.setFriendsRankingForToday(this.rankedUsers) : null;
+  public getFriendsRankingPeriod(filter) {
+    filter.isActive = true;
+    this._userService.setFriendsRankingForToday(this.rankedUsers, filter.datePeriod);
   }
+
 }

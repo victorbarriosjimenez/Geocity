@@ -141,25 +141,31 @@ export class UserService {
         return this.authState !== null;
     }
     /* ------------------------- Set Rankings for users ---------------*/
-    public setFriendsRankingForToday(listOfRankedUsers: User[]){
+    public setFriendsRankingForToday(listOfRankedUsers: User[],query: string){
        let listOfMatchesFound = []; 
        listOfRankedUsers.forEach(
             (user: User) => { 
                 this.getUserMatchesToFilter(user.$key)
                     .subscribe(matches => { 
-                       user.score = sumBy(this.filterMatchesByDate(matches),'score');
+                       user.score = sumBy(this.filterMatchesByDate(matches, query),'score');
                     })});   
     }
-    public filterMatchesByDate(matches: Match[]): Match[ ] { 
-        var date = new Date(), y = date.getFullYear(), m = date.getMonth();
-        var firstDay = new Date(y, m, 1);
-        var lastDay = new Date(y, m + 1, 0);
-        let weekb =  moment().startOf('week').toDate();
-        let weekf = moment().endOf('week').toDate();
-        let monthb =  moment().startOf('month').toDate();        
-        let monthe = moment().endOf('month').toDate();
-        //  let today = new Date()
-        // today.setHours(0,0,0,0);
-        return matches.filter(match => new Date(match.timestamp) > monthb &&  new Date(match.timestamp) < monthe);
+    public filterMatchesByDate(matches: Match[], dateQuery: string): Match[ ] {  
+        switch(dateQuery) {
+            case "today":
+                let todayDateQuery = new Date();
+                todayDateQuery.setHours(0,0,0,0);
+                return matches.filter(match => new Date(match.timestamp) >= todayDateQuery);
+            case "weekly":
+                 let monthBeginning =  moment().startOf('month').toDate();        
+                 let monthEnding = moment().endOf('month').toDate();
+                 return matches.filter(match => new Date(match.timestamp) > monthBeginning && new Date(match.timestamp) <= monthEnding);
+            case "monthly":
+                 let weekBeginning =  moment().startOf('week').toDate();
+                 let weekEnding = moment().endOf('week').toDate();
+                 return matches.filter(match => new Date(match.timestamp) > weekBeginning && new Date(match.timestamp) <= weekEnding);
+            default:
+                return;   
+        }
     }
 }
