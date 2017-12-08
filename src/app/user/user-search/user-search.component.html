@@ -1,0 +1,30 @@
+<div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="heading"> <mat-icon>search</mat-icon> Buscar amigos</p>
+        <div class="row">
+                <div class="col-md-5 col-sm-5 col-xs-5">
+                        <mat-form-field style="width: 100%;">
+                                <mat-select placeholder="Pais de origen" name="country" [(ngModel)]="country" (change)="filterByCountryControl()">
+                                    <mat-option [value]="">Todos los países</mat-option>
+                                    <mat-option *ngFor="let country of countries"  [value]="country.name">
+                                        {{ country.name }}
+                                    </mat-option>
+                                </mat-select>
+                        </mat-form-field>
+                </div>
+                <div class="col-md-7 col-sm-7 col-xs-7">
+                        <mat-form-field style="width: 100%;">
+                                <input name="term" type="text" name="username" 
+                                       matInput 
+                                       placeholder="Nombre de usuario" 
+                                       [(ngModel)]="username"
+                                       (keyup)="filterByTextControl()">
+                                <mat-icon matSuffix *ngIf="!username; else showDelete">search</mat-icon>
+                                <ng-template #showDelete>
+                                    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
+                                          <mat-icon>close</mat-icon>
+                                    </button>
+                                </ng-template>
+                        </mat-form-field>
+                </div>
+        </div>
+    </div>

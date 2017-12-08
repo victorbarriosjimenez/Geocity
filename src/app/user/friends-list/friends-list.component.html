@@ -6,62 +6,18 @@
 <br>
 <br>
 <div class="container">
-    <h1> <mat-icon style="font-size: 30px; margin-right: 20px;">group</mat-icon>Amigos</h1>        
-  <div class="row">
-      <div class="col-md-8 col-sm-6 col-xs-12">
-          <p class="heading"> <mat-icon>search</mat-icon> Buscar amigos</p>
-          <div class="row">
-                  <div class="col-md-5 col-sm-5 col-xs-5">
-                          <mat-form-field style="width: 100%;">
-                                  <mat-select placeholder="Pais de origen" name="country" [(ngModel)]="country" (change)="filterByCountryControl()">
-                                      <mat-option [value]="">Todos los países</mat-option>
-                                      <mat-option *ngFor="let country of countries"  [value]="country.name">
-                                          {{ country.name }}
-                                      </mat-option>
-                                  </mat-select>
-                          </mat-form-field>
-                  </div>
-                  <div class="col-md-7 col-sm-7 col-xs-7">
-                          <mat-form-field style="width: 100%;">
-                                  <input name="term" type="text" name="username" 
-                                         matInput 
-                                         placeholder="Nombre de usuario" 
-                                         [(ngModel)]="username"
-                                         (keyup)="filterByTextControl()">
-                                  <mat-icon matSuffix *ngIf="!username; else showDelete">search</mat-icon>
-                                  <ng-template #showDelete>
-                                      <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
-                                                  <mat-icon>close</mat-icon>
-                                      </button>
-                                  </ng-template>
-                          </mat-form-field>
-                  </div>
-          </div>
-      </div>
-  </div>
+    <h1> <mat-icon style="font-size: 30px; margin-right: 20px;">group</mat-icon>Amigos</h1>  
   <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
             <div *ngIf="rankedUsers">
-                    <mat-card *ngFor="let rankedUser of rankedUsers; index as i" class="match-header">
-                        <img src="{{ rankedUser.profilePhotoUrl }}" draggable="false" alt="">                        
-                        <div class="ranked-user-details">
-                             <p class="ranked-user-details-username">{{ rankedUser.username }}</p>
-                             <p class="ranked-user-details-country">{{ rankedUser.country }}</p>
-                        </div>
-                        <button mat-icon-button [matMenuTriggerFor]="menu">
-                                <mat-icon>more_vert</mat-icon>
-                              </button>
-                            <mat-menu #menu="matMenu">
-                                <button mat-menu-item>
-                                    <mat-icon>person_add</mat-icon>
-                                    <span>Seguir</span>
-                                </button>
-                                <button mat-menu-item>
-                                    <mat-icon>person</mat-icon>
-                                    <span>Ver perfil</span>
-                                </button>
-                            </mat-menu>  
-                    </mat-card>  
+                <mat-card *ngFor="let rankedUser of rankedUsers; index as i" class="match-header">
+                    <img src="{{ rankedUser.profilePhotoUrl }}" draggable="false" alt="">                        
+                    <div class="ranked-user-details">
+                            <p class="ranked-user-details-username">{{ rankedUser.username }}</p>
+                            <p class="ranked-user-details-country">{{ rankedUser.country }}</p>
+                    </div>
+                    <app-follow-button></app-follow-button>
+                </mat-card>  
             </div>
       </div>
   </div>
