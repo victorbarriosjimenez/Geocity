@@ -55,7 +55,7 @@ export class FriendsListComponent implements OnInit {
        }
     }
   }
-  public getInitialListOfFriends(){
+  public getInitialListOfFriends(): void {
     this.rankingService.getListOfAllUsers()
         .subscribe(users => this.rankedUsers = users);
   }
