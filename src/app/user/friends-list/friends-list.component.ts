@@ -8,16 +8,12 @@ import  { filter, keys, size } from 'lodash';
   styleUrls: ['./friends-list.component.css']
 })
 export class FriendsListComponent implements OnInit {
-  public username: string = '';
-  public country: string = '';
   public friends: User[] = [];
   public followerCount: number;
   ngOnInit() {
     this.getInitialListOfFriends();
   }
-  constructor(
-              private rankingService: RankingService,
-              private _userService:  UserService) { }
+  constructor(private _userService:  UserService) { }
   public getInitialListOfFriends(): void {
     this._userService.getFollowingList(this._userService.currentUserId)
     .subscribe(followers => {

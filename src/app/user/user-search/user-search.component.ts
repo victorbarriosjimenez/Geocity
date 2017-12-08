@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../models/index';
-import { FormsService } from '../../shared/index';
-
+import { FormsService, RankingService } from '../../shared/index';
+import { filter } from 'lodash';
 @Component({
   selector: 'app-user-search',
   templateUrl: './user-search.component.html',
@@ -9,11 +9,12 @@ import { FormsService } from '../../shared/index';
 })
 export class UserSearchComponent implements OnInit {
   public countries: any;
-  public rankedUsers : User[] = [];
-  constructor(private formsService: FormsService) { }
-
-  ngOnInit() {
-  }
+  public username: string = '';
+  public country: string = '';
+  public friends : any[] = [];
+  constructor(private formsService: FormsService,
+              private rankingService: RankingService) { }
+  ngOnInit() { }
   public getListOfCountries(){
     this.formsService.getCountries()
         .subscribe(countries => this.countries = countries);
@@ -21,16 +22,16 @@ export class UserSearchComponent implements OnInit {
   public filterByTextControl(): void {
     let userquery = this.username;
     let countryquery = this.country;
-    this.friends = userquery === '' ? [] : this.rankedUsers;
-      if(this.rankedUsers) {
-        this.rankedUsers= [];
+    this.friends = userquery === '' ? [] : this.friends;
+      if(this.friends) {
+        this.friends = [];
         this.rankingService.getListOfAllUsers()
             .subscribe(users => { 
                 if(countryquery){
-                    this.rankedUsers = filter(users.filter((user: User) => user.username.toLowerCase().indexOf(userquery) !== -1),{ country : countryquery }); 
+                    this.friends = filter(users.filter((user: User) => user.username.toLowerCase().indexOf(userquery) !== -1),{ country : countryquery }); 
                 }
                 else if(!countryquery && userquery){
-                    this.rankedUsers =  users.filter((user: User) => user.username.toLowerCase().indexOf(userquery) !== -1);
+                    this.friends =  users.filter((user: User) => user.username.toLowerCase().indexOf(userquery) !== -1);
                 }
         }); 
     }
@@ -38,12 +39,12 @@ export class UserSearchComponent implements OnInit {
   public filterByCountryControl(): void {
     let userquery = this.username;
     let countryquery = this.country;
-    if(this.rankedUsers){
-       this.rankedUsers= [];
+    if(this.friends){
+       this.friends= [];
        if(userquery){
         this.rankingService.getListOfAllUsers()
         .subscribe(users => { 
-             this.rankedUsers = filter(users.filter((user: User) => user.username.toLowerCase().indexOf(userquery) !== -1),{ country : countryquery }); 
+             this.friends = filter(users.filter((user: User) => user.username.toLowerCase().indexOf(userquery) !== -1),{ country : countryquery }); 
         });
        }
     }
