@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsService, RankingService, UserService } from '../../shared/index';
 import { User } from '../../../models/index';
 import  { filter } from 'lodash';
-import { take , orderBy, get, size, keys, slice, assign } from 'lodash';
+import { take , orderBy, sortBy, get, size, keys, slice, assign } from 'lodash';
 @Component({
   selector: 'app-friends-ranking',
   templateUrl: './friends-ranking.component.html',
@@ -32,13 +32,10 @@ export class FriendsRankingComponent implements OnInit {
   }
   public setFriendKey(followers): void {
   let groupKey  = keys(followers).concat(this._userService.currentUserId);  
-  groupKey.map(key => this._userService.getFriendData(key)
-                   .subscribe(friend => { this.rankedUsers.push(assign(friend.payload.val(),{ $key: friend.key }))}, 
+  groupKey.reverse().map(key => this._userService.getFriendData(key)
+                   .subscribe(friend => { this.rankedUsers.push(assign(friend.payload.val(),{ $key: friend.key })) }, 
                              (err) => console.log(err),
-                             () => { 
-                          this.rankedUsers = orderBy(this.rankedUsers,['score','asc']);
-                          this.rankedUsers = this.rankedUsers.reverse();
-                    }));
+                             () => { console.log(this.rankedUsers) }));
   }  
   public getFriendsRankingPeriod(filter) {
     this.filterSelected = filter;

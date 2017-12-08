@@ -16,7 +16,7 @@
                         </span> 
                     </p>
                     <p class="country">{{ user.country | uppercase }}</p>                    
-                    <p>{{ user.score }} avg</p>
+                    <p>{{ user.score }} pts</p>
                </div>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-3 button-container">
@@ -44,7 +44,7 @@
                         <a class="see-more" mat-raised-button routerLink="/profile/friends" color="primary">Ver la lista completa</a>
                 </section>
                 <section class="user-panel">
-                        <p class="heading">Ranking Mundial</p>
+                        <p class="heading">Ranking Geocity</p>
                         <mat-card  *ngFor="let podiumUser of podiumUsers; index as i" class="match-header">
                                 <p class="ranked">{{  i + 1 }}°</p>    
                                 <img src="{{ podiumUser.profilePhotoUrl }}" alt="">                        
@@ -52,9 +52,8 @@
                                 <p class="ranked-user-details-username">{{ podiumUser.username }}</p>
                                 <p class="ranked-user-details-country">{{ podiumUser.country }}</p>
                                 </div>
-                                <p class="ranked-user-score"> {{ podiumUser.score }} <span>avg</span></p>  
+                                <p class="ranked-user-score"> {{ podiumUser.score }} <span>pts</span></p>  
                         </mat-card>
-                        <a class="see-more" *ngIf="podiumUsers" mat-raised-button routerLink="/world-ranking" color="primary">Ver la lista completa</a>
                 </section>
                 <section class="user-panel">
                  <p class="heading">Partidas recientes</p>
@@ -63,7 +62,7 @@
                                         <p style="font-family:'jaapokkiregularregular';">{{ match.continent}}</p>  
                                         <p class="timestamp">{{ match.timestamp | date }}</p>               
                                 </div>         
-                                <p style="font-family:'jaapokkiregularregular';">{{ match.score }}pts</p>  
+                                <p class="ranked-user-score">{{ match.score }} <span>pts</span></p>  
                         </mat-card>  
                 </section>
         </div>

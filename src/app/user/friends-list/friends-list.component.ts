@@ -59,19 +59,6 @@ export class FriendsListComponent implements OnInit {
     this.rankingService.getListOfAllUsers()
         .subscribe(users => this.rankedUsers = users);
   }
-  public setFriendKey(followers){
-    keys(followers).map(key => this._userService.getFriendData(key)
-                   .subscribe(friend => this.friends.push(friend), 
-                             (err) => console.log(err),
-                             () => console.log("Succes")));
-  }
-  private getNumberOfFriends(){
-    this._userService.getFollowingList(this._userService.currentUserId)
-    .subscribe(followers => {
-      this.setFriendKey(followers);
-      this.followerCount = this.countFollowers(followers);
-    });
-  }
   private countFollowers(followers) {
     if (followers.$value===null) return 0
     else return size(followers)
