@@ -21,7 +21,7 @@ export class FriendsRankingComponent implements OnInit {
     this.getHistoricalFriendsRanking(); 
   }
   constructor(private _userService: UserService){ }
-  private getHistoricalFriendsRanking(): void {
+  public getHistoricalFriendsRanking(): void {
    this.rankingDescription = 'todos los tiempos';
     if(this.rankedUsers)
       this.rankedUsers = [ ];

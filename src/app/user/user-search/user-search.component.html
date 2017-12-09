@@ -1,5 +1,11 @@
-<div class="col-md-8 col-sm-6 col-xs-12">
+<app-navigation></app-navigation>
+<div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
         <p class="heading"> <mat-icon>search</mat-icon> Buscar amigos</p>
+        <p style="font-family: 'Ubuntu'; margin-bottom: 2.5%; margin-top: -10px; margin-left: 2.55%; color: rgb(153, 153, 153);">Busca amigos de todo el mundo para jugar y compartir</p>
         <div class="row">
                 <div class="col-md-5 col-sm-5 col-xs-5">
                         <mat-form-field style="width: 100%;">
@@ -27,4 +33,20 @@
                         </mat-form-field>
                 </div>
         </div>
-    </div>
+        <div *ngIf="users; else noResults" class="row">
+                <mat-card *ngFor="let user of users" class="match-header"> 
+                        <img src="{{ user.profilePhotoUrl }}" draggable="false" alt="">                        
+                        <div class="ranked-user-details">
+                                <p class="ranked-user-details-username">{{ user.username }}</p>
+                                <p class="ranked-user-details-country">{{ user.country }}</p>
+                        </div> 
+                        <p class="ranked-user-score"> {{ user.score }} <span>pts</span></p>
+                        <app-follow-button [currentUserId]="userService.currentUserId" [userId]="user.$key"></app-follow-button>  
+                </mat-card> 
+        </div>
+        <ng-template #noResults>
+                <div style="font-family: 'Ubuntu'; color: rgb(182, 182, 182); display: block; margin: 30px auto;">
+                        No hay publicaciones que mostrar
+                </div>
+        </ng-template>
+</div>
