@@ -16,6 +16,7 @@ export class UserService {
     private firebaseUrl: string = 'https://geocity-app.firebaseio.com/';
     private matchesDatabaseReference : AngularFireList<Match>;
     private matchesFilteredDatabaseReference : AngularFireList<Match>;    
+    private notificationMessagesDatabaseReference: AngularFireList<any>;
     public authState: any = null;    
     public updateProfileRequests: number = 0;
     constructor(private http: Http,
@@ -166,5 +167,11 @@ export class UserService {
             default:
                 return;   
         }
+    }
+    /* ------------------------- User Notications ---------------*/
+    public getUserNotifications(userKey: string) {
+        return this._afDatabase.list(`/messages/${userKey}`).snapshotChanges().map(arr => {
+            return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
+        });
     }
 }

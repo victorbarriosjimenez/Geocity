@@ -1,7 +1,7 @@
 <mat-toolbar class="navigation">
         <a routerLink="/profile">
             <img src="assets/images/brand-logo.png" alt="">
-        </a>
+        </a>        
         <span class="example-spacer"></span>
         <button mat-icon-button (click)="navigate('search-friends')">
                         <span matTooltip="Buscar amigos" >
@@ -14,8 +14,8 @@
                 </span>
         </button>
         <button mat-icon-button (click)="navigate('community')">
-                <span matTooltip="Notificaciones" >
-                        <mat-icon aria-label="Example icon-button with a heart icon">notifications</mat-icon>
+                <span matTooltip="Tienes {{numberOfNewMessages}} notificaciones">
+                        <mat-icon [ngClass]="{ 'has-notifications': hasNotifications }" aria-label="Example icon-button with a heart icon">notifications</mat-icon>
                 </span>
         </button> 
         <button mat-icon-button (click)="navigate('social')">
@@ -32,5 +32,5 @@
                 <span matTooltip="Salir">
                   <mat-icon aria-label="Example icon-button with a heart icon">exit_to_app</mat-icon>
                 </span>
-        </button>          
+        </button>        
 </mat-toolbar>

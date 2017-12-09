@@ -17,3 +17,6 @@
 .example-spacer {
     flex: 1 1 auto;
 }
+.has-notifications { 
+    color: rgb(0, 103, 238);
+}

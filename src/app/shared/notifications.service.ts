@@ -38,7 +38,5 @@ export class NotificationsService {
           this.currentMessage.next(payload)
         });
     }
-    getMessages(){
-
-    }
+    
 }

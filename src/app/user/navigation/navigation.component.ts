@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './../../shared/authentication.service';
 import { Router } from '@angular/router';
+import { NotificationsService } from '../../shared/notifications.service';
+import { UserService } from '../../shared/index';
+import { size } from 'lodash';
 
 @Component({
   selector: 'app-navigation',
@@ -8,9 +11,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  constructor(private auth: AuthenticationService, private _router: Router) { }
-  @Input('') currentUserId: string;
-  ngOnInit() { 
+  public numberOfNewMessages: number = 0;
+  public hasNotifications: boolean =  false;
+  constructor(private auth: AuthenticationService, 
+              private _router: Router,
+              private _userService : UserService) { }
+  ngOnInit() {
+    this.getUserNotificationMessages();
   }
   public navigate(routeSelected: string){
     let route = `/${routeSelected}`;
@@ -20,6 +27,18 @@ export class NavigationComponent implements OnInit {
     this.auth.logoutfromGeocity();
   } 
   public getUserNotificationMessages(){
-      
+    this._userService.getUserNotifications(this._userService.currentUserId)
+        .subscribe(messages => {
+              this.numberOfNewMessages = this.countNumberOfNotificationsReceived(messages);
+          });
+  }    
+  private countNumberOfNotificationsReceived(messages: any[]): number{
+    if(messages.length === 0){
+        return 0;
+    }
+    else if (messages.length > 0) { 
+      this.hasNotifications = true;
+      return size(messages);
+    }
   }
 } 
