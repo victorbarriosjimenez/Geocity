@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { mapValues, groupBy, get } from 'lodash';
 import { Post, Comment } from '../../models';
+import { UserService } from './user.service';
 @Injectable()
 export class ForumService {
     private userId: string;
@@ -18,8 +19,10 @@ export class ForumService {
     private votesDatabaseReference:  AngularFireObject<Post>;    
     private listOfPosts: Observable<Post[]>; 
     private post:  Observable<Post>;  
-    constructor(private _afDatabase: AngularFireDatabase,
-                private _afAuth: AngularFireAuth) {
+    constructor(
+                 private _afDatabase: AngularFireDatabase,
+                 private _userService: UserService,
+                 private _afAuth: AngularFireAuth) {
                     this.postsDatabaseReference = _afDatabase.list('/posts');
                     this.commentsDatabaseReference =  _afDatabase.list('/comments');
     }
