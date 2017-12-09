@@ -7,6 +7,7 @@ import { UpdateComponent } from './update/update.component';
 import { FriendsRankingComponent } from './friends-ranking/friends-ranking.component';
 const userRoutes: Routes = [
     { path: 'profile',  component: UserProfileComponent, canActivate: [AuthGuard] },
+    { path: 'notifications',  component: UserProfileComponent, canActivate: [AuthGuard] },    
     { path: 'update-profile', component: UpdateComponent, canActivate: [AuthGuard] },
     { path: 'social', component: FriendsRankingComponent,canActivate: [AuthGuard] },
     { path: 'search-friends', component: UserSearchComponent ,canActivate: [AuthGuard] }    

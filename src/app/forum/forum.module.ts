@@ -8,6 +8,7 @@ import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { ForumService } from './../shared/forum.service';
 import { MaterialElementsModule  } from '../shared/material-elements.module';
 import { UserService } from '../shared/index';
+import { NotificationsCenterComponent } from './Users/vicbarriosjimenez/Desktop/game-project/web-app/src/app/user/notifications-center/notifications-center.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { UserService } from '../shared/index';
     ReactiveFormsModule
   ],
   declarations: [
-    ForumComponent
+    ForumComponent,
+    NotificationsCenterComponent
 ],
   providers: [ 
     ForumService,
