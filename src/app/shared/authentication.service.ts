@@ -69,7 +69,7 @@ export class AuthenticationService {
        }
     }
     public showSnackBarForNotifications(message: string){ 
-        this._snackBar.open(message, "DE ACUERDO", {
+        this._snackBar.open(message, "OK", {
             duration: 6000,
         });
     }

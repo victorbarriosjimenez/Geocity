@@ -41,7 +41,6 @@ export class ForumComponent implements OnInit {
       const postModel: Post = this.preparePost();
       this._forumService.createNewPost(postModel);
       this.createPostForm.reset();
-      this.showsSnackOfPostCreated(`Hey ${this.user.username}! tu publicación ha sido publicada`);
   }
   public preparePost() { 
       const formModel = this.createPostForm.value;
