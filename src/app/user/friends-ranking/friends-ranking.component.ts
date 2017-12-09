@@ -14,7 +14,7 @@ export class FriendsRankingComponent implements OnInit {
   public filterSelected: any = { };   
   public filters = [
     { icon: 'today', label: 'Hoy', isActive: false, datePeriod: 'today', periodText: 'hoy.' },
-    { icon: 'line_style', label: 'Semana' , isActive: false, datePeriod: 'weekly', periodText: 'la semana.'  },
+    { icon: 'view_week', label: 'Semana' , isActive: false, datePeriod: 'weekly', periodText: 'la semana.'  },
     { icon: 'date_range', label: 'Este Mes', isActive: false, datePeriod: 'monthly', periodText: 'este mes.' }  
   ];
   ngOnInit( ) {

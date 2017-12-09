@@ -28,10 +28,11 @@
   </a>
 </div>
 <div *ngIf="matchState">
-      <div class="match-details"> 
+      <mat-progress-bar mode="determinate" value="{{ timeProgressBar }}"></mat-progress-bar> 
+      <div class="match-details">      
         <p class="match-timer">Tiempo:  {{ 30 - timer }} s </p>
-        <p class="match-timer">Oportunidad:  {{ index  }} / 5 </p> 
-        <p class="match-timer">Puntaje: {{ matchScoreControl }}</p>
+        <p class="match-timer">Locación:  {{ index }} / 5 </p> 
+        <p class="match-timer">Puntación: {{ matchScoreControl }}</p>
       </div>
       <agm-map [latitude]="latitudeOfContinentSelected"  
                     [longitude]="longitudeOfContinentSelected"  

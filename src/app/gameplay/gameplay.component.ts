@@ -18,6 +18,7 @@ import { DialogComponent } from './dialog/dialog.component';
 export class GameplayComponent implements OnInit {  
   public match: Match = { };
   public locations: any; 
+  public timeProgressBar: number = 0;
   public timer = 0;
   public enableButtonToGoNext: boolean =  true;
   public enableButtonToGoPrevious: boolean = true;
@@ -84,12 +85,16 @@ export class GameplayComponent implements OnInit {
    let timer = Observable.timer(1000,1000);
    this.subscription = timer.subscribe(t=>{
      this.timer = t;
+      this.paintProgressBar(t)
      if(t === 30){
        this.subscription.unsubscribe();
        this.beginMatch();
       }
     });
   }
+  private paintProgressBar(t: number){
+      this.timeProgressBar = (t*100)/30;
+  } 
   public prepareMatchToPost(): void {
       this.match = {
           userId: this._userService.currentUserId,

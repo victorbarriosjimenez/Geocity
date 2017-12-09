@@ -7,12 +7,17 @@
                         <span matTooltip="Ranking" >
                                 <mat-icon aria-label="Example icon-button with a heart icon">search</mat-icon>
                         </span>
-                </button> 
+        </button>  
+        <button mat-icon-button (click)="navigate('gameplay')">
+                        <span matTooltip="Nueva Partida" >
+                                <mat-icon aria-label="Example icon-button with a heart icon">add_location</mat-icon>
+                        </span>
+        </button> 
         <button mat-icon-button (click)="navigate('profile')">
                 <span matTooltip="Mi perfil" >
                         <mat-icon aria-label="Example icon-button with a heart icon">perm_identity</mat-icon>
                 </span>
-        </button> 
+        </button>
         <button mat-icon-button (click)="navigate('social')">
                 <span matTooltip="Amigos" >
                         <mat-icon aria-label="Example icon-button with a heart icon">people</mat-icon>

@@ -14,7 +14,9 @@ export class UserSearchComponent implements OnInit {
   public friends : any[] = [];
   constructor(private formsService: FormsService,
               private rankingService: RankingService) { }
-  ngOnInit() { }
+  ngOnInit() { 
+    this.getListOfCountries();
+  }
   public getListOfCountries(){
     this.formsService.getCountries()
         .subscribe(countries => this.countries = countries);

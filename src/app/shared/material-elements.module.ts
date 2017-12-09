@@ -16,7 +16,8 @@ import {
           MatToolbarModule,
           MatDialogModule,
           MatMenuModule,
-          MatCheckboxModule
+          MatCheckboxModule,
+          
         } from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
