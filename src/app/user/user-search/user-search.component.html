@@ -3,14 +3,15 @@
         <br>
         <br>
         <br>
+        <br>        
         <br>
         <p class="heading"> <mat-icon>search</mat-icon> Buscar amigos</p>
         <p style="font-family: 'Ubuntu'; margin-bottom: 2.5%; margin-top: -10px; margin-left: 2.55%; color: rgb(153, 153, 153);">Busca amigos de todo el mundo para jugar y compartir</p>
         <div class="row">
                 <div class="col-md-5 col-sm-5 col-xs-5">
                         <mat-form-field style="width: 100%;">
-                                <mat-select placeholder="Pais de origen" name="country" [(ngModel)]="country" (change)="filterByCountryControl()">
-                                    <mat-option [value]="">Todos los países</mat-option>
+                                <mat-select placeholder="Pais de origen" name="country" [(ngModel)]="countryFilter" (change)="filterByCountryControl()">
+                                    <mat-option value="all">Todos los países</mat-option>
                                     <mat-option *ngFor="let country of countries"  [value]="country.name">
                                         {{ country.name }}
                                     </mat-option>
@@ -22,8 +23,7 @@
                                 <input name="term" type="text" name="username" 
                                        matInput 
                                        placeholder="Nombre de usuario" 
-                                       [(ngModel)]="username"
-                                       (keyup)="filterByTextControl()">
+                                       [(ngModel)]="username">
                                 <mat-icon matSuffix *ngIf="!username; else showDelete">search</mat-icon>
                                 <ng-template #showDelete>
                                     <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
@@ -34,7 +34,7 @@
                 </div>
         </div>
         <div *ngIf="users; else noResults" class="row">
-                <mat-card *ngFor="let user of users" class="match-header"> 
+                <mat-card *ngFor="let user of users | filter: username" class="match-header"> 
                         <img src="{{ user.profilePhotoUrl }}" draggable="false" alt="">                        
                         <div class="ranked-user-details">
                                 <p class="ranked-user-details-username">{{ user.username }}</p>

@@ -10,46 +10,34 @@ import { filter } from 'lodash';
 export class UserSearchComponent implements OnInit {
   public countries: any;
   public username: string = '';
-  public country: string = '';
+  public countryFilter: string = '';
   public users: any[] = [];
   constructor(private formsService: FormsService,
               private userService : UserService,
               private rankingService: RankingService) { }
   ngOnInit() { 
     this.getListOfCountries();
+    this.getInitialListOfAllUsers();
   }
   public getListOfCountries(){
     this.formsService.getCountries()
         .subscribe(countries => this.countries = countries);
   }
-  public filterByTextControl(): void {
-    let userquery = this.username;
-    let countryquery = this.country;
-    this.users = userquery === '' ? [] : this.users;
-      if(this.users) {
-        this.users = [];
-        this.rankingService.getListOfAllUsers()
-            .subscribe(users => { 
-                if(countryquery){
-                    this.users = filter(users.filter((user: User) => user.username.toLowerCase().indexOf(userquery) !== -1),{ country : countryquery }); 
-                }
-                else if(!countryquery && userquery){
-                    this.users =  users.filter((user: User) => user.username.toLowerCase().indexOf(userquery) !== -1);
-                }
-        }); 
-    }
+  public getInitialListOfAllUsers(): void {
+      this.rankingService.getListOfAllUsers()
+          .subscribe(users => this.users = users);
   }
   public filterByCountryControl(): void {
-    let userquery = this.username;
-    let countryquery = this.country;
-    if(this.users){
-       this.users= [];
-       if(userquery){
-        this.rankingService.getListOfAllUsers()
-        .subscribe(users => { 
-             this.users = filter(users.filter((user: User) => user.username.toLowerCase().indexOf(userquery) !== -1),{ country : countryquery }); 
-        });
-       }
+    let countryquery = this.countryFilter;
+    console.log(countryquery);
+    if(countryquery === 'all'){
+      this.getInitialListOfAllUsers(); 
+    }
+    else {
+      this.rankingService.getListOfAllUsers()
+          .subscribe(users => { 
+              this.users = filter(users, { country : countryquery }); 
+      });
     }
   }
 }

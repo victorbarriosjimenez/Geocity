@@ -8,8 +8,7 @@ import { MatSnackBar } from '@angular/material';
 import { User } from '../../models';
 import { Router } from '@angular/router'; 
 import * as firebase from 'firebase/app';
-import 'rxjs/add/operator/switchMap'
-
+import 'rxjs/add/operator/switchMap';
 @Injectable()
 export class AuthenticationService {
     public authState: any = null;
