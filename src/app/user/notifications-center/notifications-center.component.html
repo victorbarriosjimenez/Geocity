@@ -8,10 +8,17 @@
   <div  class="row">
       <div class="col-md-6 col-sm-6 col-xs-12">
         <p class="heading">Notificaciones</p>
-        <div *ngFor="let message of messages">
-            <p>{{ message.title }}</p>
-            <p>{{ message.body }}</p>
-        </div>  
+        <div *ngIf="messages; else noMessages">
+            <div *ngFor="let message of messages">
+                <p>{{ message.title }}</p>
+                <p>{{ message.body }}</p>
+            </div>  
+        </div>
+        <ng-template #noMessages>
+            <div style="font-family: 'Ubuntu'; color: rgb(182, 182, 182); display: block; margin: 30px auto;">
+                No hay notificaciones para mostrar
+            </div>
+        </ng-template>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12">
           <p class="heading">Solicitudes de amistad</p>          
