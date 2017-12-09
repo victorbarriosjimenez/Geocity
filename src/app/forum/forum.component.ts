@@ -37,9 +37,14 @@ export class ForumComponent implements OnInit {
       );
   }
   public createNewPost( ): void { 
+    if(this.createPostForm.value.body === ''){
+         this.showsSnackOfPostCreated('La publicación está vacía.');
+    }
+    else {
       const postModel: Post = this.preparePost();
       this._forumService.createNewPost(postModel);
       this.createPostForm.reset();
+    }
   }
   public preparePost() { 
       const formModel = this.createPostForm.value;
