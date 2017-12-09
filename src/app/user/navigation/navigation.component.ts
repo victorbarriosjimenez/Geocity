@@ -30,7 +30,7 @@ export class NavigationComponent implements OnInit {
     this._userService.getUserNotifications(this._userService.currentUserId)
         .subscribe(messages => {
               this.numberOfNewMessages = this.countNumberOfNotificationsReceived(messages);
-          });
+    });
   }    
   private countNumberOfNotificationsReceived(messages: any[]): number{
     if(messages.length === 0){
