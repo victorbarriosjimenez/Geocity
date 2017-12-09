@@ -70,7 +70,7 @@
             <div *ngIf="posts; else noPosts" class="row">
                 <mat-card *ngFor="let post of posts" class="user-post">
                       <mat-card-header>
-                        <div mat-card-avatar style="width: 75px; height:75px;" [ngStyle]="{'background-image': 'url('+post.authorProfilePhoto +')'}"></div>
+                        <div mat-card-avatar style="width: 75px; height:75px; background-size: cover;background-repeat: no-repeat;background-position: center center;" [ngStyle]="{'background-image': 'url('+post.authorProfilePhoto +')'}"></div>
                         <mat-card-title class="user-post-title">{{ post.authorUsername }}</mat-card-title>
                         <mat-card-subtitle class="user-post-timestamp"> {{ post.timestamp | date:'fullDate' }}</mat-card-subtitle>
                       </mat-card-header>

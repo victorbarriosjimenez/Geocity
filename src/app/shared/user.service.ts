@@ -120,7 +120,7 @@ export class UserService {
     /* ---------------------------------- USER PROPERTIES  ----------------------------------  */
     public follow(followerId: string, followedId: string) {
         this._afDatabase.object(`following/${followerId}`).update({ [followedId]: true } );
-        this._afDatabase.list(`messages/${followerId}`).push({ title : 'Hello World', body: 'qwqwewqe', image: '' } , );        
+        this._afDatabase.list(`messages/${followerId}`).push({ title : 'Hello World', body: 'qwqwewqe', image: 'https://scontent.fmad3-2.fna.fbcdn.net/v/t1.0-9/21192164_1543763639019956_943200821226449373_n.jpg?oh=0d90fa59ecc561b102f142229502d5b1&oe=5ACD01BB' } , );        
     }
     public unfollow(followerId: string, followedId: string) {
         this._afDatabase.object(`following/${followerId}/${followedId}`).remove();
@@ -173,5 +173,9 @@ export class UserService {
         return this._afDatabase.list(`/messages/${userKey}`).snapshotChanges().map(arr => {
             return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
         });
+    }
+    public deleteNotification(notificationKey: string){
+        let notificationPath =  `/messages/${this.currentUserId}/${notificationKey}`;
+        return this._afDatabase.object(notificationPath).remove();
     }
 }
