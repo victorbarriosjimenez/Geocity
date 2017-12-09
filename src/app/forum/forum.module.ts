@@ -19,7 +19,7 @@ import { UserService } from '../shared/index';
     ReactiveFormsModule
   ],
   declarations: [
-    ForumComponent,
+    ForumComponent
 ],
   providers: [ 
     ForumService,

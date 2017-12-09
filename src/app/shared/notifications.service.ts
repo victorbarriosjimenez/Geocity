@@ -37,5 +37,8 @@ export class NotificationsService {
           console.log("Message received. ", payload);
           this.currentMessage.next(payload)
         });
-      }
+    }
+    getMessages(){
+
+    }
 }

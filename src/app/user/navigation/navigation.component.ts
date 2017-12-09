@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthenticationService } from './../../shared/authentication.service';
 import { Router } from '@angular/router';
 
@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   constructor(private auth: AuthenticationService, private _router: Router) { }
-  ngOnInit() { }
+  @Input('') currentUserId: string;
+  ngOnInit() { 
+  }
   public navigate(routeSelected: string){
     let route = `/${routeSelected}`;
     this._router.navigate([route]);
@@ -17,4 +19,7 @@ export class NavigationComponent implements OnInit {
   public logoutFromGeocity(): void {
     this.auth.logoutfromGeocity();
   } 
+  public getUserNotificationMessages(){
+      
+  }
 } 

@@ -13,6 +13,7 @@ import { UserService } from '../shared/user.service';
 import { GameplayModule } from './../gameplay/gameplay.module';
 import { RankingService, FilterPipe } from '../shared/index';
 import { NotificationsService } from '../shared/notifications.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -27,7 +28,7 @@ import { NotificationsService } from '../shared/notifications.service';
     UserSearchComponent,
     NavigationComponent,
     FriendsRankingComponent,
-    FilterPipe
+    FilterPipe,
   ],
   exports: [
     NavigationComponent
