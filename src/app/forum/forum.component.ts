@@ -15,7 +15,6 @@ export class ForumComponent implements OnInit {
   public createPostForm: FormGroup;
   public user: User;
   public posts: Post[];
-  userposts = [];
   public postSelected: Post;  
   public postsLoading: boolean = true;  
   constructor(private _forumService:ForumService,
