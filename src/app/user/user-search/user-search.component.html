@@ -40,7 +40,10 @@
                                 <p class="ranked-user-details-username">{{ user.username }}</p>
                                 <p class="ranked-user-details-country">{{ user.country }}</p>
                         </div> 
-                        <p class="ranked-user-score"> {{ user.score }} <span>pts</span></p>
+                        <div class="ranked-user-details">
+                                <p class="ranked-user-score"> {{ user.score }} <span>pts</span></p>
+                                <p> 14 amigos</p>
+                        </div>
                         <app-follow-button [currentUserId]="userService.currentUserId" [userId]="user.$key"></app-follow-button>  
                 </mat-card> 
         </div>

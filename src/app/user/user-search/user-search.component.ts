@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../models/index';
 import { FormsService, RankingService, UserService } from '../../shared/index';
-import { filter } from 'lodash';
+import { filter, orderBy } from 'lodash';
 @Component({
   selector: 'app-user-search',
   templateUrl: './user-search.component.html',
@@ -25,7 +25,7 @@ export class UserSearchComponent implements OnInit {
   }
   public getInitialListOfAllUsers(): void {
       this.rankingService.getListOfAllUsers()
-          .subscribe(users => this.users = users);
+          .subscribe(users => this.users =  orderBy(users,['score']).reverse());
   }
   public filterByCountryControl(): void {
     let countryquery = this.countryFilter;
@@ -36,7 +36,7 @@ export class UserSearchComponent implements OnInit {
     else {
       this.rankingService.getListOfAllUsers()
           .subscribe(users => { 
-              this.users = filter(users, { country : countryquery }); 
+              this.users =  orderBy(filter(users, { country : countryquery }),['score']).reverse(); 
       });
     }
   }
