@@ -5,8 +5,7 @@
     <br>
     <br>
   <div  class="row">
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <p class="heading">Notificaciones</p>
+        <h1 class="text-center">Notificaciones</h1>
         <div *ngIf="notifications; else noMessages">
             <mat-card *ngFor="let notification of notifications" class="user-post">
                 <button style="float:right;" mat-icon-button (click)="deleteNotification(notification.$key)"> <mat-icon>delete</mat-icon></button>                                                                                       
@@ -22,13 +21,9 @@
           </mat-card>
         </div>
         <ng-template #noMessages>
-            <div style="font-family: 'Ubuntu'; color: rgb(182, 182, 182); display: block; margin: 30px auto;">
+            <div class="text-center" style="font-family: 'Ubuntu'; color: rgb(182, 182, 182); display: block; margin-top: 50px;">
                 No hay notificaciones para mostrar
             </div>
         </ng-template>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12">
-          <p class="heading">Solicitudes de amistad</p>          
-      </div>          
   </div>
 </div>

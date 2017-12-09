@@ -7,20 +7,17 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
   templateUrl: './notifications-center.component.html',
   styleUrls: ['./notifications-center.component.css']
 })
-export class NotificationsCenterComponent implements OnInit, OnChanges {
+export class NotificationsCenterComponent implements OnInit{
   public notifications: any;
   constructor(private _userService: UserService) { }
   ngOnInit() {
       this.getListOfNotifications();
-  }
-  ngOnChanges(){
-    this.getListOfNotifications();    
   }
   public getListOfNotifications( ){
     this._userService.getUserNotifications(this._userService.currentUserId)
         .subscribe(notifications => this.notifications = notifications);
   }
   public deleteNotification(notificationKey: string) {
-    this._userService.deleteNotification(notificationKey).then(() => this.getListOfNotifications());
+    this._userService.deleteNotification(notificationKey);
   }
 }

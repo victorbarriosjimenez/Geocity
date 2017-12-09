@@ -26,7 +26,7 @@ export class NavigationComponent implements OnInit {
   public logoutFromGeocity(): void {
     this.auth.logoutfromGeocity();
   } 
-  public getUserNotificationMessages(){
+  public getUserNotificationMessages() {
     this._userService.getUserNotifications(this._userService.currentUserId)
         .subscribe(messages => {
               this.numberOfNewMessages = this.countNumberOfNotificationsReceived(messages);
