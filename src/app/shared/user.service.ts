@@ -120,7 +120,7 @@ export class UserService {
     /* ---------------------------------- USER PROPERTIES  ----------------------------------  */
     public follow(followerId: string, followedId: string) {
         this._afDatabase.object(`following/${followerId}`).update({ [followedId]: true } );
-        this._afDatabase.list(`messages/${followerId}`).push({ title : 'Hello World', body: 'qwqwewqe', image: 'https://scontent.fmad3-2.fna.fbcdn.net/v/t1.0-9/21192164_1543763639019956_943200821226449373_n.jpg?oh=0d90fa59ecc561b102f142229502d5b1&oe=5ACD01BB' } , );        
+        this.createNotification(followerId,followedId,'Tienes un nuevo Amigo','te ha añadido a su lista de amigos');      
     }
     public unfollow(followerId: string, followedId: string) {
         this._afDatabase.object(`following/${followerId}/${followedId}`).remove();
@@ -174,5 +174,18 @@ export class UserService {
     public deleteNotification(notificationKey: string){
         let notificationPath =  `/messages/${this.currentUserId}/${notificationKey}`;
         return this._afDatabase.object(notificationPath).remove();
+    }
+    public createNotification(userKey: string ,userToSendNotificationKey: string , subject: string, body: string) {
+    let _user: User = { }; 
+    this.getFriendData(userKey) 
+        .subscribe(user => { 
+            _user = user.payload.val();
+            let notification = {
+                title: subject as string,
+                body:  `${_user.username} ${body}`,
+                image: _user.profilePhotoUrl as string
+            }  
+            this._afDatabase.list(`messages/${userToSendNotificationKey}`).push(notification);
+        });
     }
 }
