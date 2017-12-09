@@ -12,7 +12,6 @@ import { FriendsRankingComponent } from './friends-ranking/friends-ranking.compo
 import { UserService } from '../shared/user.service';
 import { GameplayModule } from './../gameplay/gameplay.module';
 import { RankingService, FilterPipe } from '../shared/index';
-import { FriendsListComponent } from './friends-list/friends-list.component';
 import { NotificationsService } from '../shared/notifications.service';
 @NgModule({
   imports: [
@@ -28,7 +27,6 @@ import { NotificationsService } from '../shared/notifications.service';
     UserSearchComponent,
     NavigationComponent,
     FriendsRankingComponent,
-    FriendsListComponent,
     FilterPipe
   ],
   exports: [
