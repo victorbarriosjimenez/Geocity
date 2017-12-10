@@ -5,7 +5,7 @@
     <br>
     <br>
   <div  class="row">
-        <h1 class="text-center">Notificaciones</h1>
+        <h1 class="text-center"> <mat-icon style="font-size: .8em; margin-right: 12.5px;">notifications</mat-icon> Notificaciones</h1>
         <div *ngIf="notifications; else noMessages">
             <mat-card *ngFor="let notification of notifications" class="user-post">
                 <button style="float:right;" mat-icon-button (click)="deleteNotification(notification.$key)"> <mat-icon>delete</mat-icon></button>                                                                                       
