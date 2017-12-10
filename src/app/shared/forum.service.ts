@@ -74,7 +74,6 @@ export class ForumService {
         data[userId] = vote;
         this._afDatabase.object(`likes/${itemId}`).update(data);
     }
-
     public getPostVotes(postId){
         this.votesDatabaseReference = this._afDatabase.object(`likes/${postId}`);
         return this.votesDatabaseReference.snapshotChanges();

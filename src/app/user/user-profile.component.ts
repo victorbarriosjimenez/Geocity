@@ -15,6 +15,7 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 export class UserProfileComponent implements OnInit {
   public user: User;
+  public userLevel: string = '';
   public podiumUsers: User[];
   public createPostForm: FormGroup; 
   public matches: any;
@@ -64,6 +65,7 @@ export class UserProfileComponent implements OnInit {
     this._userService.getUserData()
       .subscribe(data => {
         this.user = data;
+        this.setlevel(data.score);
       },
                   (err) => console.log(err),
                   () => console.log('Success'));
@@ -154,5 +156,19 @@ export class UserProfileComponent implements OnInit {
                         this.setFriendKey(followers);
                         this.followerCount = this.countFollowers(followers);
       });
+    }
+    private setlevel(score: any){
+      if(score >= 0 && score < 2000){
+          this.userLevel = 'Starter';
+      }
+      else if (score >= 2000 && score < 5000){
+        this.userLevel  = 'Junior'; 
+      }
+      else if (score >= 5000 && score < 10000){
+        this.userLevel  = 'Expert'; 
+      }
+      else if (score >= 10000 && score < 15000){
+        this.userLevel  = 'Master'; 
+      }
     }
 }
