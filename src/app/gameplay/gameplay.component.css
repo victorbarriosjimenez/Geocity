@@ -48,9 +48,8 @@ agm-map {
     overflow: hidden;
 }
 h1 {
-    font-family: 'jaapokkiregularregular';
-    margin-left: 20px; 
-    font-size: 3.5em;   
+    font-family: 'jaapokkiregularregular'; 
+    font-size: 3em;   
 } 
 h2{
     color: rgb(213, 213, 213);
@@ -60,7 +59,7 @@ h2{
     margin: 0px !important;    
 }
 .continent-selection { 
-    max-width: 20%;
+    max-width: 100%;
     height: 50vh;
     border-radius: 5px;
     padding: 20px 10px;
@@ -78,9 +77,6 @@ h2{
 }
 .continent-selection:hover {
     background-color: rgba(0, 0,0,.5); 
-    cursor: pointer;
-    transform: scale(1.025);
-    transition: transform .3s;
 }
 .continent-selected {
     transform: scale(1.1); 
@@ -103,87 +99,25 @@ h2{
     width:  200px;
     height: 200px;
 }
-.bg-gradient2 span,
-.bg-gradient2:before {
-  background: #39c2c9;
-  background: -webkit-linear-gradient(180deg, #39c2c9 0%, #3fc8c9 80%, #3fc8c9 100%);
-  background: -webkit-linear-gradient(top, #39c2c9 0%, #3fc8c9 80%, #3fc8c9 100%);
-  background: linear-gradient(180deg, #39c2c9 0%, #3fc8c9 80%, #3fc8c9 100%);
+.selection-panel { 
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
 }
-a {
-  text-decoration: none;
+.selection-panel .selection-control{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
-a:hover, a:focus, a:active {
-  text-decoration: none;
+.selection-panel .continent{
+    width: 22.5vw;    
 }
-.fancy-button {
-  display: block;
-  width: 180px;
-  height: 70px;
-  margin: 20px auto;
-  font-weight: 500;
-  text-align: center;
-  font-size: 20px;
-  letter-spacing: 0.02em;
-  line-height: 24px;
-  color: #ffffff;
-  position: relative;
+.arrow-button {
+    background-color: rgb(5, 134, 255);
 }
-.fancy-button:before {
-  content: "";
-  display: block;
-  height: 40px;
-  position: absolute;
-  bottom: -1px;
-  left: 10px;
-  right: 10px;
-  z-index: -1;
-  border-radius: 2em;
-  -webkit-filter: blur(14px) brightness(0.9);
-          filter: blur(14px) brightness(0.9);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-}
-.fancy-button i {
-  margin-top: -2px;
-  font-size: 1.265em;
-  vertical-align: middle;
-}
-.fancy-button span {
-  display: block;
-  margin: 0 auto;
-  padding: 16px 20px;
-  border-radius: 50em;
-  position: relative;
-  font-family: 'jaapokkiregularregular';
-  z-index: 2;
-  will-change: transform, filter;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-}
-.fancy-button:focus {
-  color: #ffffff;
-}
-.fancy-button:hover {
-  color: #ffffff;
-  cursor: pointer;
-}
-.fancy-button:hover span {
-  -webkit-filter: brightness(0.9) contrast(1.2);
-          filter: brightness(0.9) contrast(1.2);
-  -webkit-transform: scale(0.96);
-          transform: scale(0.96);
-}
-.fancy-button:hover:before {
-  bottom: 3px;
-  -webkit-filter: blur(6px) brightness(0.8);
-          filter: blur(6px) brightness(0.8);
-}
-.fancy-button:active span {
-  -webkit-filter: brightness(0.75) contrast(1.7);
-          filter: brightness(0.75) contrast(1.7);
+.arrow-button:disabled{
+    background-color: rgb(208, 208, 208);
 }

@@ -1,31 +1,47 @@
 <div *ngIf="!isMatchConfigurationDone" class="match-chose">
   <div class="container-fluid">
       <h1 class="text-center">Nueva Partida</h1>
-      <h2 class="text-center" style="font-family: 'Ubuntu'; margin-bottom: 40px; margin-left: 20px; font-size: 2em;">Escoge un continente</h2> 
-      <div class="row">
-          <div class="col-md-2">
-                <button [disabled]="!enableButtonToGoPrevious" mat-fab (click)="goToPreviousContinent()">
-                        <mat-icon aria-label="">arrow_back</mat-icon>
-                </button>
-          </div>
-          <div 
-                class="continent-selection"
-                [ngStyle]="{'background-image': 'url('+continent.image +')'}">
-            {{ continent.name }}
-          </div>
-          <div class="col-md-2" (click)="goToNextContinent()">
-                <button [disabled]="!enableButtonToGoNext" mat-fab>
-                        <mat-icon aria-label="">arrow_forward</mat-icon>
-                </button>
-          </div>
+      <h2 class="text-center" style="font-family: 'Ubuntu'; margin-bottom: 30px; font-size: 1.5em;">Escoge un continente</h2> 
+      <div class="selection-panel">
+            <div class="selection-control">
+                  <button class="arrow-button" [disabled]="!enableButtonToGoPrevious" mat-fab (click)="goToPreviousContinent()">
+                        <span matTooltip="Anterior">                                                 
+                              <mat-icon aria-label="">arrow_back</mat-icon>
+                        </span>
+                  </button>
+            </div>
+            <div class="continent">
+                  <div class="continent-selection"
+                        [ngStyle]="{'background-image': 'url('+continent.image +')'}">
+                         {{ continent.name }}
+                  </div>
+            </div>
+             <div class="selection-control">
+                  <button class="arrow-button" (click)="goToNextContinent()" [disabled]="!enableButtonToGoNext" mat-fab>
+                        <span matTooltip="Siguiente">       
+                              <mat-icon aria-label="">arrow_forward</mat-icon>
+                        </span>
+                  </button>
+             </div>
       </div>
+      <div style="margin: 30px auto 0px auto; display: block; text-align: center; width: 20vw;">
+                  <a style="margin-right: 10px;" routerLink="/social" color="primary" mat-fab>
+                              <span matTooltip="Ranking">       
+                                    <mat-icon aria-label="">sort</mat-icon>
+                              </span>
+                  </a>
+                  <button style="margin-right: 10px; background-color: rgb(0, 208, 255);"  (click)="selectContinentForMatch(continent)" class="arrow-button" [disabled]="!enableButtonToGoPrevious" mat-fab (click)="goToPreviousContinent()">
+                        <span matTooltip="Jugar">       
+                              <mat-icon aria-label="">play_arrow</mat-icon>
+                        </span>
+                  </button>
+                  <a color="primary" style="margin-right: 10px;" routerLink="/profile" mat-fab>
+                        <span matTooltip="Volver">
+                              <mat-icon aria-label="">replay</mat-icon>
+                        </span>
+                  </a>
+        </div>
   </div>  
-  <a class="fancy-button bg-gradient2" (click)="selectContinentForMatch(continent)">
-      <span>Iniciar</span>      
-  </a>
-  <a class="fancy-button bg-gradient2" routerLink="/profile">
-        <span>Volver al perfil</span>      
-  </a>
 </div>
 <div *ngIf="matchState">
       <mat-progress-bar class="progress-bar" mode="determinate" value="{{ timeProgressBar }}"></mat-progress-bar> 

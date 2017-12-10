@@ -71,6 +71,7 @@ export class ForumService {
     /* ---------------------------------- VOTING MANAGEMENT ----------------------------  ------  */
     public updateUserVote(itemId, userId, vote): void {
         let data = {};
+        console.log(userId);
         data[userId] = vote;
         this._afDatabase.object(`likes/${itemId}`).update(data);
     }
