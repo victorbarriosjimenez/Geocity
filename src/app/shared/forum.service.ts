@@ -58,7 +58,7 @@ export class ForumService {
     }
     public createNewComment(comment: Comment) { 
         this.commentsDatabaseReference.push(comment);
-        this._userService.createNotification(comment.userId,comment.authorId,'Mis publicacines',`ha comentado tu publicación: '${comment.body}' `);
+        this._userService.createNotification(comment.userId,comment.authorId,'Nuevo comentario en tu publicación',`ha comentado tu publicación: '${comment.body}'`);    
     }
     public getAllComments() {
         return this.commentsDatabaseReference.snapshotChanges().map(arr => {
