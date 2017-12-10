@@ -13,6 +13,7 @@
                   <div mat-card-avatar style="width: 75px; height:75px; background-size: cover;background-repeat: no-repeat;background-position: center center;" [ngStyle]="{ 'background-image': 'url('+ notification.image +')'}"></div>
                   <div>
                       <mat-card-title class="user-post-title">{{ notification.title }}</mat-card-title> 
+                      <mat-card-subtitle class="user-post-timestamp">{{ notification.timestamp | date:'fullDate'  }}</mat-card-subtitle>                       
                       <p class="user-post-body">
                           {{ notification.body }}
                        </p>                     

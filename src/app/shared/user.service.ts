@@ -183,7 +183,8 @@ export class UserService {
             let notification = {
                 title: subject as string,
                 body:  `${_user.username} ${body}`,
-                image: _user.profilePhotoUrl as string
+                image: _user.profilePhotoUrl as string,
+                timestamp: firebase.database.ServerValue.TIMESTAMP
             }  
             this._afDatabase.list(`messages/${userToSendNotificationKey}`).push(notification);
         });

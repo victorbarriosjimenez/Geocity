@@ -12,6 +12,7 @@ export class Post { 
 export class Comment { 
     public userId?: string;
     public postId?: string; 
+    public authorId?: string;     
     public body?: string;  
     public timestamp?: any;    
     public authorProfilePhoto?: string;

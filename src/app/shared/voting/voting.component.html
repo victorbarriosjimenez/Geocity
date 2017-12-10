@@ -3,6 +3,7 @@
     {{ totalVotes }} <strong>likes</strong>
 </span>
 <button mat-icon-button 
+        [disabled]="userId===authorId"
         [ngClass]="{'votes-up' : userVote > 0 }"
         (click)="upVotePost()"> <mat-icon>thumb_up</mat-icon> 
 </button>

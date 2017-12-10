@@ -15,10 +15,11 @@ p.heading {
 }
 .user-post-timestamp {
     font-family: 'Ubuntu';
-    margin-left: 15px;
+    margin-left: 10px;
+    font-size: .9em;    
 }
 .user-post-body {
     margin-left: 10px;
     font-family: 'Ubuntu';
-    font-size: .90em; 
+    font-size: 1em; 
 }

@@ -58,7 +58,6 @@ export class UserProfileComponent implements OnInit {
       const postModel: Post = this.preparePost();
       this._forumService.createNewPost(postModel);
       this.createPostForm.reset();
-      this.showsSnackOfPostCreated(`Hey ${this.user.username}! tu publicación ha sido publicada`);
      } 
   }
   private getProfileBioData( ):  void {
@@ -119,6 +118,7 @@ export class UserProfileComponent implements OnInit {
           authorProfilePhoto: this.user.profilePhotoUrl as string,
           authorUsername: this.user.username as string,
           userId: this._userService.currentUserId as string,
+          authorId: this.postSelected.userId as string,
           postId: this.postSelected.$key as string
       }
       this._forumService.createNewComment(commentModel);

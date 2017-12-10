@@ -8,6 +8,7 @@ import { sum, values } from 'lodash';
 })
 export class VotingComponent implements OnInit, OnChanges {
   @Input('postId') postId: string;
+  @Input('authorId') authorId: string;  
   @Input('userId') userId: string;
   public totalVotes: number = 0;
   public userVote: number = 0;
@@ -33,6 +34,6 @@ export class VotingComponent implements OnInit, OnChanges {
   public upVotePost(): void {
     this.ngOnChanges();
     let vote = this.userVote == 1 ? 0 : 1;
-    this._forumService.updateUserVote(this.postId,this.userId,1);
+    this._forumService.updateUserVote(this.postId,this.userId,this.authorId,1);
   }
 }

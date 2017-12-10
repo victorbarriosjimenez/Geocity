@@ -16,13 +16,13 @@
                          {{ continent.name }}
                   </div>
             </div>
-             <div class="selection-control">
+            <div class="selection-control">
                   <button class="arrow-button" (click)="goToNextContinent()" [disabled]="!enableButtonToGoNext" mat-fab>
                         <span matTooltip="Siguiente">       
                               <mat-icon aria-label="">arrow_forward</mat-icon>
                         </span>
                   </button>
-             </div>
+            </div>
       </div>
       <div style="margin: 30px auto 0px auto; display: block; text-align: center; width: 20vw;">
                   <a style="margin-right: 10px;" routerLink="/social" color="primary" mat-fab>
