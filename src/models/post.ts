@@ -16,5 +16,6 @@ export class Comment { 
     public body?: string;  
     public timestamp?: any;    
     public authorProfilePhoto?: string;
-    public authorUsername?: string;     
+    public authorUsername?: string;
+    public postBody?: string;    
 }

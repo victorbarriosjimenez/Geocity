@@ -23,7 +23,8 @@
                                 <input name="term" type="text" name="username" 
                                        matInput 
                                        placeholder="Nombre de usuario" 
-                                       [(ngModel)]="username">
+                                       [(ngModel)]="username"
+                                       (keyup)="username.toLowerCase()">
                                 <mat-icon matSuffix *ngIf="!username; else showDelete">search</mat-icon>
                                 <ng-template #showDelete>
                                     <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="username=''">

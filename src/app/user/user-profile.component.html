@@ -42,16 +42,21 @@
                                 </div>
                         </div>
                 </section>
-                <section class="user-panel">
+                <section *ngIf="matches; else noMatches" class="user-panel">
                  <p class="heading">Partidas recientes</p>
                         <mat-card *ngFor="let match of matches" class="match-header">
-                                <div>
-                                        <p style="font-family:'jaapokkiregularregular';">{{ match.continent}}</p>  
-                                        <p class="timestamp">{{ match.timestamp | date }}</p>               
-                                </div>         
+                         <div>
+                                <p style="font-family:'jaapokkiregularregular';">{{ match.continent}}</p>  
+                                <p class="timestamp">{{ match.timestamp | date }}</p>               
+                         </div>         
                                 <p class="ranked-user-score">{{ match.score }} <span>pts</span></p>  
                         </mat-card>  
                 </section>
+                <ng-template #noMatches>
+                        <div style="font-family: 'Ubuntu'; color: rgb(182, 182, 182); display: block; margin: 30px auto;">
+                                No hay partidas recientes.
+                        </div>
+                </ng-template>
         </div>
         <div class="col-md-7 col-sm-7 col-xs-12">
                <p class="heading">Nueva publicación</p>

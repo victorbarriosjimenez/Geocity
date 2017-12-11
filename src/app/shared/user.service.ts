@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/switchMap';
 import * as firebase from 'firebase/app';
-import { sumBy, size } from 'lodash';
+import { sumBy, size , orderBy} from 'lodash';
 import * as moment from 'moment'
 @Injectable()
 export class UserService {
@@ -140,7 +140,7 @@ export class UserService {
     }
     /* ------------------------- Set Rankings for users ---------------*/
     public setFriendsRankingForToday(listOfRankedUsers: User[],query: string){
-       listOfRankedUsers.forEach(
+      listOfRankedUsers.forEach(
             (user: User) => { 
                 this.getUserMatchesToFilter(user.$key)
                     .subscribe(matches => { 

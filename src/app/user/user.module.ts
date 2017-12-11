@@ -14,6 +14,8 @@ import { GameplayModule } from './../gameplay/gameplay.module';
 import { RankingService, FilterPipe } from '../shared/index';
 import { NotificationsService } from '../shared/notifications.service';
 import { NotificationsCenterComponent } from './notifications-center/notifications-center.component';
+import { OrderByPipe } from '../shared/sortBy.pipe';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   imports: [
@@ -22,7 +24,8 @@ import { NotificationsCenterComponent } from './notifications-center/notificatio
     FormsModule,
     ReactiveFormsModule,
     UserRoutesModule,
-    GameplayModule 
+    GameplayModule, 
+    OrderModule
    ],
   declarations: [
     UserProfileComponent,
@@ -30,6 +33,7 @@ import { NotificationsCenterComponent } from './notifications-center/notificatio
     NavigationComponent,
     FriendsRankingComponent,
     FilterPipe,
+    OrderByPipe,
     NotificationsCenterComponent
   ],
   exports: [

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../shared/authentication.service';
 import { Router }  from '@angular/router';
 import { FormBuilder, FormGroup , Validators} from '@angular/forms';
 import { User , Match, Post, Comment } from '../../models'
-import { UserService, ForumService, RankingService } from './../shared/';
+import { UserService, ForumService, RankingService, AuthenticationService } from './../shared/';
 import { MatSnackBar } from '@angular/material';
 import * as firebase from 'firebase/app';
 import { take , orderBy, get, size, keys, slice , assign } from 'lodash';
@@ -71,7 +70,7 @@ export class UserProfileComponent implements OnInit {
   }
   public getUserMatches(): void {
     this._userService.getUserMatches()
-                     .subscribe(matches  => this.matches =  take(matches.reverse(),5));
+                     .subscribe(matches  => this.matches = matches ? take(matches.reverse(),5):[]);
   }
   public createNewMatch( ): void {
       this._router.navigate(['/gameplay']);
@@ -119,7 +118,8 @@ export class UserProfileComponent implements OnInit {
           authorUsername: this.user.username as string,
           userId: this._userService.currentUserId as string,
           authorId: this.postSelected.userId as string,
-          postId: this.postSelected.$key as string
+          postId: this.postSelected.$key as string,
+          postBody: this.postSelected.body as string          
       }
       this._forumService.createNewComment(commentModel);
       this.postSelected.commentText = '';

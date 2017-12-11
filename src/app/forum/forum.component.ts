@@ -81,7 +81,9 @@ export class ForumComponent implements OnInit {
         authorProfilePhoto: this.user.profilePhotoUrl as string,
         authorUsername: this.user.username as string,
         userId: this._userService.currentUserId as string,
-        postId: this.postSelected.$key as string
+        postId: this.postSelected.$key as string,
+        authorId: this.postSelected.userId as string,
+        postBody: this.postSelected.body as string
     }
     this._forumService.createNewComment(commentModel);
     this.postSelected.commentText = '';    

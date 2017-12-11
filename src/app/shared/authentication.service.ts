@@ -103,7 +103,7 @@ export class AuthenticationService {
     } 
     public getUsernames() { 
         return this.usernamesDatabaseReference.snapshotChanges().map(arr => {
-            return arr.map(snap => Object.assign(snap.payload.val(), { $key: snap.key }))
+            return arr.map(snap => snap.payload.val());
         });
     }
     /* -------------------------------- OAuth Authentication Methods -------------------------------------- */ 

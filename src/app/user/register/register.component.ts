@@ -5,6 +5,7 @@ import { AuthenticationService } from '../../shared/authentication.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx'; 
 import { User } from '../../../models';
+import { valuesIn } from 'lodash';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -17,7 +18,7 @@ export class RegisterComponent implements OnInit {
   public usernameInsertedCopy: string = '';
   public usernames = [];
   public registrationForm: FormGroup;
-  public isUsernameAvailable:  boolean = true;
+  public isUsernameAvailable:  boolean = false;
   constructor(private _formsService: FormsService, 
               private _fb: FormBuilder,
               private _router: Router,
@@ -62,6 +63,8 @@ export class RegisterComponent implements OnInit {
   public checkUsernameAvailability(): void {
         this.usernameInsertedCopy = this.registrationForm.value.usernameFormControl.toLowerCase();
         this._authService.getUsernames()
-                         .subscribe((usernames: any[]) =>  usernames.find((username: any) => username.username == this.usernameInsertedCopy ? this.isUsernameAvailable = false : this.isUsernameAvailable = true ));
+                         .subscribe((usernames: any[]) => {
+                          usernames.find(username => username.username == this.usernameInsertedCopy ? this.isUsernameAvailable = false : this.isUsernameAvailable = true )
+                        });
     }
 }

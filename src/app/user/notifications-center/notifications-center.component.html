@@ -4,6 +4,8 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>    
   <div  class="row">
         <h1 class="text-center"> <mat-icon style="font-size: .8em; margin-right: 12.5px;">notifications</mat-icon> Notificaciones</h1>
         <div *ngIf="notifications; else noMessages">
@@ -12,7 +14,9 @@
                 <mat-card-header>
                   <div mat-card-avatar style="width: 75px; height:75px; background-size: cover;background-repeat: no-repeat;background-position: center center;" [ngStyle]="{ 'background-image': 'url('+ notification.image +')'}"></div>
                   <div>
-                      <mat-card-title class="user-post-title">{{ notification.title }}</mat-card-title> 
+                      <mat-card-title class="user-post-title">
+                         <strong>{{ notification.title }}</strong>
+                      </mat-card-title> 
                       <mat-card-subtitle class="user-post-timestamp">{{ notification.timestamp | date:'fullDate'  }}</mat-card-subtitle>                       
                       <p class="user-post-body">
                           {{ notification.body }}

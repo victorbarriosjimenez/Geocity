@@ -57,8 +57,9 @@ export class ForumService {
         postRef.remove();
     }
     public createNewComment(comment: Comment) { 
+        let shortVersionOfComment = comment.postBody.length < 20 ? comment.postBody : comment.postBody.substring(0,20) + '...';
         this.commentsDatabaseReference.push(comment);
-        this._userService.createNotification(comment.userId,comment.authorId,'Nuevo comentario en tu publicación',`ha comentado tu publicación: '${comment.body}'`);    
+        comment.userId === comment.authorId ? null : this._userService.createNotification(comment.userId,comment.authorId,`Nuevo comentario en tu publicación "${shortVersionOfComment}"`,`ha comentado tu publicación: "${comment.body}"`);    
     }
     public getAllComments() {
         return this.commentsDatabaseReference.snapshotChanges().map(arr => {
@@ -72,7 +73,6 @@ export class ForumService {
     /* ---------------------------------- VOTING MANAGEMENT ----------------------------  ------  */
     public updateUserVote(itemId, userId, authorId,vote): void {
         let data = {};
-        console.log(userId);
         data[userId] = vote;
         this._afDatabase.object(`likes/${itemId}`).update(data);
         this._userService.createNotification(userId,authorId,'Mi publicación','le ha gustado tu publicación');
